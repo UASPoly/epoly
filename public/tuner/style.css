@@ -1,0 +1,14 @@
+/*
+Theme Name: Happy Kids Child Theme
+Theme URI: http://themeforest.net/item/happy-kids-children-wordpress-theme/4452871
+Description: Child theme for the Happy Kids - Children WordPress Theme
+Author: Creative Web Solutions
+Author URI: www.creaws.com
+Template: happykids
+Version: 3.2.8
+*/
+
+/* =Theme customization starts here
+-------------------------------------------------------------- */
+@import url("tuner/css/colorpicker.css");
+@import url("tuner/css/styles.css");

@@ -1,0 +1,13 @@
+{
+    "name": "ExamOfficer",
+    "alias": "examofficer",
+    "description": "",
+    "keywords": [],
+    "order": 0,
+    "providers": [
+        "Modules\\ExamOfficer\\Providers\\ExamOfficerServiceProvider"
+    ],
+    "aliases": {},
+    "files": [],
+    "requires": []
+}

@@ -1,0 +1,59 @@
+<?php
+
+namespace Modules\Staff\Http\Controllers\Auth;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
+use Password;
+use Auth;
+
+class StaffResetPasswordController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Password Reset Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller is responsible for handling password reset requests
+    | and uses a simple trait to include this behavior. You're free to
+    | explore this trait and override any methods you wish to tweak.
+    |
+    */
+
+    use ResetsPasswords;
+
+    /**
+     * Where to redirect users after resetting their password.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/staff';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest:staff');
+    }
+
+    protected function guard()
+    {
+      return Auth::guard('staff');
+    }
+
+    protected function broker()
+    {
+      return Password::broker('staff');
+    }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('staff::auth.passwords.reset-admin')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
+}
