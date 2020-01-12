@@ -23,7 +23,12 @@ class Department extends BaseModel
     {
     	return $this->belongsTo('Modules\College\Entities\College');
     }
-    
+
+    public function departmentProgrammes()
+    {
+        return $this->hasMany(DepartmentProgramme::class);
+    }
+
     public function departmentalAppointments()
     {
         return $this->hasMany(DepartmentalAppointment::class);

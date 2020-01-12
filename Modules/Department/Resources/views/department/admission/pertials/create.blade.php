@@ -1,7 +1,6 @@
 <div class="col-md-4"></div>
 <div class="col-md-4"><br>
     <div class="row">
-    	
     	<div class="col-md-12">
     		<h3>New Admission</h3>
     	</div>
@@ -9,11 +8,11 @@
     <form class="login-form" action="{{route($route ?? 'department.admission.register')}}" method="post">
         @csrf
         <div class="form-group">
-        	<label>Session</label>
+        	<label>Programme</label>
             <select name="programme" class="form-control">
             	<option value=""></option>
-            	@foreach(department()->programmes() as $programme)
-                    <option value="{{$programme->code}}">{{$programme->name}}</option>
+            	@foreach(department()->departmentProgrammes as $departmentProgramme)
+                    <option value="{{$departmentProgramme->code}}">{{$departmentProgramme->programme->name}}</option>
             	@endforeach
             </select>
             @error('programme')

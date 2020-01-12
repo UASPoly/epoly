@@ -19,7 +19,7 @@ class AdmissionFormRequest extends FormRequest
             "last_name" => "required|string",
             "gender" => "required",
             "religion" => "required",
-            "email" => "required|email|unique:students",
+            "email" => "",
             "admission_no" => "required|unique:admissions",
             "phone" => "required",
             "state" => "required",

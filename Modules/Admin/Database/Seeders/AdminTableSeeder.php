@@ -21,7 +21,7 @@ class AdminTableSeeder extends Seeder
         Admin::create([
             'first_name'=>'Isah',
             'last_name'=>'labbo',
-            'email'=>'isahlabbo@poly.com',
+            'email'=>'isahlabbo@uaspoly.com',
             'phone'=>'08162463010',
             'password'=>Hash::make('isahlabbo'),
         ]);
