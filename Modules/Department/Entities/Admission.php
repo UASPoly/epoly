@@ -18,7 +18,10 @@ class Admission extends BaseModel
     {
     	return $this->hasOne('Modules\Student\Entities\Student');
     }
-
+    public function departmentProgramme()
+    {
+        return $this->belongsTo(DepartmentProgramme::class);
+    }
     public function courseRegistrations()
     {
         return $this->hasMany('Modules\Student\Entities\CourseRegistration');

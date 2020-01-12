@@ -55,5 +55,12 @@ class ProgrammeController extends AdminBaseController
         return back();
     }
 
+    public function delete($department, $departmentId, $programmeId)
+    {
+        Department::find($departmentId)->deleteProgramme($programmeId);
+        session()->flash('message', 'Department Programme was deleted successfully');
+        return back();
+    }
+
 
 }

@@ -11,6 +11,11 @@ class DepartmentProgramme extends BaseModel
     	return $this->belongsTo(Department::class);
     }
 
+    public function admissions()
+    {
+    	return $this->hasMany(Admission::class);
+    }
+
     public function programme()
     {
     	return $this->belongsTo('Modules\Student\Entities\Programme');
