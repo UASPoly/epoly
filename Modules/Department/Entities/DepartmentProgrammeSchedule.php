@@ -2,9 +2,9 @@
 
 namespace Modules\Department\Entities;
 
-use Illuminate\Database\Eloquent\Model;
+use Modules\Core\Entities\BaseModel;
 
-class DepartmentProgrammeSchedule extends Model
+class DepartmentProgrammeSchedule extends BaseModel
 {
     public function departmentProgramme()
     {

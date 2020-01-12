@@ -7,18 +7,21 @@
             <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-            	<form>
-                    
+            	<form action="{{route('admin.college.department.management.programme.register',
+        [str_replace(' ','-',strtolower($department->name)),$department->id])}}" method="post">
+        @csrf
+                    <input type="hidden" name="departmentId" value="{{$department->id}}">
                     <div class="form-group">
                         <label>Choose Programme</label>
-                        <select name="programme" class="form-control">
+                        <input type="text" list="Programme">
+                        <datalist name="programme" class="form-control" id="programme">
                             <option value="">Programme</option>
                             @foreach(admin()->programmes() as $programme)
                                 @if(!$department->hasThisProgramme($programme))
                                 <option value="{{$programme->id}}">{{$programme->name}}</option>
                                 @endif
                             @endforeach
-                        </select>
+                        </datalist>
                         @error('programme')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -34,7 +37,8 @@
                                 <strong>{{ $message }}</strong>
                             </span>
                         @enderror
-                    </div>  
+                    </div>
+                    <button class="btn-block button-fullwidth cws-button bt-color-3">Register</button>  
                 </form>
             </div>
             <div class="modal-footer">

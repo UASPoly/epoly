@@ -32,6 +32,7 @@ class CreateDepartmentProgrammesTable extends Migration
             ->delete('restrict')
             ->update('cascade');
             $table->integer('code');
+            $table->integer('status')->default(1);
             $table->timestamps();
         });
     }

@@ -12,12 +12,13 @@ use Modules\Department\Entities\Level;
 use Modules\Department\Entities\Semester;
 use Modules\Student\Entities\Programme;
 use Modules\Student\Entities\Schedule;
+use Modules\Department\Services\HasProgramme;
 use Modules\Department\Services\Graduation\HasGraduatedStudent;
 use Modules\Admission\Services\Traits\AdmissionNumberGenerator;
 use Modules\Department\Services\Admission\CanAdmittStudent as Admittable;
 class Department extends BaseModel
 {
-    use AdmissionNumberGenerator, HasGraduatedStudent, Admittable;
+    use AdmissionNumberGenerator, HasGraduatedStudent, Admittable, HasProgramme;
 
     public function college()
     {
