@@ -71,8 +71,20 @@ Route::prefix('admin')->group(function() {
 		  	Route::post('/{department}/{department_id}/update-department', 'DepartmentController@update')->name('update');
 		  	Route::get('/{department}/{department_id}/edit-department', 'DepartmentController@edit')->name('edit');
 		  	Route::get('/{department}/{department_id}/delete-department', 'DepartmentController@delete')->name('delete');
-		    
+		  //department management routes  
+      Route::prefix('{department}/{department_id}/management')
+        ->namespace('Management')
+        ->name('management.')
+        ->group(function() {
+        Route::get('/', 'ManagementController@index')->name('index');
 
+        Route::prefix('programme')
+        ->name('programme.')
+        ->group(function() {
+        Route::get('/', 'ProgrammeController@index')->name('index');
+      });
+
+      });
 		    //staff route group
 			Route::prefix('staff')
 			    ->namespace('Staff')

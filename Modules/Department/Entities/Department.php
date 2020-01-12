@@ -93,7 +93,17 @@ class Department extends BaseModel
     {
         return $this->hasMany('Modules\Student\Entities\DiferredSemester');
     }
-
+    
+    public function hasThisProgramme(Programme $programme)
+    {
+        $flag = false;
+        foreach ($this->departmentProgrammes as $departmentProgramme) {
+            if($departmentProgramme->programme_id == $programme->id){
+                $flag = true;
+            }
+        }
+        return $flag;
+    }
     public function unverifiedResults()
     {
         $results = [];
@@ -161,5 +171,6 @@ class Department extends BaseModel
     {
         return Lga::all();
     }
+
 
 }

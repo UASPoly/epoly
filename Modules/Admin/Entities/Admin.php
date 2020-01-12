@@ -5,10 +5,12 @@ namespace Modules\Admin\Entities;
 use Modules\Staff\Entities\Tribe;
 use Modules\Staff\Entities\Gender;
 use Modules\Staff\Entities\Religion;
+use Modules\Student\Entities\Programme;
 use Modules\Staff\Entities\StaffCategory;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 class Admin extends Authenticatable
 {
@@ -57,6 +59,11 @@ class Admin extends Authenticatable
     public function genders()
     {
         return Gender::all();
+    }
+
+    public function programmes()
+    {
+        return Programme::all();
     }
 
     public function religions()

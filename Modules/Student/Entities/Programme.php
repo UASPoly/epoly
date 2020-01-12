@@ -17,4 +17,9 @@ class Programme extends BaseModel
     	return $this->hasMany('Modules\Department\Entities\Level');
     }
 
+    public function departmentProgrammes()
+    {
+    	return $this->hasMany('Modules\Department\Entities\DepartmentProgramme');
+    }
+
 }

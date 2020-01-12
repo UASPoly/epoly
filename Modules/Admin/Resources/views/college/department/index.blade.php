@@ -15,6 +15,7 @@
 		                <div class="description">{{$department->description}}</div>
 		                <button class="btn btn-primary"><a href="{{route('admin.college.department.edit',[str_replace(' ','-',strtolower($department->name)),$department->id])}}"  style="color: white">Edit</a></button>
 		                <button class="btn btn-primary"><a href="{{route('admin.college.department.delete',[str_replace(' ','-',strtolower($department->name)),$department->id])}}" onclick="confirm('Are you sure you want delete this department')" style="color: white">Delete</a></button>
+		                <button class="btn btn-primary"><a href="{{route('admin.college.department.management.index',[str_replace(' ','-',strtolower($department->name)),$department->id])}}" style="color: white">Management</a></button>
 		            </div>
 		        </div>
 		        <!-- / course item -->
