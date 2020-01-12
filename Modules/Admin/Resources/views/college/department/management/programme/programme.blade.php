@@ -13,15 +13,14 @@
                     <input type="hidden" name="departmentId" value="{{$department->id}}">
                     <div class="form-group">
                         <label>Choose Programme</label>
-                        <input type="text" list="Programme">
-                        <datalist name="programme" class="form-control" id="programme">
+                        <select name="programmeId" class="form-control" id="programme">
                             <option value="">Programme</option>
                             @foreach(admin()->programmes() as $programme)
                                 @if(!$department->hasThisProgramme($programme))
                                 <option value="{{$programme->id}}">{{$programme->name}}</option>
                                 @endif
                             @endforeach
-                        </datalist>
+                        </select>
                         @error('programme')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>

@@ -35,7 +35,8 @@ class ProgrammeController extends AdminBaseController
             'code'=>'required',
             'programmeId'=>'required'
         ]);
-        Department::find($request->departmentProgrammeId)->updateProgramme($request->all());
+        
+        Department::find($request->departmentId)->updateProgramme($request->all());
         session()->flash('message', 'Department Programme updated successfully');
         return back();
     }

@@ -24,6 +24,7 @@
                         	<tr>
 	        					<td>{{$departmentProgramme->programme->name}}</td>
 	        					<td>{{$departmentProgramme->code}}</td>
+	        					<td></td>
 	        					<td>{{$departmentProgramme->hasMorningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>{{$departmentProgramme->hasEveningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>

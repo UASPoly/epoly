@@ -82,7 +82,8 @@ Route::prefix('admin')->group(function() {
         ->name('programme.')
         ->group(function() {
         Route::get('/', 'ProgrammeController@index')->name('index');
-        Route::post('/', 'ProgrammeController@register')->name('register');
+        Route::post('/register', 'ProgrammeController@register')->name('register');
+        Route::post('/{departmentProgrammId}/update', 'ProgrammeController@update')->name('update');
       });
 
       });

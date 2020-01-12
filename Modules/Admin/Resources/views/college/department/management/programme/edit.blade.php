@@ -9,9 +9,10 @@
             <div class="modal-body">
             	<form action="{{route('admin.college.department.management.programme.update',
                     [str_replace(' ','-',strtolower($department->name)),
-                    $department->id])}}" method="post">
+                    $department->id,$departmentProgramme->id])}}" method="post">
                     @csrf
                     <input type="hidden" name="departmentProgrammeId" value="{{$departmentProgramme->id}}">
+                    <input type="hidden" name="departmentId" value="{{$department->id}}">
                     <div class="form-group">
                         <label>Choose Programme</label>
                         <select name="programmeId" class="form-control">
@@ -41,7 +42,7 @@
                     <div class="form-group">
                         <label>Add Schedule</label>
                         <select name="scheduleAdd" class="form-control">
-
+                            <option value="">Select Schedule</option>
                             @if(!$departmentProgramme->hasMorningSchedule())
                                 <option value="1">Morning Schedule</option>
                             @endif
@@ -54,7 +55,7 @@
                     <div class="form-group">
                         <label>Remove Schedule</label>
                         <select name="scheduleRemove" class="form-control">
-
+                            <option value="">Select Schedule</option>
                             @if($departmentProgramme->hasMorningSchedule())
                                 <option value="1">Morning Schedule</option>
                             @endif
