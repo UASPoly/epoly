@@ -34,4 +34,28 @@ trait HasProgramme
 		}
 
 	}
+
+	public function activateProgramme($departmentProgrammeId)
+	{
+		DepartmentProgramme::find($departmentProgrammeId)->update([
+			'status'=>1
+		]);
+	}
+
+	public function deActivateProgramme($departmentProgrammeId)
+	{
+		DepartmentProgramme::find($departmentProgrammeId)->update([
+			'status'=>0
+		]);
+	}
+
+	public function deleteProgramme($departmentProgrammeId)
+	{
+		$departmentProgramme = DepartmentProgramme::find($departmentProgrammeId);
+		if(count($departmentProgramme->admissions) == 0){
+			$departmentProgramme->delete();
+		}else{
+			session()->flash('error','Sorry this programme has admited students to delete it you must delete all the admissions under the the programme');
+		}
+	}
 }

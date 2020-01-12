@@ -35,10 +35,25 @@ class ProgrammeController extends AdminBaseController
             'code'=>'required',
             'programmeId'=>'required'
         ]);
-        
+
         Department::find($request->departmentId)->updateProgramme($request->all());
         session()->flash('message', 'Department Programme updated successfully');
         return back();
     }
+
+    public function deActivate($department, $departmentId, $programmeId)
+    {
+        Department::find($departmentId)->deActivateProgramme($programmeId);
+        session()->flash('message', 'Department Programme has been de-activate successfully');
+        return back();
+    }
+
+    public function activate($department, $departmentId, $programmeId)
+    {
+        Department::find($request->departmentId)->activateProgramme($programmeId);
+        session()->flash('message', 'Department Programme has been activate successfully');
+        return back();
+    }
+
 
 }

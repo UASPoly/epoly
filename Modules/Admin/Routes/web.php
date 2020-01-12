@@ -84,6 +84,8 @@ Route::prefix('admin')->group(function() {
         Route::get('/', 'ProgrammeController@index')->name('index');
         Route::post('/register', 'ProgrammeController@register')->name('register');
         Route::post('/{departmentProgrammId}/update', 'ProgrammeController@update')->name('update');
+        Route::get('/{departmentProgrammId}/de-activate', 'ProgrammeController@deActivate')->name('deactivate');
+        Route::get('/{departmentProgrammId}/activate', 'ProgrammeController@activate')->name('activate');
       });
 
       });
