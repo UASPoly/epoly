@@ -1,8 +1,8 @@
 <?php
 namespace Modules\Department\Services;
 
-use Modules\Department\Entities\DepartmentProgramme;
-use Modules\Department\Entities\DepartmentProgrammeSchedule;
+use Modules\Student\Entities\Programme;
+use Modules\Department\Entities\ProgrammeSchedule;
 
 trait HasProgramme
 {
@@ -13,14 +13,15 @@ trait HasProgramme
 		}else{
 
 			$this->Programmes()->create([
-				'name'=>$data['name'],
-				'code'=>$data['code'],
+				'name'=>strtoupper($data['name']),
+				'code'=>strtoupper($data['code']),
 				'title'=>$data['title'],
 			]);
 			session()->flash('message', 'Department programme added successfully');
 		}
 		
 	}
+
     public function programmeExist($data)
     {
     	$programme = $this->programmes->where([
@@ -32,47 +33,50 @@ trait HasProgramme
     	}
     	return false;
     }
+
 	public function updateProgramme(array $data)
 	{
-		$departmentProgramme = DepartmentProgramme::find($data['departmentProgrammeId']);
-		$departmentProgramme->update([
-			'programme_id'=>$data['programmeId'],
+		$programme = Programme::find($data['programmeId']);
+		$programme->update([
+			'name'=>strtoupper($data['name']),
+			'title'=>strtoupper($data['title']),
 			'code'=>$data['code']
 		]);
+		
 		if(isset($data['scheduleAdd'])){
-			$departmentProgramme->departmentProgrammeSchedules()->create([
+			$programme->programmeSchedules()->create([
 				'schedule_id'=>$data['scheduleAdd']
 			]);
 		}
 
 		if(isset($data['scheduleRemove'])){
-			$schedule = DepartmentProgrammeSchedule::where(['department_programme_id'=>$departmentProgramme->id,'schedule_id'=> $data['scheduleRemove']])->first();
+			$schedule = ProgrammeSchedule::where(['department_programme_id'=>$programme->id,'schedule_id'=> $data['scheduleRemove']])->first();
 			$schedule->delete();
 		}
-
 	}
 
-	public function activateProgramme($departmentProgrammeId)
+	public function activateProgramme($programmeId)
 	{
-		DepartmentProgramme::find($departmentProgrammeId)->update([
+		Programme::find($programmeId)->update([
 			'status'=>1
 		]);
 	}
 
-	public function deActivateProgramme($departmentProgrammeId)
+	public function deActivateProgramme($programmeId)
 	{
-		DepartmentProgramme::find($departmentProgrammeId)->update([
+		Programme::find($programmeId)->update([
 			'status'=>0
 		]);
 	}
 
-	public function deleteProgramme($departmentProgrammeId)
+	public function deleteProgramme($programmeId)
 	{
-		$departmentProgramme = DepartmentProgramme::find($departmentProgrammeId);
-		if(count($departmentProgramme->admissions) == 0){
-			$departmentProgramme->delete();
+		$programme = Programme::find($programmeId);
+		if(count($programme->admissions) == 0){
+			$programme->delete();
 		}else{
 			session()->flash('error','Sorry this programme has admited students to delete it you must delete all the admissions under the the programme');
 		}
 	}
+	
 }

@@ -24,6 +24,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Programme Title</label>
+                        <input type="text" name="title" value="{{$programme->title}}">
+                        @error('programme')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label>Programme Code</label>
                         <input type="number" name="code" class="form-control" min="1" value="{{$programme->code}}">
                         @error('code')

@@ -11,8 +11,8 @@
         	<label>Programme</label>
             <select name="programme" class="form-control">
             	<option value=""></option>
-            	@foreach(department()->departmentProgrammes as $departmentProgramme)
-                    <option value="{{$departmentProgramme->id}}">{{$departmentProgramme->programme->name}}</option>
+            	@foreach(department()->programmes as $programme)
+                    <option value="{{$programme->id}}">{{$programme->name}}</option>
             	@endforeach
             </select>
             @error('programme')

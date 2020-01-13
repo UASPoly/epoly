@@ -10,7 +10,7 @@
         @csrf
         <div class="row">
             <div class="col-md-6">
-                <input type="hidden" name="departmentProgrammeId" value="{{request()->route('departmentProgrammeId')}}">
+                <input type="hidden" name="programmeId" value="{{request()->route('programmeId')}}">
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" name="first_name" class="form-control" value="{{old('first_name')}}">

@@ -34,7 +34,8 @@ class ProgrammeController extends AdminBaseController
     {
         $request->validate([
             'code'=>'required',
-            'programmeId'=>'required'
+            'name'=>'required',
+            'title'=>'required'
         ]);
 
         Department::find($request->departmentId)->updateProgramme($request->all());
@@ -51,7 +52,7 @@ class ProgrammeController extends AdminBaseController
 
     public function activate($department, $departmentId, $programmeId)
     {
-        Department::find($request->departmentId)->activateProgramme($programmeId);
+        Department::find($departmentId)->activateProgramme($programmeId);
         session()->flash('message', 'Department Programme has been activate successfully');
         return back();
     }

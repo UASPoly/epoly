@@ -104,11 +104,11 @@
         <div class="form-group">
         	<label>Programme</label>
             <select name="programme" class="form-control">
-            	<option value="{{$student->admission->departmentProgramme->id}}">{{$student->admission->departmentProgramme->programme->name}}</option>
-            	@foreach(department()->departmentProgrammes as $departmentProgramme)
-            	    @if($student->admission->departmentProgramme->id != $departmentProgramme->id)
-                    <option value="{{$departmentProgramme->code}}">
-                        {{$departmentProgramme->programme->name}}
+            	<option value="{{$student->admission->programme->id}}">{{$student->admission->programme->name}}</option>
+            	@foreach(department()->programmes as $programme)
+            	    @if($student->admission->programme->id != $programme->id)
+                    <option value="{{$programme->id}}">
+                        {{$programme->name}}
                     </option>
                     @endif
             	@endforeach

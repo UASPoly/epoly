@@ -3,10 +3,8 @@
     admin {{$department->name}} programme management page
 @endsection
 @section('page-content')
-    <div class="col-md-1"></div>
-    <div class="col-md-10">
+    <div class="col-md-12">
     	<br>
-        
         <div class="card">
         	<div class="card-body">
         		<div class="row">
@@ -20,6 +18,7 @@
         				<tr>
         					<th>Programme</th>
         					<th>Code</th>
+        					<th>Title</th>
         					<th>Status</th>
         					<th>Morning Schedule</th>
         					<th>Evening Schedule</th>
@@ -31,6 +30,7 @@
                         	<tr>
 	        					<td>{{$programme->name}}</td>
 	        					<td>{{$programme->code}}</td>
+	        					<td>{{$programme->title}}</td>
 	        					<td>
 	        						@if($programme->status == 1)
 	                                    <a href="{{route('admin.college.department.management.programme.deactivate',

@@ -2,7 +2,7 @@
 namespace Modules\Admission\Services\Traits;
 
 use Modules\Admin\Entities\Session;
-use Modules\Department\Entities\DepartmentProgramme;
+use Modules\Student\Entities\Programme;
 use Modules\Student\Entities\Schedule;
 use Modules\Department\Entities\DepartmentSessionAdmission;
 use Modules\Department\Entities\ReservedDepartmentSessionAdmission;
@@ -23,7 +23,7 @@ trait AdmissionNumberGenerator
 					$this->college->code.
 					$this->code.
 					$student['schedule'].
-					DepartmentProgramme::find($student['programme'])->code.
+					Programme::find($student['programme'])->code.
 					$this->getAdmissionSerialNo($student);
 		}
 		return $admissionNo;
@@ -40,7 +40,7 @@ trait AdmissionNumberGenerator
     	foreach (ReservedDepartmentSessionAdmission::where([
             'department_id'=> 1,
             'session_id'=> currentSession()->id,
-            'department_programme_id'=> $this->programmeId($student),
+            'programme_id'=> $this->programmeId($student),
             'schedule_id'=> $this->scheduleId($student)
     	])->get() as $reservedAdmission) {
     		if(!$admission){
@@ -65,7 +65,7 @@ trait AdmissionNumberGenerator
     	$counter = $this->departmentSessionAdmissions()->firstOrCreate([
             'session_id' => currentSession()->id,
             'schedule_id' => $this->scheduleId($student),
-            'department_programme_id' => $this->programmeId($student)
+            'programme_id' => $this->programmeId($student)
     	]);
         if($counter->count){
             return $counter->count;

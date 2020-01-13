@@ -26,6 +26,7 @@ class CreateProgrammesTable extends Migration
             $table->string('name');
             $table->string('title');
             $table->string('code');
+            $table->string('status')->default(1);
             $table->timestamps();
         });
     }

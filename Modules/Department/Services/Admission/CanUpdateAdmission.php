@@ -17,7 +17,7 @@ trait CanUpdateAdmission
     		$this->reservedThisAdmissionNo($data);
             $admissionNo = $this->generateAnotherAdmissionNo($data);
     		$this->admission_no = $admissionNo;
-    	   $this->save();
+    	    $this->save();
 
             $this->updateTheAdmissionCounter();
     	}
@@ -27,7 +27,7 @@ trait CanUpdateAdmission
 
     public function needToGenerateAdmissionNo($data)
     {
-    	if($data['programme'] != $this->department_programme_id || $data['schedule'] != $this->student->schedule->code){
+    	if($data['programme'] != $this->programme_id || $data['schedule'] != $this->student->schedule->code){
     		return true;
     	}
     }
@@ -37,7 +37,7 @@ trait CanUpdateAdmission
     	department()->reservedDepartmentSessionAdmissions()->firstOrCreate([
             'session_id'=>currentSession()->id,
             'schedule_id'=>$this->departmentProgrammeScheduleId(),
-            'department_programme_id'=>$this->department_programme_id,
+            'programme_id'=>$this->department_programme_id,
             'admission_no' => $this->admission_no
         ]);
     }

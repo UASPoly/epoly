@@ -3,8 +3,7 @@
 	     	<thead>
 	     		<tr>
 	     			<th>S/N</th>
-	     			<th>Fisrt Name</th>
-	     			<th>Last Name</th>
+	     			<th>Name</th>
 	     			<th>Admission No</th>
 	     			<th>Schedule</th>
 	     			<th>Programme</th>
@@ -18,11 +17,14 @@
 	     		@foreach(department()->admissions->where('session_id',currentSession()->id) as $admission)
 	     		<tr>
 	     			<td>{{$loop->index+1}}</td>
-	     			<td>{{$admission->student->first_name}}</td>
-	     			<td>{{$admission->student->last_name}}</td>
+	     			<td>
+	     				{{$admission->student->first_name}} 
+	     				{{$admission->student->middle_name}}    
+	     				{{$admission->student->last_name}}
+	     			</td>
 	     			<td>{{$admission->admission_no}}</td>
 	     			<td>{{$admission->student->schedule->name}}</td>
-	     			<td>{{$admission->departmentProgramme->programme->name}}</td>
+	     			<td>{{$admission->programme->title}}</td>
 	     			<td>{{$admission->student->email}}</td>
 	     			<td>{{$admission->student->phone}}</td>
 	     			<td>{{$admission->student->is_active == 1 ? 'Active' : 'Revoked'}}</td>

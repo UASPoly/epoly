@@ -22,7 +22,7 @@ trait CanAdmittStudent
 		$admission = $this->admissions()->firstOrCreate([
             'admission_no'=>$data['admission_no'],
             'head_of_department_id'=>1,
-            'department_programme_id'=>$data['departmentProgrammeId'],
+            'programme_id'=>$data['programmeId'],
             'session_id'=>currentSession()->id,
             'year'=> substr(currentSession()->name, 5)
         ]);
