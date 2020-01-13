@@ -24,20 +24,24 @@
                 </span>
             @enderror
         </div>
-        <div class="form-group">
-        	<label>College</label>
-            <select name="college" class="form-control">
-            	<option value=""></option>
-            	@foreach(admin()->colleges as $college)
-                     <option value="{{$college->id}}">{{$college->name}}</option>
-            	@endforeach
-            </select>
-            @error('college_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
+        @if(isset($college))
+            <input type="hidden" name="collegeId" value="{{$college->id}}">
+        @else
+            <div class="form-group">
+            	<label>College</label>
+                <select name="college" class="form-control">
+                	<option value=""></option>
+                	@foreach(admin()->colleges() as $college)
+                         <option value="{{$college->id}}">{{$college->name}}</option>
+                	@endforeach
+                </select>
+                @error('college_id')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                @enderror
+            </div>
+        @endif
         <div class="form-group">
         	<label>Established Date</label>
             <input type="date" name="established_date" class="form-control" placeholder="college name">

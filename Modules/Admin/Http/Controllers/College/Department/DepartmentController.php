@@ -22,9 +22,9 @@ class DepartmentController extends AdminBaseController
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function create($collegeId)
     {
-        return view('admin::college.department.create');
+        return view('admin::college.department.create',['college'=>College::find($collegeId)]);
     }
 
     /**

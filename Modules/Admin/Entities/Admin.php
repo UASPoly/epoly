@@ -5,6 +5,7 @@ namespace Modules\Admin\Entities;
 use Modules\Staff\Entities\Tribe;
 use Modules\Staff\Entities\Gender;
 use Modules\Staff\Entities\Religion;
+use Modules\College\Entities\College;
 use Modules\Student\Entities\Programme;
 use Modules\Staff\Entities\StaffCategory;
 use Illuminate\Notifications\Notifiable;
@@ -43,7 +44,7 @@ class Admin extends Authenticatable
 
     public function colleges()
     {
-        return $this->hasMany('Modules\College\Entities\College');
+        return College::all();
     }
     
     public function departments()

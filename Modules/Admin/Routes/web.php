@@ -51,8 +51,12 @@ Route::prefix('admin')->group(function() {
     ->namespace('College')
     ->name('admin.college.')
     ->group(function() {
+    Route::prefix('{collegeId}/management')
+        ->name('management.')
+        ->group(function() {
+          Route::get('/', 'CollegeManagementController@index')->name('index');
+        });  
   	Route::get('/', 'CollegeController@index')->name('index');
-  	
 
   	Route::get('/create-college', 'CollegeController@create')->name('create');
   	Route::post('/register-college', 'CollegeController@register')->name('register');
@@ -61,7 +65,7 @@ Route::prefix('admin')->group(function() {
   	Route::get('/{college}/{college_id}/delete-college', 'CollegeController@delete')->name('delete');
 
 	  	//department route group
-		Route::prefix('department')
+		Route::prefix('{college?}/department')
 		    ->namespace('Department')
 		    ->name('department.')
 		    ->group(function() {
