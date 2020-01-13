@@ -10,6 +10,7 @@
         @csrf
         <div class="row">
             <div class="col-md-6">
+                <input type="hidden" name="departmentProgrammeId" value="{{request()->route('departmentProgrammeId')}}">
                 <div class="form-group">
                     <label>First Name</label>
                     <input type="text" name="first_name" class="form-control" value="{{old('first_name')}}">
@@ -63,15 +64,6 @@
                         @endforeach
                     </select>
                     @error('religion')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
-                </div>
-                <div class="form-group">
-                    <label>Email</label>
-                    <input type="email" name="email" class="form-control" value="{{old('email')}}">
-                    @error('email')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>

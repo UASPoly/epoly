@@ -59,7 +59,7 @@ Route::prefix('exam-officer')
 			Route::post('{admissionNo}/register-genrated-number', 'AdmissionController@registerGeneratedNumber')->name('register.generated.number');
 
 			Route::get('{admission_id}/edit-admission', 'AdmissionController@edit')->name('edit');
-			Route::get('{admissionNo}/generated-number-registration', 'AdmissionController@generatedNumberRegistration')->name('register.generated.number.index');
+			Route::get('{admissionNo}/programme/{departmentProgrammeId}/generated-number-registration', 'AdmissionController@generatedNumberRegistration')->name('register.generated.number.index');
 
 			Route::get('{admission_id}/revoke-admission', 'AdmissionController@revokeAdmission')->name('revoke');
 

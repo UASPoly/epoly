@@ -22,6 +22,7 @@ trait CanAdmittStudent
 		$admission = $this->admissions()->firstOrCreate([
             'admission_no'=>$data['admission_no'],
             'head_of_department_id'=>1,
+            'department_programme_id'=>$data['departmentProgrammeId'],
             'session_id'=>currentSession()->id,
             'year'=> substr(currentSession()->name, 5)
         ]);
@@ -37,11 +38,11 @@ trait CanAdmittStudent
         $data['programme'] = substr($data['admission_no'], 5,1);
 
 		$student = $admission->student()->firstOrCreate([
-            'first_name'=> $data['first_name'],
-            'last_name'=> $data['last_name'],
-            'middle_name'=> $data['middle_name'],
+            'first_name'=> strtoupper($data['first_name']),
+            'last_name'=> strtoupper($data['last_name']),
+            'middle_name'=> strtoupper($data['middle_name']),
             'user_name'=>$data['admission_no'],
-            'email'=> $data['email'],
+            'email'=> $data['admission_no'].'@uaspoly.com',
             'phone'=>$data['phone'],
             'schedule_id'=> $this->scheduleId($data),
             'programme_id'=>  $this->programmeId($data),

@@ -68,15 +68,7 @@
                 </span>
             @enderror
         </div>
-        <div class="form-group">
-            <label>Email</label>
-            <input type="email" name="email" class="form-control" value="{{$admission->student->email}}">
-            @error('email')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-            @enderror
-        </div>
+        
         <div class="form-group">
             <label>Phone</label>
             <input type="text" name="phone" class="form-control" value="{{$admission->student->phone}}">
@@ -98,10 +90,10 @@
         <div class="form-group">
         	<label>Programme</label>
             <select name="programme" class="form-control">
-            	<option value="{{$admission->student->programme->code}}">{{$admission->student->programme->name}}</option>
-            	@foreach(department()->programmes() as $programme)
-            	    @if($admission->student->programme->id != $programme->id)
-                    <option value="{{$programme->code}}">{{$programme->name}}</option>
+            	<option value="{{$admission->departmentProgramme->programme->name}}">{{$admission->departmentProgramme->programme->name}}</option>
+            	@foreach(department()->departmentProgrammes as $departmentProgramme)
+            	    @if($admission->departmentProgramme->programme->id != $departmentProgramme->id)
+                    <option value="{{$departmentProgramme->code}}">{{$departmentProgramme->programme->name}}</option>
                     @endif
             	@endforeach
             </select>

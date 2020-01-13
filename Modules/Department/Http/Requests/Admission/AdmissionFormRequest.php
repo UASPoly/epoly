@@ -15,11 +15,10 @@ class AdmissionFormRequest extends FormRequest
     {
         return [
             "first_name" => "required|string",
-            "middle_name" => "required|string",
+            "middle_name" => "",
             "last_name" => "required|string",
             "gender" => "required",
             "religion" => "required",
-            "email" => "",
             "admission_no" => "required|unique:admissions",
             "phone" => "required",
             "state" => "required",

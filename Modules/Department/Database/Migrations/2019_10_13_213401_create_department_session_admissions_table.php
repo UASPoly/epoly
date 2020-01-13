@@ -31,7 +31,7 @@ class CreateDepartmentSessionAdmissionsTable extends Migration
             ->on('sessions')
             ->delete('restrict')
             ->update('cascade');
-            $table->integer('programme_id')
+            $table->integer('department_programme_id')
             ->unsigned()
             ->nullable()
             ->foreign()
