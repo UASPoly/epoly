@@ -16,8 +16,14 @@ class ReservedDepartmentSessionAdmission extends BaseModel
     	return $this->belongsTo('Modules\Admin\Entities\Session');
     }
 
-    public function studentType()
+    public function programme()
     {
-    	return $this->belongsTo('Modules\Student\Entities\StudentType');
+        return $this->belongsTo('Modules\Student\Entities\Programme');
     }
+    
+    public function schedule()
+    {
+        return $this->belongsTo('Modules\Student\Entities\Schedule');
+    }
+
 }

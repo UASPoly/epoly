@@ -8,13 +8,30 @@ trait HasProgramme
 {
 	public function addProgramme(array $data)
 	{
-		$departmentProgramme = $this->departmentProgrammes()->create([
-			'programme_id'=>$data['programmeId'],
-			'code'=>$data['code']
-		]);
-		$departmentProgramme->departmentProgrammeSchedules()->create(['schedule_id'=>1]);
-	}
+		if($this->programmeExist($data)){
+			session()->flash('error',['The programme already exist in the department']);
+		}else{
 
+			$this->Programmes()->create([
+				'name'=>$data['name'],
+				'code'=>$data['code'],
+				'title'=>$data['title'],
+			]);
+			session()->flash('message', 'Department programme added successfully');
+		}
+		
+	}
+    public function programmeExist($data)
+    {
+    	$programme = $this->programmes->where([
+    		'name'=>$data['name'],
+    		'title'=>$data['title']
+    	])->first();
+    	if($programme){
+    		return true;
+    	}
+    	return false;
+    }
 	public function updateProgramme(array $data)
 	{
 		$departmentProgramme = DepartmentProgramme::find($data['departmentProgrammeId']);

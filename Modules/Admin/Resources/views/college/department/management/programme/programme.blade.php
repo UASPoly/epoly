@@ -12,16 +12,19 @@
         @csrf
                     <input type="hidden" name="departmentId" value="{{$department->id}}">
                     <div class="form-group">
-                        <label>Choose Programme</label>
-                        <select name="programmeId" class="form-control" id="programme">
-                            <option value="">Programme</option>
-                            @foreach(admin()->programmes() as $programme)
-                                @if(!$department->hasThisProgramme($programme))
-                                <option value="{{$programme->id}}">{{$programme->name}}</option>
-                                @endif
-                            @endforeach
-                        </select>
+                        <label>Programme Name</label>
+                        <input type="text" name="name" class="form-control" id="programme" placeholder="NATIONAL DIPLOMA IN COMPUTER SCIENCE">   
                         @error('programme')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>Programme Title</label>
+                        <input type="text" name="title" class="form-control" id="programme" placeholder="NDCS">   
+                        @error('title')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>

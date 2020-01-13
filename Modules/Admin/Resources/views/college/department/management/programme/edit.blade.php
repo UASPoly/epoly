@@ -1,5 +1,5 @@
 <!-- modal -->
-<div class="modal fade" id="programme_{{$departmentProgramme->id}}" role="dialog">
+<div class="modal fade" id="programme_{{$programme->id}}" role="dialog">
     <div class="modal-dialog">
       <!-- Modal content-->
         <div class="modal-content">
@@ -9,20 +9,13 @@
             <div class="modal-body">
             	<form action="{{route('admin.college.department.management.programme.update',
                     [str_replace(' ','-',strtolower($department->name)),
-                    $department->id,$departmentProgramme->id])}}" method="post">
+                    $department->id,$programme->id])}}" method="post">
                     @csrf
-                    <input type="hidden" name="departmentProgrammeId" value="{{$departmentProgramme->id}}">
+                    <input type="hidden" name="programmeId" value="{{$programme->id}}">
                     <input type="hidden" name="departmentId" value="{{$department->id}}">
                     <div class="form-group">
-                        <label>Choose Programme</label>
-                        <select name="programmeId" class="form-control">
-                            <option value="{{$departmentProgramme->programme->id}}">{{$departmentProgramme->programme->name}}</option>
-                            @foreach(admin()->programmes() as $programme)
-                                @if($departmentProgramme->programme->id != $programme->id)
-                                <option value="{{$programme->id}}">{{$programme->name}}</option>
-                                @endif
-                            @endforeach
-                        </select>
+                        <label>Programme Name</label>
+                        <input type="text" name="name" value="{{$programme->name}}">
                         @error('programme')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -32,7 +25,7 @@
 
                     <div class="form-group">
                         <label>Programme Code</label>
-                        <input type="number" name="code" class="form-control" min="1" value="{{$departmentProgramme->code}}">
+                        <input type="number" name="code" class="form-control" min="1" value="{{$programme->code}}">
                         @error('code')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
@@ -43,10 +36,10 @@
                         <label>Add Schedule</label>
                         <select name="scheduleAdd" class="form-control">
                             <option value="">Select Schedule</option>
-                            @if(!$departmentProgramme->hasMorningSchedule())
+                            @if(!$programme->hasMorningSchedule())
                                 <option value="1">Morning Schedule</option>
                             @endif
-                            @if(!$departmentProgramme->hasEveningSchedule())
+                            @if(!$programme->hasEveningSchedule())
                                 <option value="2">Evening Schedule</option>
                             @endif
 
@@ -56,10 +49,10 @@
                         <label>Remove Schedule</label>
                         <select name="scheduleRemove" class="form-control">
                             <option value="">Select Schedule</option>
-                            @if($departmentProgramme->hasMorningSchedule())
+                            @if($programme->hasMorningSchedule())
                                 <option value="1">Morning Schedule</option>
                             @endif
-                            @if($departmentProgramme->hasEveningSchedule())
+                            @if($programme->hasEveningSchedule())
                                 <option value="2">Evening Schedule</option>
                             @endif
 

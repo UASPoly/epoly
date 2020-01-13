@@ -57,7 +57,7 @@
 		        <h3>Programmes</h3>
 		        </div>
 		        <div class="course-date bg-color-1 clear-fix">
-		            <div class="h3"><i class="fa fa-chart"></i>Number Of Programmes {{count($department->departmentProgrammes)}}</div>
+		            <div class="h3"><i class="fa fa-chart"></i>Number Of Programmes {{count($department->programmes)}}</div>
 		        </div>
 		    </div>
 	    </a>

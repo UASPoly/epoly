@@ -18,10 +18,10 @@ class ProgrammeTableSeeder extends Seeder
         Model::unguard();
 
         $programmes = [
-            ['name'=>'OD'],
-            ['name'=>'ND'],
-            ['name'=>'CONVERSION'],
-            ['name'=>'HND']
+            // ['name'=>'OD'],
+            // ['name'=>'ND'],
+            // ['name'=>'CONVERSION'],
+            // ['name'=>'HND']
         ];
         foreach ($programmes as $programme) {
             Programme::firstOrCreate($programme);

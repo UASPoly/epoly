@@ -25,9 +25,9 @@ class Department extends BaseModel
     	return $this->belongsTo('Modules\College\Entities\College');
     }
 
-    public function departmentProgrammes()
+    public function programmes()
     {
-        return $this->hasMany(DepartmentProgramme::class);
+        return $this->hasMany('Modules\Student\Entities\Programme');
     }
 
     public function departmentalAppointments()
@@ -151,11 +151,6 @@ class Department extends BaseModel
     public function semesters()
     {
         return Semester::all();
-    }
-
-    public function programmes()
-    {
-        return Programme::all();
     }
 
     public function schedules()

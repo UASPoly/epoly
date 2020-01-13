@@ -31,12 +31,12 @@ class CreateReservedDepartmentSessionAdmissionsTable extends Migration
             ->on('sessions')
             ->delete('restrict')
             ->update('cascade');
-            $table->integer('department_programme_id')
+            $table->integer('programme_id')
             ->unsigned()
             ->nullable()
             ->foreign()
             ->references('id')
-            ->on('department_programmes')
+            ->on('programmes')
             ->delete('restrict')
             ->update('cascade');
             $table->integer('schedule_id')

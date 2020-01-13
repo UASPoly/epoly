@@ -22,10 +22,11 @@ class ProgrammeController extends AdminBaseController
     {
         $request->validate([
             'code'=>'required',
-            'programmeId'=>'required'
+            'name'=>'required',
+            'title'=>'required'
         ]);
         Department::find($request->departmentId)->addProgramme($request->all());
-        session()->flash('message', 'Department programme added successfully');
+        
         return back();
     }
 

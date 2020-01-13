@@ -27,15 +27,15 @@
         				</tr>
         			</thead>
         			<tbody>
-        				@foreach($department->departmentProgrammes as $departmentProgramme)
+        				@foreach($department->programmes as $programme)
                         	<tr>
-	        					<td>{{$departmentProgramme->programme->name}}</td>
-	        					<td>{{$departmentProgramme->code}}</td>
+	        					<td>{{$programme->name}}</td>
+	        					<td>{{$programme->code}}</td>
 	        					<td>
-	        						@if($departmentProgramme->status == 1)
+	        						@if($programme->status == 1)
 	                                    <a href="{{route('admin.college.department.management.programme.deactivate',
 								        [str_replace(' ','-',strtolower($department->name)),
-								        $department->id,$departmentProgramme->id])}}">
+								        $department->id,$programme->id])}}">
 	                                        <button class="btn-block button-fullwidth cws-button bt-color-0">
 			        							De-Activate
 			        						</button>
@@ -43,27 +43,27 @@
 	        						@else
                                         <a href="{{route('admin.college.department.management.programme.activate',
 								        [str_replace(' ','-',strtolower($department->name)),
-								        $department->id,$departmentProgramme->id])}}">
+								        $department->id,$programme->id])}}">
 									        <button class="btn-block button-fullwidth cws-button bt-color-3">
 			        							Activate
 			        						</button>
 			        					</a>
 	        						@endif
 	        					</td>
-	        					<td>{{$departmentProgramme->hasMorningSchedule() ? 'Active' : 'Not Active'}}</td>
-	        					<td>{{$departmentProgramme->hasEveningSchedule() ? 'Active' : 'Not Active'}}</td>
+	        					<td>{{$programme->hasMorningSchedule() ? 'Active' : 'Not Active'}}</td>
+	        					<td>{{$programme->hasEveningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>
 	        						<div class="row">
 	        							<div class="col-md-6">
-	        								<button data-toggle="modal" data-target="#programme_{{$departmentProgramme->id}}" class="btn-block button-fullwidth cws-button bt-color-3">
+	        								<button data-toggle="modal" data-target="#programme_{{$programme->id}}" class="btn-block button-fullwidth cws-button bt-color-3">
 			        							Edit
 			        						</button>
 	        							</div>
 	        							<div class="col-md-6">
 	        								<a href="{{route('admin.college.department.management.programme.delete',
 								                [str_replace(' ','-',strtolower($department->name)),
-								                 $department->id,$departmentProgramme->id])}}">
-									            <button data-toggle="modal" data-target="#programme_{{$departmentProgramme->id}}" class="btn-block button-fullwidth cws-button bt-color-3">
+								                 $department->id,$programme->id])}}">
+									            <button data-toggle="modal" data-target="#programme_{{$programme->id}}" class="btn-block button-fullwidth cws-button bt-color-3">
 			        							Delete
 			        						    </button>
 			        						</a>
