@@ -98,6 +98,8 @@ Route::prefix('admin')->group(function() {
         ->group(function() {
           Route::get('/', 'CourseManagementController@index')->name('index');
           Route::post('/{courseId}/update', 'CourseManagementController@update')->name('update');
+          Route::get('/{courseId}/delete', 'CourseManagementController@delete')->name('delete');
+          Route::post('/register', 'CourseManagementController@register')->name('register');
         });
       });
 		    //staff route group

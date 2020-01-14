@@ -23,8 +23,18 @@
 
                     <div class="form-group">
                         <label>Course Code</label>
-                        <input type="code" name="code" class="form-control" id="programme" value="{{$course->code}}">   
+                        <input type="text" name="code" class="form-control" id="programme" value="{{$course->code}}">   
                         @error('title')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label>Course Unit</label>
+                        <input type="number" name="unit" class="form-control" id="programme" value="{{$course->unit}}">   
+                        @error('unit')
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -72,7 +82,7 @@
                     <div class="form-group">
                         <label>Programme</label>
                         <select class="form-control" name="programme">
-                        	<option value="">Select Programme</option>
+                        	<option value="{{$course->programme ? $course->programme->title : ''}}">{{$course->programme ? $course->programme->title : 'Select Programme'}}</option>
                         	@foreach($course->department->programmes as $programme)
                                 <option value="{{$programme->id}}">
                                 	{{$programme->title}}

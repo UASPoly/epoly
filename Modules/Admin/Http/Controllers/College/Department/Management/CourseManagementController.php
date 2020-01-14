@@ -25,9 +25,27 @@ class CourseManagementController extends AdminBaseController
      * @param Request $request
      * @return Response
      */
-    public function register(Request $request)
+    public function register(Request $request, $department, $departmentId)
     {
-        //
+        $request->validate([
+            'title'=>'required|string',
+            'code'=>'required',
+            'programme'=>'required',
+            'level'=>'required',
+            'semester'=>'required',
+            'unit'=>'required',
+        ]);
+        $department = Department::find($departmentId);
+        $department->courses()->firstOrCreate([
+            'title'=>$request->title,
+            'code'=>$request->code,
+            'programme_id'=>$request->programme,
+            'level_id'=>$request->level,
+            'semester_id'=>$request->semester,
+            'unit'=>$request->unit
+        ]);
+        session()->flash('message','Course registered successfully');
+        return back();
     }
 
     /**
@@ -44,6 +62,7 @@ class CourseManagementController extends AdminBaseController
             'programme'=>'required',
             'level'=>'required',
             'semester'=>'required',
+            'unit'=>'required',
         ]);
         $course = Course::find($courseId);
         $course->update([
@@ -51,7 +70,8 @@ class CourseManagementController extends AdminBaseController
             'code'=>$request->code,
             'programme_id'=>$request->programme,
             'level_id'=>$request->level,
-            'semester_id'=>$request->semester
+            'semester_id'=>$request->semester,
+            'unit'=>$request->unit
         ]);
         session()->flash('message','Course Information Updated');
         return back();
@@ -62,8 +82,15 @@ class CourseManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function delete($department,$departmentId,$courseId)
     {
-        //
+        $course = Course::find($courseId);
+        if(count($course->courseRegistrations) == 0){
+            $course->delete();
+            session()->flash('message','Course is deleted successfully');
+        }else{
+            session()->flash('error',['Sorry you will not be able to delete this course, it has been registered by many student']);
+        }
+        return back();
     }
 }
