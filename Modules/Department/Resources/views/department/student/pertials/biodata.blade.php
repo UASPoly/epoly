@@ -43,6 +43,10 @@
 									<td>{{$student->last_name}}</td>
 								</tr>
 								<tr height="35">
+									<td>Date Of Birth</td>
+									<td>{{$student->studentAccount->date_of_birth}}</td>
+								</tr>
+								<tr height="35">
 									<td>Admission Number</td>
 									<td>{{$student->admission->admission_no}}</td>
 								</tr>

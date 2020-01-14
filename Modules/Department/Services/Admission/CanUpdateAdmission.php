@@ -13,6 +13,7 @@ trait CanUpdateAdmission
 
     public function updateThisAdmission($data)
     {
+       
     	if($this->needToGenerateAdmissionNo($data)){
     		$this->reservedThisAdmissionNo($data);
             $admissionNo = $this->generateAnotherAdmissionNo($data);
@@ -69,6 +70,7 @@ trait CanUpdateAdmission
             'lga_id'=>$data['lga'],
             'religion_id'=>$data['religion'],
             'address'=>$data['address'],
+            'date_of_birth'=>$data['date_of_birth'],
         ]);
         if(isset($data['picture'])){
             $this->updateFile($this->student->studentAccount, 'picture', $data['picture'], str_replace('/','-',department()->name).'/Admission/Profile');

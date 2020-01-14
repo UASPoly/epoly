@@ -59,6 +59,7 @@ trait CanAdmittStudent
             'religion_id'=>$data['religion'],
             'lga_id'=>$data['lga'],
             'address'=>$data['address'],
+            'date_of_birth'=>$data['date_of_birth'],
         ]);
 
         $image = $this->storeFile($data['picture'],str_replace('/','-',department()->name).'/Admission/Profile');

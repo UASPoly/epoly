@@ -58,7 +58,15 @@
                 </span>
             @enderror
         </div>
-       
+       <div class="form-group">
+            <label>Date Of Birth</label>
+            <input type="date" name="date_of_birth" class="form-control" value="{{$student->studentAccount->date_of_birth}}">
+            @error('date_of_birth')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
         <div class="form-group">
             <label>Religion</label>
             <select name="religion" class="form-control">

@@ -41,19 +41,24 @@
             @enderror
         </div>
         <div class="form-group">
-            <label>Tribe</label>
-            <select name="tribe" class="form-control">
-                <option value="{{$admission->student->studentAccount->tribe->id ?? ''}}">{{$admission->student->studentAccount->tribe->name ?? ''}}</option>
-                @foreach($admission->tribes() as $tribe)
-                    <option value="{{$tribe->id}}">{{$tribe->name}}</option>
-                @endforeach
-            </select>
-            @error('tribe')
+            <label>Date Of Birth</label>
+            <input type="date" name="last_name" class="form-control" value="{{$admission->student->studentAccount->date_of_birth}}">
+            @error('date_of_birth')
                 <span class="invalid-feedback" role="alert">
                     <strong>{{ $message }}</strong>
                 </span>
             @enderror
         </div>
+        <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" class="form-control" value="{{$admission->student->last_name}}">
+            @error('last_name')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+        
         <div class="form-group">
             <label>Religion</label>
             <select name="religion" class="form-control">
