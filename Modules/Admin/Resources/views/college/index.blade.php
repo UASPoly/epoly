@@ -11,7 +11,7 @@
                     <!-- course item -->
                     <div class="course-item">
                         <div class="course-name clear-fix">
-                        <h3><a href="#">{{$college->name}}</a></h3>
+                        <h3><a href="#">College Of {{$college->name}}</a></h3>
                             </div>
                         <div class="course-date bg-color-1 clear-fix">
                             <div class="time"><i class="fa fa-clock-o"></i>Established At {{$college->established_date}}</div>

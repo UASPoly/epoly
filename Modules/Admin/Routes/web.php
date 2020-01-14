@@ -93,6 +93,11 @@ Route::prefix('admin')->group(function() {
         Route::get('/{departmentProgrammId}/delete', 'ProgrammeController@delete')->name('delete');
       });
 
+       Route::prefix('course')
+        ->name('course.')
+        ->group(function() {
+          Route::get('/', 'CourseManagementController@index')->name('index');
+        });
       });
 		    //staff route group
 			Route::prefix('staff')

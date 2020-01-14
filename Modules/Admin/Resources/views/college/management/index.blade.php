@@ -5,12 +5,13 @@
 @section('page-content')
 <div class="col-md-12">
 	<br>
-    <div class="card">
+    <div class="card shadow">
     	<div class="card-body">
+    		<div class="row">
     		@foreach($college->departments as $department)
 			    <div class="col-md-4">
 			        <!-- course item -->
-			        <div class="course-item">
+			        <div class="course-item shadow">
 			            <div class="course-name clear-fix">
 			            <h3><a href="#">{{$department->name}}</a></h3>
 			                </div>
@@ -26,6 +27,7 @@
 			        <!-- / course item -->
 			    </div>
 		    @endforeach
+		    </div>
 		    @if(count($college->departments) == 0)
 		        <div class="alert alert-danger">There is no available department in the College of {{$college->name}} <a href="{{route('admin.college.department.create',[$college->id])}}">Create New department</a></div>
 		    @endif

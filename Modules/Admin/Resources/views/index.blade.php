@@ -5,29 +5,29 @@
     <br>
     <div class="card shadow">
         <div class="card-body">
-            <div class="row"> 
-                @foreach(admin()->colleges() as $college)
+            <div class="row">
+
+                <!-- college item -->
                 <div class="col-md-4">
-                    <!-- course item -->
-                    <div class="course-item shadow">
+                    <div class="course-item">
                         <div class="course-name clear-fix">
-                        <h3><a href="#">College Of {{$college->name}}</a></h3>
+                        <h3><a href="{{route('admin.college.index')}}">Colleges</a></h3>
                             </div>
                         <div class="course-date bg-color-1 clear-fix">
-                            <div class="time"><i class="fa fa-clock-o"></i>Established At {{$college->established_date}}</div>
-                            <div class="divider"></div>
-                            <div class="description">{{$college->description}}</div>
-                            <button class="btn btn-primary"><a href="{{route('admin.college.edit',[str_replace(' ','-',strtolower($college->name)),$college->id])}}"  style="color: white">Edit</a></button>
-                            <button class="btn btn-primary"><a href="{{route('admin.college.delete',[str_replace(' ','-',strtolower($college->name)),$college->id])}}" onclick="confirm('Are you sure you want delete this college')" style="color: white">Delete</a></button>
-                            <button class="btn btn-primary"><a href="{{route('admin.college.management.index',[$college->id])}}" style="color: white">Management</a></button>
+                            
+                            <div class="description"><h1><i class="fa fa-pencil"></i>
+                                <span>
+                                    {{count(admin()->colleges())}} Colleges
+                                </span></h1>
+                                </div>
                         </div>
                     </div>
-                    <!-- / course item -->
                 </div>
-                @endforeach
+                <!-- / College item -->
+
             </div>
         </div>
     </div>
 </div>
-	   
+       
 @endsection
