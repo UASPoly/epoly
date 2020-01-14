@@ -22,7 +22,7 @@
 		        	<label>College</label>
 		            <select class="form-control" name="college">
 		            	<option value="">College</option>
-		            	@foreach(admin()->colleges as $college)
+		            	@foreach(admin()->colleges() as $college)
                             <option value="{{$college->id}}">
                             	{{$college->name}}
                             </option>

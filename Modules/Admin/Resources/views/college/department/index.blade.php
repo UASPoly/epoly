@@ -1,7 +1,7 @@
 @extends('admin::layouts.master')
 
 @section('page-content')
-	@foreach(admin()->colleges as $college)
+	@foreach(admin()->colleges() as $college)
 		@foreach($college->departments as $department)
 		    <div class="col-md-4">
 		        <!-- course item -->

@@ -65,7 +65,7 @@ Route::prefix('admin')->group(function() {
   	Route::get('/{college}/{college_id}/delete-college', 'CollegeController@delete')->name('delete');
 
 	  	//department route group
-		Route::prefix('{college?}/department')
+		Route::prefix('department')
 		    ->namespace('Department')
 		    ->name('department.')
 		    ->group(function() {
