@@ -20,7 +20,7 @@
 				            </a>
 						</div>
 					</div>
-					
+
 					<img src="{{storage_url($student->studentAccount->picture)}}" height="250" width="200">
 				</div>
 			</div>

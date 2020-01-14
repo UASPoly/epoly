@@ -56,6 +56,7 @@ class CreateStudentAccountsTable extends Migration
             ->delete('restrict')
             ->update('cascade');
             $table->string('address')->nullable();
+            $table->string('date_of_birth')->nullable();
             $table->text('picture')->nullable();
             $table->timestamps();
         });
