@@ -1,6 +1,5 @@
 <div class="col-md-3"></div>
 <div class="col-md-6"><br>
-
 	<div class="row">
     	<div class="col-md-8"></div>
     	<div class="col-md-4"><img src="{{storage_url($student->studentAccount->picture)}}" height="120" width="140"></div>

@@ -8,6 +8,7 @@ use Modules\Admin\Entities\Session;
 use Modules\Staff\Entities\State;
 use Modules\Student\Entities\Student;
 use Modules\Department\Entities\Admission;
+use Modules\Department\Http\Requests\Admission\UpdateAdmissionFormRequest;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 
 class StudentController extends ExamOfficerBaseController
@@ -29,7 +30,7 @@ class StudentController extends ExamOfficerBaseController
         ]);
     }
 
-    public function updateBiodata(Request $request)
+    public function updateBiodata(UpdateAdmissionFormRequest $request)
     {
         $admission = Admission::find($request->admission_id)->updateThisAdmission($request->all());
         return back();

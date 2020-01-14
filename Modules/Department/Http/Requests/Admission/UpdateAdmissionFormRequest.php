@@ -4,7 +4,7 @@ namespace Modules\Department\Http\Requests\Admission;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AdmissionFormRequest extends FormRequest
+class UpdateAdmissionFormRequest extends FormRequest
 {
     /**
      * Get the validation rules that apply to the request.
@@ -13,20 +13,22 @@ class AdmissionFormRequest extends FormRequest
      */
     public function rules()
     {
-        return [
+        $rules = [
             "first_name" => "required|string",
             "middle_name" => "",
             "last_name" => "required|string",
             "gender" => "required",
             "religion" => "required",
-            "admission_no" => "required|unique:admissions",
             "phone" => "required",
             "state" => "required",
             "lga" => "required",
             "address" => "required",
-            "date_of_birth" => "required",
-            "picture" => 'required|image|mimes:jpeg,bmp,png,jpg'
+            "date_of_birth" => "required"
         ];
+        if($this->has('picture')){
+            $rules['picture'] = 'required|image|mimes:jpeg,bmp,png,jpg';
+        }
+        return $rules;
     }
 
     /**
@@ -36,9 +38,6 @@ class AdmissionFormRequest extends FormRequest
      */
     public function authorize()
     {
-        if(headOfDepartment() || examOfficer()){
-            return true;
-        }
-        return false;
+        return true;
     }
 }
