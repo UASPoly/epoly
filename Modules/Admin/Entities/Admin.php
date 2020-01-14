@@ -8,6 +8,8 @@ use Modules\Staff\Entities\Religion;
 use Modules\College\Entities\College;
 use Modules\Student\Entities\Programme;
 use Modules\Staff\Entities\StaffCategory;
+use Modules\Department\Entities\Level;
+use Modules\Department\Entities\Semester;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -72,9 +74,14 @@ class Admin extends Authenticatable
         return Religion::all();
     }
 
-    public function tribes()
+    public function levels()
     {
-        return Tribe::all();
+        return Level::all();
+    }
+
+    public function semesters()
+    {
+        return Semester::all();
     }
 
     public function staffs()

@@ -5,6 +5,7 @@ namespace Modules\Admin\Http\Controllers\College\Department\Management;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Department\Entities\Course;
 use Modules\Department\Entities\Department;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
@@ -20,42 +21,13 @@ class CourseManagementController extends AdminBaseController
     }
 
     /**
-     * Show the form for creating a new resource.
-     * @return Response
-     */
-    public function create()
-    {
-        return view('admin::create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function register(Request $request)
     {
         //
-    }
-
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function show($id)
-    {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        return view('admin::edit');
     }
 
     /**
@@ -64,9 +36,25 @@ class CourseManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $department,$departmentId,$courseId)
     {
-        //
+        $request->validate([
+            'title'=>'required|string',
+            'code'=>'required',
+            'programme'=>'required',
+            'level'=>'required',
+            'semester'=>'required',
+        ]);
+        $course = Course::find($courseId);
+        $course->update([
+            'title'=>$request->title,
+            'code'=>$request->code,
+            'programme_id'=>$request->programme,
+            'level_id'=>$request->level,
+            'semester_id'=>$request->semester
+        ]);
+        session()->flash('message','Course Information Updated');
+        return back();
     }
 
     /**

@@ -51,6 +51,11 @@ class Course extends BaseModel
     	return $this->belongsTo(Semester::class);
     }
 
+    public function programme()
+    {
+        return $this->belongsTo('Modules\Student\Entities\Programme');
+    }
+
     public function lecturerCourseAllocations()
     {
     	return $this->hasMany(LecturerCourseAllocation::class);
