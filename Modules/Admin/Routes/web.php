@@ -101,6 +101,11 @@ Route::prefix('admin')->group(function() {
           Route::get('/{courseId}/delete', 'CourseManagementController@delete')->name('delete');
           Route::post('/register', 'CourseManagementController@register')->name('register');
         });
+        Route::prefix('lecturers')
+        ->name('lecturer.')
+        ->group(function() {
+          Route::get('/', 'LecturerManagementController@index')->name('index');
+        });
       });
 		    //staff route group
 			Route::prefix('staff')

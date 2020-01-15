@@ -11,6 +11,7 @@
 				<div class="row">
 					<div class="col-md-4">
 		                <!-- course item -->
+		                <a href="{{route('admin.college.department.management.lecturer.index',[str_replace(' ','-',strtolower($department->name)),$department->id])}}">
 					    <div class="course-item shadow">
 					        <div class="course-name clear-fix">
 					        <h3>Lecturers</h3>
@@ -19,6 +20,7 @@
 					            <div class="h3"><i class="fa fa-chart"></i>Number Of Staffs {{count($department->staffs)}}</div>
 					        </div>
 					    </div>
+					    </a>
 		                <!-- / course item -->
 		            </div>
 

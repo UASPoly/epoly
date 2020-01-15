@@ -105,6 +105,16 @@ class Department extends BaseModel
         }
         return $flag;
     }
+    public function lecturers()
+    {
+        $lecturers = [];
+        foreach($this->staffs as $staff){
+            if($staff->lecturer){
+                $lecturers[] = $staff->lecturer;
+            }
+        }
+        return $lecturers;
+    }
     public function unverifiedResults()
     {
         $results = [];
