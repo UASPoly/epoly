@@ -196,7 +196,10 @@
                         </span>
                     @enderror
                 </div>
-
+                <div class="col-md-12 mb-2">
+                    <img id="picture_preview_container" src=""
+                        alt="preview image" style="max-height: 150px;">
+                </div>
                 <div class="form-group">
                     <label class="text text-success">Change Student Picture</label>
                     <input type="file" value="{{$student->studentAccount->picture}}" name="picture" class="form-control">
