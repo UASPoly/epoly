@@ -1,6 +1,6 @@
 @extends('admin::layouts.master')
 @section('title')
-    {{$department->name}} department leturer information edit page
+    {{$lecturer->staff->department->name}} department leturer information edit page
 @endsection
 @section('page-content')
 <div class="col-md-2"></div>
@@ -8,7 +8,7 @@
 	<br>
     <div class="card shadow">
     	<div class="card-body">
-		    <h3 class="text text-success">{{$department->name}} Edit Lecturer Information</h3>
+		    <h3 class="text text-success">{{$lecturer->staff->department->name}} Edit Lecturer Information</h3>
 		    <form class="login-form" action="{{route('admin.college.department.management.lecturer.update',[str_replace(' ','-',strtolower($lecturer->staff->department->name)),$lecturer->staff->department->id,$lecturer->id])}}" method="post">
 		        @csrf
 		        <input type="hidden" name="lecturer" value="{{$lecturer->id}}">
@@ -85,7 +85,7 @@
 
 		        <div class="form-group">
 		        	<label class="text text-success">Date of Birth</label>
-		            <input type="date" name="date_of_birth" class="form-control" value="{{old('date_of_birth')}}" value="{{$lecturer->staff->profile->date_of_birth}}">
+		            <input type="date" name="date_of_birth" class="form-control" value="{{$lecturer->staff->profile->date_of_birth}}" value="{{$lecturer->staff->profile->date_of_birth}}">
 		            @error('date_of_birth')
 		                <span class="invalid-feedback" role="alert">
 		                    <strong>{{ $message }}</strong>

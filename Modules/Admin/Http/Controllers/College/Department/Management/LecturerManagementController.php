@@ -9,6 +9,7 @@ use Modules\Lecturer\Entities\Lecturer;
 use Modules\Department\Entities\Department;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Admin\Http\Requests\College\Department\Management\LecturerFormRequest;
+use Modules\Admin\Http\Requests\College\Department\Management\UpdateLecturerFormRequest;
 
 class LecturerManagementController extends AdminBaseController
 {
@@ -89,9 +90,38 @@ class LecturerManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateLecturerFormRequest $request, $department,$departmentId, $lecturerId)
     {
-        //
+        $data = $request->all();
+        $lecturer = Lecturer::find($lecturerId);
+        $lecturer->staff->update([
+           'first_name'=>$data['first_name'],
+           'last_name'=>$data['last_name'],
+           'phone'=>$data['phone'],
+           'email'=>$data['email'],
+           'staffID'=>$data['staffID'],
+           'password'=>Hash::make($data['staffID']),
+           'employed_at' => $data['employed_at']
+        ]);
+
+        $lecturer->update([
+            'email'=>$lecturer->staff->email,
+            'password'=>$lecturer->staff->password,
+            'admin_id'=>admin()->id,
+            'from' =>$lecturer->staff->employed_at
+        ]);
+
+        $lecturer->staff->profile->update([
+            'gender_id' => $data['gender'],
+            'religion_id' => $data['religion'],
+            'address' => $data['address'],
+            'date_of_birth' => $data['date_of_birth'],
+            'biography' => 'staff biography',
+        ]);
+
+        session()->flash('message','Lecturer information updated successfully');
+
+        return back();
     }
 
     /**
