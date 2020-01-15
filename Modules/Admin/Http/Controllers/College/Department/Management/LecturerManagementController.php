@@ -129,8 +129,17 @@ class LecturerManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function delete($department,$departmentId, $lecturerId)
     {
-        //
+        $lecturer = Lecturer::find(1);
+        if($lecturer->lecturerCourse){
+            session()->flash('error',['Sorry you can not delete this lecturer because, this lecturer has course allocation']);
+        }else{
+            $lecturer->staff->profile->delete();
+            $lecturer->staff->delete();
+            $lecturer->delete();
+            session()->flash('message','The lecturer deleted successfully');
+        }
+        return back();
     }
 }

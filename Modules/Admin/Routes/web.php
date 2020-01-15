@@ -109,6 +109,7 @@ Route::prefix('admin')->group(function() {
           Route::post('/register', 'LecturerManagementController@register')->name('register');
           Route::get('/{lecturerId}/edit', 'LecturerManagementController@edit')->name('edit');
           Route::post('/{lecturerId}/update', 'LecturerManagementController@update')->name('update');
+          Route::get('/{lecturerId}/delete', 'LecturerManagementController@delete')->name('delete');
         });
       });
 		    //staff route group
