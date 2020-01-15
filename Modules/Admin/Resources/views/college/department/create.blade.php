@@ -25,7 +25,7 @@
             @enderror
         </div>
         @if(isset($college))
-            <input type="hidden" name="collegeId" value="{{$college->id}}">
+            <input type="hidden" name="college" value="{{$college->id}}">
         @else
             <div class="form-group">
             	<label>College</label>

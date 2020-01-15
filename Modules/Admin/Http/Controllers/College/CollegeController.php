@@ -34,7 +34,8 @@ class CollegeController extends AdminBaseController
      */
     public function register(CollegeFormRequest $request)
     {
-        admin()->colleges()->firstOrCreate([
+        College::create([
+            'admin_id'=>admin()->id,
             'name'=>$request->name,
             'established_date'=>$request->established_date,
             'description'=>$request->description,

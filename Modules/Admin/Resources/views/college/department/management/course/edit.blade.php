@@ -82,7 +82,7 @@
                     <div class="form-group">
                         <label>Programme</label>
                         <select class="form-control" name="programme">
-                        	<option value="{{$course->programme ? $course->programme->title : ''}}">{{$course->programme ? $course->programme->title : 'Select Programme'}}</option>
+                        	<option value="{{$course->programme ? $course->programme->id : ''}}">{{$course->programme ? $course->programme->title : 'Select Programme'}}</option>
                         	@foreach($course->department->programmes as $programme)
                                 <option value="{{$programme->id}}">
                                 	{{$programme->title}}

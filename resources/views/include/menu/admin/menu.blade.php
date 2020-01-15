@@ -12,7 +12,7 @@
     <!-- sub menu -->
     <ul>
         <li><a href="{{route('admin.college.department.index')}}">View Department</a></li>
-        <li><a href="{{route('admin.college.department.create')}}">Register Department</a></li>
+        <li><a href="{{route('admin.college.department.create',[1])}}">Register Department</a></li>
         <li><a href="#">Upload Departments</a></li>
     </ul>
     <!-- / sub menu -->

@@ -70,7 +70,7 @@ Route::prefix('admin')->group(function() {
 		    ->name('department.')
 		    ->group(function() {
 		  	Route::get('/', 'DepartmentController@index')->name('index');
-		  	Route::get('/create-department', 'DepartmentController@create')->name('create');
+		  	Route::get('/{collegeId}/create', 'DepartmentController@create')->name('create');
 		  	Route::post('/register-department', 'DepartmentController@register')->name('register');
 		  	Route::post('/{department}/{department_id}/update-department', 'DepartmentController@update')->name('update');
 		  	Route::get('/{department}/{department_id}/edit-department', 'DepartmentController@edit')->name('edit');

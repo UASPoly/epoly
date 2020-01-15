@@ -81,7 +81,7 @@
                         <label>Programme</label>
                         <select class="form-control" name="programme">
                         	<option value="">Select Programme</option>
-                        	@foreach($course->department->programmes as $programme)
+                        	@foreach($department->programmes as $programme)
                                 <option value="{{$programme->id}}">
                                 	{{$programme->title}}
                                 </option>
