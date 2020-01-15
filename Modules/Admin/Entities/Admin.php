@@ -64,6 +64,11 @@ class Admin extends Authenticatable
         return Gender::all();
     }
 
+    public function tribes()
+    {
+        return Tribe::all();
+    }
+
     public function programmes()
     {
         return Programme::all();

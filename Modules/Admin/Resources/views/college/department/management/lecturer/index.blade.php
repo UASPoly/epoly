@@ -23,7 +23,7 @@
 			     			<th>To</th>
 			     			<th></th>
 			     			<th></th>
-			     			<th><button class="btn btn-primary"><i class="fa fa-plus"></i></button></th>
+			     			<th><button class="btn btn-primary shadow"><a href="{{route('admin.college.department.management.lecturer.create',[str_replace(' ','-',strtolower($department->name)),$department->id])}}"><i class="fa fa-plus"></i></a></button></th>
 			     		</tr>
 			     	</thead>
 			     	<tbody>
@@ -37,9 +37,12 @@
                             	<td>{{$lecturer->phone}}</td>
                             	<td>{{$lecturer->from}}</td>
                             	<td>{{$lecturer->to}}</td>
-                            	<td><button class="btn btn-primary">Appointment</button></td>
-                            	<td><button class="btn btn-info">Edit</button></td>
-                            	<td><button class="btn btn-danger">Delete</button></td>
+                            	<td><button class="btn btn-primary shadow">Appointment</button></td>
+                            	<td>
+                            		<a href="{{route('admin.college.department.management.lecturer.edit',[str_replace(' ','-',strtolower($department->name)),$department->id,$lecturer->id])}}"><button class="btn btn-info shadow">Edit</button>
+                            		</a>
+                            		</td>
+                            	<td><button class="btn btn-danger shadow">Delete</button></td>
                             	
                             </tr>
 			     		@endforeach

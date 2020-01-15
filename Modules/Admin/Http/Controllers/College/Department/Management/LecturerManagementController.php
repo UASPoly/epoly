@@ -4,8 +4,11 @@ namespace Modules\Admin\Http\Controllers\College\Department\Management;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Hash;
+use Modules\Lecturer\Entities\Lecturer;
 use Modules\Department\Entities\Department;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
+use Modules\Admin\Http\Requests\College\Department\Management\LecturerFormRequest;
 
 class LecturerManagementController extends AdminBaseController
 {
@@ -22,9 +25,9 @@ class LecturerManagementController extends AdminBaseController
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create()
+    public function create($department, $departmentId)
     {
-        return view('admin::create');
+        return view('admin::college.department.management.lecturer.create',['department'=>Department::find($departmentId)]);
     }
 
     /**
@@ -32,9 +35,41 @@ class LecturerManagementController extends AdminBaseController
      * @param Request $request
      * @return Response
      */
-    public function store(Request $request)
+    public function register(LecturerFormRequest $request)
     {
-        //
+        
+        $data = $request->all();
+        $staff = admin()->staffs()->create([
+           'first_name'=>$data['first_name'],
+           'last_name'=>$data['last_name'],
+           'phone'=>$data['phone'],
+           'email'=>$data['email'],
+           'staffID'=>$data['staffID'],
+           'password'=>Hash::make($data['staffID']),
+           'department_id' => $data['department'],
+           'staff_category_id' => 1,
+           'staff_type_id' => 1,
+           'employed_at' => $data['employed_at']
+        ]);
+
+        $staff->lecturer()->create([
+            'email'=>$staff->email,
+            'password'=>$staff->password,
+            'admin_id'=>admin()->id,
+            'from' =>$staff->employed_at
+        ]);
+
+        $staff->profile()->create([
+            'gender_id' => $data['gender'],
+            'religion_id' => $data['religion'],
+            'address' => $data['address'],
+            'date_of_birth' => $data['date_of_birth'],
+            'biography' => 'staff biography',
+        ]);
+
+        session()->flash('message','Lecturer is registered successfully');
+
+        return back();
     }
 
     /**
@@ -42,19 +77,10 @@ class LecturerManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function show($id)
+    
+    public function edit($department,$departmentId,$lecturerId)
     {
-        return view('admin::show');
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Response
-     */
-    public function edit($id)
-    {
-        return view('admin::edit');
+        return view('admin::college.department.management.lecturer.edit',['lecturer'=>Lecturer::find($lecturerId)]);
     }
 
     /**

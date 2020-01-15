@@ -105,6 +105,10 @@ Route::prefix('admin')->group(function() {
         ->name('lecturer.')
         ->group(function() {
           Route::get('/', 'LecturerManagementController@index')->name('index');
+          Route::get('/create', 'LecturerManagementController@create')->name('create');
+          Route::post('/register', 'LecturerManagementController@register')->name('register');
+          Route::get('/{lecturerId}/edit', 'LecturerManagementController@edit')->name('edit');
+          Route::post('/{lecturerId}/update', 'LecturerManagementController@update')->name('update');
         });
       });
 		    //staff route group
