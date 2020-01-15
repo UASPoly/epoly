@@ -39,6 +39,14 @@ class CreateCoursesTable extends Migration
             ->on('levels')
             ->delete('restrict')
             ->update('cascade');
+            $table->integer('programme_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('programmes')
+            ->delete('restrict')
+            ->update('cascade');
             $table->string('title');
             $table->string('code');
             $table->string('unit');

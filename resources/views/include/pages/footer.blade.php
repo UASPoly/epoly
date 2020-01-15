@@ -97,6 +97,7 @@
     <!-- / footer -->
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    
     <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox_packed.js"></script>
     <script type='text/javascript' src="{{asset('js/jquery.validate.min.js')}}"></script>
     <script src="{{asset('js/jquery.form.min.js')}}"></script>

@@ -8,6 +8,20 @@
     <section class="">
         <div class="grid-row">
             <div class="login-block">
+                @if ($errors->any())
+                <div class="alert bg-red alert-dismissible" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                {{$error}}
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <div class="logo">
                     <img src="{{asset('img/logo.png')}}">
                     <h2>Leturer Login</h2>

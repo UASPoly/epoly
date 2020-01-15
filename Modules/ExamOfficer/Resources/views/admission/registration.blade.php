@@ -7,3 +7,7 @@
 @section('page-content')
     @include('department::department.admission.pertials.registration')
 @endsection
+
+@section('script')
+    @include('department::department.admission.pertials.imagePreview')
+@endsection

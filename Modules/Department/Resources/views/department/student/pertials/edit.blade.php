@@ -60,7 +60,7 @@
                 </div>
                 <div class="form-group">
                     <label class="text text-success">Date Of Birth</label>
-                    <input type="date" name="date_of_birth" class="form-control" value="{{$student->studentAccount->date_of_birth}}">
+                    <input type="text" name="date_of_birth" class="form-control" value="{{$student->studentAccount->date_of_birth}}">
                     @error('date_of_birth')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>

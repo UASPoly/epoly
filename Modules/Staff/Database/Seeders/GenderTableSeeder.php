@@ -17,7 +17,7 @@ class GenderTableSeeder extends Seeder
     {
         Model::unguard();
 
-        $genders = ['Male','Female','Others'];
+        $genders = ['Male','Female'];
         foreach ($genders as $gender) {
             Gender::firstOrCreate(['name'=>$gender]);
         }

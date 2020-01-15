@@ -77,7 +77,7 @@
 
                             <div class="form-group">
                                 <label>Date Of Birth</label>
-                                <input type="date" name="date_of_birth" class="form-control" value="{{old('date_of_birth')}}">
+                                <input type="text" id="date_picker" name="date_of_birth" class="form-control" value="{{old('date_of_birth')}}" placeholder="dd/mm/yyyy">
                                 @error('date_of_birth')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -147,10 +147,13 @@
                                     </span>
                                 @enderror
                             </div>
-
+                            <div class="col-md-12 mb-2">
+                                <img id="picture_preview_container" src=""
+                                    alt="preview image" style="max-height: 150px;">
+                            </div>
                             <div class="form-group">
                                 <label>Choose Picture</label>
-                                <input type="file" name="picture" value="{{old('picture')}}" class="form-control">
+                                <input type="file" name="picture" value="{{old('picture')}}" class="form-control" id="picture">
                                 @error('picture')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
