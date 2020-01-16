@@ -12,7 +12,7 @@
             <select name="programme" class="form-control">
             	<option value=""></option>
             	@foreach(department()->programmes as $programme)
-                    <option value="{{$programme->id}}">{{$programme->name}}</option>
+                    <option value="{{$programme->id}}">{{$programme->title}}</option>
             	@endforeach
             </select>
             @error('programme')

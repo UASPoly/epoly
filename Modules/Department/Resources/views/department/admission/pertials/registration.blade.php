@@ -77,7 +77,7 @@
 
                             <div class="form-group">
                                 <label>Date Of Birth</label>
-                                <input type="text" id="date_picker" name="date_of_birth" class="form-control" value="{{old('date_of_birth')}}" placeholder="dd/mm/yyyy">
+                                <input type="text" required pattern="\d{2}-\m{2}-\y{4}" name="date_of_birth" class="form-control" value="{{old('date_of_birth')}}" placeholder="dd/mm/yyyy">
                                 @error('date_of_birth')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
