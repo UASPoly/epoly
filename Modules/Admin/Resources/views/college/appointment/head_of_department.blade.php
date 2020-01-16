@@ -31,10 +31,7 @@
             <label>Gender</label>
             <input type="text"  value="{{$staff->profile->gender->name}}" disabled name="staffID" class="form-control" />
         </div>
-        <div class="form-group">
-            <label>Tribe</label>
-            <input type="text"  value="{{$staff->profile->tribe->name}}" disabled name="staffID" class="form-control" />
-        </div>
+        
         <div class="form-group">
             <label>Religion</label>
             <input type="text"  value="{{$staff->profile->religion->name}}" disabled name="staffID" class="form-control" />

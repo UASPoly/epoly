@@ -37,7 +37,7 @@
                             	<td>{{$lecturer->phone}}</td>
                             	<td>{{$lecturer->from}}</td>
                             	<td>{{$lecturer->to}}</td>
-                            	<td><button class="btn btn-primary shadow">Appointment</button></td>
+                            	<td><button data-toggle="modal" data-target="#lecturer_{{$lecturer->id}}" class="btn btn-primary shadow">Appointment</button></td>
                             	<td>
                             		<a href="{{route('admin.college.department.management.lecturer.edit',[str_replace(' ','-',strtolower($department->name)),$department->id,$lecturer->id])}}"><button class="btn btn-info shadow">Edit</button>
                             		</a>
@@ -46,8 +46,8 @@
                             		<a href="{{route('admin.college.department.management.lecturer.delete',[str_replace(' ','-',strtolower($department->name)),$department->id,$lecturer->id])}}" onclick="confirm('Are you sure you want delete this lecturer')">
                             		<button class="btn btn-danger shadow">Delete</button></a>
                             	</td>
-                            	
                             </tr>
+                            @include('admin::college.department.management.lecturer.appointment')
 			     		@endforeach
 			     	</tbody>
 			    </table>
