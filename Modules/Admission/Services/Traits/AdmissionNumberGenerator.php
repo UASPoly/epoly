@@ -31,7 +31,7 @@ trait AdmissionNumberGenerator
 
 	public function yearExt($student)
 	{
-		return substr(currentSession()->name,7);
+		return substr(currentSession()->name,2,2);
 	}
 
     public function getAdmissionFromTheReserved($student)
