@@ -41,7 +41,6 @@ class AdmissionController extends ExamOfficerBaseController
         ]);
 
         $admissionNo = department()->generateAdmissionNo($request->all());
-
         return redirect()->route('exam.officer.student.admission.register.generated.number.index',[$admissionNo,$request->programme]);
 
     }

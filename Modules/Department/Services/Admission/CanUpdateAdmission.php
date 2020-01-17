@@ -15,9 +15,10 @@ trait CanUpdateAdmission
     {
        
     	if($this->needToGenerateAdmissionNo($data)){
-    		$this->reservedThisAdmissionNo($data);
+    		$this->reservedThisAdmissionNo();
             $admissionNo = $this->generateAnotherAdmissionNo($data);
-    		$this->admission_no = $admissionNo;
+            $this->admission_no = $admissionNo;
+    		$this->programme_id = $data['programme'];
     	    $this->save();
 
             $this->updateTheAdmissionCounter();
@@ -28,17 +29,17 @@ trait CanUpdateAdmission
 
     public function needToGenerateAdmissionNo($data)
     {
-    	if($data['programme'] != $this->programme_id || $data['schedule'] != $this->student->schedule->code){
+    	if($data['programme'] != $this->programme_id || $data['schedule'] != $this->student->schedule->id){
     		return true;
     	}
     }
 
-    public function reservedThisAdmissionNo($data)
+    public function reservedThisAdmissionNo()
     {
     	department()->reservedDepartmentSessionAdmissions()->firstOrCreate([
             'session_id'=>currentSession()->id,
-            'schedule_id'=>$this->departmentProgrammeScheduleId(),
-            'programme_id'=>$this->department_programme_id,
+            'schedule_id'=>$this->student->schedule->id,
+            'programme_id'=>$this->programme_id,
             'admission_no' => $this->admission_no
         ]);
     }
@@ -58,8 +59,8 @@ trait CanUpdateAdmission
             'phone'=>$data['phone'],
             'email'=>$this->admission_no.'@uaspoly.com',
             'password'=>Hash::make($this->admission_no),
-            'programme_id' => department()->programmeId($data),
-            'schedule_id' => department()->scheduleId($data),
+            'programme_id' => $data['programme'],
+            'schedule_id' => $data['schedule'],
         ]);
     }
 
@@ -85,29 +86,29 @@ trait CanUpdateAdmission
             'department_id'=>department()->id,
             'session_id' => currentSession()->id,
             'schedule_id' => $this->scheduleId(),
-            'department_programme_id' => $this->departmentProgrammeId()
+            'programme_id' => $this->programmeId()
         ])->get() as $admission) {
-            $admission->update(['count'=>$admission->count += 1]);
+            $admission->update(['count'=>$admission->count + 1]);
         }
     }
 
-    public function departmentProgrammeId()
+    public function programmeId()
     {
         $id = null;
-        foreach (department()->departmentProgrammes() as $departmentProgramme) {
-            if($departmentProgramme->code == substr($this->admission_no, 5,1)){
-                $id = $departmentProgramme->id;
+        foreach ($this->department->programmes as $programme) {
+            if($programme->code == substr($this->admission_no, 5,1)){
+                $id = $programme->id;
             }
         }
         return $id;
     }
 
-    public function departmentProgrammeScheduleId()
+    public function scheduleId()
     {
         $id = null;
-        foreach (department()->schedules() as $departmentProgrammeSchedule) {
-            if($departmentProgrammeSchedule->code == substr($this->amission_no, 4,1)){
-                $id = $departmentProgrammeSchedule->id;
+        foreach ($this->department->schedules() as $schedule) {
+            if($schedule->code == $this->student->schedule->code){
+                $id = $schedule->id;
             }
         }
         return $id;

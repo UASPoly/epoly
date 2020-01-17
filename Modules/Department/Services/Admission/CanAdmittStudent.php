@@ -3,6 +3,7 @@ namespace Modules\Department\Services\Admission;
 
 use Illuminate\Support\Facades\Hash;
 use Modules\Core\Services\Admission\FileUpload;
+use Modules\Department\Entities\DepartmentSessionAdmission;
 
 trait CanAdmittStudent
 
@@ -26,8 +27,9 @@ trait CanAdmittStudent
             'session_id'=>currentSession()->id,
             'year'=> substr(currentSession()->name, 5)
         ]);
-        $this->updateTheAdmissionCounter($admission->admission_no);
+        $this->updateThisAdmissionCounter($data['admission_no']);
         $this->registerStudent($admission,$data);
+
         return $admission;
 	}
     
@@ -44,8 +46,8 @@ trait CanAdmittStudent
             'user_name'=>$data['admission_no'],
             'email'=> $data['admission_no'].'@uaspoly.com',
             'phone'=>$data['phone'],
-            'schedule_id'=> $this->scheduleId($data),
-            'programme_id'=>  $this->programmeId($data),
+            'schedule_id'=> $this->scheduleId($data['admission_no']),
+            'programme_id'=>  $this->programmeId($data['admission_no']),
             'password'=> Hash::make($admission->admission_no),
         ]);
 
@@ -65,5 +67,40 @@ trait CanAdmittStudent
         $image = $this->storeFile($data['picture'],str_replace('/','-',department()->name).'/Admission/Profile');
         $account->update(['picture'=>$image]);
 	}
+
+    public function updateThisAdmissionCounter($admission_no)
+    {
+        
+        foreach (DepartmentSessionAdmission::where([
+            'department_id'=>$this->id,
+            'session_id' => currentSession()->id,
+            'schedule_id' => $this->scheduleId($admission_no),
+            'programme_id' => $this->programmeId($admission_no)
+        ])->get() as $admission) {
+            $admission->update(['count'=>$admission->count += 1]);
+        }
+    }
+
+    public function programmeId($admission_no)
+    {
+        $id = null;
+        foreach ($this->programmes as $programme) {
+            if($programme->code == substr($admission_no, 5,1)){
+                $id = $programme->id;
+            }
+        }
+        return $id;
+    }
+
+    public function scheduleId($admission_no)
+    {
+        $id = null;
+        foreach ($this->schedules() as $schedule) {
+            if($schedule->code == substr($admission_no, 4,1)){
+                $id = $schedule->id;
+            }
+        }
+        return $id;
+    }
 
 }

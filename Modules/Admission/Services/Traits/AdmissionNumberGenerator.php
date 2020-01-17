@@ -22,7 +22,7 @@ trait AdmissionNumberGenerator
 			$admissionNo =  $this->yearExt($student).
 					$this->college->code.
 					$this->code.
-					$student['schedule'].
+					Schedule::find($student['schedule'])->code.
 					Programme::find($student['programme'])->code.
 					$this->getAdmissionSerialNo($student);
 		}
@@ -40,8 +40,8 @@ trait AdmissionNumberGenerator
     	foreach (ReservedDepartmentSessionAdmission::where([
             'department_id'=> 1,
             'session_id'=> currentSession()->id,
-            'programme_id'=> $this->programmeId($student['admissionNo']),
-            'schedule_id'=> $this->scheduleId($student)
+            'programme_id'=> $student['programme'],
+            'schedule_id'=> $student['schedule']
     	])->get() as $reservedAdmission) {
     		if(!$admission){
                 $admission = $reservedAdmission;
@@ -64,12 +64,12 @@ trait AdmissionNumberGenerator
     {
     	$counter = $this->departmentSessionAdmissions()->firstOrCreate([
             'session_id' => currentSession()->id,
-            'schedule_id' => $this->scheduleId($student),
-            'programme_id' => $this->$student['programme']
+            'schedule_id' => $student['schedule'],
+            'programme_id' => $student['programme']
     	]);
         if($counter->count){
             return $counter->count;
-        }
+        }  
     	return 1;
     }
 
@@ -83,28 +83,6 @@ trait AdmissionNumberGenerator
         ])->get() as $admission) {
             $admission->update(['count'=>$admission->count += 1]);
         }
-    }
-
-    public function programmeId($admissionNo)
-    {
-        $id = null;
-        foreach ($this->programmes() as $programme) {
-            if($programme->code == substr($admissionNo, 5,1)){
-                $id = $programme->id;
-            }
-        }
-    	return $id;
-    }
-
-    public function scheduleId($student)
-    {
-    	$id = null;
-    	foreach ($this->schedules() as $schedule) {
-    		if($schedule->code == $student['schedule']){
-    			$id = $schedule->id;
-    		}
-    	}
-    	return $id;
     }
 
 	public function formatThisSerialNo($no)

@@ -115,32 +115,32 @@
                 <div class="form-group">
                     <label class="text text-success">Programme</label>
                     <select name="programme" class="form-control">
-                        <option value="{{$student->admission->programme->id}}">{{$student->admission->programme->name}}</option>
+                        <option value="{{$student->admission->programme->id}}">{{$student->admission->programme->title}}</option>
                         @foreach(department()->programmes as $programme)
                             @if($student->admission->programme->id != $programme->id)
                             <option value="{{$programme->id}}">
-                                {{$programme->name}}
+                                {{$programme->title}}
                             </option>
                             @endif
                         @endforeach
-                    </select class="text text-success">
+                    </select>
                     @error('programme')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
                         </span>
                     @enderror
                 </div>
+                
             </div>
             <div class="col-md-4">
-                
                 <div class="form-group">
                     <label class="text text-success">Schedule</label>
                     <select name="schedule" class="form-control">
-                        <option value="{{$student->schedule->code}}">{{$student->schedule->name}}</option>
-                        @foreach(department()->schedules() as $schedule)
-                            @if($student->schedule->id != $schedule->id)
-                                <option value="{{$schedule->code}}">
-                                    {{$schedule->name}}
+                        <option value="{{$student->admission->student->schedule->id}}">{{$student->admission->student->schedule->name}}</option>
+                        @foreach(department()->schedules() as $schdule)
+                            @if($student->admission->student->schedule->id != $schdule->id)
+                                <option value="{{$schdule->id}}">
+                                    {{$schdule->name}}
                                 </option>
                             @endif
                         @endforeach

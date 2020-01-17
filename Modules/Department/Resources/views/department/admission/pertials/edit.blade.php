@@ -95,10 +95,10 @@
         <div class="form-group">
         	<label>Programme</label>
             <select name="programme" class="form-control">
-            	<option value="{{$admission->departmentProgramme->programme->name}}">{{$admission->departmentProgramme->programme->name}}</option>
-            	@foreach(department()->departmentProgrammes as $departmentProgramme)
-            	    @if($admission->departmentProgramme->programme->id != $departmentProgramme->id)
-                    <option value="{{$departmentProgramme->code}}">{{$departmentProgramme->programme->name}}</option>
+            	<option value="{{$admission->programme->id}}">{{$admission->programme->title}}</option>
+            	@foreach(department()->programmes as $programme)
+            	    @if($admission->programme->id != $programme->id)
+                    <option value="{{$programme->id}}">{{$programme->title}}</option>
                     @endif
             	@endforeach
             </select>
@@ -111,10 +111,10 @@
         <div class="form-group">
             <label>Schedule</label>
             <select name="schedule" class="form-control">
-                <option value="{{$admission->student->schedule->code}}">{{$admission->student->schedule->name}}</option>
+                <option value="{{$admission->student->schedule->id}}">{{$admission->student->schedule->name}}</option>
                 @foreach(department()->schedules() as $schdule)
-                    @if($admission->student->studentSession->id != $schdule->id)
-                        <option value="{{$schdule->code}}">
+                    @if($admission->student->schedule->id != $schdule->id)
+                        <option value="{{$schdule->id}}">
                             {{$schdule->name}}
                         </option>
                     @endif
@@ -126,6 +126,6 @@
                 </span>
             @enderror
         </div>
-        <button class="button-fullwidth cws-button bt-color-3">Register</button>
+        <button class="button-fullwidth cws-button bt-color-3">Update</button>
     </form><br><br>
 </div>
