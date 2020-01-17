@@ -26,7 +26,7 @@
             <select name="schedule" class="form-control">
                 <option value=""></option>
                 @foreach(department()->schedules() as $schedule)
-                    <option value="{{$schedule->code}}">{{$schedule->name}}</option>
+                    <option value="{{$schedule->id}}">{{$schedule->name}}</option>
                 @endforeach
             </select>
             @error('session')

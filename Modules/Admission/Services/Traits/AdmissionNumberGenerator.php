@@ -40,7 +40,7 @@ trait AdmissionNumberGenerator
     	foreach (ReservedDepartmentSessionAdmission::where([
             'department_id'=> 1,
             'session_id'=> currentSession()->id,
-            'programme_id'=> $this->programmeId($student),
+            'programme_id'=> $this->programmeId($student['admissionNo']),
             'schedule_id'=> $this->scheduleId($student)
     	])->get() as $reservedAdmission) {
     		if(!$admission){
@@ -65,7 +65,7 @@ trait AdmissionNumberGenerator
     	$counter = $this->departmentSessionAdmissions()->firstOrCreate([
             'session_id' => currentSession()->id,
             'schedule_id' => $this->scheduleId($student),
-            'programme_id' => $this->programmeId($student)
+            'programme_id' => $this->$student['programme']
     	]);
         if($counter->count){
             return $counter->count;
@@ -75,25 +75,24 @@ trait AdmissionNumberGenerator
 
     public function updateTheAdmissionCounter($admissionNo)
     {
-
         foreach (DepartmentSessionAdmission::where([
             'department_id'=>department()->id,
             'session_id' => currentSession()->id,
             'schedule_id' => $this->scheduleId(['schedule'=>substr($admissionNo, 4,1)]),
-            'programme_id' => $this->programmeId(['programme'=>substr($admissionNo, 5,1)])
+            'programme_id' => $this->programmeId($admissionNo)
         ])->get() as $admission) {
             $admission->update(['count'=>$admission->count += 1]);
         }
     }
 
-    public function programmeId($student)
+    public function programmeId($admissionNo)
     {
-    	$id = null;
-    	foreach ($this->programmes() as $programme) {
-    		if($programme->code == $student['programme']){
-    			$id = $programme->id;
-    		}
-    	}
+        $id = null;
+        foreach ($this->programmes() as $programme) {
+            if($programme->code == substr($admissionNo, 5,1)){
+                $id = $programme->id;
+            }
+        }
     	return $id;
     }
 
