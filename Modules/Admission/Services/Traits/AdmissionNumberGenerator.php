@@ -73,18 +73,6 @@ trait AdmissionNumberGenerator
     	return 1;
     }
 
-    public function updateTheAdmissionCounter($admissionNo)
-    {
-        foreach (DepartmentSessionAdmission::where([
-            'department_id'=>department()->id,
-            'session_id' => currentSession()->id,
-            'schedule_id' => $this->scheduleId(['schedule'=>substr($admissionNo, 4,1)]),
-            'programme_id' => $this->programmeId($admissionNo)
-        ])->get() as $admission) {
-            $admission->update(['count'=>$admission->count += 1]);
-        }
-    }
-
 	public function formatThisSerialNo($no)
 	{
         

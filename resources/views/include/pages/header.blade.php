@@ -20,6 +20,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @endauth
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
+    <link rel="stylesheet" href="{{ asset('css/form.css')}}">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([

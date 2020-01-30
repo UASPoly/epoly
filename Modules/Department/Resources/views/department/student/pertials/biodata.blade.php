@@ -44,7 +44,7 @@
 								</tr>
 								<tr height="35">
 									<td>Date Of Birth</td>
-									<td>{{$student->studentAccount->date_of_birth}}</td>
+									<td>{{date('d/M/Y',strtotime($student->studentAccount->date_of_birth))}}</td>
 								</tr>
 								<tr height="35">
 									<td>Admission Number</td>

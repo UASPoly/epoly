@@ -10,4 +10,5 @@
 
 @section('script')
     @include('department::department.admission.pertials.imagePreview')
+    @include('department::department.admission.pertials.formWizard')
 @endsection

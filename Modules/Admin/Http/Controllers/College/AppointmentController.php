@@ -9,12 +9,15 @@ use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AppointmentController extends AdminBaseController
 {
-    
-    
-    
+     
     public function createCollegeDirecter()
     {
         return view('admin::college.appointment.college_directer');
+    }
+
+    public function createHeadOfDepartment()
+    {
+        return view('admin::college.department.management.head_of_department')
     }
 
     public function registerCollegeDirecter(Request $request)

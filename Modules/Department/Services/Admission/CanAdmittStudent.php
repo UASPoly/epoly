@@ -70,7 +70,6 @@ trait CanAdmittStudent
 
     public function updateThisAdmissionCounter($admission_no)
     {
-        
         foreach (DepartmentSessionAdmission::where([
             'department_id'=>$this->id,
             'session_id' => currentSession()->id,
