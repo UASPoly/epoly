@@ -14,7 +14,7 @@ function showTab(n) {
     document.getElementById("prevBtn").style.display = "inline";
   }
   if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
+    document.getElementById("nextBtn").innerHTML = "Finish";
   } else {
     document.getElementById("nextBtn").innerHTML = "Next";
   }
