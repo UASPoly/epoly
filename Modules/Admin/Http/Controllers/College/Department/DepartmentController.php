@@ -13,9 +13,9 @@ class DepartmentController extends AdminBaseController
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index($departmentId)
     {
-        return view('admin::college.department.index');
+        return view('admin::college.department.index',['department'=>Department::find($departmentId)]);
     }
 
     /**
@@ -43,7 +43,7 @@ class DepartmentController extends AdminBaseController
             'admin_id' => admin()->id
         ]);
         session()->flash('message','Department created successfully');
-        return redirect()->route('admin.college.department.index');
+        return back();
     }
 
     /**

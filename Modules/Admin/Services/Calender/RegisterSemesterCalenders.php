@@ -26,30 +26,47 @@ class RegisterSemesterCalenders
 
 	public function registerCurrentSession()
 	{
-        $sessions = [
+        if(admin()){
+            $start = date('Y')-1;
+            $end = date('Y');
+            $name = $start.'/'.$end;
+            $sessions = [
             
-            [
-                'name'=>'2019/2020',
-                'start'=>$this->data['session_start'],
-                'end'=>$this->data['session_end'],
-                'status'=> 1
-            ],
-            [
-                'name'=>'2018/2019',
-                'start'=>$this->data['session_start'],
-                'end'=>$this->data['session_end'],
-                'status'=> 0
-            ],
+                [
+                    'name'=>$name,
+                    'start'=>$this->data['session_start'],
+                    'end'=>$this->data['session_end'],
+                    'status'=> 0
+                ],
+                
+            ];
+        }else{
             
-        ];
+            currentSession()->delete();
+            
+            $sessions = [
+            
+                [
+                    'name'=>'2019/2020',
+                    'start'=>$this->data['session_start'],
+                    'end'=>$this->data['session_end'],
+                    'status'=> 1
+                ],
+                
+            ];
+        }
+
+        
+
+        
         foreach ($sessions as $session) {
             $session = Session::firstOrCreate($session);
-            $sessionCalendar = $session->sessionCalendar()->firstOrCreate(['start'=>$this->data['session_start'],'end'=>$this->data['session_end']]);
-            $this->registerSemestersCalendar($sessionCalendar);
+            
+            $this->registerSemestersCalendar($session);
         }
 	}
 
-    public function registerSemestersCalendar($sessionCalendar)
+    public function registerSemestersCalendar($session)
     {
         $admin_id = 1;
         if(admin()){
@@ -57,7 +74,7 @@ class RegisterSemesterCalenders
         }
     	foreach ($this->semesters as $semester) {
             // create semester calender
-    		$semesterCalendar = $sessionCalendar->semesterCalendars()->firstOrCreate([
+    		$semesterCalendar = $session->semesterCalendars()->firstOrCreate([
                 'semester_id'=>$semester
             ]);
             if($semester == 1){
@@ -71,12 +88,18 @@ class RegisterSemesterCalenders
                     'end'=>$this->data['second_semester_end'],
                 ]);
             }
-            $this->registerNewSemseterResultUploadCalendar($semesterCalendar);
-            $this->registerNewSemesterLectureCalendar($semesterCalendar);
-            $this->registerNewSemseterCourseAllocationCalendar($semesterCalendar);
-            $this->registerNewSemesterExamMarkingCalendar($semesterCalendar);
-            $this->registerNewSemesterExamCalendar($semesterCalendar);
-            
+            $uploadCalendar = $this->registerNewSemseterResultUploadCalendar($semesterCalendar);
+            $lectureCalendar = $this->registerNewSemesterLectureCalendar($semesterCalendar);
+            $allocationCalendar = $this->registerNewSemseterCourseAllocationCalendar($semesterCalendar);
+            $markingCalendar = $this->registerNewSemesterExamMarkingCalendar($semesterCalendar);
+            $examCalendar = $this->registerNewSemesterExamCalendar($semesterCalendar);
+            $semesterCalendar->update([
+                'lecture_calendar_id'=>$lectureCalendar->id,
+                'course_allocation_calendar_id'=>$allocationCalendar->id,
+                'marking_calendar_id'=>$markingCalendar->id,
+                'upload_result_calendar_id'=>$uploadCalendar->id,
+                'exam_calendar_id'=>$examCalendar->id
+            ]);
     	}
     }
 

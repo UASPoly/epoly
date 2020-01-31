@@ -5,11 +5,18 @@
     <br>
     <div class="card shadow">
         <div class="card-body">
+            <div class="row">
+                <div class="col-md-12">
+                    <button data-toggle="modal" data-target="#newCollege" class="btn-block button-fullwidth cws-button bt-color-3 shadow">Create College</button>
+                </div>
+                <div class="col-md-12"><br></div>
+            </div>
+            @include('admin::college.newCollege')
             <div class="row"> 
                 @foreach(admin()->colleges() as $college)
                 <div class="col-md-4">
                     <!-- course item -->
-                    <div class="course-item">
+                    <div class="course-item shadow">
                         <div class="course-name clear-fix">
                         <h3><a href="#">College Of {{$college->name}}</a></h3>
                             </div>
@@ -28,6 +35,5 @@
             </div>
         </div>
     </div>
-</div>
-	   
+</div>	   
 @endsection

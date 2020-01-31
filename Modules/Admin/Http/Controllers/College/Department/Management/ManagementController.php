@@ -14,7 +14,7 @@ class ManagementController extends AdminBaseController
      * Display a listing of the resource.
      * @return Response
      */
-    public function index($department,$departmentId)
+    public function index($departmentId)
     {
         return view('admin::college.department.management.index',['department'=>Department::find($departmentId)]);
     }

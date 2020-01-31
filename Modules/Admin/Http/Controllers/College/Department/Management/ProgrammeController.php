@@ -13,7 +13,7 @@ class ProgrammeController extends AdminBaseController
      * Display a listing of the resource.
      * @return Response
      */
-    public function index($department,$departmentId)
+    public function index($departmentId)
     {
         return view('admin::college.department.management.programme.index',['department'=>Department::find($departmentId)]);
     }
@@ -43,21 +43,21 @@ class ProgrammeController extends AdminBaseController
         return back();
     }
 
-    public function deActivate($department, $departmentId, $programmeId)
+    public function deActivate($departmentId, $programmeId)
     {
         Department::find($departmentId)->deActivateProgramme($programmeId);
         session()->flash('message', 'Department Programme has been de-activate successfully');
         return back();
     }
 
-    public function activate($department, $departmentId, $programmeId)
+    public function activate($departmentId, $programmeId)
     {
         Department::find($departmentId)->activateProgramme($programmeId);
         session()->flash('message', 'Department Programme has been activate successfully');
         return back();
     }
 
-    public function delete($department, $departmentId, $programmeId)
+    public function delete($departmentId, $programmeId)
     {
         Department::find($departmentId)->deleteProgramme($programmeId);
         session()->flash('message', 'Department Programme was deleted successfully');

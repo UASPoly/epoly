@@ -15,6 +15,6 @@ class CollegeManagementController extends AdminBaseController
      */
     public function index($collegeId)
     {
-        return view('admin::college.management.index',['college'=>College::find($collegeId)]);
+        return view('admin::college.department.index',['college'=>College::find($collegeId)]);
     }
 }

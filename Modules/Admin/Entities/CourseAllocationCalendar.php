@@ -16,9 +16,13 @@ class CourseAllocationCalendar extends BaseModel
     {
     	$count = Carbon::parse($this->end)->diffInDays(Carbon::now());
     	$day = 'Day';
+        $status = 'Ago';
     	if($count > 1){
     		$day = 'Days';
     	}
-		return $count.' '.$day.' Remain';
+        if(time() < strtotime($this->end)){
+            $status = 'Remain';
+        }
+		return $count.' '.$day.' '.$status;
     }
 }

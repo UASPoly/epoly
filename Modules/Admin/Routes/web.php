@@ -56,9 +56,22 @@ Route::prefix('admin')
   	Route::get('/', 'CollegeController@index')->name('index');
   	Route::get('/create', 'CollegeController@create')->name('create');
   	Route::post('/register', 'CollegeController@register')->name('register');
+    Route::get('/{college_id}/edit', 'CollegeController@edit')->name('edit');
   	Route::post('/{college}/{college_id}/update', 'CollegeController@update')->name('update');
   	Route::get('/{college}/{college_id}/delete', 'CollegeController@delete')->name('delete');
     
+
+    //college management routes
+    Route::prefix('calendar/management')
+      ->name('calendar.management.')
+      ->namespace('Calendar\Management')
+      ->group(function() {
+        Route::get('/', 'CalendarManagementController@index')->name('index');
+        Route::get('/view', 'CalendarManagementController@view')->name('view');
+        Route::get('/generate', 'CalendarManagementController@generate')->name('generate');
+        Route::post("/session/.currentSession()->id./update", 'CalendarManagementController@updateSession')->name('session.update');
+    });
+
     //college management routes
     Route::prefix('{collegeId}/management')
       ->name('management.')
@@ -71,15 +84,38 @@ Route::prefix('admin')
 		    ->namespace('Department')
 		    ->name('department.')
 		    ->group(function() {
-		  	Route::get('/', 'DepartmentController@index')->name('index');
+		  	Route::get('/{collegeId}', 'DepartmentController@index')->name('index');
 		  	Route::get('/{collegeId}/create', 'DepartmentController@create')->name('create');
-		  	Route::post('/register-department', 'DepartmentController@register')->name('register');
-		  	Route::post('/{department}/{department_id}/update-department', 'DepartmentController@update')->name('update');
-		  	Route::get('/{department}/{department_id}/edit-department', 'DepartmentController@edit')->name('edit');
-		  	Route::get('/{department}/{department_id}/delete-department', 'DepartmentController@delete')->name('delete');
+		  	Route::post('/register', 'DepartmentController@register')->name('register');
+		  	Route::post('/{department_id}/update', 'DepartmentController@update')->name('update');
+		  	Route::get('{department_id}/edit', 'DepartmentController@edit')->name('edit');
+		  	Route::get('{department_id}/delete', 'DepartmentController@delete')->name('delete');
+
+        //department lecturer appointment management routes
+        Route::prefix('appointments')
+          ->name('appointment.')
+          ->group(function() {
+            //head of department appointment routes
+            Route::prefix('head-of-department')
+            ->name('hod.')
+            ->group(function() {
+              Route::get('/lecturer/{lecturerId}', 'AppointmentController@createHeadOfDepartment')->name('create');
+
+              Route::get('/lecturer/{lecturerId}/edit', 'AppointmentController@editHeadOfDepartment')->name('edit');
+
+              Route::post('/lecturer/{lecturerId}/update', 'AppointmentController@updateHeadOfDepartment')->name('update');
+
+              Route::get('/lecturer/{lecturerId}/revoke', 'AppointmentController@revokeHeadOfDepartment')->name('revoke');
+
+              Route::get('/lecturer/{lecturerId}/delete', 'AppointmentController@deleteHeadOfDepartment')->name('delete');
+
+              Route::post('/lecturer/{lecturerId}/register', 'AppointmentController@registerHeadOfDepartment')->name('register');
+            });
+            //other departmental appointment goes here
+        });
 
 		  //department management routes  
-      Route::prefix('{department}/{department_id}/management')
+      Route::prefix('{department_id}/management')
         ->namespace('Management')
         ->name('management.')
         ->group(function() {
@@ -106,7 +142,30 @@ Route::prefix('admin')
           Route::get('/{courseId}/delete', 'CourseManagementController@delete')->name('delete');
           Route::post('/register', 'CourseManagementController@register')->name('register');
         });
+        
+        //head of department management routes
+        Route::prefix('head-of-department')
+        ->name('hod.')
+        ->group(function() {
+          Route::get('/', 'HodManagementController@index')->name('index');
+          Route::post('/appoint', 'HodManagementController@appoint')->name('appoint');
+          
+        });
 
+        //exam officer management routes
+        Route::prefix('exam-officers')
+        ->name('examofficer.')
+        ->group(function() {
+          Route::get('/', 'ExamOfficerManagementController@index')->name('index');
+        });
+
+        //lecturers appointment management routes
+        Route::prefix('appointment')
+        ->name('appointment.')
+        ->group(function() {
+          Route::get('/', 'AppointmentManagementController@index')->name('index');
+        });
+        
         //department lecturer management route
         Route::prefix('lecturers')
         ->name('lecturer.')
@@ -118,38 +177,42 @@ Route::prefix('admin')
           Route::post('/{lecturerId}/update', 'LecturerManagementController@update')->name('update');
           Route::get('/{lecturerId}/delete', 'LecturerManagementController@delete')->name('delete');
 
-          //department lecturer appointment management routes
-          Route::prefix('appointments')
-          ->name('appointment.')
-          ->group(function() {
-
-          });
-
         });
         //department staff management route
         Route::prefix('staffs')
           ->name('staff.')
           ->group(function() {
-
+            Route::get('/create-staff', 'StaffController@create')->name('create');
+            Route::get('/{staff_id}/show', 'StaffController@show')->name('show');
+            Route::get('/', 'StaffController@index')->name('index');
+            Route::post('/register-staff', 'StaffController@register')->name('register');
+            Route::post('/search-staff', 'StaffController@search')->name('search');
+            Route::post('/{staff_id}/update-staff', 'StaffController@update')->name('update');
+            Route::get('/{staff_id}/edit-staff', 'StaffController@edit')->name('edit');
+            Route::get('/{staff_id}/delete-staff', 'StaffController@delete')->name('delete');
+            
+            Route::get('/staff-found', 'StaffController@staff')->name('staff');
+            Route::get('/{staff_id}/register-complete', 'StaffController@registerComplete')->name('register.complete');
+            Route::post('/{staff_id}/register-update', 'StaffController@registerUpdate')->name('register.update');
         });
 		    //staff route group
-			Route::prefix('staff')
-			    ->namespace('Staff')
-			    ->name('staff.')
-			    ->group(function() {
-			  	Route::get('/', 'StaffController@index')->name('index');
-			  	Route::get('/create-staff', 'StaffController@create')->name('create');
-			  	Route::post('/register-staff', 'StaffController@register')->name('register');
-			  	Route::post('/search-staff', 'StaffController@search')->name('search');
-			  	Route::post('/{staff_id}/update-staff', 'StaffController@update')->name('update');
-			  	Route::get('/{staff_id}/edit-staff', 'StaffController@edit')->name('edit');
-			  	Route::get('/{staff_id}/delete-staff', 'StaffController@delete')->name('delete');
-			  	Route::get('/{staff_id}/show-staff', 'StaffController@show')->name('show');
-			  	Route::get('/staff-found', 'StaffController@staff')->name('staff');
-			  	Route::get('/{staff_id}/register-complete', 'StaffController@registerComplete')->name('register.complete');
-			  	Route::post('/{staff_id}/register-update', 'StaffController@registerUpdate')->name('register.update');
-		    }); 
+			  // Route::prefix('staff')
+     //      ->namespace('Staff')
+     //      ->name('staff.')
+     //      ->group(function() {
+     //      Route::get('/', 'StaffController@index')->name('index');
+     //      
+     //      Route::post('/register-staff', 'StaffController@register')->name('register');
+     //      Route::post('/search-staff', 'StaffController@search')->name('search');
+     //      Route::post('/{staff_id}/update-staff', 'StaffController@update')->name('update');
+     //      Route::get('/{staff_id}/edit-staff', 'StaffController@edit')->name('edit');
+     //      Route::get('/{staff_id}/delete-staff', 'StaffController@delete')->name('delete');
+     //      
+     //      Route::get('/staff-found', 'StaffController@staff')->name('staff');
+     //      Route::get('/{staff_id}/register-complete', 'StaffController@registerComplete')->name('register.complete');
+     //      Route::post('/{staff_id}/register-update', 'StaffController@registerUpdate')->name('register.update');
+     //    });
 	    });
-	  });
+	  });  
   });
 });

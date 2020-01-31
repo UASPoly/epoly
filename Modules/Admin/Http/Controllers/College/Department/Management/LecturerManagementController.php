@@ -17,7 +17,7 @@ class LecturerManagementController extends AdminBaseController
      * Display a listing of the resource.
      * @return Response
      */
-    public function index($department, $departmentId)
+    public function index($departmentId)
     {
         return view('admin::college.department.management.lecturer.index',['department'=>Department::find($departmentId)]);
     }
@@ -26,7 +26,7 @@ class LecturerManagementController extends AdminBaseController
      * Show the form for creating a new resource.
      * @return Response
      */
-    public function create($department, $departmentId)
+    public function create($departmentId)
     {
         return view('admin::college.department.management.lecturer.create',['department'=>Department::find($departmentId)]);
     }
@@ -70,7 +70,7 @@ class LecturerManagementController extends AdminBaseController
 
         session()->flash('message','Lecturer is registered successfully');
 
-        return back();
+        return redirect()->route('admin.college.department.management.index',[$staff->department->id]);
     }
 
     /**
@@ -79,7 +79,7 @@ class LecturerManagementController extends AdminBaseController
      * @return Response
      */
     
-    public function edit($department,$departmentId,$lecturerId)
+    public function edit($departmentId,$lecturerId)
     {
         return view('admin::college.department.management.lecturer.edit',['lecturer'=>Lecturer::find($lecturerId)]);
     }
@@ -90,7 +90,7 @@ class LecturerManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function update(UpdateLecturerFormRequest $request, $department,$departmentId, $lecturerId)
+    public function update(UpdateLecturerFormRequest $request, $departmentId, $lecturerId)
     {
         $data = $request->all();
         $lecturer = Lecturer::find($lecturerId);
@@ -129,7 +129,7 @@ class LecturerManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function delete($department,$departmentId, $lecturerId)
+    public function delete($departmentId, $lecturerId)
     {
         $lecturer = Lecturer::find(1);
         if($lecturer->lecturerCourse){

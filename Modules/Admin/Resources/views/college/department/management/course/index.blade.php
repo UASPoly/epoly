@@ -37,7 +37,7 @@
                         	<td><button class="btn btn-warning shadow" data-toggle="modal" data-target="#course_{{$course->id}}">Edit</button></td>
                         	<td>
                         		<a href="{{route('admin.college.department.management.course.delete',
-			                    [str_replace(' ','-',strtolower($department->name)),$department->id,$course->id])}}">
+			                    [$department->id,$course->id])}}">
 			                    <button class="btn btn-danger shadow" onclick="confirm('Are you sure you want to delete this course')">Delete</button>
 			                    </a>
 			                </td>

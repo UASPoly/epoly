@@ -1,33 +1,39 @@
 @extends('examofficer::layouts.master')
 
 @section('page-content')
-    <!--     
-        <div class="col-md-12"><br><br></div>
-        
-        <div class="col-md-4" style="font-size: 200px">
-            <a href="{{route('exam.officer.student.admission.generate.number.index')}}"><i class="fa fa-pencil"></i></a>
+<div class="col-md-12">
+    <br>
+    <div class="card shadow">
+        <div class="card-header">
+            <b class="text text-danger" >Notification !!!</b> 
         </div>
-        <div class="col-md-4" style="font-size: 200px">
-            <a href="{{route('exam.officer.student.student.index')}}"><i class="fa fa-users"></i></a>
+        <div class="card-body">
+            
         </div>
-        <div class="col-md-4" style="font-size: 200px">
-            <a href="{{route('exam.officer.graduation.graduate.index')}}"><i class="fa fa-graduation-cap"></i></a>
-        </div> -->
-    
-    @foreach(examOfficer()->department->unverifiedResults() as $result)
-        <div class="col-md-4">
-         	<div class="card">
-         		<div class="card-header bt-color-3">
-         			{{$result->session->name}} {{$result->lecturerCourse->course->code}} Results Uploaded at {{$result->created_at}}
-         		</div>
-         		<div class="card-body">
-         			
-     				<button class="button-fullwidth cws-button bt-color-3 btn-block"><a href="{{route('exam.officer.result.course.review',[$result->id])}}" style="color: white">Review This Result</a></button>
-     			
-     				<button class="button-fullwidth cws-button bt-color-3 btn-block"><a href="{{route('exam.officer.result.course.edit',[$result->id])}}" style="color: white">Edit This Result</a></button>
-			         			
-         		</div>
-         	</div>
+    </div>
+    <br>
+    <div class="card shadow">
+        <div class="card-body">
+            @foreach(examOfficer()->department->unverifiedResults() as $result)
+                <div class="col-md-4">
+                    <div class="card shadow">
+                        <div class="card-header bt-color-3">
+                            {{$result->session->name}} {{$result->lecturerCourse->course->code}} Results Uploaded at {{$result->created_at}}
+                        </div>
+                        <div class="card-body">
+                            
+                            <button class="button-fullwidth cws-button bt-color-3 btn-block shadow"><a href="{{route('exam.officer.result.course.review',[$result->id])}}" style="color: white">Review This Result</a></button>
+                        
+                            <button class="button-fullwidth cws-button bt-color-3 btn-block shadow"><a href="{{route('exam.officer.result.course.edit',[$result->id])}}" style="color: white">Edit This Result</a></button>
+                                        
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            @if(count(examOfficer()->department->unverifiedResults()) == 0)
+                <div class="alert alert-danger shadow">There is no result uploaded for {{currentSemester()->name}} in {{currentSession()->name}}</div>
+            @endif
         </div>
-    @endforeach
+    </div>
+</div>
 @endsection

@@ -5,7 +5,7 @@
 @section('page-content')
     <div class="col-md-12">
     	<br>
-        <div class="card">
+        <div class="card shadow">
         	<div class="card-body">
         		<div class="row">
 		    		<div class="col-md-8"></div>
@@ -13,13 +13,14 @@
 		    			<button data-toggle="modal" data-target="#newProgramme" class="btn-block button-fullwidth cws-button bt-color-3">Create New Programme</button>
 		    		</div>
 		    	</div>
-        		<table class="table">
+        		<table class="table shadow">
         			<thead>
         				<tr>
         					<th>Programme</th>
         					<th>Code</th>
         					<th>Title</th>
         					<th>Status</th>
+        					<th>Admissions</th>
         					<th>Morning Schedule</th>
         					<th>Evening Schedule</th>
         					<th></th>
@@ -50,6 +51,7 @@
 			        					</a>
 	        						@endif
 	        					</td>
+	        					<td>{{count($programme->admissions)}}</td>
 	        					<td>{{$programme->hasMorningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>{{$programme->hasEveningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>

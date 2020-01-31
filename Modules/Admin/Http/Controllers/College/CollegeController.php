@@ -34,7 +34,7 @@ class CollegeController extends AdminBaseController
      */
     public function register(CollegeFormRequest $request)
     {
-        College::create([
+        $college = College::create([
             'admin_id'=>admin()->id,
             'name'=>$request->name,
             'established_date'=>$request->established_date,
@@ -42,7 +42,7 @@ class CollegeController extends AdminBaseController
             'code'=>$request->code
         ]);
         session()->flash('message','College created successfully');
-        return redirect()->route('admin.college.index');
+        return back();
     }
 
     public function edit($college,$college_id)

@@ -21,7 +21,7 @@
      				</button>
                 @else
                     <!-- if the staff is not appinted to hod -->
-     				<button class="btn btn-info btn-block" onclick="confirm('Are you sure you want appoint this staff as Head of department')"><a href="{{route('admin.college.department.appointment.hod.create',[$staff->id])}}" style="color: white">Appointed To HOD</a> </i>
+     				<button class="btn btn-info btn-block" onclick="confirm('Are you sure you want appoint this staff as Head of department')"><a href="{{route('admin.college.department.appointment.hod.create',[$staff->>leccturer->id])}}" style="color: white">Appointed To HOD</a> </i>
      				</button><br>
                 @endif
                 @if($staff->directer && !$staff->directer->to)

@@ -41,7 +41,7 @@ class NewCalenderCommand extends Command
      */
     public function handle()
     {
-        $calender = new RegisterNewAcademicCalender($this->newCalenderInfo());
+        $calender = new RegisterNewAcademicCalender($this->newCalenderInfo(2020));
         event(new NewAcademicCalenderEvent($calender->session));
     }
     

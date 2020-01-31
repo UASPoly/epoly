@@ -15,12 +15,12 @@ class CreateSemesterCalendarsTable extends Migration
     {
         Schema::create('semester_calendars', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('session_calendar_id')
+            $table->integer('session_id')
             ->unsigned()
             ->nullable()
             ->foreign()
             ->references('id')
-            ->on('session_calendars')
+            ->on('sessions')
             ->delete('restrict')
             ->update('cascade');
             $table->integer('semester_id')
@@ -29,6 +29,14 @@ class CreateSemesterCalendarsTable extends Migration
             ->foreign()
             ->references('id')
             ->on('semesters')
+            ->delete('restrict')
+            ->update('cascade');
+            $table->integer('exam_calendar_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('exam_calendars')
             ->delete('restrict')
             ->update('cascade');
             $table->integer('lecture_calendar_id')
@@ -53,6 +61,14 @@ class CreateSemesterCalendarsTable extends Migration
             ->foreign()
             ->references('id')
             ->on('marking_calendars')
+            ->delete('restrict')
+            ->update('cascade');
+            $table->integer('upload_result_calendar_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('upload_result_calendars')
             ->delete('restrict')
             ->update('cascade');
             $table->string('start')->nullable();

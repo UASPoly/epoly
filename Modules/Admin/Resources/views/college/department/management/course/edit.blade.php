@@ -8,7 +8,7 @@
             </div>
             <div class="modal-body">
             	<form action="{{route('admin.college.department.management.course.update',
-                    [str_replace(' ','-',strtolower($department->name)),$department->id,$course->id])}}" method="post">
+                    [$department->id,$course->id])}}" method="post">
                     @csrf
                     
                     <div class="form-group">

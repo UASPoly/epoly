@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Modules\Admin\Entities\Session;
+use Modules\Student\Entities\Programme;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,13 +14,17 @@ use Modules\Admin\Entities\Session;
 |
 */
 
-Route::view('/','welcome')->name('welcome');
-Route::view('/vue','vue')->name('vue');
+Route::get('/',function(){
+	return view('welcome',['programmes'=>Programme::all()]);
+})->name('welcome');
+
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/calender/{session}/view', function(){
 	return view('admin::calender.view');
 })->name('admin.calender.view');
+
 Route::post('/calender/acticate/register', function(Request $request){
     currentSession()->update(['status'=>0]);
     Session::find($request->session)->update(['status'=>1]);

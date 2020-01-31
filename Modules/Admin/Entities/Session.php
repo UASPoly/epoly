@@ -7,14 +7,15 @@ use Modules\Core\Entities\BaseModel;
 
 class Session extends BaseModel
 {
-    public function sessionCalendar()
-    {
-    	return $this->hasOne(SessionCalendar::class);
-    }
 
     public function sessionRegistrations()
     {
         return $this->hasMany('Modules\Student\Entities\SessionRegistration');
+    }
+
+    public function semesterCalendars()
+    {
+        return $this->hasMany(SemesterCalendar::class);
     }
 
     public function lecturerCourseResultUploads()
@@ -26,10 +27,14 @@ class Session extends BaseModel
     {
     	$count = Carbon::parse($this->end)->diffInMonths(Carbon::now());
     	$month = 'Month';
-    	if($count > 1){
-    		$month = 'Months';
-    	}
-		return $count.' '.$month.' Remain';
+        $status = 'Ago';
+        if($count > 1){
+            $week = 'Months';
+        }
+        if(time() < strtotime($this->end)){
+            $status = 'Remain';
+        }
+        return $count.' '.$month.' '.$status;
     }
 
     public function graduatedStudents()

@@ -42,19 +42,17 @@
                             </div>
 
                             <div class="form-group">
-                                <label>Gender</label>
-                                <select name="gender" class="form-control" id="validate">
-                                    <option value=""></option>
-                                    @foreach(department()->genders() as $gender)
-                                        <option value="{{$gender->id}}">{{$gender->name}}</option>
-                                    @endforeach
-                                </select>
-                                @error('gender')
+                                <label>Admission No</label>
+                                <input type="text" disabled="" class="form-control" value="{{$admissionNo}}">
+                                <input type="hidden" name="admission_no" class="form-control" value="{{$admissionNo}}">
+                                @error('admission_no')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror
                             </div>
+
+                            
                         </div>
                     </div>
                     <!-- end personal infor -->
@@ -75,10 +73,23 @@
                                     </span>
                                 @enderror
                             </div>
-
+                            <div class="form-group">
+                                <label>Gender</label>
+                                <select name="gender" class="form-control" id="validate">
+                                    <option value=""></option>
+                                    @foreach(department()->genders() as $gender)
+                                        <option value="{{$gender->id}}">{{$gender->name}}</option>
+                                    @endforeach
+                                </select>
+                                @error('gender')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
                             <div class="form-group">
                                 <label>Date Of Birth</label>
-                                <input type="date" name="date_of_birth" class="form-control datepicker" data-date-format="mm/dd/yyyy" value="{{old('date_of_birth')}}">
+                                <input type="date" name="date_of_birth" class="form-control datepicker" data-date-format="dd/mm/yyyy" value="{{old('date_of_birth')}}">
                                 @error('date_of_birth')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
@@ -96,16 +107,7 @@
                                 @enderror
                             </div>
 
-                            <div class="form-group">
-                                <label>Admission No</label>
-                                <input type="text" disabled="" class="form-control" value="{{$admissionNo}}">
-                                <input type="hidden" name="admission_no" class="form-control" value="{{$admissionNo}}">
-                                @error('admission_no')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
+                            
                         </div>
                     </div>
                     <!-- end contact infor -->
@@ -190,6 +192,7 @@
                 </div>
                 <!-- Circles which indicates the steps of the form: -->
                 <div style="text-align:center;margin-top:40px;">
+                  <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>
                   <span class="step"></span>

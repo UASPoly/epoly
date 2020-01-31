@@ -16,9 +16,13 @@ class UploadResultCalendar extends BaseModel
     {
     	$count = Carbon::parse($this->end)->diffInWeeks(Carbon::now());
     	$week = 'Week';
-    	if($count > 1){
-    		$week = 'Weeks';
-    	}
-		return $count.' '.$week.' Remain';
+        $status = 'Ago';
+        if($count > 1){
+            $week = 'Weeks';
+        }
+        if(time() < strtotime($this->end)){
+            $status = 'Remain';
+        }
+        return $count.' '.$week.' '.$status;
     }
 }

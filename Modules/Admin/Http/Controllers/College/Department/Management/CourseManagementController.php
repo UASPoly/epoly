@@ -15,7 +15,7 @@ class CourseManagementController extends AdminBaseController
      * Display a listing of the resource.
      * @return Response
      */
-    public function index($department, $departmentId)
+    public function index($departmentId)
     {
         return view('admin::college.department.management.course.index',['department'=>Department::find($departmentId)]);
     }
@@ -25,7 +25,7 @@ class CourseManagementController extends AdminBaseController
      * @param Request $request
      * @return Response
      */
-    public function register(Request $request, $department, $departmentId)
+    public function register(Request $request,$departmentId)
     {
         $request->validate([
             'title'=>'required|string',
@@ -35,6 +35,7 @@ class CourseManagementController extends AdminBaseController
             'semester'=>'required',
             'unit'=>'required',
         ]);
+
         $department = Department::find($departmentId);
         $department->courses()->firstOrCreate([
             'title'=>$request->title,
@@ -54,8 +55,9 @@ class CourseManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function update(Request $request, $department,$departmentId,$courseId)
+    public function update(Request $request, $courseId)
     {
+
         $request->validate([
             'title'=>'required|string',
             'code'=>'required',
@@ -65,6 +67,7 @@ class CourseManagementController extends AdminBaseController
             'unit'=>'required',
         ]);
         $course = Course::find($courseId);
+        
         $course->update([
             'title'=>$request->title,
             'code'=>$request->code,
@@ -82,7 +85,7 @@ class CourseManagementController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function delete($department,$departmentId,$courseId)
+    public function delete($departmentId,$courseId)
     {
         $course = Course::find($courseId);
         if(count($course->courseRegistrations) == 0){

@@ -24,6 +24,32 @@ if (!function_exists('logout_route')) {
     }
 }
 
+if (!function_exists('hasCurrentSession')) {
+    function hasCurrentSession()
+    {
+        $start = date('Y')-1;
+        $end = date('Y');
+        $name = $start.'/'.$end;
+        $flag = false;
+        foreach (Session::where('name',$name)->get() as $session) {
+            $flag = true;
+        }
+        return $flag;
+    }
+}
+
+if (!function_exists('currentSemester')) {
+    function currentSemester()
+    {
+        $semester = null;
+        foreach (currentSession()->semesterCalendars as $semesterCalendar) {
+            if(substr($semesterCalendar->end,5,2) >= date('m')){
+                return $semesterCalendar->semester;
+            }
+        }
+    }
+}
+
 if (!function_exists('home_route')) {
     function home_route()
     {

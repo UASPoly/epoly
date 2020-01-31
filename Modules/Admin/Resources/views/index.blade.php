@@ -9,15 +9,15 @@
 
                 <!-- college item -->
                 <div class="col-md-4">
-                    <div class="course-item">
+                    <div class="course-item shadow">
                         <div class="course-name clear-fix">
-                        <h3><a href="{{route('admin.college.index')}}">Colleges</a></h3>
+                        <h3><a href="{{route('admin.college.index')}}">Colleges Management</a></h3>
                             </div>
                         <div class="course-date bg-color-1 clear-fix">
                             
-                            <div class="description"><h1><i class="fa fa-pencil"></i>
+                            <div class="description"><h1><i class="fa fa-home"></i>
                                 <span>
-                                    {{count(admin()->colleges())}} Colleges
+                                    {{count(admin()->colleges())}}
                                 </span></h1>
                                 </div>
                         </div>
@@ -25,6 +25,23 @@
                 </div>
                 <!-- / College item -->
 
+                <!-- calender item -->
+                <div class="col-md-4">
+                    <div class="course-item shadow">
+                        <div class="course-name clear-fix">
+                        <h3><a href="{{route('admin.college.calendar.management.index')}}">{{currentSession()->name}} Calender Management</a></h3>
+                            </div>
+                        <div class="course-date bg-color-1 clear-fix">
+                            
+                            <div class="description"><h1><i class="fa fa-calendar"></i>
+                                <span>
+                                    
+                                </span></h1>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / calender item -->
             </div>
         </div>
     </div>
