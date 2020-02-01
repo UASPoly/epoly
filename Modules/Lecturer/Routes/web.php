@@ -19,7 +19,12 @@ Route::prefix('lecturer')
     Route::get('/login', 'Auth\LecturerLoginController@showLoginForm')->name('auth.login');
     Route::post('/login', 'Auth\LecturerLoginController@login')->name('login');
     Route::post('logout', 'Auth\LecturerLoginController@logout')->name('auth.logout');
-
+    Route::prefix('calendar')
+    ->name('calendar.')
+    ->namespace('Calendar')
+    ->group(function() {
+        Route::get('/view', 'CalendarController@view')->name('view');
+    });
     Route::prefix('courses')
     ->name('courses.')
     ->namespace('Course')

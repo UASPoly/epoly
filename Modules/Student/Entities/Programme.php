@@ -27,6 +27,11 @@ class Programme extends BaseModel
     	return $this->belongsTo('Modules\Department\Entities\Department');
     }
 
+    public function programmeType()
+    {
+        return $this->belongsTo('Modules\Programme\Entities\ProgrammeType');
+    }
+
     public function reservedDepartmentSessionAdmissions()
     {
         return $this->hasMany('Modules\Department\Entities\ReservedDepartmentSessionAdmission');

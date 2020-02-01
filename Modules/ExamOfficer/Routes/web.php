@@ -29,7 +29,12 @@ Route::prefix('exam-officer')
 			Route::get('{course_id}/delete-course', 'CourseController@delete')->name('delete');
 			
 		});
-
+        Route::prefix('calendar')
+	    ->name('calendar.')
+	    ->namespace('Calendar')
+	    ->group(function() {
+	        Route::get('/view', 'CalendarController@view')->name('view');
+	    });	
 		Route::prefix('student/')
 		->name('student.')
 		->namespace('Student')

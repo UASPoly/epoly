@@ -31,6 +31,12 @@ Route::prefix('student')
 	    Route::post('/apply', 'DiferringController@apply')->name('apply');
         
 	});
+	Route::prefix('calendar')
+    ->name('calendar.')
+    ->namespace('Calendar')
+    ->group(function() {
+        Route::get('/view', 'CalendarController@view')->name('view');
+    });	
 	Route::prefix('courses')
 	->name('course.')
 	->namespace('Course')

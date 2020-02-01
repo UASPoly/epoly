@@ -4,7 +4,7 @@ namespace Modules\Department\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Database\Eloquent\Model;
-use Modules\Student\Entities\Programme;
+use Modules\Department\Entities\ProgrammeType;
 
 class ProgrammeTableSeeder extends Seeder
 {
@@ -18,13 +18,33 @@ class ProgrammeTableSeeder extends Seeder
         Model::unguard();
 
         $programmes = [
-            // ['name'=>'OD'],
-            // ['name'=>'ND'],
-            // ['name'=>'CONVERSION'],
-            // ['name'=>'HND']
+            ['name'=>'OD'],
+            ['name'=>'ND'],
+            ['name'=>'CONVERSION'],
+            ['name'=>'HND']
         ];
         foreach ($programmes as $programme) {
-            Programme::firstOrCreate($programme);
+            $programmeType = ProgrammeType::firstOrCreate($programme);
+            switch ($ProgrammeType->id) {
+                case '1':
+                    foreach([1,2], as $level_id){
+                        $programmeType->programmeTypeLevels()->fisrtOrCreate(['level_id'=>$level_id]);
+                    }
+                    break;
+                case '2':
+                    foreach([3,4], as $level_id){
+                        $programmeType->programmeTypeLevels()->fisrtOrCreate(['level_id'=>$level_id]);
+                    }
+                    break;    
+                case '4':
+                    foreach([5,6], as $level_id){
+                        $programmeType->programmeTypeLevels()->fisrtOrCreate(['level_id'=>$level_id]);
+                    }
+                    break; 
+                default:
+                    # code...
+                    break;
+            }
         }
     }
 }

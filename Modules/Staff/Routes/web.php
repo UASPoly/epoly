@@ -22,4 +22,10 @@ Route::prefix('staff')
 	Route::get('/unauthorize-staff', 'Auth\StaffLoginController@unauthorize')->name('auth.unauthorize');
 	Route::post('/login', 'Auth\StaffLoginController@login')->name('login');
 	Route::post('logout', 'Auth\StaffLoginController@logout')->name('auth.logout');
+	Route::prefix('calendar')
+    ->name('calendar.')
+    ->namespace('Calendar')
+    ->group(function() {
+        Route::get('/view', 'CalendarController@view')->name('view');
+    });	
 });

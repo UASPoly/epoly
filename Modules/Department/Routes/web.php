@@ -26,6 +26,12 @@ Route::prefix('department')
             Route::post('/register','DepartmentLecturerAppointmentController@register')->name('register');
 		});
 	});
+    Route::prefix('calendar')
+    ->name('calendar.')
+    ->namespace('Calendar')
+    ->group(function() {
+        Route::get('/view', 'CalendarController@view')->name('view');
+    });			
     //wave result routes
 	Route::prefix('students/results/wave')
 	    ->name('students.results.wave.')

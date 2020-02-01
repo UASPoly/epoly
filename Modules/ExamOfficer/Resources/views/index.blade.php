@@ -4,7 +4,7 @@
 <div class="col-md-12">
     <br>
     <div class="card shadow">
-        <div class="card-header">
+        <div class="card-header shadow">
             <b class="text text-danger" >Notification !!!</b> 
         </div>
         <div class="card-body">
@@ -13,6 +13,9 @@
     </div>
     <br>
     <div class="card shadow">
+        <div class="card-header shadow">
+            <b class="text text-danger" >Uploaded results</b> 
+        </div>
         <div class="card-body">
             @foreach(examOfficer()->department->unverifiedResults() as $result)
                 <div class="col-md-4">

@@ -18,13 +18,14 @@ class LevelTableSeeder extends Seeder
         Model::unguard();
 
         $levels = [
-            ['name'=>'ND 1','student_type_id'=>1],
-            ['name'=>'ND 2','student_type_id'=>1],
-            ['name'=>'CONVERSION','student_type_id'=>2],
-            ['name'=>'HND 1','student_type_id'=>2],
-            ['name'=>'HND 2','student_type_id'=>2],
-            ['name'=>'FIRST SPILL'],
-            ['name'=>'SECOND SPILL'],
+            ['name'=>'OD I'],
+            ['name'=>'OD II'],
+            ['name'=>'ND I'],
+            ['name'=>'ND II'],
+            ['name'=>'CONVERSION'],
+            ['name'=>'HND I'],
+            ['name'=>'HND II'],
+            
         ];
         foreach ($levels as $level) {
             Level::firstOrCreate($level);

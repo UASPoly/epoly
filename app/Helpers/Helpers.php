@@ -24,6 +24,30 @@ if (!function_exists('logout_route')) {
     }
 }
 
+if (!function_exists('calendar_route')) {
+    function calendar_route()
+    {
+        if(auth()->guard('admin')->check()){
+            $route = 'admin.college.calendar.management.view';
+        }elseif (auth()->guard('staff')->check()) {
+            $route = 'staff.calendar.view';
+        }elseif (auth()->guard('lecturer')->check()) {
+            $route = 'lecturer.calendar.view';
+        }elseif (auth()->guard('head_of_department')->check()) {
+            $route = 'department.calendar.view';
+        }elseif (auth()->guard('directer')->check()) {
+            $route = 'college.calebdar.view';
+        }elseif(auth()->guard('exam_officer')->check()){
+            $route = 'exam.officer.calendar.view';
+        }elseif(auth()->guard('student')->check()){
+            $route = 'student.calendar.view';
+        }else{
+            $route = 'calendar.view';
+        }
+        return $route;
+    }
+}
+
 if (!function_exists('hasCurrentSession')) {
     function hasCurrentSession()
     {

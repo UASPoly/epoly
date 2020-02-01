@@ -1,9 +1,15 @@
 @extends('staff::layouts.master')
 
 @section('page-content')
-    <h1>Hello World</h1>
-
-    <p>
-        This view is loaded from module: {!! config('staff.name') !!}
-    </p>
+<div class="col-md-12">
+    <br>
+    <div class="card shadow">
+        <div class="card-header shadow">
+            <b class="text text-danger" >Notification !!!</b> 
+        </div>
+        <div class="card-body">
+            
+        </div>
+    </div>
+</div>  
 @endsection

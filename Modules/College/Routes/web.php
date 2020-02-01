@@ -14,6 +14,12 @@
 Route::prefix('college')
 ->name('college.')
 ->group(function() {
+	Route::prefix('calendar')
+    ->name('calendar.')
+    ->namespace('Calendar')
+    ->group(function() {
+        Route::get('/view', 'CalendarController@view')->name('view');
+    });	
 	Route::get('/', 'CollegeController@verify');
 	Route::get('/directer', 'CollegeController@verify');
 	Route::prefix('directer')

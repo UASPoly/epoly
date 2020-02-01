@@ -56,23 +56,23 @@
                                 <a href="#"><i class="fa fa-calendar"></i> Calendar</a>
                                 <!-- sub menu -->
                                 <ul>
-                                    @if(admin() || examOfficer() || headOfDepartment())
-                                        @if(!currentSession()->sessionCalendar)
+                                    @if(admin())
+                                        @if(!hasCurrentSession())
                                         <li>
-                                            <a href="{{route('admin.calender.create')}}">New {{currentSession()->name}} Calendar</a>
-                                        </li>
-                                        @else
-                                        <li>
-                                            <a href="{{route('admin.calender.view',[str_replace('/','-',currentSession()->name)])}}">View {{currentSession()->name}} Calendar</a>
+                                            <a href="{{route('admin.college.calendar.management.generate')}}">Generate {{date('Y')-1}}/{{date('Y')}} Calendar</a>
                                         </li>
                                         @endif
                                         <li>
-                                            <a href="#" data-toggle="modal" data-target="#activate_session" >Activate New Calendar</a>
+                                            <a href="{{route('admin.college.calendar.management.index')}}"> Modify Current Calendar </a>
+                                        </li>
+                                        <li>
+                                            <a href="#" data-toggle="modal" data-target="#activate_session" > Switch Calendar </a>
                                         </li>
                                     <!-- the modal is included from main layouts.app -->
                                     @endif
-                                    
-                                    
+                                    <li>
+                                        <a href="{{route(calendar_route())}}">Calendar Count Down</a>
+                                    </li>
                                 </ul>
                                 <!-- / sub menu -->
                             </li>
