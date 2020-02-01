@@ -32,9 +32,15 @@
                         	<td>
                         		{{$course->programme ? $course->programme->title : 'Not Available' }}
                         	</td>
-                        	<td>{{$course->semester->name}}</td>
                         	<td>{{$course->level->name}}</td>
-                        	<td><button class="btn btn-warning shadow" data-toggle="modal" data-target="#course_{{$course->id}}">Edit</button></td>
+                        	<td>{{$course->semester->name}}</td>
+                        	<td>
+                        		<button class="btn btn-warning shadow" data-toggle="modal" data-target="#course_{{$course->id}}">
+	                        		Edit
+	                        	</button>
+	                            @include('admin::college.department.management.course.edit')
+
+                        	</td>
                         	<td>
                         		<a href="{{route('admin.college.department.management.course.delete',
 			                    [$department->id,$course->id])}}">
@@ -42,7 +48,6 @@
 			                    </a>
 			                </td>
                         </tr>
-                        @include('admin::college.department.management.course.edit')
 						@endforeach
 					</tbody>
 				</table>

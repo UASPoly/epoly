@@ -42,15 +42,30 @@
                     </div>
 
                     <div class="form-group">
+                        <label>Programme</label>
+                        <select class="form-control" name="level">
+                            <option value="">Select Programme</option>
+                            @foreach($department->programmes as $programme)
+                                <option value="{{$programme->id}}">
+                                    {{$programme->name}}
+                                </option>
+                            @endforeach
+                        </select>
+                        @error('programme')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    
+                    <div class="form-group">
                         <label>Level</label>
                         <select class="form-control" name="level">
                         	<option value="">Select Level</option>
                         	@foreach(admin()->levels() as $level)
-                        	    @if($level->id <= 5)
-	                                <option value="{{$level->id}}">
-	                                	{{$level->name}}
-	                                </option>
-                                @endif
+                                <option value="{{$level->id}}">
+                                	{{$level->name}}
+                                </option>
                         	@endforeach
                         </select>
                         @error('level')

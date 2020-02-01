@@ -35,7 +35,7 @@ class CourseManagementController extends AdminBaseController
             'semester'=>'required',
             'unit'=>'required',
         ]);
-
+    
         $department = Department::find($departmentId);
         $department->courses()->firstOrCreate([
             'title'=>$request->title,
@@ -66,7 +66,7 @@ class CourseManagementController extends AdminBaseController
             'semester'=>'required',
             'unit'=>'required',
         ]);
-        $course = Course::find($courseId);
+        $course = Course::find($request->courseID);
         
         $course->update([
             'title'=>$request->title,

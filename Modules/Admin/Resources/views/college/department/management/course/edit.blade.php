@@ -13,6 +13,7 @@
                     
                     <div class="form-group">
                         <label>Course Title</label>
+                        <input type="hidden" name="courseID" value="{{$course->id}}">   
                         <input type="text" name="title" class="form-control" id="programme" value="{{$course->title}}">   
                         @error('title')
                             <span class="invalid-feedback" role="alert">
