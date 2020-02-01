@@ -41,9 +41,9 @@ class RegisterSemesterCalenders
                 
             ];
         }else{
-            
-            currentSession()->delete();
-            
+            if(currentSession()){
+                currentSession()->delete();
+            }
             $sessions = [
             
                 [
