@@ -22,10 +22,10 @@ trait HasLevelAndSemester
 
         switch ($this->yearsSinceAdmission()) {
             case 0:
-                $level = $prefix.' 1';
+                $level = $prefix.' I';
                 break;
             case 1:
-                $level = $prefix.' 2';
+                $level = $prefix.' II';
                 break;
             case 2:
                 $level = 'FIRST SPILL';
@@ -47,7 +47,7 @@ trait HasLevelAndSemester
 
     public function admissionYear()
     {
-        return $this->admissionYearPrefix().substr($this->admission->admission_no,0,2);
+        return $this->admissionYearPrefix().substr($this->admission->admission_no,0,2)+1;
     }
 
     public function yearsSinceAdmission()
@@ -57,13 +57,7 @@ trait HasLevelAndSemester
 
     public function levelPrefix()
     {
-        $prefix = 'ND';
-        if($this->programme->id == 2){
-            $prefix = 'HND';
-        }else if($this->programme->id == 3){
-            $prefix = 'CONVERSION';
-        }
-        return $prefix;
+        return $this->programme->programmeType->name;
     }
 
 }

@@ -29,7 +29,7 @@ class Programme extends BaseModel
 
     public function programmeType()
     {
-        return $this->belongsTo('Modules\Programme\Entities\ProgrammeType');
+        return $this->belongsTo('Modules\Department\Entities\ProgrammeType');
     }
 
     public function reservedDepartmentSessionAdmissions()

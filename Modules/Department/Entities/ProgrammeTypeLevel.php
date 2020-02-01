@@ -8,7 +8,7 @@ class ProgrammeTypeLevel extends BaseModel
 {
     public function programmeType()
     {
-    	return $this->belongsTo(ProgrammeType::class)
+    	return $this->belongsTo(ProgrammeType::class);
     }
 
 }

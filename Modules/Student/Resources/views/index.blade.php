@@ -8,7 +8,7 @@
             <b class="text text-danger" >Notification !!!</b> 
         </div>
         <div class="card-body">
-            
+            {{student()->level()->name}}
         </div>
     </div>
 </div>    

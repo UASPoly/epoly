@@ -29,6 +29,17 @@ class CreateProgrammeTypesTable extends Migration
             ->delete('restrict')
             ->update('cascade');
         });
+        //add programme id to course
+        Schema::table('courses', function (Blueprint $table) {
+            $table->integer('programme_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('programmes')
+            ->delete('restrict')
+            ->update('cascade');
+        });
     }
 
     /**

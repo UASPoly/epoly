@@ -43,6 +43,22 @@
                         @enderror
                     </div>
                     <div class="form-group">
+                        <label>Programme Type</label>
+                        <select class="form-control" name="type">
+                            <option value="{{optional($programme->programmeType)->id ?? null}}">{{optional($programme->programmeType)->name ?? 'Programme Type'}}</option>
+                            @foreach(admin()->programmeTypes() as $programmeType)
+                                @if(optional($programme->programmeType)->id != $programmeType->id)
+                                    <option value="{{$programmeType->id}}">{{$programmeType->name}}</option>
+                                @endif
+                            @endforeach
+                        </select>
+                        @error('type')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
+                    <div class="form-group">
                         <label>Add Schedule</label>
                         <select name="scheduleAdd" class="form-control">
                             <option value="">Select Schedule</option>

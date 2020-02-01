@@ -40,6 +40,20 @@
                             </span>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label>Programme Type</label>
+                        <select class="form-control" name="type">
+                            <option value="">Programme Type</option>
+                            @foreach(admin()->programmeTypes() as $programmeType)
+                                 <option value="{{$programmeType->id}}">{{$programmeType->name}}</option>
+                            @endforeach
+                        </select>
+                        @error('programme_type_id')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                        @enderror
+                    </div>
                     <button class="btn-block button-fullwidth cws-button bt-color-3">Register</button>  
                 </form>
             </div>

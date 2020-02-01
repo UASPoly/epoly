@@ -16,6 +16,7 @@ trait HasProgramme
 				'name'=>strtoupper($data['name']),
 				'code'=>strtoupper($data['code']),
 				'title'=>$data['title'],
+				'programme_type_id'=>$data['type'],
 			]);
 			session()->flash('message', 'Department programme added successfully');
 		}
@@ -40,7 +41,8 @@ trait HasProgramme
 		$programme->update([
 			'name'=>strtoupper($data['name']),
 			'title'=>strtoupper($data['title']),
-			'code'=>$data['code']
+			'code'=>$data['code'],
+			'programme_type_id'=>$data['type']
 		]);
 		
 		if(isset($data['scheduleAdd'])){

@@ -23,7 +23,8 @@ class ProgrammeController extends AdminBaseController
         $request->validate([
             'code'=>'required',
             'name'=>'required',
-            'title'=>'required'
+            'title'=>'required',
+            'type'=>'required'
         ]);
         Department::find($request->departmentId)->addProgramme($request->all());
         
@@ -35,7 +36,8 @@ class ProgrammeController extends AdminBaseController
         $request->validate([
             'code'=>'required',
             'name'=>'required',
-            'title'=>'required'
+            'title'=>'required',
+            'type'=>'required'
         ]);
 
         Department::find($request->departmentId)->updateProgramme($request->all());

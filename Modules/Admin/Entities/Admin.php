@@ -7,6 +7,7 @@ use Modules\Staff\Entities\Gender;
 use Modules\Staff\Entities\Religion;
 use Modules\College\Entities\College;
 use Modules\Student\Entities\Programme;
+use Modules\Department\Entities\ProgrammeType;
 use Modules\Staff\Entities\StaffCategory;
 use Modules\Department\Entities\Level;
 use Modules\Department\Entities\Semester;
@@ -64,9 +65,9 @@ class Admin extends Authenticatable
         return Gender::all();
     }
 
-    public function tribes()
+    public function programmeTypes()
     {
-        return Tribe::all();
+        return ProgrammeType::all();
     }
 
     public function programmes()
