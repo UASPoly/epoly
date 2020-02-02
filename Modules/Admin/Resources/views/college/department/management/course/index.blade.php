@@ -32,7 +32,7 @@
                         	<td>
                         		{{$course->programme ? $course->programme->title : 'Not Available' }}
                         	</td>
-                        	<td>{{$course->level->name}}</td>
+                        	<td>{{optional($course->programmeLevel)->name}}</td>
                         	<td>{{$course->semester->name}}</td>
                         	<td>
                         		<button class="btn btn-warning shadow" data-toggle="modal" data-target="#course_{{$course->id}}">

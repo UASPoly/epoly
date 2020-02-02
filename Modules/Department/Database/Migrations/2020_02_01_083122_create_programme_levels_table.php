@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateProgrammeTypeLevelsTable extends Migration
+class CreateProgrammeLevelsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,24 +13,17 @@ class CreateProgrammeTypeLevelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('programme_type_levels', function (Blueprint $table) {
+        Schema::create('programme_levels', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('programme_type_id')
+            $table->integer('programme_id')
             ->unsigned()
             ->nullable()
             ->foreign()
             ->references('id')
-            ->on('programme_types')
+            ->on('programmes')
             ->delete('restrict')
             ->update('cascade');
-            $table->integer('level_id')
-            ->unsigned()
-            ->nullable()
-            ->foreign()
-            ->references('id')
-            ->on('levels')
-            ->delete('restrict')
-            ->update('cascade');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -42,6 +35,6 @@ class CreateProgrammeTypeLevelsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('programme_type_levels');
+        Schema::dropIfExists('programme_levels');
     }
 }

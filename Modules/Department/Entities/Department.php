@@ -105,6 +105,7 @@ class Department extends BaseModel
         }
         return $flag;
     }
+
     public function lecturers()
     {
         $lecturers = [];
@@ -115,6 +116,7 @@ class Department extends BaseModel
         }
         return $lecturers;
     }
+
     public function unverifiedResults()
     {
         $results = [];
@@ -129,10 +131,12 @@ class Department extends BaseModel
         }
         return $results;
     }
+
     public function sessions()
     {
         return Session::all();
     }
+
     public function availableGraduationSessions()
     {
         $session = [];
@@ -143,6 +147,18 @@ class Department extends BaseModel
         }
         return $sessions;
     }
+
+    public function programmeLevels()
+    {
+        $levels = [];
+        foreach ($this->programmes as $programme) {
+            foreach ($programme->programmeLevels as $programmeLevel) {
+                $levels[] = $programmeLevel;
+            }
+        }
+        return $levels;
+    }
+
     public function levels()
     {
         return Level::all();

@@ -2,23 +2,36 @@
 namespace Modules\Department\Services;
 
 use Modules\Student\Entities\Programme;
+use Modules\Department\Entities\ProgrammeType;
 use Modules\Department\Entities\ProgrammeSchedule;
 
 trait HasProgramme
 {
 	public function addProgramme(array $data)
 	{
+		$errors = [];
 		if($this->programmeExist($data)){
-			session()->flash('error',['The programme already exist in the department']);
-		}else{
+			$errors[] = 'The programme already exist in the department';
+		}
 
-			$this->Programmes()->create([
+		if($this->invalidTitle($data)){
+			$errors[] = 'Invalid programme type and title note the first three letter in the title must match the selected programme type';
+		}
+
+		if(empty($errors)){
+
+			$programme = $this->Programmes()->create([
 				'name'=>strtoupper($data['name']),
 				'code'=>strtoupper($data['code']),
 				'title'=>$data['title'],
 				'programme_type_id'=>$data['type'],
 			]);
+			foreach (['I','II'] as $level) {
+				$programme->programmeLevels()->firstOrCreate(['name'=>$data['title'].' '.$level]);
+			}
 			session()->flash('message', 'Department programme added successfully');
+		}else{
+			session()->flash('error',$errors);
 		}
 		
 	}
@@ -35,26 +48,54 @@ trait HasProgramme
     	return false;
     }
 
+    public function invalidTitle($data)
+    {
+    	if(substr($data['title'], 0,2) != ProgrammeType::find($data['type'])->name){
+    		return true;
+    	}
+    	return false;
+    }
+
 	public function updateProgramme(array $data)
 	{
-		$programme = Programme::find($data['programmeId']);
-		$programme->update([
-			'name'=>strtoupper($data['name']),
-			'title'=>strtoupper($data['title']),
-			'code'=>$data['code'],
-			'programme_type_id'=>$data['type']
-		]);
-		
-		if(isset($data['scheduleAdd'])){
-			$programme->programmeSchedules()->create([
-				'schedule_id'=>$data['scheduleAdd']
-			]);
+		$errors = [];
+		if($this->programmeExist($data)){
+			$errors[] = 'The programme already exist in the department';
 		}
 
-		if(isset($data['scheduleRemove'])){
-			$schedule = ProgrammeSchedule::where(['department_programme_id'=>$programme->id,'schedule_id'=> $data['scheduleRemove']])->first();
-			$schedule->delete();
+		if($this->invalidTitle($data)){
+			$errors[] = 'Invalid programme type and title note the first three letter in the title must match the selected programme type';
 		}
+
+		if(empty($errors)){
+			$programme = Programme::find($data['programmeId']);
+			
+			foreach ($programme->programmeLevels as $programmeLevel) {
+				$newLevel = str_replace($programme->title, $data['title'], $programmeLevel->name);
+				$programmeLevel->update(['name'=>$newLevel]);
+			}
+
+			$programme->update([
+				'name'=>strtoupper($data['name']),
+				'title'=>strtoupper($data['title']),
+				'code'=>$data['code'],
+				'programme_type_id'=>$data['type']
+			]);
+
+			if(isset($data['scheduleAdd'])){
+				$programme->programmeSchedules()->create([
+					'schedule_id'=>$data['scheduleAdd']
+				]);
+			}
+
+			if(isset($data['scheduleRemove'])){
+				$schedule = ProgrammeSchedule::where(['department_programme_id'=>$programme->id,'schedule_id'=> $data['scheduleRemove']])->first();
+				$schedule->delete();
+			}
+
+	    }else{
+			session()->flash('error',$errors);
+		}		
 	}
 
 	public function activateProgramme($programmeId)

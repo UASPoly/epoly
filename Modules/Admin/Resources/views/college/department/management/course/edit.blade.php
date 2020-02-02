@@ -45,9 +45,9 @@
                     <div class="form-group">
                         <label>Level</label>
                         <select class="form-control" name="level">
-                        	<option value="{{$course->level->id}}">{{$course->level->name}}</option>
-                        	@foreach(admin()->levels() as $level)
-                        	    @if($level->id != $course->level->id && $level->id <= 5)
+                        	<option value="{{optional($course->programmeLevel)->id}}">{{optional($course->programmeLevel)->name}}</option>
+                        	@foreach($course->department->programmeLevels() as $level)
+                        	    @if($level->id != optional($course->programmeLevel)->id) 
                                 <option value="{{$level->id}}">
                                 	{{$level->name}}
                                 </option>
@@ -64,7 +64,7 @@
                     <div class="form-group">
                         <label>Semester</label>
                         <select class="form-control" name="semester">
-                        	<option value="{{$course->level->id}}">{{$course->semester->name}}</option>
+                        	<option value="{{$course->semester->id}}">{{$course->semester->name}}</option>
                         	@foreach(admin()->semesters() as $semester)
                         	    @if($semester->id != $course->semester->id )
                                 <option value="{{$semester->id}}">

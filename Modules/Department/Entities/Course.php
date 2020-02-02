@@ -41,9 +41,9 @@ class Course extends BaseModel
     	return $this->hasMany(LecturerCourse::class);
     }
 
-    public function level()
+    public function programmeLevel()
     {
-    	return $this->belongsTo(Level::class);
+    	return $this->belongsTo(ProgrammeLevel::class);
     }
 
     public function semester()
