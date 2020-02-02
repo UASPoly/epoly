@@ -47,7 +47,7 @@
                             <option value="">Select Programme</option>
                             @foreach($department->programmes as $programme)
                                 <option value="{{$programme->id}}">
-                                    {{$programme->name}}
+                                    {{$programme->title}}
                                 </option>
                             @endforeach
                         </select>
@@ -62,7 +62,7 @@
                         <label>Level</label>
                         <select class="form-control" name="level">
                         	<option value="">Select Level</option>
-                        	@foreach(admin()->levels() as $level)
+                        	@foreach($department->programmeLevels() as $level)
                                 <option value="{{$level->id}}">
                                 	{{$level->name}}
                                 </option>
@@ -92,22 +92,6 @@
                         @enderror
                     </div>
 
-                    <div class="form-group">
-                        <label>Programme</label>
-                        <select class="form-control" name="programme">
-                        	<option value="">Select Programme</option>
-                        	@foreach($department->programmes as $programme)
-                                <option value="{{$programme->id}}">
-                                	{{$programme->title}}
-                                </option>
-                        	@endforeach
-                        </select>
-                        @error('code')
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                        @enderror
-                    </div>
                     <button class="btn-block button-fullwidth cws-button bt-color-3">Register</button>  
                 </form>
             </div>

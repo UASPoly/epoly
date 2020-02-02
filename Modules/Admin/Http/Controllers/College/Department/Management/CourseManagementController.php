@@ -41,7 +41,7 @@ class CourseManagementController extends AdminBaseController
             'title'=>$request->title,
             'code'=>$request->code,
             'programme_id'=>$request->programme,
-            'level_id'=>$request->level,
+            'programme_level_id'=>$request->level,
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
@@ -72,7 +72,7 @@ class CourseManagementController extends AdminBaseController
             'title'=>$request->title,
             'code'=>$request->code,
             'programme_id'=>$request->programme,
-            'level_id'=>$request->level,
+            'programme_level_id'=>$request->level,
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
