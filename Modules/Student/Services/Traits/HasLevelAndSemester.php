@@ -2,7 +2,7 @@
 namespace Modules\Student\Services\Traits;
 
 use Illuminate\Support\Carbon;
-use Modules\Department\Entities\Level;
+use Modules\Department\Entities\ProgrammeLevel;
 
 trait HasLevelAndSemester
 
@@ -11,7 +11,7 @@ trait HasLevelAndSemester
     
     public function level()
     {
-        return Level::where('name',$this->currentLevel())->first();
+        return ProgrammeLevel::where('name',$this->currentLevel())->first();
     }
 
     protected function currentLevel()
@@ -57,7 +57,7 @@ trait HasLevelAndSemester
 
     public function levelPrefix()
     {
-        return $this->programme->programmeType->name;
+        return $this->programme->title;
     }
 
 }

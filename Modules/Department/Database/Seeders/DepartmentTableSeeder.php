@@ -32,7 +32,7 @@ class DepartmentTableSeeder extends Seeder
                 'established_date'=>'2019-10-03',
                 'admin_id'=>1,
                 'college_id'=>1,
-                'code'=>4
+                'code'=>5
             ],
             [
                 'name'=>'Statistics',
@@ -40,7 +40,7 @@ class DepartmentTableSeeder extends Seeder
                 'established_date'=>'2019-10-03',
                 'college_id'=>1,
                 'admin_id'=>1,
-                'code'=>5
+                'code'=>6
             ],
         ];
         foreach($departments as $department){

@@ -21,20 +21,20 @@ class CourseTableSeeder extends Seeder
             $course['semester_id'] = substr($course['code'], 4,1);
             switch (substr($course['code'], 3,1)) {
                 case '1':
-                    $course['level_id'] = substr($course['code'], 3,1);
+                    $course['programme_level_id'] = substr($course['code'], 3,1);
                     break;
                 case '2':
-                    $course['level_id'] = substr($course['code'], 3,1);
+                    $course['programme_level_id'] = substr($course['code'], 3,1);
                     break;
                 case '3':
-                    $course['level_id'] = substr($course['code'], 3,1)+1;
+                    $course['programme_level_id'] = substr($course['code'], 3,1)+1;
                     break;
                 case '4':
-                    $course['level_id'] = substr($course['code'], 3,1)+1;
+                    $course['programme_level_id'] = substr($course['code'], 3,1)+1;
                     break;            
                 
                 default:
-                    $course['level_id'] = 3;
+                    $course['programme_level_id'] = 3;
                     break;
             }
             $registeredCourse = Course::firstOrCreate($course);
@@ -48,7 +48,7 @@ class CourseTableSeeder extends Seeder
             //ND 1 COURSES
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM111',
                 'title'=>'Introduction to Computer',
@@ -56,7 +56,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM112',
                 'title'=>'Introduction to Digital Electronics',
@@ -64,7 +64,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM113',
                 'title'=>'Introduction to Programming',
@@ -72,7 +72,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'MTH111',
                 'title'=>'Logic and Linear Algebra',
@@ -80,7 +80,7 @@ class CourseTableSeeder extends Seeder
             ],    
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'MTH112',
                 'title'=>'Functions and Geometry',
@@ -88,7 +88,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'STA111',
                 'title'=>'Descriptive Statistics I',
@@ -96,7 +96,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'STA112',
                 'title'=>'Elementary Probability Theory',
@@ -104,7 +104,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'GNS111',
                 'title'=>'Communication in English I',
@@ -112,7 +112,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'GNS112',
                 'title'=>'Citizenship Education 1',
@@ -120,7 +120,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM121',
                 'title'=>'Scientific Programming Language Using OO Java',
@@ -128,7 +128,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM122',
                 'title'=>'Introduction to the Internet',
@@ -136,7 +136,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM123',
                 'title'=>'Computer Application Packages I',
@@ -144,7 +144,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM124',
                 'title'=>'Data Structure and Algorithms',
@@ -152,7 +152,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM125',
                 'title'=>'Introduction to System Analysis',
@@ -160,7 +160,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM126',
                 'title'=>'PC Upgrade and Maintenance',
@@ -168,7 +168,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'COM129',
                 'title'=>'Research Methods',
@@ -176,7 +176,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'EED126',
                 'title'=>'Introduction to Entrepreneurship',
@@ -184,7 +184,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'GNS121',
                 'title'=>'Citizenship Education II',
@@ -192,7 +192,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>1,
+                'programme_level_id'=>1,
                 'department_id'=>1,
                 'code'=>'PHY122',
                 'title'=>'Electricity I',
@@ -201,7 +201,7 @@ class CourseTableSeeder extends Seeder
             //ND II COURSES
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM211',
                 'title'=>'Computer Programming Using OO BASIC',
@@ -209,7 +209,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM212',
                 'title'=>'Introduction to Systems Programming',
@@ -217,7 +217,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM213',
                 'title'=>'OO COBOL',
@@ -225,7 +225,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM214',
                 'title'=>'File Organization and Management',
@@ -233,7 +233,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM215',
                 'title'=>'Computer Packages II',
@@ -241,7 +241,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM216',
                 'title'=>'Computer Systems Troubleshooting I',
@@ -249,7 +249,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'ACC211',
                 'title'=>'Principles of Accounting',
@@ -257,7 +257,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'EED216',
                 'title'=>'Practice of Entrepreneurship',
@@ -265,7 +265,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'OTM217',
                 'title'=>'Office Practice and Management',
@@ -273,7 +273,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'SWS211',
                 'title'=>'SIWES',
@@ -281,7 +281,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM221',
                 'title'=>'OO FORTRAN',
@@ -289,7 +289,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM222',
                 'title'=>'Seminar on Computer and Society',
@@ -297,7 +297,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM223',
                 'title'=>'Basic Hardware Maintenance',
@@ -305,7 +305,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM224',
                 'title'=>'Management Information System',
@@ -313,7 +313,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM225',
                 'title'=>'Web Technology',
@@ -321,7 +321,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM226',
                 'title'=>'Computer Systems Troubleshooting II',
@@ -329,7 +329,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'COM229',
                 'title'=>'Project',
@@ -337,7 +337,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'STA226',
                 'title'=>'Small Business Startup',
@@ -345,7 +345,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>2,
+                'programme_level_id'=>2,
                 'department_id'=>1,
                 'code'=>'PHY221',
                 'title'=>'Electricity II',
@@ -354,7 +354,7 @@ class CourseTableSeeder extends Seeder
             //CONVERSION COURSES 
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM011',
                 'title'=>'Computer Programming Using OO BASIC',
@@ -362,7 +362,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM012',
                 'title'=>'Introduction to Systems Programming',
@@ -370,7 +370,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM013',
                 'title'=>'OO COBOL',
@@ -378,7 +378,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM014',
                 'title'=>'File Organization and Management',
@@ -386,7 +386,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM015',
                 'title'=>'Computer Packages II',
@@ -394,7 +394,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM016',
                 'title'=>'Computer Systems Troubleshooting I',
@@ -402,7 +402,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'ACC011',
                 'title'=>'Principles of Accounting',
@@ -410,7 +410,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'EED016',
                 'title'=>'Practice of Entrepreneurship',
@@ -418,7 +418,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'OTM017',
                 'title'=>'Office Practice and Management',
@@ -426,7 +426,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'SWS011',
                 'title'=>'SIWES',
@@ -434,7 +434,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM021',
                 'title'=>'OO FORTRAN',
@@ -442,7 +442,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM022',
                 'title'=>'Seminar on Computer and Society',
@@ -450,7 +450,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM023',
                 'title'=>'Basic Hardware Maintenance',
@@ -458,7 +458,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM024',
                 'title'=>'Management Information System',
@@ -466,7 +466,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM025',
                 'title'=>'Web Technology',
@@ -474,7 +474,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM026',
                 'title'=>'Computer Systems Troubleshooting II',
@@ -482,7 +482,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'COM029',
                 'title'=>'Project',
@@ -490,7 +490,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'STA026',
                 'title'=>'Small Business Startup',
@@ -498,7 +498,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>3,
+                'programme_level_id'=>3,
                 'department_id'=>1,
                 'code'=>'PHY021',
                 'title'=>'Electricity II',
@@ -507,7 +507,7 @@ class CourseTableSeeder extends Seeder
             //HND I COURSES
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM311',
                 'title'=>'Operating System I',
@@ -515,7 +515,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM312',
                 'title'=>'Database Design I',
@@ -523,7 +523,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM313',
                 'title'=>'Computer Programming Using C++',
@@ -531,7 +531,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM314',
                 'title'=>'Computer Architecture',
@@ -539,7 +539,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM315',
                 'title'=>'Computer Electronics I',
@@ -547,7 +547,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'STA311',
                 'title'=>'Operations Research I',
@@ -555,7 +555,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'STA314',
                 'title'=>'Statistics Theory I',
@@ -563,7 +563,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'MTH313',
                 'title'=>'Numerical Method',
@@ -571,7 +571,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'OTM315',
                 'title'=>'Business Communications I',
@@ -579,7 +579,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM321',
                 'title'=>'Operating system II',
@@ -587,7 +587,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM322',
                 'title'=>'Database Design II',
@@ -595,7 +595,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM323',
                 'title'=>'Assembly Language',
@@ -603,7 +603,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM324',
                 'title'=>'Introduction to Software Engineering',
@@ -611,7 +611,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM325',
                 'title'=>'Introduction to Human-Computer Interface (HCI)',
@@ -619,7 +619,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'EED323',
                 'title'=>'Entrepreneurship Development I',
@@ -627,7 +627,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'STA321',
                 'title'=>'Statistics Theory II',
@@ -636,7 +636,7 @@ class CourseTableSeeder extends Seeder
             //HND II COURSES
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM411',
                 'title'=>'Computer Electronics II',
@@ -644,7 +644,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM412',
                 'title'=>'Computer Programming (OO PASCAL)',
@@ -652,7 +652,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM413',
                 'title'=>'Project Management',
@@ -660,7 +660,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM414',
                 'title'=>'Compiler Construction',
@@ -668,7 +668,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM415',
                 'title'=>'Data Communication and Networks',
@@ -676,7 +676,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM416',
                 'title'=>'Multimedia',
@@ -684,7 +684,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'EED413',
                 'title'=>'Entrepreneurship Development II',
@@ -692,7 +692,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'OTM412',
                 'title'=>'Business Communications II',
@@ -700,7 +700,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>1,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'STA411',
                 'title'=>'Operations Research II',
@@ -708,7 +708,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM422',
                 'title'=>'Computer Graphics and Animation',
@@ -716,7 +716,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM423',
                 'title'=>'Introduction to Artificial Intelligence and Expert systems.',
@@ -724,7 +724,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM424',
                 'title'=>'Professional Practice in IT ',
@@ -732,7 +732,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM425',
                 'title'=>'Seminar on current topics in computing ',
@@ -740,7 +740,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM426',
                 'title'=>'Small Business Start Up',
@@ -748,7 +748,7 @@ class CourseTableSeeder extends Seeder
             ],
             [
                 'semester_id'=>2,
-                'level_id'=>5,
+                'programme_level_id'=>5,
                 'department_id'=>1,
                 'code'=>'COM429',
                 'title'=>'Project',

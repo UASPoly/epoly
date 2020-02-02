@@ -11,5 +11,14 @@ class ProgrammeLevel extends BaseModel
     {
     	return $this->belongsTo('Modules\Student\Entities\Programme');
     }
+    
+    public function courses()
+    {
+    	return $this->hasMany(Course::class);
+    }
 
+    public function sessionRegistrations()
+    {
+        return $this->hasMany('Modules\Student\Entities\SessionRegistration');
+    }
 }

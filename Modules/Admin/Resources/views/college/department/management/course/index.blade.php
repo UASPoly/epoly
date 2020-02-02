@@ -23,7 +23,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						@foreach($department->courses as $course)
+						@foreach($department->courses()->paginate(5) as $course)
                         <tr>
                         	<td>{{$loop->index+1}}</td>
                         	<td>{{$course->title}}</td>
@@ -51,6 +51,9 @@
 						@endforeach
 					</tbody>
 				</table>
+				<div>
+					{{$department->courses()->paginate(5)->links()}}
+				</div>
 			</div>
 		</div>
 	</div>

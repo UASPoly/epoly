@@ -1,5 +1,4 @@
- <section class="fullwidth-background padding-section">
-            <div class="grid-row">
+
 <div class="tp-banner-container">
 		<div class="tp-banner-slider">
 			<ul>
@@ -42,5 +41,3 @@
 			</ul>
 		</div>
 	</div>
-</div>
-</section>

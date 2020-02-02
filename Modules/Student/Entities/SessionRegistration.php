@@ -7,9 +7,9 @@ use Modules\Core\Entities\BaseModel;
 class  SessionRegistration extends BaseModel
 {
     
-    public function level()
+    public function programmeLevel()
     {
-        return $this->belongsTo('Modules\Department\Entities\Level');
+        return $this->belongsTo('Modules\Department\Entities\ProgrammeLevel');
     }
 
     public function session()

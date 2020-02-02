@@ -11,7 +11,6 @@ class NewCalender
 
 	function __construct(array $data)
 	{
-
 		$this->data = $data;
 		new RegisterSemesterCalenders([1,2],$this->data);
 	}

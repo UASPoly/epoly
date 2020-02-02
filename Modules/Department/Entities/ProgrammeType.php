@@ -6,10 +6,6 @@ use Modules\Core\Entities\BaseModel;
 
 class ProgrammeType extends BaseModel
 {
-    public function programmeTypeLevels()
-    {
-    	return $this->hasMany(ProgrammeTypeLevel::class);
-    }
 
     public function programmes()
     {

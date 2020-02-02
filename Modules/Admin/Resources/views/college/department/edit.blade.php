@@ -13,10 +13,10 @@
                 	</div>
                 </div>
                 <br><br>
-                <form class="login-form" action="{{route('admin.college.update',[str_replace(' ','-',strtolower($department->name)),$department->id])}}" method="post">
+                <form class="login-form" action="{{route('admin.college.department.update',[$department->id])}}" method="post">
                     @csrf
                     <div class="form-group">
-                    	<label>Department Name</label>
+                    	<label>Departmentss Name</label>
                         <input type="text" name="name" class="form-control" value="{{$department->name}}">
                         @error('name')
                             <span class="invalid-feedback" role="alert">
@@ -28,7 +28,7 @@
 			        	<label>College</label>
 			            <select name="college" class="form-control">
 			            	<option value="{{$department->college->id}}">{{$department->college->name}}</option>
-			            	@foreach(admin()->colleges as $college)
+			            	@foreach(admin()->colleges() as $college)
 			            	    @if($department->college->id != $college->id)
 			                    <option value="{{$college->id}}">
 			                     	{{$college->name}}
@@ -57,7 +57,7 @@
                     </div>
                     <div class="form-group">
                         <label>Department Code</label>
-                        <input type="number" name="code" class="form-control"> 
+                        <input type="number" name="code" class="form-control" value="{{$department->code}}"> 
                     </div>
                     <button class="button-fullwidth cws-button bt-color-3">Save Changes</button>
                 </form>

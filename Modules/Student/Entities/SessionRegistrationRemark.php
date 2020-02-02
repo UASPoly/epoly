@@ -17,4 +17,9 @@ class SessionRegistrationRemark extends BaseModel
     	return $this->belongsTo(Remark::class);
     }
 
+    public function programmeLevel()
+    {
+    	return $this->belongsTo('Modules\DEpartment\Entities\ProgrammeLevel');
+    }
+
 }

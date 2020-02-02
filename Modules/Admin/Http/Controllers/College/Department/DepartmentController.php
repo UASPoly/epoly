@@ -51,7 +51,7 @@ class DepartmentController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function edit($department, $department_id)
+    public function edit($department_id)
     {
         return view('admin::college.department.edit',['department'=>Department::find($department_id)]);
     }
@@ -73,7 +73,7 @@ class DepartmentController extends AdminBaseController
             'description'=>$request->description,
         ]);
         session()->flash('message','Department updated successfully');
-        return redirect()->route('admin.college.department.index');
+        return back();
     }
 
     /**

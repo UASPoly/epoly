@@ -25,7 +25,6 @@ class LevelTableSeeder extends Seeder
             ['name'=>'CONVERSION'],
             ['name'=>'HND I'],
             ['name'=>'HND II'],
-            
         ];
         foreach ($levels as $level) {
             Level::firstOrCreate($level);
