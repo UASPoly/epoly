@@ -14,7 +14,7 @@
 				                <i class="fa fa-print"></i>
 				                <span>Print</span>
 				            </a>
-				            <a href="{{route('exam.officer.student.biodata.edit',[$student->id])}}" class=" cws-button bt-color-1 pull-right m-3">
+				            <a href="{{route($route ?? 'exam.officer.student.biodata.edit',[$student->id])}}" class=" cws-button bt-color-1 pull-right m-3">
 				                <i class="fa fa-"></i>
 				                <span>Edit</span>
 				            </a>

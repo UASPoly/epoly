@@ -40,9 +40,6 @@
         <li>
             <a href="{{route('exam.officer.department.course.create')}}">Register Course</a>
         </li>
-        <li>
-            <a href="#">Upload Courses</a>
-        </li>
         
         <li>
             <a href="{{route('exam.officer.department.course.index')}}">View Courses</a>

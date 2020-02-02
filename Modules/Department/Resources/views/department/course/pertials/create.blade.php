@@ -40,12 +40,24 @@
 		        </div>
 		        <div class="form-group">
 		        	<label class="text text-success centered">Programme</label>
+		            <select name="programme" class="form-control">
+		            	<option value="">Coures Programme</option>
+		            	@foreach(department()->programmes as $programme)
+		                    <option value="{{$programme->id}}">{{$programme->title}}</option>
+		            	@endforeach
+		            </select>
+		            @error('programme')
+		                <span class="invalid-feedback" role="alert">
+		                    <strong>{{ $message }}</strong>
+		                </span>
+		            @enderror
+		        </div>
+		        <div class="form-group">
+		        	<label class="text text-success centered">Level</label>
 		            <select name="level" class="form-control">
-		            	<option value=""></option>
-		            	@foreach(department()->levels() as $level)
-		            	     @if($level->id <= 5)
-		                     <option value="{{$level->id}}">{{$level->name}}</option>
-		                     @endif
+		            	<option value="">Course Level</option>
+		            	@foreach(department()->programmeLevels() as $level)
+		                    <option value="{{$level->id}}">{{$level->name}}</option>
 		            	@endforeach
 		            </select>
 		            @error('level')

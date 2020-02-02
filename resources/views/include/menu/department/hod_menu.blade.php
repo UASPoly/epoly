@@ -13,13 +13,14 @@
     <a href="#">Admissions</a>
     <ul>
         <li>
-            <a href="{{route('department.admission.create')}}">New Admission</a>
+            <a href="{{route('department.student.admission.generate.number.index')}}">New Admission</a>
         </li>
         <li>
-            <a href="{{route('department.admission.index')}}">View Student Detail</a>
+            <a href="{{route('department.student.admission.index')}}">View Student Detail</a>
         </li>
     </ul>
 </li>
+
 <li>
     <a href="#">Graduations</a>
     <ul>
@@ -40,12 +41,9 @@
         <li>
             <a href="{{route('department.course.create')}}">Register Course</a>
         </li>
-        <li>
-            <a href="#">Upload Courses</a>
-        </li>
         
         <li>
-            <a href="{{route('department.course.create')}}">View Courses</a>
+            <a href="{{route('department.course.index')}}">View Courses</a>
         </li>
     </ul>
 </li>

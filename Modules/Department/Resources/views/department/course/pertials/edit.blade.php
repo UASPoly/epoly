@@ -40,11 +40,29 @@
 		            </select>
 		        </div>
 		        <div class="form-group">
+		        	<label class="text text-success">Programme</label>
+		            <select name="programme" class="form-control">
+		            	<option value="{{$course->programme->id}}">{{$course->programme->title}}</option>
+		            	@foreach(department()->programmes as $programme)
+		            	    @if($course->programme->id != $programme->id)
+		                        <option value="{{$programme->id}}">
+		                        	{{$programme->name}}
+		                        </option>
+		                    @endif 
+		            	@endforeach
+		            </select>
+		            @error('programme')
+		                <span class="invalid-feedback" role="alert">
+		                    <strong>{{ $message }}</strong>
+		                </span>
+		            @enderror
+		        </div>
+		        <div class="form-group">
 		        	<label class="text text-success">Level</label>
 		            <select name="level" class="form-control">
-		            	<option value="{{$course->level->id}}">{{$course->level->name}}</option>
-		            	@foreach(department()->levels() as $level)
-		            	    @if($course->level->id != $level->id)
+		            	<option value="{{$course->programmeLevel->id}}">{{$course->programmeLevel->name}}</option>
+		            	@foreach(department()->programmeLevels() as $level)
+		            	    @if($course->programmeLevel->id != $level->id)
 		                        <option value="{{$level->id}}">
 		                        	{{$level->name}}
 		                        </option>
@@ -75,7 +93,7 @@
 		                </span>
 		            @enderror
 		        </div>
-		        <button class="button-fullwidth cws-button bt-color-3">Save Changes</button>
+		        <button class="btn-block button-fullwidth cws-button bt-color-3">Save Changes</button>
 		    </form><br><br>
 		</div>
 	</div>

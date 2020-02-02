@@ -14,6 +14,44 @@
 Route::prefix('department')
 ->name('department.')
 ->group(function() {
+
+    //admission routes
+	Route::prefix('student/admission')
+		->name('student.admission.')
+		->namespace('Admission')
+		->group(function() {
+
+			Route::get('/', 'AdmissionController@index')->name('index');
+
+			Route::get('/generate-admission-number', 'AdmissionController@generateNumberIndex')->name('generate.number.index');
+
+			Route::post('{admission_id}/update-admission', 'AdmissionController@update')->name('update');
+
+			Route::post('{admissionNo}/register-genrated-number', 'AdmissionController@registerGeneratedNumber')->name('register.generated.number');
+
+			Route::get('{admission_id}/edit-admission', 'AdmissionController@edit')->name('edit');
+			Route::get('{admissionNo}/programme/{programmeId}/generated-number-registration', 'AdmissionController@generatedNumberRegistration')->name('register.generated.number.index');
+
+			Route::get('{admission_id}/revoke-admission', 'AdmissionController@revokeAdmission')->name('revoke');
+
+			Route::post('/generate-number', 'AdmissionController@generateNumber')->name('generate.number');
+
+			Route::get('{admission_id}/delete-admission', 'AdmissionController@delete')->name('delete');
+			
+		});
+		//student routes
+		Route::prefix('student/')
+		->name('student.')
+		->namespace('Student')
+		->group(function() {
+            Route::get('{studentID}/biodata/view', 'StudentController@viewBiodata')->name('view.biodata');
+            Route::get('{studentID}/biodata/edit', 'StudentController@editBiodata')->name('biodata.edit');
+            Route::post('{studentID}/biodata/update', 'StudentController@updateBiodata')->name('biodata.update');
+            Route::get('/', 'StudentController@student')->name('student.index');
+            Route::get('/{state}/{session}/admitted', 'StudentController@availableStudent')->name('student.available');
+            Route::post('/search', 'StudentController@searchStudent')->name('student.search');
+
+		});
     Route::prefix('lecturer')
 		->name('lecturer.')
 		->group(function() {
@@ -161,10 +199,10 @@ Route::prefix('department')
 
 			Route::get('/', 'CourseController@index')->name('index');
 			Route::get('/create-course', 'CourseController@create')->name('create');
-			Route::post('{course_id}/update-course', 'CourseController@update')->name('update');
-			Route::get('{course_id}/edit-course', 'CourseController@edit')->name('edit');
-			Route::post('/register-course', 'CourseController@register')->name('register');
-			Route::get('{course_id}/delete-course', 'CourseController@delete')->name('delete');
+			Route::post('{course_id}/update', 'CourseController@update')->name('update');
+			Route::get('{course_id}/edit', 'CourseController@edit')->name('edit');
+			Route::post('/register', 'CourseController@register')->name('register');
+			Route::get('{course_id}/delete', 'CourseController@delete')->name('delete');
 
 			Route::prefix('allocation')
 			->name('allocation.')

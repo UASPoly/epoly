@@ -41,7 +41,8 @@ class CourseController extends ExamOfficerBaseController
         $course = department()->courses()->firstOrCreate([
             'code'=>$request->code,
             'title'=>$request->title,
-            'level_id'=>$request->level,
+            'programme_level_id'=>$request->level,
+            'programme__id'=>$request->programme,
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
@@ -76,7 +77,8 @@ class CourseController extends ExamOfficerBaseController
         $course->update([
             'code'=>$request->code,
             'title'=>$request->title,
-            'level_id'=>$request->level,
+            'programme_level_id'=>$request->level,
+            'programme_id'=>$request->programme,
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
