@@ -45,7 +45,7 @@ class CollegeController extends AdminBaseController
         return back();
     }
 
-    public function edit($college,$college_id)
+    public function edit($college_id)
     {
         return view('admin::college.edit',['college'=>College::find($college_id)]);
     }
@@ -56,7 +56,7 @@ class CollegeController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function update(CollegeFormRequest $request, $college, $college_id)
+    public function update(CollegeFormRequest $request, $college_id)
     {
         $college = College::find($college_id);
         $college->update([
@@ -75,7 +75,7 @@ class CollegeController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function delete($college,$college_id)
+    public function delete($college_id)
     {
         $college = College::find($college_id);
         if($college->departments){

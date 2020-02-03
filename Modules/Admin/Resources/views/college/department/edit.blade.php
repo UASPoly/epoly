@@ -16,7 +16,7 @@
                 <form class="login-form" action="{{route('admin.college.department.update',[$department->id])}}" method="post">
                     @csrf
                     <div class="form-group">
-                    	<label>Departmentss Name</label>
+                    	<label>Department Name</label>
                         <input type="text" name="name" class="form-control" value="{{$department->name}}">
                         @error('name')
                             <span class="invalid-feedback" role="alert">

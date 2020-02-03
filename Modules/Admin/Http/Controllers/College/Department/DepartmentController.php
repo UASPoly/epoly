@@ -62,7 +62,7 @@ class DepartmentController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function update(DepartmentFormRequest $request, $id)
+    public function update(DepartmentFormRequest $request, $department_id)
     {
         $department = Department::find($department_id);
         $department->update([

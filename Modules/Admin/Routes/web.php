@@ -57,8 +57,8 @@ Route::prefix('admin')
   	Route::get('/create', 'CollegeController@create')->name('create');
   	Route::post('/register', 'CollegeController@register')->name('register');
     Route::get('/{college_id}/edit', 'CollegeController@edit')->name('edit');
-  	Route::post('/{college}/{college_id}/update', 'CollegeController@update')->name('update');
-  	Route::get('/{college}/{college_id}/delete', 'CollegeController@delete')->name('delete');
+  	Route::post('/{college_id}/update', 'CollegeController@update')->name('update');
+  	Route::get('/{college_id}/delete', 'CollegeController@delete')->name('delete');
     
 
     //college management routes
@@ -88,8 +88,8 @@ Route::prefix('admin')
 		  	Route::get('/{collegeId}/create', 'DepartmentController@create')->name('create');
 		  	Route::post('/register', 'DepartmentController@register')->name('register');
 		  	Route::post('/{department_id}/update', 'DepartmentController@update')->name('update');
-		  	Route::get('{department_id}/edit', 'DepartmentController@edit')->name('edit');
-		  	Route::get('{department_id}/delete', 'DepartmentController@delete')->name('delete');
+		  	Route::get('/{department_id}/edit', 'DepartmentController@edit')->name('edit');
+		  	Route::get('/{department_id}/delete', 'DepartmentController@delete')->name('delete');
 
         //department lecturer appointment management routes
         Route::prefix('appointments')

@@ -13,7 +13,7 @@
                 	</div>
                 </div>
                 <br><br>
-                <form class="login-form" action="{{route('admin.college.update',[str_replace(' ','-',strtolower($college->name)),$college->id])}}" method="post">
+                <form class="login-form" action="{{route('admin.college.update',[$college->id])}}" method="post">
                     @csrf
                     <div class="form-group">
                     	<label>College Name</label>

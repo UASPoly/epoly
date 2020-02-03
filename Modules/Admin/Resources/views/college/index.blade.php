@@ -24,8 +24,8 @@
                             <div class="time"><i class="fa fa-clock-o"></i>Established At {{$college->established_date}}</div>
                             <div class="divider"></div>
                             <div class="description">{{$college->description}}</div>
-                            <button class="btn btn-primary"><a href="{{route('admin.college.edit',[str_replace(' ','-',strtolower($college->name)),$college->id])}}"  style="color: white">Edit</a></button>
-                            <button class="btn btn-primary"><a href="{{route('admin.college.delete',[str_replace(' ','-',strtolower($college->name)),$college->id])}}" onclick="confirm('Are you sure you want delete this college')" style="color: white">Delete</a></button>
+                            <button class="btn btn-primary"><a href="{{route('admin.college.edit',[$college->id])}}"  style="color: white">Edit</a></button>
+                            <button class="btn btn-primary"><a href="{{route('admin.college.delete',[$college->id])}}" onclick="confirm('Are you sure you want delete this college')" style="color: white">Delete</a></button>
                             <button class="btn btn-primary"><a href="{{route('admin.college.management.index',[$college->id])}}" style="color: white">Management</a></button>
                         </div>
                     </div>
