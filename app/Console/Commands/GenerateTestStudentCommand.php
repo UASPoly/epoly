@@ -31,7 +31,7 @@ class GenerateTestStudentCommand extends Command
     public function __construct()
     {
         parent::__construct();
-        $this->department = Department::find(1);
+        //$this->department = Department::find(1);
     }
 
     /**

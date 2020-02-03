@@ -18,7 +18,7 @@
 			    <div class="col-md-4">
 			        <!-- course item -->
 			        <div class="course-item shadow">
-			            <div class="course-name clear-fix">
+			            <div class="course-name clear-fix shadow">
 			            <h3><a href="#">{{$department->name}}</a></h3>
 			                </div>
 			            <div class="course-date bg-color-1 clear-fix">
