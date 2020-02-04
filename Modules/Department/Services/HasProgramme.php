@@ -50,7 +50,7 @@ trait HasProgramme
 
     public function invalidTitle($data)
     {
-    	if(substr($data['title'], 0,2) != ProgrammeType::find($data['type'])->name){
+    	if(substr($data['title'], 0,2) != substr(ProgrammeType::find($data['type'])->name, 0,2)){
     		return true;
     	}
     	return false;

@@ -22,7 +22,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label>Programme Title</label>
+                        <label>Programme Abbreviation</label>
                         <input type="text" name="title" class="form-control" id="programme" placeholder="NDCS">   
                         @error('title')
                             <span class="invalid-feedback" role="alert">
