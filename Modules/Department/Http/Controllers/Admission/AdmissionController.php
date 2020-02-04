@@ -38,7 +38,7 @@ class AdmissionController extends HodBaseController
      */
     public function generateNumberIndex()
     {
-        return view('department::admission.create',['route'=>'department.student.admission.generate.number']);
+        return view('department::department.admission.create',['route'=>'department.student.admission.generate.number']);
     }
 
     public function generateNumber(Request $request)
