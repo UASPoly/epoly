@@ -16,6 +16,10 @@ class AdmissionController extends HodBaseController
      * Display a listing of the resource.
      * @return Response
      */
+    public function search()
+    {
+        return view('department::department.admission.search',['sessions'=>Session::all()]);
+    }
     public function index()
     {
         return view('department::department.admission.index',['route'=>[
