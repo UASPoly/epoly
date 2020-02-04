@@ -125,6 +125,6 @@
     <script src="{{ asset('js/jquery.fancybox-media.js')}}"></script>
     <script src="{{ asset('js/retina.min.js')}}"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    @yield('script')
+    @yield('scripts')
 </body>
 </html>

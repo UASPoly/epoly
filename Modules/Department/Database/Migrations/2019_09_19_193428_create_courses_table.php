@@ -31,12 +31,20 @@ class CreateCoursesTable extends Migration
             ->on('semesters')
             ->delete('restrict')
             ->update('cascade');
-            $table->integer('level_id')
+            $table->integer('programme_level_id')
             ->unsigned()
             ->nullable()
             ->foreign()
             ->references('id')
-            ->on('levels')
+            ->on('programme_levels')
+            ->delete('restrict')
+            ->update('cascade');
+            $table->integer('programme_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('programmes')
             ->delete('restrict')
             ->update('cascade');
             $table->string('title');

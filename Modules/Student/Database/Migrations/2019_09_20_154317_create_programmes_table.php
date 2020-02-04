@@ -23,6 +23,14 @@ class CreateProgrammesTable extends Migration
             ->on('departments')
             ->delete('restrict')
             ->update('cascade');
+            $table->integer('programme_type_id')
+            ->unsigned()
+            ->nullable()
+            ->foreign()
+            ->references('id')
+            ->on('programme_types')
+            ->delete('restrict')
+            ->update('cascade');
             $table->string('name');
             $table->string('title');
             $table->string('code');

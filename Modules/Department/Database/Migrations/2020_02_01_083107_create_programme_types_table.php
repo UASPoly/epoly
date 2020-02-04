@@ -13,23 +13,11 @@ class CreateProgrammeTypesTable extends Migration
      */
     public function up()
     {
-        // Schema::create('programme_types', function (Blueprint $table) {
-        //     $table->bigIncrements('id');
-        //     $table->string('name');
-        //     $table->timestamps();
-        // });
-        //add programme type id to programmes
-        // Schema::table('programmes', function (Blueprint $table) {
-        //     $table->integer('programme_type_id')
-        //     ->unsigned()
-        //     ->nullable()
-        //     ->foreign()
-        //     ->references('id')
-        //     ->on('programme_types')
-        //     ->delete('restrict')
-        //     ->update('cascade');
-        // });
-        //add programme id to course
+        Schema::create('programme_types', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name');
+            $table->timestamps();
+        });
         
     }
 

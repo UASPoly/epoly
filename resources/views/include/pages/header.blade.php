@@ -22,11 +22,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
     <link rel="stylesheet" href="{{ asset('css/form.css')}}">
     <!-- Scripts -->
-    <script>
-        window.Laravel = {!! json_encode([
-            'csrfToken' => csrf_token(),
-        ]) !!};
-    </script>
+    <script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
 
     @yield('header')
 </head>

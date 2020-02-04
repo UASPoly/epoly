@@ -70,9 +70,7 @@
                                         </li>
                                     <!-- the modal is included from main layouts.app -->
                                     @endif
-                                    <li>
-                                        <a href="{{route(calendar_route())}}">Calendar Count Down</a>
-                                    </li>
+                                    <!--  -->
                                 </ul>
                                 <!-- / sub menu -->
                             </li>

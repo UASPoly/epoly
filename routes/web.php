@@ -33,3 +33,6 @@ Route::post('/calender/acticate/register', function(Request $request){
 
 })->name('admin.session.activate.register');
 
+Route::get('/testing',function(){
+	return view('test');
+});

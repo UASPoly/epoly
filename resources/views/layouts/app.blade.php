@@ -1,7 +1,7 @@
 @include('include.pages.header')
 @include('include.pages.nav_bar')
 <!-- content -->
-<div class="container">
+<div class="container" id="app">
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
