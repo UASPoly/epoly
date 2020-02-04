@@ -2,10 +2,10 @@
 	<br>
 	<div class="card shadow">
 		<div class="card-header shadow">
-			<h5 class="center">LIST OF REGISTERED STUDENTS IN {{strtoupper(department()->name)}}  FOR {{currentSession()->name}} SESSION</h5>
+			<h5 class="center">LIST OF REGISTERED STUDENTS IN {{strtoupper(department()->name)}}  FOR {{$session->name}} SESSION</h5>
 		</div>
 		<div class="card-body">
-			@if(count(department()->admissions->where('session_id',currentSession()->id))>0)
+			@if(count(department()->admissions->where('session_id',$session->id))>0)
 			    <table class="table shadow">
 			     	<thead>
 			     		<tr>
@@ -20,7 +20,7 @@
 			     		</tr>
 			     	</thead>
 			     	<tbody>
-			     		@foreach(department()->admissions->where('session_id',currentSession()->id) as $admission)
+			     		@foreach(department()->admissions->where('session_id',$session->id) as $admission)
 			     		<tr>
 			     			<td>{{$loop->index+1}}</td>
 			     			<td>
@@ -34,14 +34,14 @@
 			     			<td>{{$admission->student->phone}}</td>
 			     			<td>{{$admission->student->is_active == 1 ? 'Active' : 'Revoked'}}</td>
 			     			<td>
-			     				<button class="btn btn-danger" onclick="confirm('Are you sure you want to delete this student from the list of students in this department')"><a href="{{route($route['delete'] ?? 'department.admission.delete',['admission_id'=>$admission->id])}}" style="color: white">Delete</a> </i>
+			     				<button class="btn btn-danger shadow" onclick="confirm('Are you sure you want to delete this student from the list of students in this department')"><a href="{{route($route['delete'] ?? 'department.admission.delete',['admission_id'=>$admission->id])}}" style="color: white">Delete</a> </i>
 			     				</button>
 
-			     				<button class="btn btn-info">
+			     				<button class="btn btn-info shadow">
 			     					<a href="{{route($route['view'] ?? 'department.admission.edit',[$admission->student->id])}}" style="color: white">View</a></i>
 			     				</button>
 
-			     				<button class="btn btn-warning " ><a href="{{route($route['revoke'] ?? 'department.admission.revoke',['admission_id'=>$admission->id])}}" style="color: white" onclick="confirm('Are you sure you want to revoke this student from having access to his account')" class="text text-primary">{{$admission->student->is_active == 1 ? 'Revoke' : 'Activate'}}</a></i>
+			     				<button class="btn btn-warning shadow" ><a href="{{route($route['revoke'] ?? 'department.admission.revoke',['admission_id'=>$admission->id])}}" style="color: white" onclick="confirm('Are you sure you want to revoke this student from having access to his account')" class="text text-primary">{{$admission->student->is_active == 1 ? 'Revoke' : 'Activate'}}</a></i>
 			     				</button>
 			     			</td>
 			     		</tr>

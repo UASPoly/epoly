@@ -6,7 +6,7 @@
             <a href="{{route('exam.officer.student.admission.generate.number.index')}}">New Admission</a>
         </li>
         <li>
-            <a href="{{route('exam.officer.student.admission.index')}}">View Registered List</a>
+            <a href="{{route('exam.officer.student.admission.search')}}">View Registered List</a>
         </li>
     </ul>
 </li>

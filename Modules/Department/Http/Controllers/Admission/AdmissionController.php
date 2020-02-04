@@ -20,9 +20,12 @@ class AdmissionController extends HodBaseController
     {
         return view('department::department.admission.search',['sessions'=>Session::all()]);
     }
-    public function index()
+
+    public function index(Request $request)
     {
-        return view('department::department.admission.index',['route'=>[
+        $request->validate(['session'=>'required']);
+
+        return view('department::department.admission.index',['session'=>Session::find($request->session),'route'=>[
             'delete'=>'department.student.admission.delete',
             'view'=>'department.student.view.biodata',
             'revoke'=>'department.student.admission.revoke',

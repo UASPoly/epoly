@@ -16,7 +16,7 @@
             <a href="{{route('department.student.admission.generate.number.index')}}">New Admission</a>
         </li>
         <li>
-            <a href="{{route('department.student.admission.index')}}">View Student Detail</a>
+            <a href="{{route('department.student.admission.search')}}">View Student Detail</a>
         </li>
     </ul>
 </li>

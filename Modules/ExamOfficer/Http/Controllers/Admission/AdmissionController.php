@@ -5,6 +5,7 @@ namespace Modules\ExamOfficer\Http\Controllers\Admission;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
+use Modules\Admin\Entities\Session;
 use Modules\Department\Entities\Admission;
 use Modules\Department\Http\Requests\Admission\AdmissionFormRequest;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
@@ -15,9 +16,16 @@ class AdmissionController extends ExamOfficerBaseController
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function search()
     {
-        return view('examofficer::admission.index',['route'=>[
+        return view('examofficer::admission.search',['route'=>'exam.officer.student.admission.index','sessions'=>Session::all()]);
+    }
+
+    public function index(Request $request)
+    {
+        $request->validate(['session'=>'required']);
+
+        return view('examofficer::admission.index',['session'=>Session::find($request->session),'route'=>[
             'delete'=>'exam.officer.student.admission.delete',
             'view'=>'exam.officer.student.view.biodata',
             'revoke'=>'exam.officer.student.admission.revoke',

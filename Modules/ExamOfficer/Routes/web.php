@@ -55,7 +55,9 @@ Route::prefix('exam-officer')
 		->namespace('Admission')
 		->group(function() {
 
-			Route::get('/', 'AdmissionController@index')->name('index');
+			Route::get('/search', 'AdmissionController@search')->name('search');
+
+			Route::post('/available', 'AdmissionController@index')->name('index');
 
 			Route::get('/generate-admission-number', 'AdmissionController@generateNumberIndex')->name('generate.number.index');
 
