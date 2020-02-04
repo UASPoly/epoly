@@ -8,7 +8,6 @@
     @include('department::department.admission.pertials.registration')
 @endsection
 
-@section('script')
+@section('scripts')
     @include('department::department.admission.pertials.imagePreview')
-    @include('department::department.admission.pertials.formWizard')
 @endsection
