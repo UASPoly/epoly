@@ -3,6 +3,8 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Modules\Department\Entities\Admission;
+use Modules\Department\Entities\ReservedDepartmentSessionAdmission;
 
 class ReservedMissingAdmissionNumberComand extends Command
 {
@@ -11,7 +13,7 @@ class ReservedMissingAdmissionNumberComand extends Command
      *
      * @var string
      */
-    protected $signature = 'command:name';
+    protected $signature = 'sospoly:reserved-missing-admission';
 
     /**
      * The console command description.
@@ -37,6 +39,27 @@ class ReservedMissingAdmissionNumberComand extends Command
      */
     public function handle()
     {
-        //
+        $bar = $this->output->createProgressBar(count(Admission::all()));
+
+        $bar->setBarWidth(100);
+
+        $bar->start();
+        $admission_no = '195491067';
+        foreach (Admission::all() as $admission) {
+            if($admission == $admission_no){
+                $admission_no = null;
+            }
+            $bar->advance();
+        }
+        if($admission_no){
+            ReservedDepartmentSessionAdmission::firstOrCreate([
+                'session_id' => currentSession()->id,
+                'department_id' => 1,
+                'programme_id' => 1,
+                'schedule_id' => 1,
+                'admission_no' => '195491067',
+            ]);
+        }
+        $bar->finish();
     }
 }

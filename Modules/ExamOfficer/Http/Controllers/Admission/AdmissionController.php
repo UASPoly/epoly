@@ -31,7 +31,26 @@ class AdmissionController extends ExamOfficerBaseController
             'revoke'=>'exam.officer.student.admission.revoke',
         ]]);
     }
+    public function getAdmissionData()
+    {
+        $admission = Admission::select(['id', 'admission_no']);
 
+        return Datatables::of($admission)
+            ->addColumn('Name', function ($admission) {
+                return $admissiion->student->first_name.' '.$admission->student->middle_name.' '.$admisiion->student->last_name;
+            })
+            ->addColumn('Schedule', function ($admission) {
+                return $admissiion->student->schedule->name;
+            })
+            ->addColumn('Programme', function ($admission) {
+                return $admissiion->programme->title;
+            })
+            ->addColumn('PHone', function ($admission) {
+                return $admissiion->student->phone;
+            })
+            
+            ->make(true);
+    }
     /**
      * Show the form for creating a new resource.
      * @return Response
