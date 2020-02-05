@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Hash;
 use Modules\Core\Services\Admission\FileUpload;
 use Modules\Department\Entities\DepartmentProgramme;
 use Modules\Department\Entities\DepartmentSessionAdmission;
+use Modules\Department\Entities\ReservedDepartmentSessionAdmission;
 
 trait CanUpdateAdmission
 
@@ -25,8 +26,17 @@ trait CanUpdateAdmission
     	}
     	$this->updateStudendInformation($data);
     	$this->updateStudentAccount($data);
+        $this->clearThisNumberReservation();
+        
     }
 
+    public function clearThisNumberReservation()
+    {
+        $reserved = ReservedDepartmentSessionAdmission::where(['session_id'=>currentSession()->id,'admission_no'=>$this->admission_no])->first();
+        if($reserved){
+            $reserved->delete();
+        }
+    }
     public function needToGenerateAdmissionNo($data)
     {
     	if($data['programme'] != $this->programme_id || $data['schedule'] != $this->student->schedule->id){

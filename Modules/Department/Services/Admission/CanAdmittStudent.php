@@ -4,6 +4,7 @@ namespace Modules\Department\Services\Admission;
 use Illuminate\Support\Facades\Hash;
 use Modules\Core\Services\Admission\FileUpload;
 use Modules\Department\Entities\DepartmentSessionAdmission;
+use Modules\Department\Entities\ReservedDepartmentSessionAdmission;
 
 trait CanAdmittStudent
 
@@ -13,7 +14,7 @@ trait CanAdmittStudent
 	public function generateNewAdmission(array $data)
 	{
 		$admission = $this->registerStudentAdmission($data);
-
+        
 		session()->flash('message','Congratulation this admission is registered successfully and this student can logged in as student using '.$admission->admission_no.' as user name and '.$admission->admission_no.' as his password');
 		return $admission;
 	}
@@ -27,12 +28,22 @@ trait CanAdmittStudent
             'session_id'=>currentSession()->id,
             'year'=> substr(currentSession()->name, 5)
         ]);
-        $this->updateThisAdmissionCounter($data['admission_no']);
+        
+        if($this->findFromReservedNo($data['admission_no'])){
+            $admission->clearThisNumberReservation();
+        }else{
+            $this->updateThisAdmissionCounter($data['admission_no']);
+        }
         $this->registerStudent($admission,$data);
-
         return $admission;
 	}
-    
+
+    public function findFromReservedNo($admission_no)
+    {
+        return ReservedDepartmentSessionAdmission::where(['session_id'=>currentSession()->id,'admission_no'=>$admission_no])->first();
+
+    }
+
 	public function registerStudent($admission,$data)
 	{
         //filter admission sesstion and admission type and put the in the array of data

@@ -17,7 +17,6 @@ trait AdmissionNumberGenerator
 		  
 		if($reservedAdmission){
 			$admissionNo = $reservedAdmission->admission_no;
-			$reservedAdmission->delete();
 		}else{
 			$admissionNo =  $this->yearExt($student).
 					$this->college->code.
