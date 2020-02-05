@@ -127,4 +127,5 @@
     <script src="{{ asset('js/app.js') }}"></script>
     @yield('scripts')
 </body>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
 </html>
