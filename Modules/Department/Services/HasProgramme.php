@@ -89,7 +89,7 @@ trait HasProgramme
 			}
 
 			if(isset($data['scheduleRemove'])){
-				$schedule = ProgrammeSchedule::where(['department_programme_id'=>$programme->id,'schedule_id'=> $data['scheduleRemove']])->first();
+				$schedule = ProgrammeSchedule::where(['programme_id'=>$programme->id,'schedule_id'=> $data['scheduleRemove']])->first();
 				$schedule->delete();
 			}
 
@@ -118,7 +118,7 @@ trait HasProgramme
 		if(count($programme->admissions) == 0){
 			$programme->delete();
 		}else{
-			session()->flash('error','Sorry this programme has admited students to delete it you must delete all the admissions under the the programme');
+			session()->flash('error',['Sorry this programme has admited students to delete it you must delete all the admissions under the the programme']);
 		}
 	}
 	

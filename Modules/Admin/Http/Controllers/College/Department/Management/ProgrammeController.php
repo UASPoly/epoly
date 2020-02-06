@@ -62,7 +62,9 @@ class ProgrammeController extends AdminBaseController
     public function delete($departmentId, $programmeId)
     {
         Department::find($departmentId)->deleteProgramme($programmeId);
-        session()->flash('message', 'Department Programme was deleted successfully');
+        if(!session('error')){
+            session()->flash('message', 'Department Programme was deleted successfully');
+        }
         return back();
     }
 

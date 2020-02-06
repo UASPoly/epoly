@@ -20,8 +20,8 @@ class ProgrammeController extends Controller
             $schedules = ['1'=>'MORNING','2'=>'EVENING'];
         }else if($this->hasMorningSchedule($programme_id)){
             $schedules = ['1'=>'MORNING'];
-        }else if($this->hasMorningSchedule($programme_id)){
-            $schedules = ['1'=>'EVENING'];
+        }else if($this->hasEveningSchedule($programme_id)){
+            $schedules = ['2'=>'EVENING'];
         }else{
             $schedules = [];
         }

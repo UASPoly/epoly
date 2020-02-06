@@ -8,9 +8,8 @@
         <div class="card shadow">
         	<div class="card-body table-responsive">
         		<div class="row">
-		    		<div class="col-md-8"></div>
-		    		<div class="col-md-4">
-		    			<button data-toggle="modal" data-target="#newProgramme" class="btn-block button-fullwidth cws-button bt-color-3">Create New Programme</button>
+		    		<div class="col-md-12">
+		    			<button data-toggle="modal" data-target="#newProgramme" class="btn-block button-fullwidth cws-button bt-color-3 shadow">Create New Programme</button><br>
 		    		</div>
 		    	</div>
         		<table class="table shadow">
@@ -38,17 +37,15 @@
 	        					<td>
 	        						@if($programme->status == 1)
 	                                    <a href="{{route('admin.college.department.management.programme.deactivate',
-								        [str_replace(' ','-',strtolower($department->name)),
-								        $department->id,$programme->id])}}">
-	                                        <button class="btn-block button-fullwidth cws-button bt-color-0">
+								        [$department->id,$programme->id])}}">
+	                                        <button class="btn btn-warning">
 			        							De-Activate
 			        						</button>
 			        					</a>
 	        						@else
                                         <a href="{{route('admin.college.department.management.programme.activate',
-								        [str_replace(' ','-',strtolower($department->name)),
-								        $department->id,$programme->id])}}">
-									        <button class="btn-block button-fullwidth cws-button bt-color-3">
+								        [$department->id,$programme->id])}}">
+									        <button class="btn btn-success">
 			        							Activate
 			        						</button>
 			        					</a>
@@ -58,21 +55,20 @@
 	        					<td>{{$programme->hasMorningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>{{$programme->hasEveningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>
-    								<button data-toggle="modal" data-target="#programme_{{$programme->id}}" class="btn-block button-fullwidth cws-button bt-color-3">
+    								<button data-toggle="modal" data-target="#programme_{{$programme->id}}" class="btn btn-info">
 	        							Edit
 	        						</button>
+	        						@include('admin::college.department.management.programme.edit')
     							</td>
     							<td>
     								<a href="{{route('admin.college.department.management.programme.delete',
-						                [str_replace(' ','-',strtolower($department->name)),
-						                 $department->id,$programme->id])}}">
-							            <button data-toggle="modal" data-target="#programme_{{$programme->id}}" class="btn-block button-fullwidth cws-button bt-color-3">
+						                [$department->id,$programme->id])}}">
+							            <button class="btn btn-danger">
 	        							Delete
 	        						    </button>
 	        						</a>
 	        					</td>
 	        				</tr>
-                            @include('admin::college.department.management.programme.edit')
         				@endforeach
         			</tbody>
         		</table>
