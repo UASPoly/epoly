@@ -3,13 +3,14 @@
 	<br>
 	<div class="card">
 		<div class="card-body table-responsive">
-			  <table class="table">
+			  <table class="table" id="state_student_table">
 		     	<thead>
 		     		<tr>
 		     			<th>S/N</th>
 		     			<th>Picture</th>
 		     			<th>Name</th>
 		     			<th>Admission No</th>
+		     			<th>Programme</th>
 		     			<th>State</th>
 		     			<th>Local Government</th>
 		     		</tr>
@@ -28,6 +29,9 @@
 		     			</td>
 		     			<td>
 		     				{{$student->admission->admission_no}}
+		     			</td>
+		     			<td>
+		     				{{$student->admission->programme->title}}
 		     			</td>
 		     			<td>
 		     				{{$student->studentAccount->lga->state->name}}
