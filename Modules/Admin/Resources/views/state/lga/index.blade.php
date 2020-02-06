@@ -24,7 +24,8 @@
                         	<td>{{$lga->created_at}}</td>
                         	<td>{{$lga->updated_at}}</td>
                         	<td>
-                        		<button class="btn btn-info">Edit</button>
+                        		<button data-toggle="modal" data-target="#lga_{{$lga->id}}" class="btn btn-info">Edit</button>
+                        		@include('admin::state.lga.edit')
                         		<button class="btn btn-danger">Delete</button>
                         	</td>
                         </tr>

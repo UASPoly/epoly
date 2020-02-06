@@ -2,6 +2,7 @@
 
 namespace Modules\Admin\Entities;
 
+use Modules\Staff\Entities\State;
 use Modules\Staff\Entities\Tribe;
 use Modules\Staff\Entities\Gender;
 use Modules\Staff\Entities\Religion;
@@ -88,6 +89,11 @@ class Admin extends Authenticatable
     public function semesters()
     {
         return Semester::all();
+    }
+
+    public function states()
+    {
+        return State::all();
     }
 
     public function staffs()

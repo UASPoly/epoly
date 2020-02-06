@@ -20,12 +20,14 @@ Route::prefix('admin')
     ->name('state.')
     ->group(function() {
       Route::get('/', 'StateController@index')->name('index');
+      Route::post('{stateId}/update', 'StateController@update')->name('update');
 
       Route::prefix('{stateId}/lgas')
       ->namespace('Lga')
       ->name('lga.')
       ->group(function() {
         Route::get('/', 'LgaController@index')->name('index');
+        Route::post('{lgaId}/update', 'LgaController@update')->name('update');
       });
   });
 
