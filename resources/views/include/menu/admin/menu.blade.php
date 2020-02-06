@@ -22,3 +22,4 @@
     </ul>
     <!-- / sub menu -->
 </li>
+<li><a href="{{route('admin.state.index')}}">States</a></li>

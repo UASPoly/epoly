@@ -14,6 +14,21 @@
 Route::prefix('admin')
 ->name('admin.')
 ->group(function() {
+
+  Route::prefix('states')
+    ->namespace('State')
+    ->name('state.')
+    ->group(function() {
+      Route::get('/', 'StateController@index')->name('index');
+
+      Route::prefix('{stateId}/lgas')
+      ->namespace('Lga')
+      ->name('lga.')
+      ->group(function() {
+        Route::get('/', 'LgaController@index')->name('index');
+      });
+  });
+
   Route::get('/', 'AdminController@verify')->name('admin');
   Route::get('/dashboard', 'AdminController@index')->name('dashboard');
   Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('auth.login');
