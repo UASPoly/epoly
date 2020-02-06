@@ -10,4 +10,5 @@
 
 @section('scripts')
     @include('department::department.admission.pertials.imagePreview')
+    @include('department::department.admission.pertials.addressAjax')
 @endsection

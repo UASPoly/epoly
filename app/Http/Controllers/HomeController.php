@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Modules\Staff\Entities\Lga;
 use Modules\Department\Entities\Programme;
 
 class HomeController extends Controller
@@ -25,5 +26,10 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function getLgas($state_id)
+    {
+        return response()->json(Lga::where('state_id',$state_id)->pluck('name','id'));
     }
 }

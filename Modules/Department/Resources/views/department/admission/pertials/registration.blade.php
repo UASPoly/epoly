@@ -128,12 +128,7 @@
                             <div class="form-group">
                                 <label>Local Government</label>
                                 <select name="lga" class="form-control">
-                                    <option value=""></option>
-                                    @foreach(department()->lgas() as $lga)
-                                        <option value="{{$lga->id}}">
-                                            {{$lga->name}}
-                                        </option>
-                                    @endforeach
+                                    
                                 </select>
                                 @error('student_session')
                                     <span class="invalid-feedback" role="alert">

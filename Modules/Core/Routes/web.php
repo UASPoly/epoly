@@ -11,6 +11,22 @@
 |
 */
 
-Route::prefix('core')->group(function() {
-    Route::get('/', 'CoreController@index');
+Route::prefix('core')
+   ->group(function() {
+    //ajax route
+    Route::prefix('ajax')
+	   ->namespace('Ajax')
+	   ->name('ajax')
+	   ->group(function() {
+        //address ajax routes
+	    Route::prefix('address')
+		   ->name('address')
+		   ->group(function() {
+
+	        Route::get('/state/{stateId}/getLgas', 'AddressController@getLgas');
+
+		});
+	});
 });
+
+
