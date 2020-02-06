@@ -4,7 +4,7 @@
             var state_id = $(this).val();
             if(state_id){
                 $.ajax({
-                   url: '/core/ajax/address/state/'+state_id+'/getLgas',
+                   url: '/core/ajax/address/state/'+state_id+'/get-lgas',
                    type: 'GET',
                    dataType: 'json',
                    success: function(data){

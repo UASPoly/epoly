@@ -84,7 +84,7 @@
 
                         </select>
                     </div>
-                    <button class="btn-block button-fullwidth cws-button bt-color-3">Update</button>  
+                    <button class="btn btn-block button-fullwidth cws-button bt-color-3 shadow">Update</button>  
                 </form>
             </div>
             <div class="modal-footer">

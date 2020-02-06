@@ -23,9 +23,16 @@ Route::prefix('core')
 		   ->name('address')
 		   ->group(function() {
 
-	        Route::get('/state/{stateId}/getLgas', 'AddressController@getLgas');
+	        Route::get('/state/{stateId}/get-lgas', 'AddressController@getLgas');
 
 		});
+		Route::prefix('programme')
+		   ->name('address')
+		   ->group(function() {
+
+	        Route::get('/{programmeId}/get-programme-schedules', 'ProgrammeController@getProgrammeSchedules');
+
+		});   
 	});
 });
 

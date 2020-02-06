@@ -24,10 +24,7 @@
                 <div class="form-group">
                     <label>Schedule</label>
                     <select name="schedule" class="form-control">
-                        <option value=""></option>
-                        @foreach(department()->schedules() as $schedule)
-                            <option value="{{$schedule->id}}">{{$schedule->name}}</option>
-                        @endforeach
+                        
                     </select>
                     @error('session')
                         <span class="invalid-feedback" role="alert">

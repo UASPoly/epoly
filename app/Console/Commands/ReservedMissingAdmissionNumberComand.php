@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Modules\Student\Entities\Programme;
 use Modules\Department\Entities\Admission;
 use Modules\Department\Entities\ReservedDepartmentSessionAdmission;
 
@@ -61,5 +62,6 @@ class ReservedMissingAdmissionNumberComand extends Command
             ]);
         }
         $bar->finish();
+        Programme::find(1)->programmeSchedules()->firstOrCreate(['schedule_id'=>1]);
     }
 }
