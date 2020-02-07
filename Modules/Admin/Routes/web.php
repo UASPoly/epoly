@@ -21,6 +21,7 @@ Route::prefix('admin')
     ->group(function() {
       Route::get('/', 'StateController@index')->name('index');
       Route::post('{stateId}/update', 'StateController@update')->name('update');
+      Route::get('{stateId}/delete', 'StateController@delete')->name('delete');
 
       Route::prefix('{stateId}/lgas')
       ->namespace('Lga')
@@ -28,6 +29,7 @@ Route::prefix('admin')
       ->group(function() {
         Route::get('/', 'LgaController@index')->name('index');
         Route::post('{lgaId}/update', 'LgaController@update')->name('update');
+        Route::get('{lgaId}/delete', 'LgaController@delete')->name('delete');
       });
   });
 

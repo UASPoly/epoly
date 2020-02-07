@@ -66,9 +66,9 @@ class AdmissionController extends ExamOfficerBaseController
             'schedule'=>'required',
             'programme'=>'required',
         ]);
-
+        
         $admissionNo = department()->generateAdmissionNo($request->all());
-        return redirect()->route('exam.officer.student.admission.register.generated.number.index',[$admissionNo,$request->programme]);
+        return redirect()->route('exam.officer.student.admission.register.generated.number.index',[$admissionNo,$request->programme])->with('toast_success', $admissionNo.' Generated to complete this registration fill this form nd click register');
 
     }
     /**
@@ -77,7 +77,8 @@ class AdmissionController extends ExamOfficerBaseController
      * @return Response
      */
     public function generatedNumberRegistration()
-    {       
+    {   
+          
         return view('examofficer::admission.registration',[
             'admissionNo'=>request()->route('admissionNo'),
             'route'=>'exam.officer.student.admission.register.generated.number',
@@ -89,7 +90,7 @@ class AdmissionController extends ExamOfficerBaseController
         
         $admission = department()->generateNewAdmission($request->all());
 
-        return redirect()->route('exam.officer.student.view.biodata',[$admission->student->id]);
+        return redirect()->route('exam.officer.student.view.biodata',[$admission->student->id])->with('toast_success','Student registration completed successfully hecan now log into his account with '.$admission->admission_no.' as his user name and password');
     }
 
     /**
@@ -100,7 +101,7 @@ class AdmissionController extends ExamOfficerBaseController
     public function revokeAdmission($admission_id)
     {
         Admission::find($admission_id)->revokeThisAdmission();
-        return redirect()->route('exam.officer.student.admission.index');
+        return redirect()->route('exam.officer.student.admission.index')->with('success','Student Account revoked successfully');
     }
 
     /**
@@ -124,6 +125,6 @@ class AdmissionController extends ExamOfficerBaseController
     public function delete($admission_id)
     {
         Admission::find($admission_id)->deleteThisAdmission();
-        return redirect()->route('exam.officer.student.admission.index');
+        return redirect()->route('exam.officer.student.admission.index')->with('success','Admission deleted');
     }
 }

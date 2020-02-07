@@ -26,7 +26,10 @@
                         	<td>
                         		<button data-toggle="modal" data-target="#lga_{{$lga->id}}" class="btn btn-info">Edit</button>
                         		@include('admin::state.lga.edit')
-                        		<button class="btn btn-danger">Delete</button>
+
+                        		<a href="{{route('admin.state.lga.delete',[$lga->state->id,$lga->id])}}">
+	                        		<button class="btn btn-danger">Delete</button>
+	                        	</a>
                         	</td>
                         </tr>
         			@endforeach

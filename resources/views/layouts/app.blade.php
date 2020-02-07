@@ -10,8 +10,10 @@
     </div>
     <div class="row">
         @auth
+
             @include('admin::calender.activate')
         @endauth
+        @include('sweetalert::alert')
         @yield('page-content')
     </div>
 </div>

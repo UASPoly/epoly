@@ -32,3 +32,12 @@ cd vueapp01
 npm install
 
 npm run dev
+
+
+alert type 
+
+error success info warning question
+
+toast type
+
+toast_error toast_success toast_info toast_warning toast_question

@@ -32,4 +32,16 @@ class StateController extends AdminBaseController
         session()->flash('message','Stae updated');
         return back();
     }
+
+    public function delete($stateId)
+    {
+        $state = State::find($stateId);
+        if(count($state->lgas)==0){
+            $state->delete();
+            session()->flash('message','State deleted');
+        }else{
+            session()->flash('error',['Sorry you cant delete this state because there are some localgovernment referencing it to delete it you have to delete all the local government under it']);
+        }
+        return back();
+    }
 }

@@ -41,8 +41,15 @@ class LgaController extends AdminBaseController
      * @param int $id
      * @return Response
      */
-    public function destroy($id)
+    public function delete($stateId,$lgaId)
     {
-        //
+        $lga = Lga::find($lgaId);
+        if(count($lga->studentAccounts)==0){
+            $lga->delete();
+            session()->flash('message','Local government deleted deleted');
+        }else{
+            session()->flash('error',['Sorry you cant delete this local government because there are some student account referencing it to delete it you have to delete to delete it you must delete all the student of that local government']);
+        }
+        return back();
     }
 }

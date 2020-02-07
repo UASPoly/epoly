@@ -13,10 +13,7 @@ trait CanAdmittStudent
 
 	public function generateNewAdmission(array $data)
 	{
-		$admission = $this->registerStudentAdmission($data);
-        
-		session()->flash('message','Congratulation this admission is registered successfully and this student can logged in as student using '.$admission->admission_no.' as user name and '.$admission->admission_no.' as his password');
-		return $admission;
+		return $this->registerStudentAdmission($data);
 	}
 
 	public function registerStudentAdmission($data)

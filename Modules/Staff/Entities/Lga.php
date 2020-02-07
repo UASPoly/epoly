@@ -11,7 +11,7 @@ class Lga extends BaseModel
     	return $this->belongsTo(State::class);
     }
 
-    public function studentAccounts($value='')
+    public function studentAccounts()
     {
     	return $this->hasMany('Modules\Student\Entities\StudentAccount');
     }

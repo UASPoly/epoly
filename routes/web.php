@@ -3,6 +3,11 @@
 use Illuminate\Http\Request;
 use Modules\Admin\Entities\Session;
 use Modules\Student\Entities\Programme;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
+        
+  
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -34,5 +39,6 @@ Route::post('/calender/acticate/register', function(Request $request){
 })->name('admin.session.activate.register');
 
 Route::get('/testing',function(){
-	return view('test');
+	successAlert('Registered', 'the student was registered success');
+	return view('welcome',['programmes'=>Programme::all()]);
 });

@@ -137,13 +137,7 @@
                     <label class="text text-success">Schedule</label>
                     <select name="schedule" class="form-control">
                         <option value="{{$student->admission->student->schedule->id}}">{{$student->admission->student->schedule->name}}</option>
-                        @foreach(department()->schedules() as $schdule)
-                            @if($student->admission->student->schedule->id != $schdule->id)
-                                <option value="{{$schdule->id}}">
-                                    {{$schdule->name}}
-                                </option>
-                            @endif
-                        @endforeach
+                        
                     </select>
                     @error('schedule')
                         <span class="invalid-feedback" role="alert">
@@ -173,13 +167,7 @@
                     <label class="text text-success">Local Government</label>
                     <select name="lga" class="form-control">
                         <option value="{{$student->studentAccount->lga->id}}">{{$student->studentAccount->lga->name}}</option>
-                        @foreach(department()->lgas() as $lga)
-                            @if($student->studentAccount->lga->id != $lga->id)
-                                <option value="{{$lga->id}}">
-                                    {{$lga->name}}
-                                </option>
-                            @endif
-                        @endforeach
+                    
                     </select>
                     @error('lga')
                         <span class="invalid-feedback" role="alert">

@@ -1,6 +1,69 @@
 <?php
 
 use Modules\Admin\Entities\Session;
+use RealRashid\SweetAlert\Facades\Alert;
+
+if (!function_exists('successAlert')) {
+    function successAlert($title,$message)
+    {
+        Alert::success($title, $message);
+    }
+}
+
+if (!function_exists('confirmAlert')) {
+    function confirmAlert($title,$message)
+    {
+        alert()->question($title,$message)->showCancelButton()->showConfirmButton()->focusCancel(true);
+    }
+}
+
+if (!function_exists('infoAlert')) {
+    function infoAlert($title,$message)
+    {
+        alert()->infor($title,$message);
+    }
+}
+
+if (!function_exists('questionAlert')) {
+    function questionAlert($title,$message)
+    {
+        alert()->question($title,$message);
+    }
+}
+
+if (!function_exists('warningAlert')) {
+    function warningAlert($title,$message)
+    {
+        alert()->warning($title,$message);
+    }
+}
+
+if (!function_exists('errorAlert')) {
+    function errorAlert($title,$message)
+    {
+        alert()->error($title,$message);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if (!function_exists('logout_route')) {
     function logout_route()
