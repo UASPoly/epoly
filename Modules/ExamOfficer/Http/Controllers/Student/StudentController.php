@@ -32,8 +32,9 @@ class StudentController extends ExamOfficerBaseController
 
     public function updateBiodata(UpdateAdmissionFormRequest $request)
     {
-        $admission = Admission::find($request->admission_id)->updateThisAdmission($request->all());
-        return back();
+        $admission = Admission::find($request->admission_id);
+        $admission->updateThisAdmission($request->all());
+        return back()->with('success','Congratulation this admission is updated successfully and this student can logged in as student using '.$admission->admission_no.' as his user name and password');
     }
 
     public function student()
@@ -68,7 +69,7 @@ class StudentController extends ExamOfficerBaseController
         
         session(['students'=>$students]);
         return redirect()->route('exam.officer.student.student.available',[
-            'state'=>strtolower(str_replace(' ','-',$state->name ?? 'state')),'session'=>strtolower(str_replace('/','-',$session->name ?? currentSession()->name))]);
+            'state'=>strtolower(str_replace(' ','-',$state->name ?? 'state')),'session'=>strtolower(str_replace('/','-',$session->name ?? currentSession()->name))])->withSuccess(count($students).' Student found for this search');
     }
     public function getThisStudent($admission_no)
     {
@@ -81,7 +82,6 @@ class StudentController extends ExamOfficerBaseController
     public function availableStudent()
     {
 
-        session()->flash('message',count(session('students')).' students foud from the search');
         return view('examofficer::student.student',['students'=>session('students')]);
         
     }

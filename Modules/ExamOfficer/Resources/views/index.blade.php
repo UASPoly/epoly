@@ -1,5 +1,13 @@
 @extends('examofficer::layouts.master')
 
+@section('title')
+ Exam officer dashboard
+@endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('examofficer.dashboard')}}
+@endsection
+
 @section('page-content')
 <div class="col-md-12">
     <br>

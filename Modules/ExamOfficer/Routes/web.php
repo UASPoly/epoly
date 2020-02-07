@@ -45,7 +45,6 @@ Route::prefix('exam-officer')
             Route::get('/', 'StudentController@student')->name('student.index');
             Route::get('/{state}/{session}/admitted', 'StudentController@availableStudent')->name('student.available');
             Route::post('/search', 'StudentController@searchStudent')->name('student.search');
-
 		});
 		
         //admission routes
@@ -56,8 +55,10 @@ Route::prefix('exam-officer')
 		->group(function() {
 
 			Route::get('/search', 'AdmissionController@search')->name('search');
+       
+			Route::post('/search-admission', 'AdmissionController@searchAdmissions')->name('search.admission');
 
-			Route::post('/available', 'AdmissionController@index')->name('index');
+			Route::get('/{sessionId}/available', 'AdmissionController@index')->name('session.available');
 
 			Route::get('/generate-admission-number', 'AdmissionController@generateNumberIndex')->name('generate.number.index');
 
@@ -68,11 +69,11 @@ Route::prefix('exam-officer')
 			Route::get('{admission_id}/edit-admission', 'AdmissionController@edit')->name('edit');
 			Route::get('{admissionNo}/programme/{programmeId}/generated-number-registration', 'AdmissionController@generatedNumberRegistration')->name('register.generated.number.index');
 
-			Route::get('{admission_id}/revoke-admission', 'AdmissionController@revokeAdmission')->name('revoke');
+			Route::get('{admission_id}/revoke', 'AdmissionController@revokeAdmission')->name('revoke');
 
 			Route::post('/generate-number', 'AdmissionController@generateNumber')->name('generate.number');
 
-			Route::get('{admission_id}/delete-admission', 'AdmissionController@delete')->name('delete');
+			Route::get('{admission_id}/delete', 'AdmissionController@delete')->name('delete');
 			
 		});
 

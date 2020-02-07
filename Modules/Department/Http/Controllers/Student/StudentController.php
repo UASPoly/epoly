@@ -33,7 +33,7 @@ class StudentController extends HodBaseController
     public function updateBiodata(UpdateAdmissionFormRequest $request)
     {
         $admission = Admission::find($request->admission_id)->updateThisAdmission($request->all());
-        return back();
+        return back()->with('success','Congratulation this admission is updated successfully and this student can logged in as student using '.$this->admission_no.' as his user name and password'));
     }
 
     public function student()
@@ -68,7 +68,7 @@ class StudentController extends HodBaseController
         
         session(['students'=>$students]);
         return redirect()->route('department.student.student.available',[
-            'state'=>strtolower(str_replace(' ','-',$state->name ?? 'state')),'session'=>strtolower(str_replace('/','-',$session->name ?? currentSession()->name))]);
+            'state'=>strtolower(str_replace(' ','-',$state->name ?? 'state')),'session'=>strtolower(str_replace('/','-',$session->name ?? currentSession()->name))])->withToastInfo(count($students).' Students fount from the search');
     }
     public function getThisStudent($admission_no)
     {
@@ -80,7 +80,6 @@ class StudentController extends HodBaseController
     }
     public function availableStudent()
     {
-        session()->flash('message',count(session('students')).' students foud from the search');
         return view('department::student.student',['students'=>session('students')]);
         
     }

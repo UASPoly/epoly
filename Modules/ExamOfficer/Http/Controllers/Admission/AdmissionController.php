@@ -18,14 +18,16 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function search()
     {
-        return view('examofficer::admission.search',['route'=>'exam.officer.student.admission.index','sessions'=>Session::all()]);
+        return view('examofficer::admission.search',['route'=>'exam.officer.student.admission.search.admission','sessions'=>Session::all()]);
     }
-
-    public function index(Request $request)
+    public function searchAdmissions(Request $request)
     {
         $request->validate(['session'=>'required']);
-
-        return view('examofficer::admission.index',['session'=>Session::find($request->session),'route'=>[
+        return redirect()->route('exam.officer.student.admission.session.available',[$request->session]);
+    }
+    public function index($sessionId)
+    {
+        return view('examofficer::admission.index',['session'=>Session::find($sessionId),'route'=>[
             'delete'=>'exam.officer.student.admission.delete',
             'view'=>'exam.officer.student.view.biodata',
             'revoke'=>'exam.officer.student.admission.revoke',
@@ -100,8 +102,8 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function revokeAdmission($admission_id)
     {
-        Admission::find($admission_id)->revokeThisAdmission();
-        return redirect()->route('exam.officer.student.admission.index')->with('success','Student Account revoked successfully');
+        $message = Admission::find($admission_id)->revokeThisAdmission();
+        return back()->with('success',$message);
     }
 
     /**
@@ -124,7 +126,8 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function delete($admission_id)
     {
-        Admission::find($admission_id)->deleteThisAdmission();
-        return redirect()->route('exam.officer.student.admission.index')->with('success','Admission deleted');
+        confirmAlert('Warning', 'Are you sure you want to delete this admission');
+        $message = Admission::find($admission_id)->deleteThisAdmission();
+        return back()->with('success',$message);
     }
 }

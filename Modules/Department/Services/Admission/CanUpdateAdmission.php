@@ -86,7 +86,6 @@ trait CanUpdateAdmission
         if(isset($data['picture'])){
             $this->updateFile($this->student->studentAccount, 'picture', $data['picture'], str_replace('/','-',department()->name).'/Admission/Profile');
         }
-        session()->flash('message','Congratulation this admission is updated successfully and this student can logged in as student using '.$this->admission_no.' as his user name and '.$this->admission_no.' as his password');
     }
 
     public function updateTheAdmissionCounter()

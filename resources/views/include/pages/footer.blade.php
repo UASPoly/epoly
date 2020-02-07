@@ -95,6 +95,13 @@
         </div> -->
     </footer>
     <!-- / footer -->
+    <script type="text/javascript">
+        document
+        .getElementById("confirm")
+        .addEventListener("click", function(  ){ 
+            return confirm("Do you really want to do this?") ;
+        });
+    </script>
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
     

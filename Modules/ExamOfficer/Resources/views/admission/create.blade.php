@@ -4,6 +4,10 @@
     department register student
 @endsection
 
+@section('breadcrumbs')
+
+@endsection
+
 @section('page-content')
     @include('department::department.admission.pertials.create')
 @endsection

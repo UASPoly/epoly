@@ -6,17 +6,17 @@ trait AfterAdmission
 	public function revokeThisAdmission()
 	{
 		if($this->student->is_active == 1){
-			$status = 'activated';
+			$status = 'revoked';
             $this->student->is_active = 0;
         }else{
-        	$status = 'revoked';
+        	$status = 'activated';
             $this->student->is_active = 1;
         }
         $this->student->save();
         
         $this->student->update(['is_active'=>0]);
 
-        session()->flash('message','Congratulation this admission is '.$status.' successfully');
+        return 'Congratulation this account has heen '.$status.' successfully';
 	}
 
 	public function deleteThisAdmission()
@@ -24,6 +24,7 @@ trait AfterAdmission
 		$this->student->studentAccount->delete();
         $this->student->delete();
         $this->delete();
-        session()->flash('message','Congratulation this admission is deleted successfully');
+
+        return 'Congratulation this admission is deleted successfully';
 	}
 }

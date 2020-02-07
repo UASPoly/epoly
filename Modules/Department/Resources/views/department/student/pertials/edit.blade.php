@@ -200,7 +200,7 @@
             </div>
         </div>
         <input type="hidden" name="admission_id" value="{{$student->admission->id}}">
-        <button class="button-fullwidth cws-button bt-color-3">Update Changes</button>
+        <button class="button-fullwidth cws-button bt-color-3" onclick="return confirm('Are you sure you want update this student information')">Update Changes</button>
         </form>
         </div>
     </div>
