@@ -46,8 +46,9 @@ trait CanUpdateAdmission
 
     public function reservedThisAdmissionNo()
     {
+
     	department()->reservedDepartmentSessionAdmissions()->firstOrCreate([
-            'session_id'=>currentSession()->id,
+            'session_id'=>$this->session->id,
             'schedule_id'=>$this->student->schedule->id,
             'programme_id'=>$this->programme_id,
             'admission_no' => $this->admission_no

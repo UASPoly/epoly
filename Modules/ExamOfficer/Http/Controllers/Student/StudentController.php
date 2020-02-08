@@ -34,7 +34,7 @@ class StudentController extends ExamOfficerBaseController
     {
         $admission = Admission::find($request->admission_id);
         $admission->updateThisAdmission($request->all());
-        return back()->with('success','Congratulation this admission is updated successfully and this student can logged in as student using '.$admission->admission_no.' as his user name and password');
+        return back()->with('success', $admission->admission_no.' biodata updated successfully');
     }
 
     public function student()
@@ -71,6 +71,7 @@ class StudentController extends ExamOfficerBaseController
         return redirect()->route('exam.officer.student.student.available',[
             'state'=>strtolower(str_replace(' ','-',$state->name ?? 'state')),'session'=>strtolower(str_replace('/','-',$session->name ?? currentSession()->name))])->withSuccess(count($students).' Student found for this search');
     }
+    
     public function getThisStudent($admission_no)
     {
         $student = null;
@@ -79,11 +80,10 @@ class StudentController extends ExamOfficerBaseController
         }
         return $student;
     }
+
     public function availableStudent()
     {
-
         return view('examofficer::student.student',['students'=>session('students')]);
-        
     }
 
 }

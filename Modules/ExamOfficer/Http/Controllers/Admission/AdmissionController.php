@@ -33,26 +33,7 @@ class AdmissionController extends ExamOfficerBaseController
             'revoke'=>'exam.officer.student.admission.revoke',
         ]]);
     }
-    public function getAdmissionData()
-    {
-        $admission = Admission::select(['id', 'admission_no']);
-
-        return Datatables::of($admission)
-            ->addColumn('Name', function ($admission) {
-                return $admissiion->student->first_name.' '.$admission->student->middle_name.' '.$admisiion->student->last_name;
-            })
-            ->addColumn('Schedule', function ($admission) {
-                return $admissiion->student->schedule->name;
-            })
-            ->addColumn('Programme', function ($admission) {
-                return $admissiion->programme->title;
-            })
-            ->addColumn('PHone', function ($admission) {
-                return $admissiion->student->phone;
-            })
-            
-            ->make(true);
-    }
+    
     /**
      * Show the form for creating a new resource.
      * @return Response
@@ -70,7 +51,7 @@ class AdmissionController extends ExamOfficerBaseController
         ]);
         
         $admissionNo = department()->generateAdmissionNo($request->all());
-        return redirect()->route('exam.officer.student.admission.register.generated.number.index',[$admissionNo,$request->programme])->with('toast_success', $admissionNo.' Generated to complete this registration fill this form nd click register');
+        return redirect()->route('exam.officer.student.admission.register.generated.number.index',[$admissionNo,$request->programme])->with('success', $admissionNo.' Generated');
 
     }
     /**
@@ -92,7 +73,7 @@ class AdmissionController extends ExamOfficerBaseController
         
         $admission = department()->generateNewAdmission($request->all());
 
-        return redirect()->route('exam.officer.student.view.biodata',[$admission->student->id])->with('toast_success','Student registration completed successfully hecan now log into his account with '.$admission->admission_no.' as his user name and password');
+        return redirect()->route('exam.officer.student.view.biodata',[$admission->student->id])->with('success',$admission->admission_no.' Registered successfully');
     }
 
     /**
@@ -126,7 +107,6 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function delete($admission_id)
     {
-        confirmAlert('Warning', 'Are you sure you want to delete this admission');
         $message = Admission::find($admission_id)->deleteThisAdmission();
         return back()->with('success',$message);
     }

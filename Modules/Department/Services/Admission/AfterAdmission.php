@@ -21,6 +21,7 @@ trait AfterAdmission
 
 	public function deleteThisAdmission()
 	{
+        $this->reservedThisAdmissionNo();
 		$this->student->studentAccount->delete();
         $this->student->delete();
         $this->delete();

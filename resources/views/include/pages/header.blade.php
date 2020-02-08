@@ -5,6 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
     <!-- style -->
+    <link rel="stylesheet" href="{{ asset('css/pageLoader.css')}}">
     <link rel="shortcut icon" href="{{asset('img/favicon.png')}}">
     <link rel="stylesheet" href="{{ asset('css/font-awesome.css')}}">
     <link rel="stylesheet" href="{{ asset('fi/flaticon.css')}}">
@@ -21,7 +22,6 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
     @endauth
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
-    <link rel="stylesheet" href="{{ asset('css/form.css')}}">
     <!-- Scripts -->
     <script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
 
