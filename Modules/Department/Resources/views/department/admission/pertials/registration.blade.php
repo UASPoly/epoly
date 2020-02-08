@@ -65,7 +65,11 @@
                             <select name="religion" class="form-control">
                                 <option value=""></option>
                                 @foreach(department()->religions() as $religion)
-                                    <option value="{{$religion->id}}">{{$religion->name}}</option>
+                                    @if($religion->id == old('religion'))
+                                        <option value="{{$religion->id}}" selected>{{$religion->name}}</option>
+                                    @else
+                                        <option value="{{$religion->id}}">{{$religion->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             @error('religion')
@@ -79,7 +83,11 @@
                             <select name="gender" class="form-control" id="validate">
                                 <option value=""></option>
                                 @foreach(department()->genders() as $gender)
-                                    <option value="{{$gender->id}}">{{$gender->name}}</option>
+                                    @if($gender->id == old('gender'))
+                                        <option value="{{$gender->id}}" selected>{{$gender->name}}</option>
+                                    @else
+                                        <option value="{{$gender->id}}">{{$gender->name}}</option>
+                                    @endif
                                 @endforeach
                             </select>
                             @error('gender')
@@ -116,7 +124,11 @@
                                 <select name="state" class="form-control">
                                     <option value=""></option>
                                     @foreach(department()->states() as $state)
-                                        <option value="{{$state->id}}">{{$state->name}}</option>
+                                        @if($state->id == old('state'))
+                                            <option value="{{$state->id}}" selected>{{$state->name}}</option>
+                                        @else
+                                            <option value="{{$state->id}}">{{$state->name}}</option>
+                                        @endif
                                     @endforeach
                                 </select>
                                 @error('state')
