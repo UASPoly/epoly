@@ -4,6 +4,11 @@ Breadcrumbs::for('examofficer.dashboard', function ($breadcrumb) {
     $breadcrumb->push('Dashboard', route('exam.officer.dashboard'));
 });
 
+Breadcrumbs::for('examofficer.department.courses', function ($breadcrumb) {
+    $breadcrumb->parent('examofficer.dashboard');
+    $breadcrumb->push('Courses', route('exam.officer.department.course.index'));
+});
+
 // Dasboard > Admission
 Breadcrumbs::for('exam.officer.student.admission.create', function ($breadcrumb) {
     $breadcrumb->parent('examofficer.dashboard');
@@ -22,7 +27,7 @@ Breadcrumbs::for('exam.officer.student.admission.search', function ($breadcrumb)
     $breadcrumb->push('Search', route('exam.officer.student.admission.search'));
 });
 
-// Dasboard > Admission > Search
+// Dasboard > Admission > Search > state/2019-2020
 Breadcrumbs::for('exam.officer.student.admission.search.state', function ($breadcrumb,$state,$session) {
     $breadcrumb->parent('exam.officer.student.admission.search');
     $breadcrumb->push($state.'/'.$session, route('exam.officer.student.student.available',[$state,$session]));
