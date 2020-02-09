@@ -3,6 +3,10 @@
     department student biodata edit page
 @endsection
 
+@section('breadcrumbs')
+{{Breadcrumbs::render('exam.officer.student.admission.search.session.view.edit',$student)}}
+@endsection
+
 @section('page-content')
     @include('department::department.student.pertials.edit')
 @endsection

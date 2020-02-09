@@ -1,5 +1,13 @@
 @extends('student::layouts.master')
 
+@section('title')
+student dashboard
+@endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('student.dashboard')}}
+@endsection
+
 @section('page-content')
 <div class="col-md-12">
     <br>

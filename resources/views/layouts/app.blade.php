@@ -12,15 +12,12 @@
 
     <div class="row">
         <div class="col-md-12">
-            <div class="block-header">
-                <h5>@yield('breadcrumbs')</h5>
-            </div>
+            @yield('breadcrumbs')
         </div>
     </div>
     
     <div class="row animate-bottom" id="page-content">
         @auth
-
             @include('admin::calender.activate')
         @endauth
         @include('sweetalert::alert')

@@ -1,13 +1,13 @@
 
 @if (count($breadcrumbs))
-
-    <ul class="breadcrumb" style="list-style-type: none;">
+<br>
+    <ul class="breadcrumb" style="background-color: white;">
         @foreach ($breadcrumbs as $breadcrumb)
 
             @if ($breadcrumb->url && !$loop->last)
-                <li class="breadcrumb-item" style="list-style-type: none;"><a href="{{ $breadcrumb->url }}">{{ $breadcrumb->title }}</a></li>
+                <li class="breadcrumb-item"><a href="{{ $breadcrumb->url }}" class="text text-success"><b>{{ $breadcrumb->title}} ></b></a></li>
             @else
-                <li style="list-style-type: none" class="breadcrumb-item active">{{ $breadcrumb->title }}</li>
+                <li class="breadcrumb-item active"><b>{{ $breadcrumb->title }}</b></li>
             @endif
 
         @endforeach

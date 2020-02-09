@@ -4,6 +4,11 @@
     department admission number registration
 @endsection
 
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('exam.officer.student.admission.registration',request()->route('admissionNo'),request()->route('programmeId'))}}
+@endsection
+
 @section('page-content')
     @include('department::department.admission.pertials.registration')
 @endsection

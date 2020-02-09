@@ -1,5 +1,12 @@
 @extends('admin::layouts.master')
 
+@section('title')
+admin dashboard
+@endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.dashboard')}}
+@endsection
 @section('page-content')
 <div class="col-md-12">
     <br>

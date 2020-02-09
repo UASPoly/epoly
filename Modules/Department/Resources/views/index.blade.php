@@ -1,5 +1,13 @@
 @extends('department::layouts.master')
 
+@section('title')
+head of department dashboard
+@endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('department.dashboard')}}
+@endsection
+
 @section('page-content')
 <div class="col-md-12">
     <br>

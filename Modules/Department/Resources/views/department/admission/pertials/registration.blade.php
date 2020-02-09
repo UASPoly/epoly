@@ -140,7 +140,7 @@
                             <div class="form-group">
                                 <label>Local Government</label>
                                 <select name="lga" class="form-control">
-                                    
+                                    <!-- options are comming from ajax request from the state selected -->
                                 </select>
                                 @error('student_session')
                                     <span class="invalid-feedback" role="alert">
@@ -169,7 +169,6 @@
                         <button class="button-fullwidth btn-block cws-button bt-color-3">
                             Register
                         </button>
-                        
                     </div>
                 </div>
                 </form>
