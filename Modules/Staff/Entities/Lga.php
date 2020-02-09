@@ -15,4 +15,15 @@ class Lga extends BaseModel
     {
     	return $this->hasMany('Modules\Student\Entities\StudentAccount');
     }
+
+    public function getAdmissions($session)
+    {
+    	$admissions = [];
+    	foreach(department()->admissions->where('session_id',$session) as $admission){
+    		if($admission->student->studentAccount->lga->id == $this->id){
+    			$admissions[] = $admission;
+    		}
+    	}
+    	return $admissions;
+    }
 }

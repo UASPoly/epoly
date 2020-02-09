@@ -32,6 +32,12 @@ Route::prefix('core')
 
 	        Route::get('/{programmeId}/get-programme-schedules', 'ProgrammeController@getProgrammeSchedules');
 
+		});
+		Route::prefix('admission')
+		   ->group(function() {
+
+	        Route::get('/session/{session}/state/{state}/get-state-admission-numbers', 'AdmissionController@fetchStateAdmissionNumbers');
+
 		});   
 	});
 });
