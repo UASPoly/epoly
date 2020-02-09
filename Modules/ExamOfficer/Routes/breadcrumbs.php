@@ -10,6 +10,18 @@ Breadcrumbs::for('examofficer.department.programmes', function ($breadcrumb) {
     $breadcrumb->push('Programmes', route('exam.officer.department.programme.index'));
 });
 
+// Dashboard > Programme > courses
+Breadcrumbs::for('examofficer.department.programme.courses', function ($breadcrumb,$programme) {
+    $breadcrumb->parent('examofficer.department.programmes');
+    $breadcrumb->push('Courses', route('exam.officer.department.programme.course.index',[$programme->id]));
+});
+
+// Dashboard > Programme > courses > edit
+Breadcrumbs::for('examofficer.department.programme.course.edit', function ($breadcrumb,$course) {
+    $breadcrumb->parent('examofficer.department.programme.courses',$course->programme);
+    $breadcrumb->push('Edit '.$course->code, route('exam.officer.department.programme.course.edit',[$course->programme->id, $course->id]));
+});
+
 // Dasboard > Admission
 Breadcrumbs::for('exam.officer.student.admission.create', function ($breadcrumb) {
     $breadcrumb->parent('examofficer.dashboard');

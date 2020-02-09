@@ -5,13 +5,12 @@
 				<thead>
 					<tr>
 						<th>S/N</th>
-						<th>Poramme Title</th>
+						<th>Programme Title</th>
 						<th>Programme Abbreviation</th>
 						<th>Programme Type</th>
 						<th>Schedules</th>
 						<th>Admissions</th>
 						<th>Courses</th>
-						<th></th>
 					</tr>
 				</thead>
 				@foreach(department()->programmes as $programme)
@@ -20,10 +19,13 @@
 	                	<td>{{$programme->name}}</td>
 	                	<td>{{$programme->title}}</td>
 	                	<td>{{$programme->programmeType->name}}</td>
-	                	<td>{{count($programme->programmeSchedules)}}</td>
-	                	<td>{{count($programme->admissions->where('session_id',currentSession()->id))}}</td>
-	                	<td>{{count($programme->courses)}}</td>
-	                	<td><a href=""><button class="btn btn-info">View Courses</button></a></td>
+	                	<td><button class="btn btn-primary">{{count($programme->programmeSchedules)}}</button></td>
+	                	<td><button class="btn btn-primary">{{count($programme->admissions->where('session_id',currentSession()->id))}}</button></td>
+	                	<td>
+	                		<a href="{{route($route['courses'],$programme->id)}}">
+	                			<button class="btn btn-primary">{{count($programme->courses)}}</button>
+	                		</a>
+	                	</td>
 	                </tr>
 				@endforeach
 			</table>

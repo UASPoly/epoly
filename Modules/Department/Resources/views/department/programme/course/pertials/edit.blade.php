@@ -8,7 +8,7 @@
 		    	</div>
 		    </div>
 		    
-		    <form class="login-form" action="{{route($route ?? 'department.course.update',['course_id'=>$course->id])}}" method="post">
+		    <form class="login-form" action="{{route($route ?? 'department.programme.course.update',[$course->programme->id,$course->id])}}" method="post">
 		        @csrf
 		        <div class="form-group">
 		        	<label class="text text-success">Couser Title</label>

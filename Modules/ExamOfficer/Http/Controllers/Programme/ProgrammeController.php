@@ -15,7 +15,19 @@ class ProgrammeController extends ExamOfficerBaseController
      */
     public function index()
     {
-        return view('examofficer::programme.index');
+        return view('examofficer::programme.index',[
+            'route'=>[
+                'courses'=>'exam.officer.department.programme.course.index',
+            ]]);
+    }
+
+    public function prgrammeAdmissions($programmeId)
+    { 
+        $students = [];
+        foreach(Programme::find($programmeId)->admissions->where('session_id',currentSession()->id) as $admission){
+            $students[] = $admission->student;
+        }
+        return $students;
     }
 
     

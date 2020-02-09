@@ -1,10 +1,11 @@
 <?php
 
-namespace Modules\ExamOfficer\Http\Controllers\Course;
+namespace Modules\ExamOfficer\Http\Controllers\Programme\Course;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Department\Entities\Course;
+use Modules\Student\Entities\Programme;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 
 class CourseController extends ExamOfficerBaseController
@@ -13,11 +14,11 @@ class CourseController extends ExamOfficerBaseController
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index($programmeId)
     {
-        return view('examofficer::course.index',['route'=>[
-                'edit'=>'exam.officer.department.course.edit',
-                'delete'=>'exam.officer.department.course.delete',
+        return view('examofficer::programme.course.index',['programme'=>Programme::find($programmeId),'route'=>[
+                'edit'=>'exam.officer.department.programme.course.edit',
+                'delete'=>'exam.officer.department.programme.course.delete',
             ]
         ]);
     }
@@ -48,7 +49,7 @@ class CourseController extends ExamOfficerBaseController
         ]);
         department()->departmentCourses()->create(['course_id'=>$course->id]);
         session()->flash('message','Course is created successfully');
-        return redirect()->route('exam.officer.department.course.index',['route'=>[
+        return redirect()->route('exam.officer.department.programme.course.index',['route'=>[
                 'edit'=>'exam.officer.department.course.edit',
                 'delete'=>'exam.officer.department.course.delete',
             ]
@@ -60,9 +61,9 @@ class CourseController extends ExamOfficerBaseController
      * @param int $id
      * @return Response
      */
-    public function edit($course_id)
+    public function edit($programmeId,$courseId)
     {
-        return view('examofficer::course.edit',['route'=>'exam.officer.department.course.update','course'=>Course::find($course_id)]);
+        return view('examofficer::programme.course.edit',['route'=>'exam.officer.department.programme.course.update','course'=>Course::find($courseId)]);
     }
 
     /**
@@ -82,12 +83,7 @@ class CourseController extends ExamOfficerBaseController
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
-        session()->flash('message','Course is updated successfully');
-        return redirect()->route('exam.officer.department.course.index',['route'=>[
-                'edit'=>'exam.officer.department.course.edit',
-                'delete'=>'exam.officer.department.course.delete',
-            ]
-        ]);
+        return back()->with('success',$course->code.' Updated successfully');
     }
 
     /**
@@ -108,14 +104,11 @@ class CourseController extends ExamOfficerBaseController
         }
         if(empty($errors)){
             $course->delete();
-            session()->flash('message','Course is deleted successfully');
+            return back()->with('success','Course deleted successfully');
         }else{
             session()->flash('error',$errors);
+            return back();
         }
-        return redirect()->route('exam.officer.department.course.index',['route'=>[
-                'edit'=>'exam.officer.department.course.edit',
-                'delete'=>'exam.officer.department.course.delete',
-            ]
-        ]);
+        
     }
 }

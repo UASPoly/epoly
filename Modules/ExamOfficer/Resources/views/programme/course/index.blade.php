@@ -4,9 +4,9 @@
 @endsection
 
 @section('breadcrumbs')
-{{Breadcrumbs::render('examofficer.department.courses')}}
+{{Breadcrumbs::render('examofficer.department.programme.courses',$programme)}}
 @endsection
 
 @section('page-content')
-    @include('department::department.course.pertials.index')
+    @include('department::department.programme.course.pertials.index')
 @endsection
