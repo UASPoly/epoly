@@ -35,16 +35,8 @@
     </ul>
 </li>
 <li>
-    <a href="#">Courses</a>
-    <ul>
-        <li>
-            <a href="{{route('exam.officer.department.course.create')}}">Register Course</a>
-        </li>
-        
-        <li>
-            <a href="{{route('exam.officer.department.course.index')}}">View Courses</a>
-        </li>
-    </ul>
+    <a href="{{route('exam.officer.department.programme.index')}}">Programmes</a>
+    
 </li>
 
 <li>

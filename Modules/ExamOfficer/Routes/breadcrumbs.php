@@ -4,9 +4,10 @@ Breadcrumbs::for('examofficer.dashboard', function ($breadcrumb) {
     $breadcrumb->push('Dashboard', route('exam.officer.dashboard'));
 });
 
-Breadcrumbs::for('examofficer.department.courses', function ($breadcrumb) {
+// Dashboard > Programmes
+Breadcrumbs::for('examofficer.department.programmes', function ($breadcrumb) {
     $breadcrumb->parent('examofficer.dashboard');
-    $breadcrumb->push('Courses', route('exam.officer.department.course.index'));
+    $breadcrumb->push('Programmes', route('exam.officer.department.programme.index'));
 });
 
 // Dasboard > Admission

@@ -15,19 +15,29 @@ use Modules\Student\Entities\CourseRegistration;
 Route::prefix('exam-officer')
     ->name('exam.officer.')
     ->group(function() {
-       
-        Route::prefix('department/course')
-		->name('department.course.')
-		->namespace('Course')
+       Route::prefix('department')
+		->name('department.')
 		->group(function() {
+			//department programmes routes
+			Route::prefix('programmes')
+			->name('programme.')
+			->namespace('Programme')
+			->group(function() {
+				Route::get('/', 'ProgrammeController@index')->name('index');
+			});
+	        Route::prefix('department/course')
+			->name('department.course.')
+			->namespace('Course')
+			->group(function() {
 
-			Route::get('/', 'CourseController@index')->name('index');
-			Route::get('/create-course', 'CourseController@create')->name('create');
-			Route::post('{course_id}/update-course', 'CourseController@update')->name('update');
-			Route::get('{course_id}/edit-course', 'CourseController@edit')->name('edit');
-			Route::post('/register-course', 'CourseController@register')->name('register');
-			Route::get('{course_id}/delete-course', 'CourseController@delete')->name('delete');
-			
+				Route::get('/', 'CourseController@index')->name('index');
+				Route::get('/create-course', 'CourseController@create')->name('create');
+				Route::post('{course_id}/update-course', 'CourseController@update')->name('update');
+				Route::get('{course_id}/edit-course', 'CourseController@edit')->name('edit');
+				Route::post('/register-course', 'CourseController@register')->name('register');
+				Route::get('{course_id}/delete-course', 'CourseController@delete')->name('delete');
+				
+			});
 		});
         Route::prefix('calendar')
 	    ->name('calendar.')
