@@ -3,6 +3,10 @@
     department create new admission page
 @endsection
 
+@section('breadcrumbs')
+{{Breadcrumbs::render('exam.officer.student.admission.search.state',request()->route('state'),request()->route('session'))}}
+@endsection
+
 @section('page-content')
     @include('department::department.student.pertials.student')
 @endsection
