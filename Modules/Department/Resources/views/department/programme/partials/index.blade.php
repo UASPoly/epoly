@@ -20,7 +20,13 @@
 	                	<td>{{$programme->title}}</td>
 	                	<td>{{$programme->programmeType->name}}</td>
 	                	<td><button class="btn btn-primary">{{count($programme->programmeSchedules)}}</button></td>
-	                	<td><button class="btn btn-primary">{{count($programme->admissions->where('session_id',currentSession()->id))}}</button></td>
+	                	<td>
+	                		<a href="{{route('exam.officer.department.programme.admissions',$programme->id)}}">
+		                		<button class="btn btn-primary">
+		                			{{count($programme->admissions->where('session_id',currentSession()->id))}}
+		                		</button>
+		                	</a>
+	                	</td>
 	                	<td>
 	                		<a href="{{route($route['courses'],$programme->id)}}">
 	                			<button class="btn btn-primary">{{count($programme->courses)}}</button>

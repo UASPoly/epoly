@@ -10,6 +10,12 @@ Breadcrumbs::for('examofficer.department.programmes', function ($breadcrumb) {
     $breadcrumb->push('Programmes', route('exam.officer.department.programme.index'));
 });
 
+// Dashboard > Programme > admissions
+Breadcrumbs::for('examofficer.department.programme.admissions', function ($breadcrumb,$programmeId) {
+    $breadcrumb->parent('examofficer.department.programmes');
+    $breadcrumb->push('Admission list '.currentSession()->name, route('exam.officer.department.programme.admissions',[$programmeId]));
+});
+
 // Dashboard > Programme > courses
 Breadcrumbs::for('examofficer.department.programme.courses', function ($breadcrumb,$programme) {
     $breadcrumb->parent('examofficer.department.programmes');

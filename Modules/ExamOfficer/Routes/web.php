@@ -24,6 +24,9 @@ Route::prefix('exam-officer')
 			->namespace('Programme')
 			->group(function() {
 				Route::get('/', 'ProgrammeController@index')->name('index');
+				Route::get('/{programmeId}/admissions', 
+					'ProgrammeController@currentSessionProgrammeAdmissions')
+				->name('admissions');
                 
                 //programme courses routes
 				Route::prefix('{programmeId}/courses')

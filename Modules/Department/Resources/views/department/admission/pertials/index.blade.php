@@ -1,10 +1,6 @@
 <div class="col-md-12">
 	<br>
 	<div class="card shadow">
-		<div class="card-header shadow">
-			<h5 class="center">LIST OF REGISTERED STUDENTS IN {{strtoupper(department()->name)}}  FOR {{$session->name}} SESSION</h5>
-		</div>
-
 		<div class="card-body">
 			@if(count(department()->admissions->where('session_id',$session->id))>0)
 			    <table class="table shadow" id="admission-table">
@@ -21,7 +17,7 @@
 			     		</tr>
 			     	</thead>
 			     	<tbody>
-			     		@foreach(department()->admissions->where('session_id',$session->id) as $admission)
+			     		@foreach($admissions ?? department()->admissions->where('session_id',$session->id) as $admission)
 			     		<tr>
 			     			<td>{{$loop->index+1}}</td>
 			     			<td>

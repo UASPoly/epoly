@@ -4,6 +4,7 @@ namespace Modules\ExamOfficer\Http\Controllers\Programme;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Student\Entities\Programme;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 
 class ProgrammeController extends ExamOfficerBaseController
@@ -21,13 +22,17 @@ class ProgrammeController extends ExamOfficerBaseController
             ]]);
     }
 
-    public function prgrammeAdmissions($programmeId)
+    public function currentSessionProgrammeAdmissions($programmeId)
     { 
-        $students = [];
+        $admissions = [];
         foreach(Programme::find($programmeId)->admissions->where('session_id',currentSession()->id) as $admission){
-            $students[] = $admission->student;
+            $admissions[] = $admission;
         }
-        return $students;
+        return view('examofficer::programme.admission.index',['admissions'=>$admissions,'session'=>currentSession(),'route'=>[
+            'delete'=>'exam.officer.student.admission.delete',
+            'view'=>'exam.officer.student.view.biodata',
+            'revoke'=>'exam.officer.student.admission.revoke',
+        ]]);
     }
 
     
