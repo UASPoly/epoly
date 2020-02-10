@@ -4,22 +4,33 @@
 	<br>
     <br>
     <div class="row">
-		<div class="col-md-12">
+    	<div class="col-md-9"></div>
+		<div class="col-md-3">
 			<a href="" onclick="printdiv('biodata')" class=" cws-button bt-color-1 pull-right m-3">
                 <i class="fa fa-print"></i>
                 <span>Print</span>
             </a>
-            <a href="{{route($route ?? 'exam.officer.student.biodata.edit',[$student->id])}}" class=" cws-button bt-color-1 pull-right m-3">
+		</div>
+	</div>
+	<div class="row">
+    	<div class="col-md-9"></div>
+		<div class="col-md-3">
+			<a href="{{route($route ?? 'exam.officer.student.biodata.edit',[$student->id])}}" class=" cws-button bt-color-1 pull-right m-3">
                 <i class="fa fa-"></i>
                 <span>Edit</span>
             </a>
 		</div>
 	</div>
+	
 	<div class="card" id="biodata">
 		<div class="card-body">
 			<div class="row">
 				<div class="col-md-8"></div>
 				<div class="col-md-4">
+					<br>
+					<br>
+					<br>
+					<br>
 					<img src="{{storage_url($student->studentAccount->picture)}}" height="250" width="200">
 				</div>
 			</div>
