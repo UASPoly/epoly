@@ -9,8 +9,8 @@
 						<th>Programme Abbreviation</th>
 						<th>Programme Type</th>
 						<th>Schedules</th>
-						<th>Admissions</th>
-						<th>Courses</th>
+						<th>{{currentSession()->name}} Admissions</th>
+						<th>Programme Courses</th>
 					</tr>
 				</thead>
 				@foreach(department()->programmes as $programme)
@@ -19,7 +19,12 @@
 	                	<td>{{$programme->name}}</td>
 	                	<td>{{$programme->title}}</td>
 	                	<td>{{$programme->programmeType->name}}</td>
-	                	<td><button class="btn btn-primary">{{count($programme->programmeSchedules)}}</button></td>
+	                	<td>
+	                		<button class="btn btn-primary" data-target="#schedules_{{$programme->id}}" data-toggle="modal">
+	                			{{count($programme->programmeSchedules)}}
+	                		</button>
+	                		@include('department::department.programme.schedules')
+	                	</td>
 	                	<td>
 	                		<a href="{{route('exam.officer.department.programme.admissions',$programme->id)}}">
 		                		<button class="btn btn-primary">
