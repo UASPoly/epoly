@@ -18,7 +18,7 @@
 	                	<td>{{$loop->index+1}}</td>
 	                	<td>{{$programme->name}}</td>
 	                	<td>{{$programme->title}}</td>
-	                	<td>{{$programme->programmeType->name}}</td>
+	                	<td>{{optional($programme->programmeType)->name}}</td>
 	                	<td>
 	                		<button class="btn btn-primary" data-target="#schedules_{{$programme->id}}" data-toggle="modal">
 	                			{{count($programme->programmeSchedules)}}

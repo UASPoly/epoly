@@ -53,13 +53,13 @@ class ReservedMissingAdmissionNumberComand extends Command
             $bar->advance();
         }
         if($admission_no){
-            ReservedDepartmentSessionAdmission::firstOrCreate([
-                'session_id' => currentSession()->id,
-                'department_id' => 1,
-                'programme_id' => 1,
-                'schedule_id' => 1,
-                'admission_no' => '195491067',
-            ]);
+            // ReservedDepartmentSessionAdmission::firstOrCreate([
+            //     'session_id' => currentSession()->id,
+            //     'department_id' => 1,
+            //     'programme_id' => 1,
+            //     'schedule_id' => 1,
+            //     'admission_no' => '195491067',
+            // ]);
         }
         $bar->finish();
         Programme::find(1)->programmeSchedules()->firstOrCreate(['schedule_id'=>1]);
