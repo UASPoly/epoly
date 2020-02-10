@@ -52,7 +52,7 @@ trait CanAdmittStudent
             'last_name'=> strtoupper($data['last_name']),
             'middle_name'=> strtoupper($data['middle_name']),
             'user_name'=>$data['admission_no'],
-            'email'=> $data['admission_no'].'@uaspoly.com',
+            'email'=> $data['admission_no'].'@uaspoly.edu.ng',
             'phone'=>$data['phone'],
             'schedule_id'=> $this->scheduleId($data['admission_no']),
             'programme_id'=>  $this->programmeId($data['admission_no']),

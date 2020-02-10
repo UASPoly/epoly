@@ -37,6 +37,7 @@ trait CanUpdateAdmission
             $reserved->delete();
         }
     }
+    
     public function needToGenerateAdmissionNo($data)
     {
     	if($data['programme'] != $this->programme_id || $data['schedule'] != $this->student->schedule->id){
@@ -68,7 +69,7 @@ trait CanUpdateAdmission
             'middle_name'=>strtoupper($data['middle_name']),
             'user_name'=>$this->admission_no,
             'phone'=>$data['phone'],
-            'email'=>$this->admission_no.'@uaspoly.com',
+            'email'=>$this->admission_no.'@uaspoly.edu.ng',
             'password'=>Hash::make($this->admission_no),
             'programme_id' => $data['programme'],
             'schedule_id' => $data['schedule'],
