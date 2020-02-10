@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers\College;
 
 use Illuminate\Http\Response;
 use Modules\College\Entities\College;
+use Modules\Department\Entities\Admission;
 use Modules\College\Http\Requests\CollegeFormRequest;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
@@ -15,7 +16,7 @@ class CollegeController extends AdminBaseController
      */
     public function index()
     {
-        return view('admin::college.index');
+        return view('admin::college.index',['admissions'=>count(Admission::where('session_id',currentSession()->id))]);
     }
 
     /**

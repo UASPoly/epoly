@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Department\Entities\Admission;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
 class AdminController extends AdminBaseController
@@ -19,7 +20,7 @@ class AdminController extends AdminBaseController
      */
     public function index()
     {
-        return view('admin::index');
+        return view('admin::index',['admissions'=>count(Admission::all()->where('session_id',currentSession()->id))]);
     }
 
     /**

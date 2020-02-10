@@ -43,7 +43,7 @@ class CourseController extends ExamOfficerBaseController
             'code'=>$request->code,
             'title'=>$request->title,
             'programme_level_id'=>$request->level,
-            'programme__id'=>$request->programme,
+            'programme_id'=>$request->programme,
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);

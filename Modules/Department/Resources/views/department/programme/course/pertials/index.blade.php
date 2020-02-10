@@ -37,7 +37,7 @@
 		@else
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<div class="alert alert-danger">No course record found for this department</div>
+				<div class="alert alert-danger">No course record found for the {{$programme->title}}</div>
 			</div>
 		@endif
 	</div>

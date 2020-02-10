@@ -7,6 +7,7 @@ admin dashboard
 @section('breadcrumbs')
 {{Breadcrumbs::render('admin.dashboard')}}
 @endsection
+
 @section('page-content')
 <div class="col-md-12">
     <br>
@@ -49,6 +50,26 @@ admin dashboard
                     </div>
                 </div>
                 <!-- / calender item -->
+
+                <!-- admission item -->
+                <div class="col-md-4">
+                    <div class="course-item shadow">
+                        <div class="course-name clear-fix">
+                        <h3>
+                            <a href="{{route('admin.college.admission.index')}}">{{currentSession()->name}} Admission Report</a>
+                        </h3>
+                            </div>
+                        <div class="course-date bg-color-1 clear-fix">
+                            
+                            <div class="description">
+                                <h1><i class="fa fa-bar-chart-o">
+                                    <span>{{$admissions ?? ''}}</span>
+                                </i></h1>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- / admission item -->
             </div>
         </div>
     </div>

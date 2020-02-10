@@ -79,6 +79,13 @@ Route::prefix('admin')
   	Route::post('/{college_id}/update', 'CollegeController@update')->name('update');
   	Route::get('/{college_id}/delete', 'CollegeController@delete')->name('delete');
     
+    //college admission count
+    Route::prefix('admission/count')
+      ->name('admission.')
+      ->group(function() {
+        Route::get('/', 'AdmissionCountController@index')->name('index');
+        Route::post('/search', 'AdmissionCountController@getDepartmentalAdmissions')->name('search');
+    });
 
     //college management routes
     Route::prefix('calendar/management')
