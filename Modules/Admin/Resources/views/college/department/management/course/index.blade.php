@@ -1,12 +1,16 @@
 @extends('admin::layouts.master')
+
 @section('title')
-    admin {{$department->name}} management page
+    admin {{$department->name}} courese management
 @endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.department.management.courses',$department)}}
+@endsection
+
 @section('page-content')
 	<div class="col-md-12">
-		<br>
-		<div class="card"><br>
-			<div class="center"><b>LIST OF COURSES REGISTER IN {{strtoupper($department->name)}} DEPARTMENT</b></div>
+		<div class="card">
 			<div class="card-body shadow table-responsive">
 				<table class="table">
 					<thead>
@@ -19,7 +23,7 @@
 							<th>Level</th>
 							<th>Semester</th>
 							<th></th>
-							<th><button class="btn btn-primary shadow" data-toggle="modal" data-target="#newCourse"><i class="fa fa-plus"></i></button></th>
+							<th><button class="btn btn-primary shadow" data-toggle="modal" data-target="#newCourse">New Course</button></th>
 						</tr>
 					</thead>
 					<tbody>

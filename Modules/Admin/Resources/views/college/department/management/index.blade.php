@@ -2,6 +2,11 @@
 @section('title')
     admin {{$department->name}} management page
 @endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.department.management',$department)}}
+@endsection
+
 @section('page-content')
 <div class="row">
 	<div class="col-md-12">

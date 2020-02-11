@@ -57,12 +57,11 @@ class AppointmentController extends AdminBaseController
                 'from'=> $request->appointment_date
             ]);
             //set success message
-            session()->flash('message','Congratulation the Head of Department appointment is registered successfully and all previllages of the '.$staff->department->name.' are revoked from the former head of the department and now '.$staff->first_name.' '.$staff->last_name.' has access to them');
-            return redirect()->route('admin.college.department.management.hod.index',[$staff->department->id]);
+            return redirect()->route('admin.college.department.management.hod.index',[$staff->department->id])->with('success','Appointment registered successfully');
         }else{
             session()->flash('custom_errors',$errors);
         }
-        return back()->withInput($request->all());
+        return back();
     }
 
 
@@ -76,23 +75,20 @@ class AppointmentController extends AdminBaseController
 
         $lecturer = Lecturer::find($lecturerId);
         $lecturer->staff->headOfDepartment->update(['email'=>$request->email,'from'=>$request->appointment_date]);
-        session()->flash('message','Head of Department Appointment updated successfully');
-        return redirect()->route('admin.college.department.management.hod.index',[$lecturer->staff->department->id]);
+        return redirect()->route('admin.college.department.management.hod.index',[$lecturer->staff->department->id])->with('success','Head of Department Appointment updated successfully');
     }
 
     public function revokeHeadOfDepartment($lecturerId)
     {
         $lecturer = Lecturer::find($lecturerId);
         $lecturer->staff->headOfDepartment->update(['is_active'=>0,'to'=>date('M/D/Y',time())]);
-        session()->flash('message','Head of Department Appointment has been revoked successfully');
-        return redirect()->route('admin.college.department.management.hod.index',[$lecturer->staff->department->id]);
+        return redirect()->route('admin.college.department.management.hod.index',[$lecturer->staff->department->id])->with('success','Head of Department Appointment has been revoked successfully');
     }
 
     public function deleteHeadOfDepartment($lecturerId)
     {
         $lecturer = Lecturer::find($lecturerId);
         $lecturer->staff->headOfDepartment->delete();
-        session()->flash('message','Head of Department Appointment has been deleted successfully');
-        return redirect()->route('admin.college.department.management.hod.index',[$lecturer->staff->department->id]);
+        return redirect()->route('admin.college.department.management.hod.index',[$lecturer->staff->department->id])->with('success','Head of Department Appointment has been deleted successfully');
     }
 }

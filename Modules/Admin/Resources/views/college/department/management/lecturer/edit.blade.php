@@ -1,7 +1,13 @@
 @extends('admin::layouts.master')
+
 @section('title')
     {{$lecturer->staff->department->name}} department leturer information edit page
 @endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.department.lecturer.edit',$lecturer->staff->department)}}
+@endsection
+
 @section('page-content')
 <div class="col-md-2"></div>
 <div class="col-md-8">

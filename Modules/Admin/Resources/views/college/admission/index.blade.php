@@ -4,6 +4,10 @@
     school session admission count down
 @endsection
 
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.admission')}}
+@endsection
+
 @section('page-content')
 <div class="col-md-3"></div>
 <div class="col-md-6">

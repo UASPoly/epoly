@@ -1,7 +1,13 @@
 @extends('admin::layouts.master')
+
 @section('title')
     admin {{$department->name}} programme management page
 @endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.department.management.programme',$department)}}
+@endsection
+
 @section('page-content')
     <div class="col-md-12">
     	<br>

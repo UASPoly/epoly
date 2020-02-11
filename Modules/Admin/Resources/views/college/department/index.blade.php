@@ -1,5 +1,13 @@
 @extends('admin::layouts.master')
 
+@section('title')
+    {{$college->name}} college management
+@endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.management',$college)}}
+@endsection
+
 @section('page-content')
 <div class="col-md-12">
 	<br>
@@ -26,7 +34,7 @@
 			                <div class="divider"></div>
 			                <div class="description">{{$department->description}}</div>
 			                <button class="btn btn-primary"><a href="{{route('admin.college.department.edit',[$department->id])}}"  style="color: white">Edit</a></button>
-			                <button class="btn btn-primary"><a href="{{route('admin.college.department.delete',[$department->id])}}" onclick="confirm('Are you sure you want delete this department')" style="color: white">Delete</a></button>
+			                <button class="btn btn-primary"><a href="{{route('admin.college.department.delete',[$department->id])}}" onclick="return confirm('Are you sure you want delete this department')" style="color: white">Delete</a></button>
 			                <button class="btn btn-primary"><a href="{{route('admin.college.department.management.index',[$department->id])}}" style="color: white">Management</a></button>
 			            </div>
 			        </div>

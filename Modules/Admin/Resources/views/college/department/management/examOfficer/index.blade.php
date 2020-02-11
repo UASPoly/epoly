@@ -2,9 +2,13 @@
 @section('title')
     admin {{$department->name}} exam officer management page
 @endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.department.examofficer.management',$department)}}
+@endsection
+
 @section('page-content')
     <div class="col-md-12">
-    	<br>
         <div class="card shadow">
         	<div class="card-body">
         		<table class="table shadow">

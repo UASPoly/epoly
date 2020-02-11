@@ -19,8 +19,6 @@ class HodManagementController extends AdminBaseController
         return view('admin::college.department.management.headOfDepartment.index',['department'=>Department::find($departmentId)]);
     }
 
-    
-
     /**
      * Store a newly created resource in storage.
      * @param Request $request

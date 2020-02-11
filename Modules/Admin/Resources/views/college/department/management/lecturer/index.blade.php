@@ -4,6 +4,10 @@
     search available appointment lecturers
 @endsection
 
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.department.lecturer.management',$department)}}
+@endsection
+
 @section('page-content')
 	
 	<div class="col-md-12">

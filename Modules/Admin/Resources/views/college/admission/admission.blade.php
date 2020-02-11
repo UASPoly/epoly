@@ -4,6 +4,10 @@
     departmental session admission count down
 @endsection
 
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.admission.summary',$session)}}
+@endsection
+
 @section('page-content')
 
 <div class="col-md-12">
@@ -18,7 +22,6 @@
 					<tr>
 						<th>S/N</th>
 						<th>Department Name</th>
-						<th>College Name</th>
 						<th>Admissions</th>
 						<th>Reserved Admissions</th>
 						<th>Programmes</th>
@@ -26,11 +29,13 @@
 				</thead>
 				<tbody>
 					@foreach(admin()->colleges() as $college)
+					<tr>
+						<td colspan=""><b>{{$college->name}}</b></td>
+					</tr>
 	                    @foreach($college->departments as $department)
 	                        <tr>
 								<td>{{$loop->index+1}}</td>
 								<td>{{$department->name}}</td>
-								<td>{{$department->college->name}}</td>
 								<td>
 									{{count($department->admissions->where('session_id',$session->id))}}
 								</td>
