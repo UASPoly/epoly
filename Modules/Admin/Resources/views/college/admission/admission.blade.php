@@ -7,7 +7,11 @@
 @section('page-content')
 
 <div class="col-md-12">
+	<br>
 	<div class="card shadow">
+		<div class="card-header shadow">
+			<h5 class="center">{{$session->name}} Departmental admission reports</h5>
+		</div>
 		<div class="card-body">
 			<table class="table shadow">
 				<thead>

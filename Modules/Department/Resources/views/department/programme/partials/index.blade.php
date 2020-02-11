@@ -1,5 +1,8 @@
 <div class="col-md-12">
 	<div class="card shadow">
+		<div class="card-header shadow">
+			<h5 class="center">{{currentSession()->name}} {{department()->name}} Programmes Admission reports</h5>
+		</div>
 		<div class="card-body">
 			<table class="table shadow">
 				<thead>
@@ -9,7 +12,8 @@
 						<th>Programme Abbreviation</th>
 						<th>Programme Type</th>
 						<th>Schedules</th>
-						<th>{{currentSession()->name}} Admissions</th>
+						<th>Reserved Admissions</th>
+						<th>Admissions</th>
 						<th>Programme Courses</th>
 					</tr>
 				</thead>
@@ -24,6 +28,12 @@
 	                			{{count($programme->programmeSchedules)}}
 	                		</button>
 	                		@include('department::department.programme.schedules')
+	                	</td>
+	                	<td>
+	                		<button class="btn btn-primary" data-target="#reserved_{{$programme->id}}" data-toggle="modal">
+	                			{{count($programme->reservedDepartmentSessionAdmissions->where('session_id',currentSession()->id))}}
+	                		</button>
+	                		@include('department::department.programme.reserved')
 	                	</td>
 	                	<td>
 	                		<a href="{{route('exam.officer.department.programme.admissions',$programme->id)}}">
