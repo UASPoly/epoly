@@ -21,6 +21,9 @@
 	    				@endforeach
 	            		</select>
                     </div>
+                    @if($course->department->id == department()->id)
+                        <input type="hidden" name="department_id" value="{{department()->id}}">
+	            	@else
                     <div class="form-group">
 	            		<label>Department</label>
 	            		<select name="department_id" class="form-control">
@@ -30,6 +33,7 @@
 	    				    @endforeach
 	            		</select>
                     </div>
+                    @endif
                     <div class="form-group">
                     	<button class="btn btn-success btn-block">Register</button>
                     </div>

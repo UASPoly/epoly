@@ -38,7 +38,6 @@ class ModifyDepartmentCoursesTable extends Migration
             ->on('programmes')
             ->delete('restrict')
             ->update('cascade');
-            $table->string('unit');
         });
     }
 

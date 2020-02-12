@@ -21,8 +21,9 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td colspan="">Internal Courses</td>
+                        <td colspan=""><b>Internal Courses</b></td>
                     </tr>
+
                     @foreach($programme->courses as $course)
                         <tr>
                             <td>{{$loop->index+1}}</td>
@@ -30,7 +31,7 @@
                             <td>{{$course->code}}</td>
                             <td>{{$course->courseLecturer() ? $course->courseLecturer()->staff->department->name : 'Department'}}</td>
                             <td>
-                                {{$course->courseLecturer() ? $course->courseLecturer()->staff->first_name.' '.$course->courseLecturer()->staff->last_name.' '.$course->courseLecturer()->staff->staffID : 'Lecturer'}}
+                                {{$course->courseLecturer() ? $course->courseLecturer()->staff->first_name.' '.$course->courseLecturer()->staff->last_name : 'Not Allocated'}}
                             </td>
                             <td>
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#allocation_{{$course->id}}">Amend Allocation</button>
@@ -39,10 +40,10 @@
                         </tr>
                     @endforeach
                     <tr>
-                        <td colspan="">External Courses</td>
+                        <td colspan=""><b>Service in Courses</b></td>
                     </tr>
                     
-                    @foreach($programme->departmentCourses as $departmentCourse)
+                    @foreach($programme->serviceInCourses() as $departmentCourse)
                         <tr>
                             <td>{{$loop->index+1}}</td>
                             <td>{{$departmentCourse->course->title}}</td>
@@ -51,15 +52,33 @@
                                 {{$departmentCourse->department->name}}
                             </td>
                             <td>
-                                Lecturer
+                                {{$departmentCourse->courseLecturer() ? $departmentCourse->courseLecturer()->staff->first_name.' '.$departmentCourse->courseLecturer()->staff->last_name : 'Not Allocated'}}
+                            </td>
+                            <td>
+                                
+                            </td>
+                        </tr>
+                    @endforeach
+                    <tr>
+                        <td colspan=""><b>Service Out Courses</b></td>
+                    </tr>
+                    @foreach($programme->serviceOutCourses() as $departmentCourse)
+                        <tr>
+                            <td>{{$loop->index+1}}</td>
+                            <td>{{$departmentCourse->course->title}}</td>
+                            <td>{{$departmentCourse->course->code}}</td>
+                            <td>
+                                {{$departmentCourse->department->name}}
+                            </td>
+                            <td>
+                                {{$departmentCourse->courseLecturer() ? $departmentCourse->courseLecturer()->staff->first_name.' '.$departmentCourse->courseLecturer()->staff->last_name : 'Not Allocated'}}
                             </td>
                             <td>
                                 <button class="btn btn-primary" data-toggle="modal" data-target="#allocation_{{$course->id}}">Amend Allocation</button>
                                 @include('department::department.programme.course.courseAllocation.allocation')
                             </td>
                         </tr>
-                    @endforeach
-                     
+                    @endforeach 
                 </tbody>
             </table>
         </div>

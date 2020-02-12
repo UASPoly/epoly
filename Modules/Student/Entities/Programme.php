@@ -80,4 +80,20 @@ class Programme extends BaseModel
         return $flag;
     }
 
+    public function serviceInCourses()
+    {
+        return $this->departmentCourses;
+    }
+
+    public function serviceOutCourses()
+    {
+        $courses = [];
+        foreach ($this->courses as $course) {
+            foreach($course->departmentCourses as $departmentCourse){
+                $courses[] = $departmentCourse;
+            }
+        }
+        return $courses;
+    }
+
 }

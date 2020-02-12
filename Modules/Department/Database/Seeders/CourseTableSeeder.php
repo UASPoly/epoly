@@ -17,7 +17,6 @@ class CourseTableSeeder extends Seeder
     {
         Model::unguard();
         foreach ($this->courses() as $course) {
-            $course['department_id'] = 1;
             $course['semester_id'] = substr($course['code'], 4,1);
             switch (substr($course['code'], 3,1)) {
                 case '1':
@@ -38,7 +37,6 @@ class CourseTableSeeder extends Seeder
                     break;
             }
             $registeredCourse = Course::firstOrCreate($course);
-            $registeredCourse->departmentCourses()->firstOrCreate(['department_id'=>1]);
         } 
     }
 
@@ -73,7 +71,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>2,
                 'code'=>'MTH111',
                 'title'=>'Logic and Linear Algebra',
                 'unit'=>2
@@ -81,7 +79,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>2,
                 'code'=>'MTH112',
                 'title'=>'Functions and Geometry',
                 'unit'=>2
@@ -89,7 +87,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>3,
                 'code'=>'STA111',
                 'title'=>'Descriptive Statistics I',
                 'unit'=>2
@@ -97,7 +95,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>3,
                 'code'=>'STA112',
                 'title'=>'Elementary Probability Theory',
                 'unit'=>2
@@ -105,7 +103,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'GNS111',
                 'title'=>'Communication in English I',
                 'unit'=>2
@@ -113,7 +111,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'GNS112',
                 'title'=>'Citizenship Education 1',
                 'unit'=>2
@@ -177,7 +175,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'EED126',
                 'title'=>'Introduction to Entrepreneurship',
                 'unit'=>2
@@ -185,7 +183,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'GNS121',
                 'title'=>'Citizenship Education II',
                 'unit'=>2
@@ -193,7 +191,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>1,
-                'department_id'=>1,
+                'department_id'=>4,
                 'code'=>'PHY122',
                 'title'=>'Electricity I',
                 'unit'=>2
@@ -250,7 +248,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>2,
-                'department_id'=>1,
+                'department_id'=>6,
                 'code'=>'ACC211',
                 'title'=>'Principles of Accounting',
                 'unit'=>2
@@ -258,7 +256,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>2,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'EED216',
                 'title'=>'Practice of Entrepreneurship',
                 'unit'=>2
@@ -266,7 +264,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>2,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'OTM217',
                 'title'=>'Office Practice and Management',
                 'unit'=>2
@@ -338,7 +336,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>2,
-                'department_id'=>1,
+                'department_id'=>3,
                 'code'=>'STA226',
                 'title'=>'Small Business Startup',
                 'unit'=>2
@@ -346,7 +344,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>2,
-                'department_id'=>1,
+                'department_id'=>4,
                 'code'=>'PHY221',
                 'title'=>'Electricity II',
                 'unit'=>2
@@ -403,7 +401,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>3,
-                'department_id'=>1,
+                'department_id'=>7,
                 'code'=>'ACC011',
                 'title'=>'Principles of Accounting',
                 'unit'=>2
@@ -411,7 +409,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>3,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'EED016',
                 'title'=>'Practice of Entrepreneurship',
                 'unit'=>2
@@ -419,7 +417,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>3,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'OTM017',
                 'title'=>'Office Practice and Management',
                 'unit'=>2
@@ -491,7 +489,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>3,
-                'department_id'=>1,
+                'department_id'=>3,
                 'code'=>'STA026',
                 'title'=>'Small Business Startup',
                 'unit'=>2
@@ -499,7 +497,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>3,
-                'department_id'=>1,
+                'department_id'=>4,
                 'code'=>'PHY021',
                 'title'=>'Electricity II',
                 'unit'=>2
@@ -548,7 +546,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>5,
-                'department_id'=>1,
+                'department_id'=>3,
                 'code'=>'STA311',
                 'title'=>'Operations Research I',
                 'unit'=>2
@@ -556,7 +554,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>5,
-                'department_id'=>1,
+                'department_id'=>3,
                 'code'=>'STA314',
                 'title'=>'Statistics Theory I',
                 'unit'=>3
@@ -564,7 +562,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>5,
-                'department_id'=>1,
+                'department_id'=>2,
                 'code'=>'MTH313',
                 'title'=>'Numerical Method',
                 'unit'=>3
@@ -572,7 +570,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>5,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'OTM315',
                 'title'=>'Business Communications I',
                 'unit'=>2
@@ -620,7 +618,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>5,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'EED323',
                 'title'=>'Entrepreneurship Development I',
                 'unit'=>2
@@ -628,7 +626,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>2,
                 'programme_level_id'=>5,
-                'department_id'=>1,
+                'department_id'=>3,
                 'code'=>'STA321',
                 'title'=>'Statistics Theory II',
                 'unit'=>3
@@ -685,7 +683,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>5,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'EED413',
                 'title'=>'Entrepreneurship Development II',
                 'unit'=>2
@@ -693,7 +691,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>5,
-                'department_id'=>1,
+                'department_id'=>5,
                 'code'=>'OTM412',
                 'title'=>'Business Communications II',
                 'unit'=>2

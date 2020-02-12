@@ -120,9 +120,9 @@ class Department extends BaseModel
     public function unverifiedResults()
     {
         $results = [];
-        foreach ($this->departmentCourses as $department_course) {
-            if($department_course->course->currentCourseLecturer() && $department_course->course->currentCourseLecturer()->lecturerCourseResultUploads){
-                foreach($department_course->course->currentCourseLecturer()->lecturerCourseResultUploads->where('session_id',currentSession()->id) as $result){
+        foreach ($this->courses as $course) {
+            if($course->courseLecturer() && $course->courseLecturer()->lecturerCourseResultUploads){
+                foreach($course->courseLecturer()->lecturerCourseResultUploads->where('session_id',currentSession()->id) as $result){
                     if($result->verification_status == 0){
                         $results[] = $result;
                     }
