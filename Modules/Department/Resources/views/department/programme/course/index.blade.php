@@ -5,5 +5,5 @@
 @endsection
 
 @section('page-content')
-    @include('department::department.course.pertials.index')
+    @include('department::department.programme.course.pertials.index')
 @endsection

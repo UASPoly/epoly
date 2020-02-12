@@ -15,6 +15,9 @@
 						<th>Reserved Admissions</th>
 						<th>Admissions</th>
 						<th>Programme Courses</th>
+						@if(headOfDepartment())
+                        <th></th>
+						@endif
 					</tr>
 				</thead>
 				@foreach(department()->programmes as $programme)
@@ -36,17 +39,24 @@
 	                		@include('department::department.programme.reserved')
 	                	</td>
 	                	<td>
-	                		<a href="{{route('exam.officer.department.programme.admissions',$programme->id)}}">
+	                		<a href="{{route($routes['admission'] ?? 'department.programme.admissions',$programme->id)}}">
 		                		<button class="btn btn-primary">
 		                			{{count($programme->admissions->where('session_id',currentSession()->id))}}
 		                		</button>
 		                	</a>
 	                	</td>
 	                	<td>
-	                		<a href="{{route($route['courses'],$programme->id)}}">
+	                		<a href="{{route($routes['courses'] ?? 'department.programme.course.index',$programme->id)}}">
 	                			<button class="btn btn-primary">{{count($programme->courses)}}</button>
 	                		</a>
 	                	</td>
+	                	@if(headOfDepartment())
+                            <td>
+                            	<a href="{{route('department.programme.course.allocation.index',$programme->id)}}">
+	                            	<button class="btn btn-primary">View Course Allocation</button>
+	                            </a>
+                            </td>
+						@endif
 	                </tr>
 				@endforeach
 			</table>

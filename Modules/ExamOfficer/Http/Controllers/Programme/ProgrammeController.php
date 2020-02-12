@@ -19,6 +19,8 @@ class ProgrammeController extends ExamOfficerBaseController
         return view('examofficer::programme.index',[
             'route'=>[
                 'courses'=>'exam.officer.department.programme.course.index',
+                'admission'=>'exam.officer.department.programme.admissions',
+                'register'=>'exam.officer.student.admission.register.generated.number.index'
             ]]);
     }
 

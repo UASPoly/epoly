@@ -47,13 +47,11 @@ class CourseController extends ExamOfficerBaseController
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
-        department()->departmentCourses()->create(['course_id'=>$course->id]);
-        session()->flash('message','Course is created successfully');
         return redirect()->route('exam.officer.department.programme.course.index',['route'=>[
                 'edit'=>'exam.officer.department.course.edit',
                 'delete'=>'exam.officer.department.course.delete',
             ]
-        ]);
+        ])->with('success','Course is created successfully');
     }
 
     /**

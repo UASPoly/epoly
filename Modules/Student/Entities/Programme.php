@@ -57,6 +57,10 @@ class Programme extends BaseModel
         return $this->hasMany('Modules\Department\Entities\ProgrammeSchedule');
     }
 
+    public function departmentCourses()
+    {
+        return $this->hasMany('Modules\Department\Entities\DepartmentCourse');
+    }
 
     public function hasMorningSchedule()
     {

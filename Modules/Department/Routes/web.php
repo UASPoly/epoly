@@ -14,7 +14,38 @@
 Route::prefix('department')
 ->name('department.')
 ->group(function() {
+    //programme routes
+	Route::prefix('programmes')
+		->name('programme.')
+		->namespace('Programme')
+		->group(function() {
+			Route::get('/', 'ProgrammeController@index')->name('index');
+			Route::get('/{programmeId}/admissions', 
+					'ProgrammeController@currentSessionProgrammeAdmissions')->name('admissions');
 
+			Route::prefix('{programmeId}/course')
+			->name('course.')
+			->namespace('Course')
+			->group(function() {
+
+				Route::get('/', 'CourseController@index')->name('index');
+				Route::get('/create-course', 'CourseController@create')->name('create');
+				Route::post('{course_id}/update', 'CourseController@update')->name('update');
+				Route::get('{course_id}/edit', 'CourseController@edit')->name('edit');
+				Route::post('/register', 'CourseController@register')->name('register');
+				Route::get('{course_id}/delete', 'CourseController@delete')->name('delete');
+
+				Route::prefix('allocation')
+				->name('allocation.')
+				->group(function() {
+					Route::get('/', 'CourseAllocationController@index')->name('index');
+					Route::post('/register', 'CourseAllocationController@register')->name('register');
+					
+				});
+				
+			});	
+
+		});
     //admission routes
 	Route::prefix('student/admission')
 		->name('student.admission.')
@@ -194,27 +225,7 @@ Route::prefix('department')
 			Route::post('/login', 'Auth\DepartmentLoginController@login')->name('login');
 			Route::post('logout', 'Auth\DepartmentLoginController@logout')->name('auth.logout');
 		});
-		Route::prefix('course')
-		->name('course.')
-		->namespace('Course')
-		->group(function() {
-
-			Route::get('/', 'CourseController@index')->name('index');
-			Route::get('/create-course', 'CourseController@create')->name('create');
-			Route::post('{course_id}/update', 'CourseController@update')->name('update');
-			Route::get('{course_id}/edit', 'CourseController@edit')->name('edit');
-			Route::post('/register', 'CourseController@register')->name('register');
-			Route::get('{course_id}/delete', 'CourseController@delete')->name('delete');
-
-			Route::prefix('allocation')
-			->name('allocation.')
-			->group(function() {
-				Route::get('/', 'CourseAllocationController@index')->name('index');
-				Route::post('/register', 'CourseAllocationController@register')->name('register');
-				
-			});
-			
-		});
+		
 
 		Route::prefix('admission')
 		->name('admission.')

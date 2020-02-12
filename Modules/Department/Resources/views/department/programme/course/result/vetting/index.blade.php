@@ -1,5 +1,5 @@
 @extends('department::layouts.master')
 
 @section('page-content')
-    @include('department::department.course.result.vetting.form')
+    @include('department::department.programme.course.result.vetting.form')
 @endsection

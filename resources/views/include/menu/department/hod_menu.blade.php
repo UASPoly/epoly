@@ -36,21 +36,7 @@
     </ul>
 </li>
 <li>
-    <a href="#">Courses</a>
-    <ul>
-        <li>
-            <a href="{{route('department.course.create')}}">Register Course</a>
-        </li>
-        
-        <li>
-            <a href="{{route('department.course.index')}}">View Courses</a>
-        </li>
-    </ul>
-</li>
-<li>
-    <a href="{{route('department.course.allocation.index')}}">
-    Course Allocation
-    </a>
+    <a href="{{route('department.programme.index')}}">Programmes</a>
 </li>
 <li>
     <a href="#">Results</a>

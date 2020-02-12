@@ -26,7 +26,7 @@
                         	<td>{{$reserved->created_at}}</td>
                         	<td>{{$reserved->updated_at}}</td>
                         	<td>
-                        		<a href="{{route('exam.officer.student.admission.register.generated.number.index',[$reserved->admission_no,$programme->id])}}">
+                        		<a href="{{route($route['register'] ?? 'department.student.admission.register.generated.number.index',[$reserved->admission_no,$programme->id])}}">
                         			<button class="btn btn-success">Use It</button>
                         		</a>
                         	</td>

@@ -1,5 +1,5 @@
 @extends('department::layouts.master')
 
 @section('page-content')
-    @include('department::department.course.result.remark.pertials.index')
+    @include('department::department.programme.course.result.remark.pertials.index')
 @endsection

@@ -1,5 +1,5 @@
 @extends('department::layouts.master')
 
 @section('page-content')
-    @include('department::department.course.result.pertials.edit') 
+    @include('department::department.programme.course.result.pertials.edit') 
 @endsection

@@ -63,36 +63,23 @@ class Course extends BaseModel
 
     public function currentCourseMaster()
     {
+        
         $lecturer = null;
-        foreach($this->lecturerCourses as $allocation){
-            if($allocation->is_active == 1 && $allocation->lecturer_course_status_id == 2){
-                $lecturer = $allocation->lecturer;
-            }
+        foreach($this->lecturerCourses->where('is_active',1) as $lecturerCourse){
+            $lecturer = $lecturerCourse->lecturer;
         }
         return $lecturer;
     }
 
-    public function currentCourseLecturer()
+    public function courseLecturer()
     {
         $lecturer = null;
-        foreach($this->lecturerCourses as $allocation){
-            if($allocation->is_active == 1 && $allocation->lecturer_course_status_id == 1){
-                $lecturer = $allocation;
-            }
+        foreach($this->lecturerCourses->where('is_active',1) as $lecturerCourse){
+            $lecturer = $lecturerCourse->lecturer;
         }
         return $lecturer;
     }
 
-    public function currentCourseAssistance()
-    {
-        $lecturer = null;
-        foreach($this->lecturerCourses as $allocation){
-            if($allocation->is_active == 1 && $allocation->lecturer_course_status_id == 1){
-                $lecturer = $allocation->lecturer;
-            }
-        }
-        return $lecturer;
-    }
     public function hasRegisteredStudent()
     {
         if(count($this->courseRegistrations->where('session_id',currentSession()->id))>0){

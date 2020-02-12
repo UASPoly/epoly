@@ -45,8 +45,7 @@ class CourseManagementController extends AdminBaseController
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
-        session()->flash('message','Course registered successfully');
-        return back();
+        return back()->with('success','Course registered successfully');
     }
 
     /**
@@ -76,8 +75,8 @@ class CourseManagementController extends AdminBaseController
             'semester_id'=>$request->semester,
             'unit'=>$request->unit
         ]);
-        session()->flash('message','Course Information Updated');
-        return back();
+   
+        return back()->with('success','Course Information Updated');
     }
 
     /**
@@ -90,7 +89,7 @@ class CourseManagementController extends AdminBaseController
         $course = Course::find($courseId);
         if(count($course->courseRegistrations) == 0){
             $course->delete();
-            session()->flash('message','Course is deleted successfully');
+            return back()->with('success','Course is deleted successfully');
         }else{
             session()->flash('error',['Sorry you will not be able to delete this course, it has been registered by many student']);
         }

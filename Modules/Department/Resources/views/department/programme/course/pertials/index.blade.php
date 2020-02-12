@@ -24,9 +24,9 @@
 	     			<td>{{$course->semester->name}}</td>
 	     			<td>{{optional($course->programmeLevel)->name}}</td>
 	     			<td>
-	     				<button class="btn btn-danger shadow" onclick="return confirm('Are you sure you want to delete this course from the list of courses in this department')"><a href="{{route($route['delete'] ?? 'department.course.delete',['programmeId'=>$programme->id,'course_id'=>$course->id])}}" style="color: white">Delete</a> </i>
+	     				<button class="btn btn-danger shadow" onclick="return confirm('Are you sure you want to delete this course from the list of courses in this department')"><a href="{{route($route['delete'] ?? 'department.programme.course.delete',['programmeId'=>$programme->id,'course_id'=>$course->id])}}" style="color: white">Delete</a> </i>
 	     				</button>
-	     				<button class="btn btn-info shadow"><a href="{{route($route['edit'] ?? 'department.course.edit',['programmeId'=>$programme->id,'course_id'=>$course->id])}}" style="color: white">Edit</a></i>
+	     				<button class="btn btn-info shadow"><a href="{{route($route['edit'] ?? 'department.programme.course.edit',['programmeId'=>$programme->id,'course_id'=>$course->id])}}" style="color: white">Edit</a></i>
 	     				</button>
 	     			</td>
 	     		</tr>

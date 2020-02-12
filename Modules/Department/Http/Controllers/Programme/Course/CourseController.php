@@ -1,10 +1,11 @@
 <?php
 
-namespace Modules\Department\Http\Controllers\Course;
+namespace Modules\Department\Http\Controllers\Programme\Course;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Department\Entities\Course;
+use Modules\Student\Entities\Programme;
 use Modules\Core\Http\Controllers\Department\HodBaseController;
 
 class CourseController extends HodBaseController
@@ -13,9 +14,9 @@ class CourseController extends HodBaseController
      * Display a listing of the resource.
      * @return Response
      */
-    public function index()
+    public function index($programmeId)
     {
-        return view('department::department.course.index');
+        return view('department::department.programme.course.index',['programme'=>Programme::find($programmeId)]);
     }
 
     /**
@@ -24,7 +25,7 @@ class CourseController extends HodBaseController
      */
     public function create()
     {
-        return view('department::department.course.create');
+        return view('department::department.programme.course.create');
     }
 
     /**
@@ -42,9 +43,7 @@ class CourseController extends HodBaseController
             'unit'=>$request->unit,
             'programme_id'=>$request->programme
         ]);
-        headOfDepartment()->department->departmentCourses()->create(['course_id'=>$course->id]);
-        session()->flash('message','Course is created successfully');
-        return redirect()->route('department.course.index');
+        return redirect()->route('department.programme.course.index')->with('success','Course is created successfully');
     }
 
     /**
@@ -54,7 +53,7 @@ class CourseController extends HodBaseController
      */
     public function edit($course_id)
     {
-        return view('department::department.course.edit',['course'=>Course::find($course_id)]);
+        return view('department::department.programme.course.edit',['course'=>Course::find($course_id)]);
     }
 
     /**
@@ -74,8 +73,7 @@ class CourseController extends HodBaseController
             'programme_id'=>$request->programme,
             'semester_id'=>$request->semester,
         ]);
-        session()->flash('message','Course is updated successfully');
-        return redirect()->route('department.course.index');
+        return redirect()->route('department.programme.course.index',[$course->programme->id])->with('success','Course is updated successfully');
     }
 
     /**
@@ -96,10 +94,10 @@ class CourseController extends HodBaseController
         }
         if(empty($errors)){
             $course->delete();
-            session()->flash('message','Course is deleted successfully');
+            return back()->with('success','Course is deleted successfully');
         }else{
             session()->flash('error',$errors);
         }
-        return redirect()->route('department.course.index');
+        return back();
     }
 }
