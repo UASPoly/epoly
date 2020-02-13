@@ -54,13 +54,13 @@
 	                	</td>
 
 	                	<td>
-	                		<a href="{{route($routes['courses'] ?? 'department.programme.course.index',$programme->id)}}">
+	                		<a href="{{route($routes['courses'] ?? 'department.programme.course.service.in',$programme->id)}}">
 	                			<button class="btn btn-success">{{count($programme->serviceInCourses())}}</button>
 	                		</a>
 	                	</td>
 
 	                	<td>
-	                		<a href="{{route($routes['courses'] ?? 'department.programme.course.index',$programme->id)}}">
+	                		<a href="{{route($routes['courses'] ?? 'department.programme.course.service.out',$programme->id)}}">
 	                			<button class="btn btn-success">{{count($programme->serviceOutCourses())}}</button>
 	                		</a>
 	                	</td>

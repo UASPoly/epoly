@@ -27,7 +27,12 @@ Route::prefix('department')
 			->name('course.')
 			->namespace('Course')
 			->group(function() {
-
+                
+                //services courses routes
+				Route::get('/service-in', 'ServiceCourseController@serviceInCourses')->name('service.in');
+				Route::get('/service-out', 'ServiceCourseController@serviceOutCourses')->name('service.out');
+                
+                //internal courses routes
 				Route::get('/', 'CourseController@index')->name('index');
 				Route::get('/create-course', 'CourseController@create')->name('create');
 				Route::post('{course_id}/update', 'CourseController@update')->name('update');
