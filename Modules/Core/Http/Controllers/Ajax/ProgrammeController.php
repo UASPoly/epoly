@@ -5,14 +5,23 @@ namespace Modules\Core\Http\Controllers\Ajax;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Department\Entities\Course;
+use Modules\Student\Entities\Programme;
 use Modules\Department\Entities\ProgrammeSchedule;
 
 class ProgrammeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Response
-     */
+
+    public function getDepartmentProgrammes($departmentId)
+    {
+        return response()->json(Programme::where('department_id',$departmentId)->pluck('title','id'));
+    }
+
+    public function getProgrammeCourses($programmeId)
+    {
+        return response()->json(Course::where('programme_id',$programmeId)->pluck('code','id'));
+    }
+
     public function getProgrammeSchedules($programme_id)
     {
         $schedules = null;

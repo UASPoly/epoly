@@ -5,6 +5,7 @@ namespace Modules\Department\Http\Controllers\Programme\Course;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Student\Entities\Programme;
+use Modules\Department\Entities\Department;
 use Modules\Core\Http\Controllers\Department\HodBaseController;
 
 class ServiceCourseController extends HodBaseController

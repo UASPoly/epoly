@@ -2,7 +2,8 @@
 <div class="card shadow">
 	<div class="card-body">
 		@if($status == 'in')
-        <button class="btn btn-success btn-block">Borrow Course</button>
+	        <button data-toggle="modal" data-target="#borrowCourse" class="btn btn-success btn-block">Borrow Course</button>
+	        @include('department::department.programme.course.borrowCourse')
 		@endif
 		@if(count($departmentCourses)>0)
 	    <table class="table shadow">

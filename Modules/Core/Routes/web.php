@@ -31,11 +31,19 @@ Route::prefix('core')
 		   ->group(function() {
 
 	        Route::get('/{programmeId}/get-programme-schedules', 'ProgrammeController@getProgrammeSchedules');
+	        Route::get('/{programmeId}/get-programme-courses', 'ProgrammeController@getProgrammeCourses');
 
 		});
+
+		Route::prefix('department')
+		   ->name('department')
+		   ->group(function() {
+	        Route::get('/{departmentId}/get-department-programmes', 'ProgrammeController@getDepartmentProgrammes');
+
+		});   
+
 		Route::prefix('admission')
 		   ->group(function() {
-
 	        Route::get('/session/{session}/state/{state}/get-state-admission-numbers', 'AdmissionController@fetchStateAdmissionNumbers');
 
 		});   
