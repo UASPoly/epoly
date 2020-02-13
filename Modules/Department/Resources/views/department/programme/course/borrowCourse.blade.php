@@ -5,7 +5,8 @@
 	        	<h5>Borrow the course from other department and add them to {{$programme->title}}</h5>
 	        </div>
             <div class="modal-body">
-            	<form>
+            	<form action="{{route('department.programme.course.service.register',[$programme->id])}}" method="post">
+            		@csrf
             		<input type="hidden" name="myprogramme" value="{{$programme->id}}">
             	 	<div class="form-group">
             	 		<label>Department</label>
@@ -32,6 +33,16 @@
             	 		<label>Course</label>
             	 		<select name="course" class="form-control" id="course">
             	 			<option value="">Select Course</option>
+            	 		</select>
+            	 	</div>
+
+            	 	<div class="form-group">
+            	 		<label>Your department Level for the course</label>
+            	 		<select name="myprogrammelevel" class="form-control" id="course">
+            	 			<option value="">Select Level</option>
+            	 			@foreach($programme->programmeLevels as $programmeLevel)
+                                 <option value="{{$programmeLevel->id}}">{{$programmeLevel->name}}</option>
+                            @endforeach
             	 		</select>
             	 	</div>
 

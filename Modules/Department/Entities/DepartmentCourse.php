@@ -17,6 +17,11 @@ class DepartmentCourse extends BaseModel
     	return $this->belongsTo(Course::class);
     }
 
+    public function programmeLevel()
+    {
+        return $this->belongsTo(ProgrammeLevel::class);
+    }
+
     public function programme()
     {
         return $this->belongsTo('Modules\Student\Entities\Programme');

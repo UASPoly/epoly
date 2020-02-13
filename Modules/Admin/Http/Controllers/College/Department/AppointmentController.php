@@ -22,6 +22,7 @@ class AppointmentController extends AdminBaseController
 
     public function registerHeadOfDepartment(Request $request)
     {
+
         $errors = [];
         $request->validate([
             'appointment_date'=>'required'
@@ -57,7 +58,7 @@ class AppointmentController extends AdminBaseController
                 'from'=> $request->appointment_date
             ]);
             //set success message
-            return redirect()->route('admin.college.department.management.hod.index',[$staff->department->id])->with('success','Appointment registered successfully');
+            return redirect()->route('admin.college.department.management.hod.index',[$staff->department->id]);
         }else{
             session()->flash('custom_errors',$errors);
         }
