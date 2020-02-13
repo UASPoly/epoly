@@ -15,26 +15,7 @@
             var department_id = $(this).val();
             if(department_id){
                 $.ajax({
-                    url: '/core/ajax/department/'+department_id+'/get-department-programmes',
-                    type: 'GET',
-                    dataType: 'json',
-                    success: function(data){
-                   	   $('select[name="programme"]').empty();
-                   	   $.each(data, function(key, value){
-                   	   	$('select[name="programme"]').append('<option value="'+key+'">'+ value +'</option>');
-                   	   });
-                   }
-                });
-            } else {
-                $('select[name="programme"]').empty();
-            }
-        });
-
-        $('select[name="programme"]').on('change',function(){
-            var programme_id = $(this).val();
-            if(programme_id){
-                $.ajax({
-                    url: '/core/ajax/programme/'+programme_id+'/get-programme-courses',
+                    url: '/core/ajax/department/'+department_id+'/get-department-courses',
                     type: 'GET',
                     dataType: 'json',
                     success: function(data){
@@ -42,7 +23,7 @@
                    	   $.each(data, function(key, value){
                    	   	$('select[name="course"]').append('<option value="'+key+'">'+ value +'</option>');
                    	   });
-                    }
+                   }
                 });
             } else {
                 $('select[name="course"]').empty();

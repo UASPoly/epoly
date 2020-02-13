@@ -74,8 +74,8 @@
                                 {{$departmentCourse->courseLecturer() ? $departmentCourse->courseLecturer()->staff->first_name.' '.$departmentCourse->courseLecturer()->staff->last_name : 'Not Allocated'}}
                             </td>
                             <td>
-                                <button class="btn btn-primary" data-toggle="modal" data-target="#allocation_{{$course->id}}">Amend Allocation</button>
-                                @include('department::department.programme.course.courseAllocation.allocation')
+                                <button class="btn btn-primary" data-toggle="modal" data-target="#allocation_{{$departmentCourse->id}}">Amend Allocation</button>
+                                @include('department::department.programme.course.pertials.allocation')
                             </td>
                         </tr>
                     @endforeach 

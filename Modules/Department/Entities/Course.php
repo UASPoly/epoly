@@ -65,7 +65,7 @@ class Course extends BaseModel
     {
         
         $lecturer = null;
-        foreach($this->lecturerCourses->where('is_active',1) as $lecturerCourse){
+        foreach($this->lecturerCourses->where('department_id',department()->id)->where('is_active',1) as $lecturerCourse){
             $lecturer = $lecturerCourse->lecturer;
         }
         return $lecturer;
@@ -74,7 +74,7 @@ class Course extends BaseModel
     public function courseLecturer()
     {
         $lecturer = null;
-        foreach($this->lecturerCourses->where('is_active',1) as $lecturerCourse){
+        foreach($this->lecturerCourses->where('department_id',department()->id)->where('is_active',1) as $lecturerCourse){
             $lecturer = $lecturerCourse->lecturer;
         }
         return $lecturer;

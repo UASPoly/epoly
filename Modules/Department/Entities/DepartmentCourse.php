@@ -34,11 +34,15 @@ class DepartmentCourse extends BaseModel
 
     public function courseLecturer()
     {
+        $lecturer = null;
         $lecturerCourse = LecturerCourse::where([
             'course_id'=>$this->course_id,
             'department_id'=>$this->department_id,
             'is_active'=>1
         ])->first();
-        return optional($lecturerCourse)->lecturer;
+        if($lecturerCourse){
+            $lecturer = $lecturerCourse->lecturer;
+        }
+        return $lecturer;
     }
 }

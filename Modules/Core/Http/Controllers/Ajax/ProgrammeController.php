@@ -12,9 +12,9 @@ use Modules\Department\Entities\ProgrammeSchedule;
 class ProgrammeController extends Controller
 {
 
-    public function getDepartmentProgrammes($departmentId)
+    public function getDepartmentCourses($departmentId)
     {
-        return response()->json(Programme::where('department_id',$departmentId)->pluck('title','id'));
+        return response()->json(Course::where('department_id',$departmentId)->pluck('code','id'));
     }
 
     public function getProgrammeCourses($programmeId)

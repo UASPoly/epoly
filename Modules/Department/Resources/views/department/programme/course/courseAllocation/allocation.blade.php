@@ -15,7 +15,7 @@
 	    				@foreach(department()->staffs as $staff)
 	                        @if($staff->staffType->name == 'Lecturer')
 	                            @if(!$course->courseLecturer() || $course->courseLecturer() && $staff->lecturer->id != $course->courseLecturer()->id )
-	                                <option value="{{$staff->lecturer->id}}">{{$staff->first_name}} {{$staff->first_name}} {{$staff->staffID}}</option>
+	                                <option value="{{$staff->lecturer->id}}">{{$staff->first_name}} {{$staff->last_name}}</option>
 	                            @endif
 	                        @endif
 	    				@endforeach

@@ -1,5 +1,14 @@
 <div class="col-md-12">
 <div class="card shadow">
+	<div class="card-header shadow">
+		<h4 class="text text-danger">
+		@if($status == 'out')
+            {{department()->name}} department is required to serve the following department with  respective course lecturers
+		@else
+            {{department()->name}} department request to be served from the following department with their  respective course lecturers
+		@endif
+		</h4>
+	</div>
 	<div class="card-body">
 		@if($status == 'in')
 	        <button data-toggle="modal" data-target="#borrowCourse" class="btn btn-success btn-block">Borrow Course</button>
@@ -23,19 +32,34 @@
 	     	<tbody>
 	     		@foreach($departmentCourses as $departmentCourse)
 	     		<tr>
-	     			<td>{{$loop->index+1}}</td>
-	     			<td>{{$departmentCourse->course->title}}</td>
-	     			<td>{{$departmentCourse->course->code}}</td>
-	     			<td>{{$departmentCourse->course->unit}}</td>
+	     			<td>
+	     				{{$loop->index+1}}
+	     			</td>
+	     			<td>
+	     				{{$departmentCourse->course->title}}
+	     			</td>
+	     			<td>
+	     				{{$departmentCourse->course->code}}
+	     			</td>
+	     			<td>
+	     				{{$departmentCourse->course->unit}}
+	     			</td>
 	     			<td>
 	     				{{$status == 'in' ? $departmentCourse->course->department->name : $departmentCourse->department->name}}
 	     			</td>
-	     			<td>cousre lecturer</td>
-	     			<td>{{$departmentCourse->semester->name}}</td>
-	     			<td>{{optional($departmentCourse->programmeLevel)->name}}</td>
+	     			<td>
+		     			{{$departmentCourse->courseLecturer() ? $departmentCourse->courseLecturer()->staff->first_name.' '.$departmentCourse->courseLecturer()->staff->last_name : 'Not Allocated'}}
+		     		</td>
+	     			<td>
+	     				{{$departmentCourse->semester->name}}
+	     			</td>
+	     			<td>
+	     				{{$status == 'out' ? $departmentCourse->programmeLevel->name : $departmentCourse->course->programmeLevel->name}}
+	     			</td>
 	     			<td>
 	     				@if($status == 'out')
-                           <button class="btn btn-success">Amend Allocation</button>
+                           <button data-toggle="modal" data-target="#allocation_{{$departmentCourse->id}}" class="btn btn-success">Amend Allocation</button>
+                           @include('department::department.programme.course.pertials.allocation')
 	     				@endif
 	     			</td>
 	     		</tr>

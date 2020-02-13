@@ -23,13 +23,6 @@
             	 	</div>
 
             	 	<div class="form-group">
-            	 		<label>Programme</label>
-            	 		<select name="programme" class="form-control" id="programme">
-            	 			<option value="">Select Programme</option>
-            	 		</select>
-            	 	</div>
-
-            	 	<div class="form-group">
             	 		<label>Course</label>
             	 		<select name="course" class="form-control" id="course">
             	 			<option value="">Select Course</option>

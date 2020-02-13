@@ -30,10 +30,10 @@ class CourseAllocationController extends HodBaseController
         ]);
 
         $course = Course::find($request->course_id);
-        if($this->courseHasAllocation($course)){
+        if($this->courseHasAllocation($request->all())){
             if(!$this->lecturerHasThisCourseAllocation($request->all())){
-                foreach ($course->lecturerCourses as $lecturerCourse) {
-                    $lecturerCourse->update(['is_active'=>0]);
+                foreach ($course->lecturerCourses->where('department_id',$request->department_id) as $lecturerCourse) {
+                    $lecturerCourse->update(['is_active'=>0,'to'=>time()]);
                 }
                 $course->lecturerCourses()->create([
                     'department_id'=>$request->department_id,
@@ -63,10 +63,10 @@ class CourseAllocationController extends HodBaseController
         return $flag;
     }
 
-    public function courseHasAllocation(Course $course)
+    public function courseHasAllocation($data)
     {
         $flag = false;
-        foreach ($course->lecturerCourses->where('is_active',1) as $active) {
+        foreach (Course::find($data['course_id'])->lecturerCourses->where(['department_id'=>$data['department_id'],'is_active'=>1]) as $active) {
             $flag = true;
         }
         return $flag;
