@@ -10,7 +10,15 @@ trait HasCurrentLevelCourses
 
     public function currentLevelCourses()
     {
-        return $this->level()->courses ?? [];
+        $courses = [];
+        foreach ($this->level()->courses as $course) {
+            $courses[] = $course;
+        }
+        foreach ($this->level()->departmentCourses as $departmentCourse) {
+            $courses[] = $departmentCourse->course;
+        }
+        
+        return $courses;
     }
 
     public function currentLevelCourseUnits()

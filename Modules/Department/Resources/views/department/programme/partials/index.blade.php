@@ -1,7 +1,7 @@
 <div class="col-md-12">
 	<div class="card shadow">
 		<div class="card-header shadow">
-			<h5 class="center">{{currentSession()->name}} {{department()->name}} Programmes Admission reports</h5>
+			<h5 class="center">{{currentSession()->name}} {{department()->name}} Programmes and courses information</h5>
 		</div>
 		<div class="card-body table-responsive">
 			<table class="table shadow">
@@ -54,13 +54,13 @@
 	                	</td>
 
 	                	<td>
-	                		<a href="{{route($routes['courses'] ?? 'department.programme.course.service.in',$programme->id)}}">
+	                		<a href="{{route($routes['serviceIn'] ?? 'department.programme.course.service.in',$programme->id)}}">
 	                			<button class="btn btn-success">{{count($programme->serviceInCourses())}}</button>
 	                		</a>
 	                	</td>
 
 	                	<td>
-	                		<a href="{{route($routes['courses'] ?? 'department.programme.course.service.out',$programme->id)}}">
+	                		<a href="{{route($routes['serviceOut'] ?? 'department.programme.course.service.out',$programme->id)}}">
 	                			<button class="btn btn-success">{{count($programme->serviceOutCourses())}}</button>
 	                		</a>
 	                	</td>

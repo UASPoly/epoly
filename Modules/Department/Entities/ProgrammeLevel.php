@@ -17,6 +17,11 @@ class ProgrammeLevel extends BaseModel
     	return $this->hasMany(Course::class);
     }
 
+    public function departmentCourses()
+    {
+        return $this->hasMany(DepartmentCourse::class);
+    }
+
     public function sessionRegistrations()
     {
         return $this->hasMany('Modules\Student\Entities\SessionRegistration');

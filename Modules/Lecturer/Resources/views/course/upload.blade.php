@@ -11,6 +11,7 @@
                     @csrf
                     <input type="hidden" name="course" value="{{$lecturer_course->course->id}}">
                     <input type="hidden" name="session" value="{{currentSession()->id}}">
+                    <input type="hidden" name="department" value="{{$lecturer_course->department->id}}">
 
                     <label>Choose the result sheet you have dowloaded at {{currentSession()->name}} for {{$lecturer_course->course->code}}</label>
                     <input type="file" name="result" class="form-control"><br>

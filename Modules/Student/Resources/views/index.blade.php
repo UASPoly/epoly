@@ -13,10 +13,10 @@ student dashboard
     <br>
     <div class="card shadow">
         <div class="card-header shadow">
-            <b class="text text-danger" >Notification !!!</b> 
+            <b class="text text-danger" >{{student()->level()->name}} Notification !!!</b> 
         </div>
         <div class="card-body">
-            {{student()->level()->name}}
+            
         </div>
     </div>
 </div>    

@@ -34,6 +34,11 @@ Route::prefix('exam-officer')
 				->namespace('Course')
 				->group(function() {
 
+                    //services courses routes
+					Route::get('/service-in', 'ServiceCourseController@serviceInCourses')->name('service.in');
+					Route::post('/service-in/register', 'ServiceCourseController@register')->name('service.register');
+					Route::get('/service-out', 'ServiceCourseController@serviceOutCourses')->name('service.out');
+					
 					Route::get('/', 'CourseController@index')->name('index');
 					Route::get('/create-course', 'CourseController@create')->name('create');
 					Route::post('{course_id}/update-course', 'CourseController@update')->name('update');

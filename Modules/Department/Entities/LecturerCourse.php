@@ -12,6 +12,19 @@ class LecturerCourse extends BaseModel
     	return $this->belongsTo(Course::class);
     }
 
+    public function department()
+    {
+        return $this->belongsTo(Department::class);
+    }
+
+    public function programmeLevel()
+    {
+        foreach($this->department->departmentCourses->where('course_id',$this->course_id) as $departmentCourse){
+            return $departmentCourse->programmeLevel;
+        }
+        
+    }
+
     public function lecturer()
     {
     	return $this->belongsTo('Modules\Lecturer\Entities\Lecturer');

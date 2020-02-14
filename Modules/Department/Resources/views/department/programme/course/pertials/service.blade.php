@@ -1,7 +1,7 @@
 <div class="col-md-12">
 <div class="card shadow">
 	<div class="card-header shadow">
-		<h4 class="text text-danger">
+		<h4 class="text">
 		@if($status == 'out')
             {{department()->name}} department is required to serve the following department with  respective course lecturers
 		@else
@@ -10,7 +10,7 @@
 		</h4>
 	</div>
 	<div class="card-body">
-		@if($status == 'in')
+		@if($status == 'in' && headOfDepartment())
 	        <button data-toggle="modal" data-target="#borrowCourse" class="btn btn-success btn-block">Borrow Course</button>
 	        @include('department::department.programme.course.borrowCourse')
 		@endif
@@ -57,7 +57,7 @@
 	     				{{$status == 'out' ? $departmentCourse->programmeLevel->name : $departmentCourse->course->programmeLevel->name}}
 	     			</td>
 	     			<td>
-	     				@if($status == 'out')
+	     				@if($status == 'out' && headOfDepartment())
                            <button data-toggle="modal" data-target="#allocation_{{$departmentCourse->id}}" class="btn btn-success">Amend Allocation</button>
                            @include('department::department.programme.course.pertials.allocation')
 	     				@endif

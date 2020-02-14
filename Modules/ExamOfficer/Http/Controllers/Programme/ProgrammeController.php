@@ -17,10 +17,12 @@ class ProgrammeController extends ExamOfficerBaseController
     public function index()
     {
         return view('examofficer::programme.index',[
-            'route'=>[
+            'routes'=>[
                 'courses'=>'exam.officer.department.programme.course.index',
                 'admission'=>'exam.officer.department.programme.admissions',
-                'register'=>'exam.officer.student.admission.register.generated.number.index'
+                'register'=>'exam.officer.student.admission.register.generated.number.index',
+                'serviceIn'=>'exam.officer.department.programme.course.service.in',
+                'serviceOut'=>'exam.officer.department.programme.course.service.out'
             ]]);
     }
 

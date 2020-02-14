@@ -1,11 +1,10 @@
 @extends('lecturer::layouts.master')
 
 @section('page-content')
-<div class="col-md-1"></div> 
-<div class="col-md-10">
-	<div class="card">
+<div class="col-md-12">
+	<div class="card shadow">
 		<div class="card-body table-responsive">
-			<table class="table table-default">
+			<table class="table table-default shadow">
 				<thead>
 					<tr>
 						<td>S/N</td>
@@ -13,6 +12,9 @@
 						<td>Course Code</td>
 						<td>Course Unit</td>
 						<td>Semester</td>
+						<td>Department</td>
+						<td>Programme</td>
+						<td>Level</td>
 						<td></td>
 					</tr>
 				</thead>
@@ -24,6 +26,11 @@
 						<td>{{$lecturer_course->course->code}}</td>
 						<td>{{$lecturer_course->course->unit}}</td>
 						<td>{{$lecturer_course->course->semester->name}}</td>
+						<td>{{$lecturer_course->department->name}}</td>
+						<td>
+							{{optional(optional($lecturer_course->programmeLevel())->programme)->title}}
+						</td>
+						<td>{{optional($lecturer_course->programmeLevel())->name}}</td>
 						<td>
 							<form action="{{route('lecturer.result.templete.download')}}" method="post">
 								@csrf

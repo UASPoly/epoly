@@ -8,5 +8,7 @@
 @endsection
 
 @section('page-content')
+
     @include('department::department.programme.partials.index')
+
 @endsection
