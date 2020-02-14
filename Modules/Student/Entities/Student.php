@@ -89,7 +89,7 @@ class Student extends Authenticatable
     public function currentRegisteredCourses()
     {
         $courses = [];
-        foreach ($this->sessionRegistrations()->where('level_id',$this->level()->id)->get() as $session_registration) {
+        foreach ($this->sessionRegistrations()->where('programme_level_id',$this->level()->id)->get() as $session_registration) {
             foreach ($session_registration->semesterRegistrations as $semester_registration) {
                 foreach ($semester_registration->courseRegistrations as $course_registraion) {
                     $courses[] = $course_registraion->course;

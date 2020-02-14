@@ -42,7 +42,7 @@ class CourseRegistrationController extends StudentBaseController
         $courses = array_merge($request->course,$request->add ?? []);
         $dropCourses = $this->getCurrentSessionDropCourses($request->course);
         $session_registration = student()->sessionRegistrations()->firstOrCreate([
-            'level_id'=>student()->level()->id,
+            'programme_level_id'=>student()->level()->id,
             'session_id'=> currentSession()->id,
             'department_id'=> student()->admission->department->id
         ]);
