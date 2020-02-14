@@ -21,9 +21,9 @@ class Profile extends BaseModel
     	return $this->belongsTo(Staff::class);
     }
 
-    public function tribe()
+    public function lga()
     {
-        return $this->belongsTo(Tribe::class);
+        return $this->belongsTo(Lga::class);
     }
 
     public function religion()

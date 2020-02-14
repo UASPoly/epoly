@@ -39,16 +39,16 @@ class CreateProfilesTable extends Migration
             ->on('religions')
             ->delete('restrict')
             ->update('cascade');
-            $table->integer('tribe_id')
+            $table->integer('lga_id')
             ->unsigned()
             ->nullable()
             ->foreign()
             ->references('id')
-            ->on('tribes')
+            ->on('lgas')
             ->delete('restrict')
             ->update('cascade');
             $table->text('biography',50000);
-            $table->text('image')->nullable();
+            $table->text('picture')->nullable();
             $table->string('address');
             $table->string('date_of_birth');
             $table->timestamps();

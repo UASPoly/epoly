@@ -7,12 +7,14 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Modules\Lecturer\Entities\Lecturer;
 use Modules\Department\Entities\Department;
+use Modules\Core\Services\Admission\FileUpload;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 use Modules\Admin\Http\Requests\College\Department\Management\LecturerFormRequest;
 use Modules\Admin\Http\Requests\College\Department\Management\UpdateLecturerFormRequest;
 
 class LecturerManagementController extends AdminBaseController
 {
+    use FileUpload;
     /**
      * Display a listing of the resource.
      * @return Response
@@ -63,14 +65,17 @@ class LecturerManagementController extends AdminBaseController
         $staff->profile()->create([
             'gender_id' => $data['gender'],
             'religion_id' => $data['religion'],
+            'lga_id' => $data['lga'],
             'address' => $data['address'],
             'date_of_birth' => $data['date_of_birth'],
             'biography' => 'staff biography',
         ]);
 
-        session()->flash('message','Lecturer is registered successfully');
+        if($data['picture']){
+            $staff->profile->update(['picture'=>$this->storeFile($data['picture'],str_replace('/','-',$staff->department->name).'/Lecturers/Profile')]);
+        }
 
-        return redirect()->route('admin.college.department.management.index',[$staff->department->id]);
+        return redirect()->route('admin.college.department.management.lecturer.index',[$staff->department->id])->with('success','Lecturer is registered successfully');
     }
 
     /**
@@ -114,14 +119,16 @@ class LecturerManagementController extends AdminBaseController
         $lecturer->staff->profile->update([
             'gender_id' => $data['gender'],
             'religion_id' => $data['religion'],
+            'lga_id' => $data['religion'],
             'address' => $data['address'],
             'date_of_birth' => $data['date_of_birth'],
             'biography' => 'staff biography',
         ]);
+        if(isset($data['picture'])){
+            $this->updateFile($lecturer->staff->profile, 'picture', $data['picture'], str_replace('/','-',$lecturer->staff->department->name).'/Lecturers/Profile');
+        }
 
-        session()->flash('message','Lecturer information updated successfully');
-
-        return back();
+        return back()->with('success','Lecturer information updated successfully');
     }
 
     /**

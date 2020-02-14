@@ -7,7 +7,7 @@ trait FileUpload
 {
     public function storeFile($file, $location)
     {
-        $path = $location.'/'.currentSession()->name.'/';
+        $path = $location.'/'.str_replace('/','-',currentSession()->name).'/';
 
         $filename = time().$file->getClientOriginalName().'.'.$file->getClientOriginalExtension();
 

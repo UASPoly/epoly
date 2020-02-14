@@ -44,7 +44,7 @@
 	                            		{{$lecturer->staff->first_name}} {{$lecturer->staff->last_name}}
 	                            	</td>
 	                            	<td>{{$lecturer->email}}</td>
-	                            	<td>{{$lecturer->phone}}</td>
+	                            	<td>{{$lecturer->staff->phone}}</td>
 	                            	<td>{{$lecturer->from}}</td>
 	                            	<td>{{$lecturer->to}}</td>
 	                            	<td>
