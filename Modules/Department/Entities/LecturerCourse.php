@@ -19,10 +19,14 @@ class LecturerCourse extends BaseModel
 
     public function programmeLevel()
     {
-        foreach($this->department->departmentCourses->where('course_id',$this->course_id) as $departmentCourse){
-            return $departmentCourse->programmeLevel;
+
+        if($this->department_id == $this->lecturer->staff->department->id){
+            return $this->course->programmeLevel;
+        }else{
+            foreach($this->department->departmentCourses->where('course_id',$this->course_id) as $departmentCourse){
+                return $departmentCourse->programmeLevel;
+            }
         }
-        
     }
 
     public function lecturer()
