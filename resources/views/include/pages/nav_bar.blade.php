@@ -80,11 +80,24 @@
                                 <a href="{{route('student.login')}}">Sign In</a>
                             </li>
                             @else
-                                <li><a href="{{ route(logout_route()) }}"
-                                    onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();"><i class="ti-power-off m-r-5"></i> Logout</a>
-                                </li>
-
+                            <li>
+                                <a href="#"><img src="{{storage_url(user_image())}}"  height="45" width="45" class="img-circle user-img"></a>
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            <b>
+                                            @if(lecturer())
+                                                Hi {{lecturer()->staff->first_name}} {{lecturer()->staff->last_name}}
+                                            @endif
+                                            </b>
+                                        </a>
+                                    </li>
+                                    <li><a href="{{ route(logout_route()) }}"
+                                        onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();"><i class="ti-power-off m-r-5"></i> Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
                                 <form id="logout-form" action="{{ route(logout_route()) }}"    method="POST" style="display: none;">
                                     @csrf
                                 </form>

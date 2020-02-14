@@ -3,67 +3,30 @@
 use Modules\Admin\Entities\Session;
 use RealRashid\SweetAlert\Facades\Alert;
 
-if (!function_exists('successAlert')) {
-    function successAlert($title,$message)
+if (!function_exists('user_image')) {
+    function user_image()
     {
-        Alert::success($title, $message);
+        if(auth()->guard('admin')->check()){
+            $image = 'user.png';
+        }elseif (auth()->guard('staff')->check()) {
+            $image = optional(staff()->profile)->picture;
+        }elseif (auth()->guard('lecturer')->check()) {
+            $image = optional(lecturer()->staff->profile)->picture;
+        }elseif (auth()->guard('head_of_department')->check()) {
+            $image = optional(headOfDepartment()->staff->profile)->picture;
+        }elseif (auth()->guard('directer')->check()) {
+            $image = optional(directer()->staff->profile)->picture;
+        }elseif(auth()->guard('exam_officer')->check()){
+            $image = optional(examOfficer()->staff->profile)->picture;
+        }else{
+            $image = optional(student()->studentAccount)->picture;
+        }
+        if(!$image){
+            $image = 'user.png';
+        }
+        return $image;
     }
 }
-
-if (!function_exists('confirmAlert')) {
-    function confirmAlert($title,$message)
-    {
-        alert()->question($title,$message)->showCancelButton()->showConfirmButton()->focusCancel(true);
-    }
-}
-
-if (!function_exists('infoAlert')) {
-    function infoAlert($title,$message)
-    {
-        alert()->infor($title,$message);
-    }
-}
-
-if (!function_exists('questionAlert')) {
-    function questionAlert($title,$message)
-    {
-        alert()->question($title,$message);
-    }
-}
-
-if (!function_exists('warningAlert')) {
-    function warningAlert($title,$message)
-    {
-        alert()->warning($title,$message);
-    }
-}
-
-if (!function_exists('errorAlert')) {
-    function errorAlert($title,$message)
-    {
-        alert()->error($title,$message);
-    }
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 if (!function_exists('logout_route')) {
     function logout_route()
