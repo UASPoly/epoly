@@ -33,7 +33,7 @@ class StudentController extends HodBaseController
     public function updateBiodata(UpdateAdmissionFormRequest $request)
     {
         $admission = Admission::find($request->admission_id)->updateThisAdmission($request->all());
-        return back()->with('success','Congratulation this admission is updated successfully and this student can logged in as student using '.$this->admission_no.' as his user name and password'));
+        return back()->with('toast_success','Congratulation this admission is updated successfully and this student can logged in as student using '.$this->admission_no.' as his user name and password');
     }
 
     public function student()

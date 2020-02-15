@@ -6,7 +6,9 @@ namespace Modules\Lecturer\Services\Result;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Admin\Entities\Session;
 use Modules\Department\Entities\Course;
+use Modules\Department\Entities\Department;
 use Modules\Lecturer\Exports\ResultTemplete;
+use Modules\Department\Entities\LecturerCourse;
 use Modules\Student\Entities\CourseRegistration;
 
 class DownloadScoreSheet
@@ -22,6 +24,10 @@ class DownloadScoreSheet
 	function __construct(array $data)
 	{
 		$this->data = $data;
+        if(!isset($this->data['department'])){
+            $this->data['department'] = LecturerCourse::find($this->data['course'])->department->id;
+            $this->data['course'] = LecturerCourse::find($this->data['course'])->course->id;
+        }
         $this->currentCourse();
         $this->currentSession();
         $this->availableRegisteredStudent();
@@ -39,7 +45,7 @@ class DownloadScoreSheet
 
     public function availableRegisteredStudent()
     {
-        $this->courseRegistrations = CourseRegistration::where(['department_id'=>$data['department'],'course_id'=>$this->data['course'],'session_id'=>$this->data['session'],'drop_status'=>0])->get();
+        $this->courseRegistrations = CourseRegistration::where(['department_id'=>$this->data['department'],'course_id'=>$this->data['course'],'session_id'=>$this->data['session'],'drop_status'=>0])->get();
     }
 
 	public function getFileData()
@@ -51,7 +57,7 @@ class DownloadScoreSheet
 	}
 	public function getFileName()
 	{
-		return $this->course->code.'_'.str_replace('/','_',$this->session->name).'_Result_Sheet.csv';
+		return str_replace(' ','_',Department::find($this->data['department'])->name).'_'.$this->course->code.'_'.str_replace('/','_',$this->session->name).'_Score_Sheet.csv';
 	}
 
 	public function downloadFile()

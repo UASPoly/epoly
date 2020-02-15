@@ -17,7 +17,6 @@ trait HasCurrentLevelCourses
         foreach ($this->level()->departmentCourses as $departmentCourse) {
             $courses[] = $departmentCourse->course;
         }
-        
         return $courses;
     }
 

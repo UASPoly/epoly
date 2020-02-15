@@ -75,9 +75,9 @@ class Department extends BaseModel
         return $this->hasMany(ReservedDepartmentSessionAdmission::class);
     }
 
-    public function lecturerCourseAllocations()
+    public function lecturerCourses()
     {
-        return $this->hasMany(LecturerCourseAllocation::class);
+        return $this->hasMany(LecturerCourse::class);
     }
  
     public function diferredSessions()
@@ -120,14 +120,13 @@ class Department extends BaseModel
     public function unverifiedResults()
     {
         $results = [];
-        foreach ($this->courses as $course) {
-            if($course->courseLecturer() && $course->courseLecturer()->lecturerCourseResultUploads){
-                foreach($course->courseLecturer()->lecturerCourseResultUploads->where('session_id',currentSession()->id) as $result){
-                    if($result->verification_status == 0){
-                        $results[] = $result;
-                    }
+        
+        foreach ($this->lecturerCourses->where('is_active',1) as $lecturerCourse) {
+            foreach ($lecturerCourse->lecturerCourseResultUploads->where('session_id',currentSession()->id) as $upload) {
+                if($upload->verification_status == 0){
+                    $results[] = $upload;
                 }
-            }
+            } 
         }
         return $results;
     }

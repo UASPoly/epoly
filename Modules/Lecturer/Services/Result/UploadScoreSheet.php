@@ -14,7 +14,11 @@ class UploadScoreSheet extends DownloadScoreSheet
     
     public function uploadedBy()
     {
-    	$course_lecturer = $this->course->currentCourseLecturer();
-        return $course_lecturer->lecturerCourseResultUploads()->firstOrCreate(['session_id'=>$this->data['session']]);
+    	$lecturerCourse = null;
+    	foreach ($this->course->lecturerCourses->where('department_id',$this->data['department'])->where('is_active',1) as $courseLecturer) {
+    		$lecturerCourse = $courseLecturer;
+    	}
+    	
+        return $lecturerCourse->lecturerCourseResultUploads()->firstOrCreate(['session_id'=>$this->data['session']]);
     }
 }

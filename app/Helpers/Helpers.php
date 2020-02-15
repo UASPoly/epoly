@@ -17,7 +17,7 @@ if (!function_exists('user_image')) {
         }elseif (auth()->guard('directer')->check()) {
             $image = optional(directer()->staff->profile)->picture;
         }elseif(auth()->guard('exam_officer')->check()){
-            $image = optional(examOfficer()->staff->profile)->picture;
+            $image = optional(optional(examOfficer()->staff)->profile)->picture;
         }else{
             $image = optional(student()->studentAccount)->picture;
         }

@@ -1,4 +1,4 @@
-@if(student()->level()->id < 6)
+@if(student()->level())
 
 <div class="card">
 	<div class="card-header text text-center">{{student()->level()->name}} {{currentSession()->name}} Session Courses</div>

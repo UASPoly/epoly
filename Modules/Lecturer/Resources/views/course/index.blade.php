@@ -35,6 +35,7 @@
 							<form action="{{route('lecturer.result.templete.download')}}" method="post">
 								@csrf
 								<input type="hidden" name="course" value="{{$lecturer_course->course->id}}">
+								<input type="hidden" name="department" value="{{$lecturer_course->department->id}}">
 								<input type="hidden" name="session" value="{{currentSession()->id}}">
 								<button class="btn btn-info" style="color: white"><i class="fa fa-download"></i>Download Result Sheet</button>
 							</form>

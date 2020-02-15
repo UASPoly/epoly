@@ -4,7 +4,7 @@
 	@if(lecturer())
 		@foreach(lecturer()->lecturerCourses->where('is_active',1) as $lecturer_course)
 		    @if($lecturer_course->course->hasRegisteredStudent())
-		    <option value="{{$lecturer_course->course->id}}">
+		    <option value="{{$lecturer_course->id}}">
 		    	{{$lecturer_course->course->code}}/{{$lecturer_course->department->name}}
 		    </option>
 		    @endif
@@ -13,8 +13,8 @@
 		<optgroup label="My Courses">
 		    @foreach($lecturer->lecturerCourses->where('is_active',1) as $lecturer_course)
 			    @if(!$lecturer_course->hasUploadedCurrentSessionResult() && $lecturer_course->course->hasRegisteredStudent())
-			    <option value="{{$lecturer_course->course->id}}">
-			    	{{$lecturer_course->course->code}}
+			    <option value="{{$lecturer_course->id}}">
+			    	{{$lecturer_course->course->code}}/{{$lecturer_course->department->name}}
 			    </option>
 			    @endif
 			@endforeach
@@ -24,8 +24,8 @@
 	    	    @if($staff->lecturer->id != $lecturer->id)
 				    @foreach($staff->lecturer->lecturerCourses->where('is_active',1) as $lecturer_course)
 					    @if(!$lecturer_course->hasUploadedCurrentSessionResult() && $lecturer_course->course->hasRegisteredStudent())
-					    <option value="{{$lecturer_course->course->id}}">
-					    	{{$lecturer_course->course->code}}
+					    <option value="{{$lecturer_course->id}}">
+					    	{{$lecturer_course->course->code}}/{{$lecturer_course->department->name}}
 					    </option>
 					    @endif
 					@endforeach

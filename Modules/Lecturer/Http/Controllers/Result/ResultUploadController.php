@@ -7,6 +7,8 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Department\Entities\Course;
+use Modules\Department\Entities\Department;
+use Modules\Department\Entities\LecturerCourse;
 use Modules\Lecturer\Services\Result\VerifyUploadFile;
 use Modules\Lecturer\Imports\UploadResult;
 use Modules\Lecturer\Services\Result\UploadScoreSheet;
@@ -37,18 +39,25 @@ class ResultUploadController extends LecturerBaseController
         'result'  => 'required',
         'session'  => 'required'
         ]);
-        $errors = $this->verifyThisFile($request->all());
+        $data = $request->all();
+        if(!isset($data['department'])){
+            $data['course'] = LecturerCourse::find($request->course)->course->id;
+            $data['department'] = LecturerCourse::find($request->course)->department->id;
+        }
+
+        $errors = $this->verifyThisFile($data);
         if(empty($errors)){
-            $course = Course::find($request->course);
-            $result = new UploadScoreSheet($request->all());
-            Excel::import(new UploadResult($result->uploadedBy(),$request->all()), $request->file('result'));
+            $course = Course::find($data['course']);
+            $result = new UploadScoreSheet($data);
+            Excel::import(new UploadResult($result->uploadedBy(),$data), $request->file('result'));
             if(!session('error')){
-                session()->flash('message','Congratulation '.currentSession()->name.' result of '.$course->code.' is successfully uploaded to all registered students');
+                session();
             }
         }else{
             session()->flash('error',$errors);
+            return back();
         }
-        return back();
+        return back()->with('success','Congratulation '.currentSession()->name.' result of '.$course->code.' for '.Department::find($data['department'])->name.' is successfully uploaded');
     }
 
     
