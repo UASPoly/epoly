@@ -40,40 +40,56 @@ class CourseRegistrationController extends StudentBaseController
         $request->validate(['course'=>'required']);
 
         $courses = array_merge($request->course,$request->add ?? []);
+
+        //get all the un selected course by the student of this session
         $dropCourses = $this->getCurrentSessionDropCourses($request->course);
+
+        //session course registration
         $session_registration = student()->sessionRegistrations()->firstOrCreate([
             'programme_level_id'=>student()->level()->id,
             'session_id'=> currentSession()->id,
             'department_id'=> student()->admission->department->id
         ]);
+
         foreach ($courses as $course_id) {
+
+            //semester course registration
             $course = Course::find($course_id);
             $semester_registration = $session_registration
             ->semesterRegistrations()
             ->firstOrCreate(['semester_id'=>$course->semester->id]);
+
+            //course registration
             $course_registration = $semester_registration->courseRegistrations()->firstOrCreate([
                 'course_id' => $course_id,
                 'session_id' => currentSession()->id,
-                'admission_id' => student()->admission->id
+                'admission_id' => student()->admission->id,
+                'department_id' => student()->admission->department->id
             ]);
-
+            
+            //create result instance of the course
             $course_registration->result()->firstOrCreate([]);
-            //check if the added course is from the carry over courses
+
+            //check if the added course is from the carry over courses update the carry over status
             $carryOver = $this->getThisCourseFromStudentCarryOverCourses($course_id);
             if($carryOver){
                 $carryOver->update(['status'=>0]);
             }
-            //check if the added course is from the drop courses
+
+            //check if the added course is from the drop courses update the drop status
             $dropCourse = $this->getThisCourseFromStudentDropCourses($course_id);
             if($dropCourse){
                 $dropCourse->update(['status'=>0]);
             }
-            //check if the added course is from the reregister courses
+            
+            //check if the added course is from the reregister courses update re-register course status
             $reRegisterCourse = $this->getThisCourseFromStudentReRegisterCourses($course_id);
             if($reRegisterCourse){
                 $reRegisterCourse->update(['status'=>0]);
             }
         }
+        
+        // register all the un selected courses for this sections
         if(!empty($dropCourses)){
             foreach ($dropCourses as $course_id) {
                 student()->dropCourses()->firstOrCreate([
@@ -83,9 +99,19 @@ class CourseRegistrationController extends StudentBaseController
                 ]);
             }
         }
-        session()->flash('message', 'Congratulation all courses has been registered success fully');
-        return redirect()->route('student.course.registration.courses.register.show');
+        
+    
+        return redirect()->route('student.course.registration.courses.register.show')->with('success', 'Congratulation all courses has been registered successfully');;
     }
+
+    public function hasBeenRegisterThisSession($course_id)
+    {
+        if(student()->courseRegistrations->where('session_id',currentSession()->id)->where('course_id',$course_id)){
+            return true;
+        }
+        return false;
+    }
+
     public function getThisCourseFromStudentDropCourses($course_id)
     {
         $dropCourse = null;

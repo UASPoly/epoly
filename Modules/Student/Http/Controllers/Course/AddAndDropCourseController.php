@@ -27,6 +27,8 @@ class AddAndDropCourseController extends StudentBaseController
             $course_registration = $semester_registration->courseRegistrations()->firstOrCreate([
                 'course_id'=>$course_id,
                 'session_id'=> currentSession()->id,
+                'admission_id' => student()->admission->id,
+                'department_id' => student()->admission->department->id
             ]);
             $course_registration->result()->firstOrCreate([]);
 
@@ -60,8 +62,7 @@ class AddAndDropCourseController extends StudentBaseController
             }
         }
 
-        session()->flash('message', 'Congratulation all courses has been added and dropped success fully');
-        return redirect()->route('student.course.registration.courses.register.show');
+        return redirect()->route('student.course.registration.courses.register.show')->with('success', 'Congratulation all courses has been added and dropped success fully');
     }
 
     public function getThisCourseFromStudentDropCourses($course_id)

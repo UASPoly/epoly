@@ -37,6 +37,11 @@ class CourseRegistration extends BaseModel
         return $this->belongsTo('Modules\Department\Entities\Admission');
     }
     
+    public function department()
+    {
+        return $this->belongsTo('Modules\Department\Entities\DEpartment');
+    }
+
     public function session()
     {
         return $this->belongsTo('Modules\Admin\Entities\Session');
