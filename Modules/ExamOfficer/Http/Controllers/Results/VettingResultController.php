@@ -62,7 +62,7 @@ class VettingResultController extends ExamOfficerBaseController
         
             $vetting = new GenerateVettableResult(session('course_registrations'));
 
-            return view('department::department.course.result.vetting.print',['registrations'=>$vetting->results]);
+            return view('department::department.programme.course.result.vetting.print',['registrations'=>$vetting->results]);
         }
         return redirect()->route('exam.officer.result.vetting.index');
         

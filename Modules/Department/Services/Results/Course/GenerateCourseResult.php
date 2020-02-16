@@ -3,6 +3,7 @@ namespace Modules\Department\Services\Results\Course;
 
 use Modules\Admin\Entities\Session;
 use Modules\Department\Entities\Course;
+use Modules\Department\Entities\LecturerCourse;
 use Modules\Lecturer\Entities\LecturerCourseResultUpload;
 
 /**
@@ -19,6 +20,10 @@ class GenerateCourseResult
 	function __construct(array $data)
 	{
 		$this->data = $data;
+        if(!isset($this->data['department'])){
+            $this->data['department'] = LecturerCourse::find($this->data['course'])->department_id;
+            $this->data['course'] = LecturerCourse::find($this->data['course'])->course_id;
+        }
 		$this->verifySearch();
 	}
     
@@ -35,14 +40,22 @@ class GenerateCourseResult
     private function hasUploadedResult()
     {
     	$uploaded_result = LecturerCourseResultUpload::where([
-            'lecturer_course_id'=>$this->course->currentCourseLecturer()->id,
+            'lecturer_course_id'=>$this->getThisLecturerCourseId()->id,
             'session_id'=>$this->session->id,
         ])->first();
+
         if(blank($uploaded_result)){
         	return false;
         }
         $this->result = $uploaded_result;
         return true;
+    }
+    
+    public function getThisLecturerCourseId()
+    {
+        foreach ($this->course->courseLecturer()->lecturerCourses->where('department_id',$this->data['department'])->where('is_active',1) as $lecturerCourse) {
+            return $lecturerCourse;
+        }
     }
 
     private function verifySearch()

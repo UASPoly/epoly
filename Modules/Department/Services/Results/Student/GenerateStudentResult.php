@@ -36,6 +36,7 @@ class GenerateStudentResult
 		if(!$this->getRegistration()){
 			$errors[] = 'Sorry we dont found any course registration of '.$this->data['admission_no'].' at '.Session::find($this->data['session'])->id;
 		}
+		
 		return $errors;
 
 	}

@@ -17,7 +17,7 @@ class VettingResultController extends HodBaseController
      */
     public function index()
     {
-        return view('department::department.course.result.vetting.index',['sessions'=>Session::all(),'levels'=>Level::all()]);
+        return view('department::department.programme.course.result.vetting.index',['sessions'=>Session::all(),'levels'=>Level::all()]);
     }
 
     /**
@@ -61,7 +61,7 @@ class VettingResultController extends HodBaseController
         
             $vetting = new GenerateVettableResult(session('course_registrations'));
 
-            return view('department::department.course.result.vetting.print',['registrations'=>$vetting->results]);
+            return view('department::department.programme.course.result.vetting.print',['registrations'=>$vetting->results]);
         }
         return redirect()->route('department.result.course.vetting.index');
         

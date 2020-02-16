@@ -1,5 +1,5 @@
 @extends('examofficer::layouts.master')
 
 @section('page-content')
-    @include('department::department.course.result.pertials.index')
+    @include('department::department.programme.course.result.pertials.index')
 @endsection

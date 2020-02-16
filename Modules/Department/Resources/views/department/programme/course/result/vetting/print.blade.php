@@ -10,11 +10,11 @@
 </div>
 <div class="table-responsive table-condenced">
 <table class="table table-bordered">
-        @include('department::department.course.result.student.table.header')
+        @include('department::department.programme.course.result.student.table.header')
 	<tbody>
 	@foreach($registrations as $registration)
         @foreach($registration->semesterRegistrations->where('semester_id',request()->route('semester_id')) as $registration)
-            @include('department::department.course.result.student.table.row')
+            @include('department::department.programme.course.result.student.table.row')
         @endforeach
 	@endforeach
     </tbody>

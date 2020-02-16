@@ -54,7 +54,7 @@ class StudentResultController extends ExamOfficerBaseController
     public function viewResult($semester_id)
     {
         if(session('registration')){
-            return view('department::department.course.result.student.result',['registration'=>session('registration')]);
+            return view('department::department.programme.course.result.student.result',['registration'=>session('registration')]);
         }
         return back();
     }

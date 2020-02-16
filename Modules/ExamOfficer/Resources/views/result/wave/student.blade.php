@@ -1,1 +1,0 @@
-student.blade.php

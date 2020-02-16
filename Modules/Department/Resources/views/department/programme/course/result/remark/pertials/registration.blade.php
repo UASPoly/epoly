@@ -81,7 +81,7 @@
                             	</td>
                             	
                             </tr>
-                            @include('department::department.course.result.remark.remark')
+                            @include('department::department.programme.course.result.remark.remark')
      					@endforeach
      				</tbody>
      			</table>

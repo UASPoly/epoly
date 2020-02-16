@@ -20,8 +20,10 @@
      				</select><br>
      				<select class="form-control" name="level">
      					<option value="">Level</option>
-     					@foreach($user->levels() as $level)
-     					    <option value="{{$level->id}}">{{$level->name}}</option>
+     					@foreach(department()->programmes as $programme)
+                            @foreach($programme->programmeLevels as $programmeLevel)
+         					    <option value="{{$programmeLevel->id}}">{{$programmeLevel->name}}</option>
+                            @endforeach
      					@endforeach
      				</select><br>
      				<select class="form-control" name="semester">

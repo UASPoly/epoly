@@ -19,7 +19,6 @@ class LecturerCourse extends BaseModel
 
     public function programmeLevel()
     {
-
         if($this->department_id == $this->lecturer->staff->department->id){
             return $this->course->programmeLevel;
         }else{
@@ -47,6 +46,13 @@ class LecturerCourse extends BaseModel
     public function hasUploadedCurrentSessionResult()
     {
         if(count($this->lecturerCourseResultUploads->where('session_id',currentSession()->id)) > 0){
+            return true;
+        }
+    }
+
+    public function hasRegisteredStudent()
+    {
+        if(count($this->course->courseRegistrations->where('session_id',currentSession()->id)->where('department_id',$this->department_id))>0){
             return true;
         }
     }

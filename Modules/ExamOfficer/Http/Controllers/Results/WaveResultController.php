@@ -50,7 +50,7 @@ class WaveResultController extends ExamOfficerBaseController
         
             $vetting = new GenerateVettableResult(session('course_registrations'));
 
-            return view('department::department.course.result.student.wave',['registrations'=>$vetting->results]);
+            return view('department::department.programme.course.result.student.wave',['registrations'=>$vetting->results]);
         }
         return redirect()->route('exam.officer.result.student.wave.index');
     }
@@ -63,7 +63,7 @@ class WaveResultController extends ExamOfficerBaseController
             $result->unWaveThisResult();
         }else{
             $result->waveThisResult();
-            $message = 'THe result waving has been register successfully';
+            $message = 'The result waving has been register successfully';
         }
         
         session()->flash('message', $message);

@@ -62,7 +62,7 @@ class ResultRemarkController extends ExamOfficerBaseController
     public function viewRegistration()
     {
         if(session('request')){
-            $registrations = SessionRegistration::where(['department_id'=>examOfficer()->department->id,'session_id'=>session('request')['session'],'level_id'=>session('request')['level']])->paginate(session('request')['paginate']);
+            $registrations = SessionRegistration::where(['department_id'=>examOfficer()->department->id,'session_id'=>session('request')['session'],'programme_level_id'=>session('request')['level']])->paginate(session('request')['paginate']);
                 
             return view('examofficer::result.student.remark.registration',['route'=>'exam.officer.result.student.remark.register','registrations'=>$registrations]);
         }

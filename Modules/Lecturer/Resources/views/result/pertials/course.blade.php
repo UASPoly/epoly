@@ -2,34 +2,32 @@
 <select class="form-control" name="course">
 	<option value="">Course</option>
 	@if(lecturer())
-		@foreach(lecturer()->lecturerCourses->where('is_active',1) as $lecturer_course)
-		    @if($lecturer_course->course->hasRegisteredStudent())
-		    <option value="{{$lecturer_course->id}}">
-		    	{{$lecturer_course->course->code}}/{{$lecturer_course->department->name}}
+		@foreach(lecturer()->lecturerCourses->where('is_active',1) as $lecturerCourse)
+		    @if($lecturerCourse->hasRegisteredStudent())
+		    <option value="{{$lecturerCourse->id}}">
+		    	{{$lecturerCourse->course->code}}/{{$lecturerCourse->department->name}}
 		    </option>
 		    @endif
 		@endforeach
 	@else
 		<optgroup label="My Courses">
-		    @foreach($lecturer->lecturerCourses->where('is_active',1) as $lecturer_course)
-			    @if(!$lecturer_course->hasUploadedCurrentSessionResult() && $lecturer_course->course->hasRegisteredStudent())
-			    <option value="{{$lecturer_course->id}}">
-			    	{{$lecturer_course->course->code}}/{{$lecturer_course->department->name}}
+		    @foreach(examOfficer()->lecturer->lecturerCourses->where('is_active',1) as $lecturerCourse)
+			    @if(!$lecturerCourse->hasUploadedCurrentSessionResult() && $lecturerCourse->hasRegisteredStudent())
+			    <option value="{{$lecturerCourse->id}}">
+			    	{{$lectureCourse->course->code}}/{{$lectureCourse->department->name}}
 			    </option>
 			    @endif
 			@endforeach
 	    </optgroup>
 	    <optgroup label="Other Lecturer Courses">
-	    	@foreach(department()->staffs as $staff)
-	    	    @if($staff->lecturer->id != $lecturer->id)
-				    @foreach($staff->lecturer->lecturerCourses->where('is_active',1) as $lecturer_course)
-					    @if(!$lecturer_course->hasUploadedCurrentSessionResult() && $lecturer_course->course->hasRegisteredStudent())
-					    <option value="{{$lecturer_course->id}}">
-					    	{{$lecturer_course->course->code}}/{{$lecturer_course->department->name}}
-					    </option>
-					    @endif
-					@endforeach
-			    @endif
+	    	@foreach(department()->courses as $course)
+		    	@foreach($course->lecturerCourses->where('is_active',1) as $lecturerCourse)
+				    @if($lecturerCourse->hasRegisteredStudent())
+				    <option value="{{$lecturerCourse->id}}">
+				    	{{$lecturerCourse->course->code}}/{{$lecturerCourse->department->name}}
+				    </option>
+				    @endif
+				@endforeach
 			@endforeach
 	    </optgroup>
 	@endif
