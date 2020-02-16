@@ -51,13 +51,16 @@ class CourseAllocationController extends HodBaseController
             ]);
         }
                 
-        return redirect()->route('department.programme.course.allocation.index',[$course->programme->id])->with('success','The course allocated successfully');
+        return back()->with('success','The course allocated successfully');
     }
 
     public function lecturerHasThisCourseAllocation($data)
     {
         $flag = false;
-        foreach(Lecturer::find($data['lecturer_id'])->lecturerCourses->where(['course_id'=>$data['course_id'],'department_id'=>$data['department_id'],'is_active'=>1]) as $lecturerCourse){
+        foreach(Lecturer::find($data['lecturer_id'])->lecturerCourses
+            ->where('course_id',$data['course_id'])
+            ->where('department_id',$data['department_id'])
+            ->where('is_active',1) as $lecturerCourse){
             $flag = true;
         }
         return $flag;
@@ -66,7 +69,9 @@ class CourseAllocationController extends HodBaseController
     public function courseHasAllocation($data)
     {
         $flag = false;
-        foreach (Course::find($data['course_id'])->lecturerCourses->where(['department_id'=>$data['department_id'],'is_active'=>1]) as $active) {
+        foreach (Course::find($data['course_id'])->lecturerCourses
+            ->where('department_id',$data['department_id'])
+            ->where('is_active',1) as $active) {
             $flag = true;
         }
         return $flag;

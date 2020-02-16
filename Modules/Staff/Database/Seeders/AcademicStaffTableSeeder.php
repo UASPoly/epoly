@@ -40,7 +40,7 @@ class AcademicStaffTableSeeder extends Seeder
         $staff->profile()->create([
             'gender_id' => 1,
             'religion_id' => 1,
-            'tribe_id' => 1,
+            'lga_id' => 1,
             'address' => 'umaru ali shinkafi sokoto state poly technic',
             'date_of_birth' => '1980-10-03 18:52:00',
             'biography' => 'staff biography',

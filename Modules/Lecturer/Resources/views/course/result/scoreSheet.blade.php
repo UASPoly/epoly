@@ -1,5 +1,5 @@
   
-    <b>
+    <!-- <b>
     <div style="text-align: center;"><br><br>
     	UMARU ALI SHINKAFI POLYTECHNIC SOKOTO<br>
     	COLLEGE OF {{strtoupper($course->department->college->name)}}<br>
@@ -8,7 +8,7 @@
     	SEMESTER........ {{strtoupper($course->semester->name)}} SESSION ........ {{$session->name}}<br>
     	COURSE CODE.............{{$course->code}} COURES TITLE........... {{strtoupper($course->title)}}<br><br>
     </div>
-    </b>
+    </b> -->
     <table>
         <thead>
         	<tr>

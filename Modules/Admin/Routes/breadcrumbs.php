@@ -30,7 +30,7 @@ Breadcrumbs::for('admin.college.admission.summary', function ($breadcrumb,$sessi
 //Dashboard > Colleges > collage name
 Breadcrumbs::for('admin.college.management', function ($breadcrumb,$college) {
 	$breadcrumb->parent('admin.colleges.index');
-    $breadcrumb->push($college->name, route('admin.college.index'));
+    $breadcrumb->push($college->name, route('admin.college.management.index',[$college->id]));
 });
 
 //Dashboard > Colleges > collage name > Edit
