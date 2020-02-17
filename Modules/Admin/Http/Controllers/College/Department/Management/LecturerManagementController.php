@@ -142,7 +142,7 @@ class LecturerManagementController extends AdminBaseController
         if($lecturer->lecturerCourse){
             session()->flash('error',['Sorry you can not delete this lecturer because, this lecturer has course allocation']);
         }else{
-            $lecturer->staff->profile->delete();
+            //$lecturer->staff->profile->delete();
             $lecturer->staff->delete();
             $lecturer->delete();
             session()->flash('message','The lecturer deleted successfully');

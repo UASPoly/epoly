@@ -36,6 +36,12 @@ class ServiceCourseController extends HodBaseController
     }
     public function register(Request $request)
     {
+        $request->validate([
+            "myprogramme" => "required",
+            "department" => "required",
+            "course" => "required",
+            "myprogrammelevel" => "required"
+        ]);
         $course = Course::find($request->course);
 
         if($this->alreadyRegistered($request->all())){
@@ -61,5 +67,37 @@ class ServiceCourseController extends HodBaseController
         if($departmentCourse){
             return true;
         }
+    }
+
+    public function update(Request $request,$programmeId, $departmentCourseId)
+    {
+        $request->validate([
+            "myprogramme" => "required",
+            "department" => "required",
+            "course" => "required",
+            "myprogrammelevel" => "required"
+        ]);
+
+        $departmentCourse = DepartmentCourse::find($departmentCourseId);
+        if(!$this->alreadyRegistered($request->all())){
+            $departmentCourse->update([
+                'programme_level_id'=>$request->myprogrammelevel,
+                'department_id'=>$request->department,
+                'programme_id'=>$request->myprogramme,
+                'course_id'=>$request->course,
+                'semester_id'=>Course::find($request->course)->semester->id,
+            ]);
+            return back()->withSuccess('Course information updated successfully');
+        }else{
+            return back()->withError('Sorry this course was already exist in this programme');
+        }
+        
+    }
+
+    public function delete($programmeId, $departmentCourseId)
+    {
+        $departmentCourse = DepartmentCourse::find($departmentCourseId);
+        $departmentCourse->delete();
+        return back()->withSuccess('Course was removed from your borrowed course for this programme');
     }
 }

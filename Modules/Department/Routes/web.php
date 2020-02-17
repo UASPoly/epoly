@@ -31,6 +31,11 @@ Route::prefix('department')
                 //services courses routes
 				Route::get('/service-in', 'ServiceCourseController@serviceInCourses')->name('service.in');
 				Route::post('/service-in/register', 'ServiceCourseController@register')->name('service.register');
+
+				Route::post('/service-in/{departmentCourseId}/update', 'ServiceCourseController@update')->name('service.update');
+
+				Route::get('/service-in/{departmentCourseId}/delete', 'ServiceCourseController@delete')->name('service.delete');
+
 				Route::get('/service-out', 'ServiceCourseController@serviceOutCourses')->name('service.out');
                 
                 //internal courses routes

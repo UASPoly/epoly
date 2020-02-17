@@ -3,9 +3,9 @@
 	<div class="card-header shadow">
 		<h4 class="text">
 		@if($status == 'out')
-            {{department()->name}} department is required to serve the following department with  respective course lecturers
+            {{$programme->title}} is required to serve the following department with  respective course lecturers
 		@else
-            {{department()->name}} department request to be served from the following department with their  respective course lecturers
+            {{$programme->title}} request to be served from the following department with their  respective course lecturers
 		@endif
 		</h4>
 	</div>
@@ -51,7 +51,7 @@
 		     			{{$departmentCourse->courseLecturer() ? $departmentCourse->courseLecturer()->staff->first_name.' '.$departmentCourse->courseLecturer()->staff->last_name : 'Not Allocated'}}
 		     		</td>
 	     			<td>
-	     				{{$departmentCourse->semester->name}}
+	     				{{optional($departmentCourse->semester)->name}}
 	     			</td>
 	     			<td>
 	     				{{$status == 'out' ? $departmentCourse->programmeLevel->name : $departmentCourse->course->programmeLevel->name}}
@@ -60,7 +60,19 @@
 	     				@if($status == 'out' && headOfDepartment())
                            <button data-toggle="modal" data-target="#allocation_{{$departmentCourse->id}}" class="btn btn-success">Amend Allocation</button>
                            @include('department::department.programme.course.pertials.allocation')
+                        @else
+                        <button class="btn btn-info" data-toggle="modal" data-target="#edit_course{{$departmentCourse->id}}">
+	                        Edit
+	                    </button> 
+                        @include('department::department.programme.course.service.edit')
+
+                        <a href="{{route('department.programme.course.service.delete',[$programme->id, $departmentCourse->id])}}"> 
+                        <button class="btn btn-danger" onclick="return confirm('Are you sure you want to remove this course from this programme borrowed courses')">
+	                        Remove
+	                    </button>  
+                        </a>  
 	     				@endif
+
 	     			</td>
 	     		</tr>
 	     		@endforeach

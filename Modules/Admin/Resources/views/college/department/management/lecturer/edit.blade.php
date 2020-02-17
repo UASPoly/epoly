@@ -15,7 +15,7 @@
     <div class="card shadow">
     	<div class="card-body">
 		    <h3 class="text text-success">{{$lecturer->staff->department->name}} Edit Lecturer Information</h3>
-		    <form class="login-form" action="{{route('admin.college.department.management.lecturer.update',[str_replace(' ','-',strtolower($lecturer->staff->department->name)),$lecturer->staff->department->id,$lecturer->id])}}" method="post" enctype="multipart/form-data">
+		    <form class="login-form" action="{{route('admin.college.department.management.lecturer.update',[$lecturer->staff->department->id,$lecturer->id])}}" method="post" enctype="multipart/form-data">
 		        @csrf
 		        <input type="hidden" name="lecturer" value="{{$lecturer->id}}">
 		        <div class="row">

@@ -4,6 +4,7 @@ namespace Modules\Lecturer\Exports;
 
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
 class ResultTemplete implements FromView
 {

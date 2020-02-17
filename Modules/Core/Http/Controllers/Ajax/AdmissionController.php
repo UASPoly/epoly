@@ -30,6 +30,6 @@ class AdmissionController extends Controller
             
         }
 
-        return response()->json(($admissions));
+        return response()->json($admissions);
     }
 }

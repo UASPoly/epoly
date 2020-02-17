@@ -68,7 +68,7 @@ class DepartmentTableSeeder extends Seeder
             ],
         ];
         foreach($departments as $department){
-            Department::firstOrCreate($department);
+            $department = Department::firstOrCreate($department);
         }
     }
 }

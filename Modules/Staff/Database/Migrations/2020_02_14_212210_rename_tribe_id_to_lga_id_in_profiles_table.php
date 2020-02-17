@@ -14,8 +14,8 @@ class RenameTribeIdToLgaIdInProfilesTable extends Migration
     public function up()
     {
         Schema::table('profiles', function (Blueprint $table) {
-            // $table->renameColumn('tribe_id','lga_id');
-            // $table->renameColumn('image','picture');
+            $table->renameColumn('tribe_id','lga_id');
+            $table->renameColumn('image','picture');
         });
     }
 

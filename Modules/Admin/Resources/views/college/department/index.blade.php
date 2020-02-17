@@ -10,16 +10,13 @@
 
 @section('page-content')
 <div class="col-md-12">
-	<br>
    <div class="card shadow">
    	    <div class="card-body">
-   	    	
 	        <div class="col-md-12">
 	            <button data-toggle="modal" data-target="#newDepartment" class="btn-block button-fullwidth cws-button bt-color-3 shadow">Create Department</button>
 	        </div>
 	        @include('admin::college.department.newDepartment')
 	        <div class="col-md-12"><br></div>
-	    
    	    @if(count($college->departments)>0)
    	    <div class="row">
    	    	@foreach($college->departments as $department)

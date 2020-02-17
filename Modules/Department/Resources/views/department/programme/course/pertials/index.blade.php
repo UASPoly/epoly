@@ -28,6 +28,7 @@
 	     				</button>
 	     				<button class="btn btn-info shadow"><a href="{{route($route['edit'] ?? 'department.programme.course.edit',['programmeId'=>$programme->id,'course_id'=>$course->id])}}" style="color: white">Edit</a></i>
 	     				</button>
+	     				
 	     			</td>
 	     		</tr>
 	     		@endforeach

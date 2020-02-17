@@ -401,7 +401,7 @@ class CourseTableSeeder extends Seeder
             [
                 'semester_id'=>1,
                 'programme_level_id'=>3,
-                'department_id'=>7,
+                'department_id'=>6,
                 'code'=>'ACC011',
                 'title'=>'Principles of Accounting',
                 'unit'=>2

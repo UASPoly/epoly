@@ -50,9 +50,9 @@
 	                            	<td>
 	                            		<a href="{{route('admin.college.department.management.lecturer.edit',[$department->id,$lecturer->id])}}"><button class="btn btn-info shadow">Edit</button>
 	                            		</a>
-	                            		</td>
+	                            	</td>
 	                            	<td>
-	                            		<a href="{{route('admin.college.department.management.lecturer.delete',[$department->id,$lecturer->id])}}" onclick="confirm('Are you sure you want delete this lecturer')">
+	                            		<a href="{{route('admin.college.department.management.lecturer.delete',[$department->id,$lecturer->id])}}" onclick="return confirm('Are you sure you want delete this lecturer')">
 	                            		<button class="btn btn-danger shadow">Delete</button></a>
 	                            	</td>
 	                            </tr>
