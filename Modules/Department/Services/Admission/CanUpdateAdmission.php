@@ -21,7 +21,6 @@ trait CanUpdateAdmission
             $this->admission_no = $admissionNo;
     		$this->programme_id = $data['programme'];
     	    $this->save();
-
             $this->updateTheAdmissionCounter();
     	}
     	$this->updateStudendInformation($data);
@@ -92,33 +91,32 @@ trait CanUpdateAdmission
 
     public function updateTheAdmissionCounter()
     {
-
         foreach (DepartmentSessionAdmission::where([
             'department_id'=>department()->id,
             'session_id' => currentSession()->id,
-            'schedule_id' => $this->scheduleId(),
-            'programme_id' => $this->programmeId()
+            'schedule_id' => $this->scheduleId($this->admission_no),
+            'programme_id' => $this->programmeId($this->admission_no)
         ])->get() as $admission) {
-            $admission->update(['count'=>$admission->count + 1]);
+            $admission->update(['count'=>$admission->count += 1]);
         }
     }
 
-    public function programmeId()
+    public function programmeId($admission_no)
     {
         $id = null;
         foreach ($this->department->programmes as $programme) {
-            if($programme->code == substr($this->admission_no, 5,1)){
+            if($programme->code == substr($admission_no, 5,1)){
                 $id = $programme->id;
             }
         }
         return $id;
     }
 
-    public function scheduleId()
+    public function scheduleId($admission_no)
     {
         $id = null;
         foreach ($this->department->schedules() as $schedule) {
-            if($schedule->code == $this->student->schedule->code){
+            if($schedule->code == substr($admission_no, 4,1)){
                 $id = $schedule->id;
             }
         }
