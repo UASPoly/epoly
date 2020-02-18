@@ -81,7 +81,7 @@
                             </li>
                             @else
                             <li>
-                                <a href="#"><img src="{{storage_url(user_image())}}"  height="45" width="45" class="img-circle user-img"></a>
+                                <a href="#"><img src="{{storage_url(user_image())}}"  height="45" width="45" class="img-circle user-img rounded-circle"></a>
                                 <ul>
                                     <li>
                                         <a href="#">

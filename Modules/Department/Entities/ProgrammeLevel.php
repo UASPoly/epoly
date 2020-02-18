@@ -26,4 +26,16 @@ class ProgrammeLevel extends BaseModel
     {
         return $this->hasMany('Modules\Student\Entities\SessionRegistration');
     }
+
+    public function levelCourses()
+    {
+        $courses = [];
+        foreach ($this->courses as $course) {
+            $courses[] = $course;
+        }
+        foreach ($this->departmentCourses as $departmentCourse) {
+            $courses[] = $departmentCourse->course;
+        }
+        return $courses;
+    }
 }

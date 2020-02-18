@@ -21,3 +21,7 @@
     </ul>
     <!-- / sub menu -->
 </li>
+
+<li>
+    <a href="{{route('student.transcript')}}">Transcript</a>
+</li>
