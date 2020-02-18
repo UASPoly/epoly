@@ -10,10 +10,10 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Student\Services\Traits\HasLevelAndSemester;
 use Modules\Student\Services\Traits\Student\HasGraduationStatus;
 use Modules\Student\Services\Traits\Student\HasGraduationStatusAt;
-
+use Modules\Student\Services\Traits\Student\Result\HasResult;
 class Student extends Authenticatable
 {
-	use Notifiable, HasLevelAndSemester, HasGraduationStatus, HasGraduationStatusAt;
+	use Notifiable, HasLevelAndSemester, HasGraduationStatus, HasGraduationStatusAt, HasResult;
 
 	protected $fillable = [
         'first_name',

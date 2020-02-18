@@ -32,7 +32,7 @@
 					<br>
 					<br>
 					<br>
-					<img src="{{storage_url($student->studentAccount->picture)}}" height="250" width="200">
+					<img src="{{storage_url($student->studentAccount->picture)}}" height="250" width="200" class="rounded">
 				</div>
 			</div>
 			<div class="row">

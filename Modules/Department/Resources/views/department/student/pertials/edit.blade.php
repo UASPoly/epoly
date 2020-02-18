@@ -4,7 +4,7 @@
         <div class="card-body">
             <div class="row">
         <div class="col-md-10"></div>
-        <div class="col-md-2 shadow"><img src="{{storage_url($student->studentAccount->picture)}}" height="120" width="140"></div>
+        <div class="col-md-2 shadow"><img src="{{storage_url($student->studentAccount->picture)}}" height="120" width="140" class="rounded"></div>
     </div>
     <div class="row">
         <div class="col-md-12">
