@@ -10,3 +10,4 @@
 @section('page-content')
     @include('department::department.student.pertials.biodata')
 @endsection
+
