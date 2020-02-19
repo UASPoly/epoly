@@ -13,10 +13,10 @@
     <a href="#">Admissions</a>
     <ul>
         <li>
-            <a href="{{route('department.student.admission.generate.number.index')}}">New Admission</a>
+            <a href="{{route('department.student.admission.generate.number.index')}}">Admission</a>
         </li>
         <li>
-            <a href="{{route('department.student.admission.search')}}">View Student Detail</a>
+            <a href="{{route('department.student.admission.search')}}">Admitted Students</a>
         </li>
     </ul>
 </li>
