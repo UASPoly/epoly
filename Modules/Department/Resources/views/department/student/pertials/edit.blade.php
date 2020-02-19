@@ -3,8 +3,12 @@
     <div class="card shadow">
         <div class="card-body">
             <div class="row">
-        <div class="col-md-10"></div>
-        <div class="col-md-2 shadow"><img src="{{storage_url($student->studentAccount->picture)}}" height="120" width="140" class="rounded"></div>
+        <div class="col-md-9"></div>
+        
+        <div class="col-md-3">
+            <img id="picture_preview_container" src="{{storage_url($student->studentAccount->picture)}}"
+                alt="preview image" height="120" width="140" class="rounded">
+        </div>
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -137,7 +141,11 @@
                     <label class="text text-success">Schedule</label>
                     <select name="schedule" class="form-control">
                         <option value="{{$student->admission->student->schedule->id}}">{{$student->admission->student->schedule->name}}</option>
-                        
+                        @foreach($student->admission->programme->programmeSchedules as $programmeSchedule)
+                            @if($programmeSchedule->schedule->id != $student->admission->student->schedule->id)
+                                 <option value="{{$programmeSchedule->schedule->id}}">{{$programmeSchedule->schedule->name}}</option>
+                            @endif
+                        @endforeach
                     </select>
                     @error('schedule')
                         <span class="invalid-feedback" role="alert">
@@ -184,10 +192,7 @@
                         </span>
                     @enderror
                 </div>
-                <div class="col-md-12 mb-2">
-                    <img id="picture_preview_container" src=""
-                        alt="preview image" style="max-height: 150px;">
-                </div>
+                
                 <div class="form-group">
                     <label class="text text-success">Change Student Picture</label>
                     <input type="file" value="{{$student->studentAccount->picture}}" name="picture" class="form-control">
@@ -200,7 +205,7 @@
             </div>
         </div>
         <input type="hidden" name="admission_id" value="{{$student->admission->id}}">
-        <button class="button-fullwidth cws-button bt-color-3" onclick="return confirm('Are you sure you want update this student information')">Update Changes</button>
+        <button class="btn btn-success btn-block" onclick="return confirm('Are you sure you want update this student information')">Update Changes</button>
         </form>
         </div>
     </div>	

@@ -14,7 +14,7 @@ class ReservedMissingAdmissionNumberComand extends Command
      *
      * @var string
      */
-    protected $signature = 'sospoly:reserved-missing-admission';
+    protected $signature = 'uaspoly:reserved-missing-admission';
 
     /**
      * The console command description.
@@ -45,7 +45,7 @@ class ReservedMissingAdmissionNumberComand extends Command
         $bar->setBarWidth(100);
 
         $bar->start();
-        $admission_no = '195491067';
+        $admission_no = '195401018';
         foreach (Admission::all() as $admission) {
             if($admission == $admission_no){
                 $admission_no = null;
@@ -53,13 +53,13 @@ class ReservedMissingAdmissionNumberComand extends Command
             $bar->advance();
         }
         if($admission_no){
-            // ReservedDepartmentSessionAdmission::firstOrCreate([
-            //     'session_id' => currentSession()->id,
-            //     'department_id' => 1,
-            //     'programme_id' => 1,
-            //     'schedule_id' => 1,
-            //     'admission_no' => '195491067',
-            // ]);
+            ReservedDepartmentSessionAdmission::firstOrCreate([
+                'session_id' => currentSession()->id,
+                'department_id' => 1,
+                'programme_id' => 1,
+                'schedule_id' => 2,
+                'admission_no' => '195401018',
+            ]);
         }
         $bar->finish();
         Programme::find(1)->programmeSchedules()->firstOrCreate(['schedule_id'=>1]);
