@@ -60,7 +60,13 @@ Breadcrumbs::for('admin.college.department.management.appointment', function ($b
 //Dashboard > Colleges > collage name > department name > Programme
 Breadcrumbs::for('admin.college.department.management.programme', function ($breadcrumb,$department) {
 	$breadcrumb->parent('admin.college.department.management',$department);
-    $breadcrumb->push('Programmes', route('admin.college.department.management.index',[$department->id]));
+    $breadcrumb->push('Programmes', route('admin.college.department.management.programme.index',[$department->id]));
+});
+
+//Dashboard > Colleges > collage name > department name > Programme > edit
+Breadcrumbs::for('admin.college.department.management.programme.edit', function ($breadcrumb,$department) {
+	$breadcrumb->parent('admin.college.department.management.programme',$department);
+    $breadcrumb->push('Edit', route('admin.college.department.management.index',[$department->id]));
 });
 
 //Dashboard > Colleges > collage name > department name > Courses
