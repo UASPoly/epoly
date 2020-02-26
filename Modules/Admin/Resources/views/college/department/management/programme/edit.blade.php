@@ -1,17 +1,24 @@
-<!-- modal -->
-<div class="modal fade" id="programme_{{$programme->id}}" role="dialog">
-    <div class="modal-dialog">
-      <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header">	
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
+@extends('admin::layouts.master')
+
+@section('title')
+    admin {{$programme->department->name}} programme management page
+@endsection
+
+@section('breadcrumbs')
+{{Breadcrumbs::render('admin.college.department.management.programme.edit',$programme->department)}}
+@endsection
+
+@section('page-content')
+<div class="col-md-3"></div>
+    <div class="col-md-6">
+        <div class="card shadow">
+            <div class="card-head shadow"><h5 class="center">Edit {{$programme->title}} Programme</h5></div>
+            <div class="card-body">
             	<form action="{{route('admin.college.department.management.programme.update',
-                    [$department->id,$programme->id])}}" method="post">
+                    [$programme->department->id,$programme->id])}}" method="post">
                     @csrf
                     <input type="hidden" name="programmeId" value="{{$programme->id}}">
-                    <input type="hidden" name="departmentId" value="{{$department->id}}">
+                    <input type="hidden" name="departmentId" value="{{$programme->department->id}}">
                     <div class="form-group">
                         <label>Programme Name</label>
                         <input type="text" name="name" value="{{$programme->name}}">
@@ -80,16 +87,14 @@
                             @if($programme->hasEveningSchedule())
                                 <option value="2">Evening Schedule</option>
                             @endif
-
                         </select>
                     </div>
-                    <button class="btn btn-block button-fullwidth cws-button bt-color-3 shadow">Update</button>  
+                    <div class="form-group">
+                       <button class="btn btn-success btn-block">Update</button>
+                    </div>
                 </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
-</div>
-<!-- end modal -->
+@endsection
+            

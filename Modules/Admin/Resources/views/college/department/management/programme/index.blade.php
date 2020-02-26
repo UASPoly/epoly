@@ -61,10 +61,12 @@
 	        					<td>{{$programme->hasMorningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>{{$programme->hasEveningSchedule() ? 'Active' : 'Not Active'}}</td>
 	        					<td>
-    								<button data-toggle="modal" data-target="#programme_{{$programme->id}}" class="btn btn-info">
+	        						<a href="{{route('admin.college.department.management.programme.edit',[$programme->department->id,$programme->id])}}">
+    								<button class="btn btn-info">
 	        							Edit
 	        						</button>
-	        						@include('admin::college.department.management.programme.edit')
+	        						</a>
+	        			
     							</td>
     							<td>
     								<a href="{{route('admin.college.department.management.programme.delete',

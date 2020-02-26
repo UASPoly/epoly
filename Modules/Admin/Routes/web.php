@@ -155,6 +155,7 @@ Route::prefix('admin')
           Route::post('/register', 'ProgrammeController@register')->name('register');
           Route::post('/{departmentProgrammId}/update', 'ProgrammeController@update')->name('update');
           Route::get('/{departmentProgrammId}/de-activate', 'ProgrammeController@deActivate')->name('deactivate');
+          Route::get('/{rogrammId}/edit', 'ProgrammeController@edit')->name('edit');
           Route::get('/{departmentProgrammId}/activate', 'ProgrammeController@activate')->name('activate');
           Route::get('/{departmentProgrammId}/delete', 'ProgrammeController@delete')->name('delete');
         });

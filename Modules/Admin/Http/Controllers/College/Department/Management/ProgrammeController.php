@@ -4,6 +4,7 @@ namespace Modules\Admin\Http\Controllers\College\Department\Management;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Modules\Student\Entities\Programme;
 use Modules\Department\Entities\Department;
 use Modules\Core\Http\Controllers\Admin\AdminBaseController;
 
@@ -41,15 +42,15 @@ class ProgrammeController extends AdminBaseController
         ]);
 
         Department::find($request->departmentId)->updateProgramme($request->all());
-        session()->flash('message', 'Department Programme updated successfully');
-        return back();
+   
+        return back()->with('success', 'Department Programme updated successfully');
     }
 
     public function deActivate($departmentId, $programmeId)
     {
         Department::find($departmentId)->deActivateProgramme($programmeId);
-        session()->flash('message', 'Department Programme has been de-activate successfully');
-        return back();
+       
+        return back()->with('success', 'Department Programme has been de-activate successfully');
     }
 
     public function activate($departmentId, $programmeId)
@@ -68,5 +69,8 @@ class ProgrammeController extends AdminBaseController
         return back();
     }
 
-
+    public function edit($programmeId)
+    {
+        return view('admin::college.department.management.programme.edit',['programme'=>Programme::find($programmeId)]);
+    }
 }
