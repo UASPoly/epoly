@@ -1,8 +1,6 @@
-<div class="col-md-2">
-    
-</div>
+<div class="col-md-3"></div>
 
-<div class="col-md-8">
+<div class="col-md-6">
     <br>
     <div class="card shadow">
         <div class="card-body">
@@ -18,20 +16,51 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>First Name</label>
-                            <input type="text" name="first_name" id="validate" class="form-control" value="{{old('first_name')}}" />
+                    <div class="col-md-6">
+                        <div class="form-group input-sm">
+                            <input type="text" name="first_name" id="validate" class="form-control" value="{{old('first_name')}}" placeholder="First Name" />
                             @error('first_name')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+                    </div>
+                    <div class="col-md-6"></div>
+
+                    <!-- middle name start -->
+                    <div class="col-md-8">
                         <div class="form-group">
-                            <label>Gender</label>
+                            <input type="text" name="middle_name" class="form-control" value="{{old('middle_name')}}" placeholder="Middle Name">
+                            @error('middle_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4"></div>
+                    <!-- middle name end -->
+
+                    <!-- last name start -->
+                    <div class="col-md-10">
+                        <div class="form-group">
+                            <input type="text" name="last_name" class="form-control" value="{{old('last_name')}}" placeholder="Last Name">
+                            @error('last_name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-2"></div>
+                    <!-- last name end -->
+
+                    <!-- start gender -->
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <select name="gender" class="form-control" id="validate">
-                                <option value=""></option>
+                                <option value="">Select Gender</option>
                                 @foreach(department()->genders() as $gender)
                                     @if($gender->id == old('gender'))
                                         <option value="{{$gender->id}}" selected>{{$gender->name}}</option>
@@ -46,43 +75,11 @@
                                 </span>
                             @enderror
                         </div>
-                        <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" name="phone" class="form-control" value="{{old('phone')}}">
-                            @error('phone')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Admission No</label>
-                            <input type="text" disabled="" class="form-control" value="{{$admissionNo}}">
-                            <input type="hidden" name="admission_no" class="form-control" value="{{$admissionNo}}">
-                            @error('admission_no')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
                     </div>
-                   
                     <div class="col-md-4">
                         <div class="form-group">
-                            <label>Middle Name</label>
-                            <input type="text" name="middle_name" class="form-control" value="{{old('middle_name')}}">
-                            @error('middle_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        
-                        <div class="form-group">
-                            <label>Religion</label>
                             <select name="religion" class="form-control">
-                                <option value=""></option>
+                                <option value="">Select Religion</option>
                                 @foreach(department()->religions() as $religion)
                                     @if($religion->id == old('religion'))
                                         <option value="{{$religion->id}}" selected>{{$religion->name}}</option>
@@ -97,10 +94,31 @@
                                 </span>
                             @enderror
                         </div>
+                    </div>
+                    <div class="col-md-4">
                         <div class="form-group">
-                            <label>State</label>
+                            <input type="text" maxlength="11" name="phone" class="form-control" value="{{old('phone')}}" placeholder="Phone No">
+                            @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            <input type="date" name="date_of_birth" class="form-control datepicker" data-date-format="dd/mm/yyyy" value="{{old('date_of_birth')}}" placeholder="date of birth">
+                            @error('date_of_birth')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
                             <select name="state" class="form-control">
-                                <option value=""></option>
+                                <option value="">Select State</option>
                                 @foreach(department()->states() as $state)
                                     @if($state->id == old('state'))
                                         <option value="{{$state->id}}" selected>{{$state->name}}</option>
@@ -115,9 +133,44 @@
                                 </span>
                             @enderror
                         </div>
+                    </div>
+                    <div class="col-md-3">
                         <div class="form-group">
-                            <label>Home Address</label>
-                            <input type="text" name="address" value="{{old('address')}}" class="form-control">
+                            <select name="lga" class="form-control">
+                                <option value="">LGA</option>
+                                <!-- options are comming from ajax request from the state selected -->
+                            </select>
+                            @error('student_session')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <input type="text" disabled="" class="form-control" value="{{$admissionNo}}">
+                            <input type="hidden" name="admission_no" class="form-control" value="{{$admissionNo}}">
+                            @error('admission_no')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">   
+                        <div class="form-group">
+                            <input type="file" name="picture" value="{{old('picture')}}" class="form-control" id="picture">
+                            @error('picture')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-12">  
+                        <div class="form-group">
+                            <textarea rows="2" cols="100" name="address" placeholder="Address" class="form-control">{{old('address')}}</textarea>
                             @error('address')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
@@ -126,49 +179,6 @@
                         </div>
                     </div>
                     
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Last Name</label>
-                            <input type="text"  id="validate"  name="last_name" class="form-control" value="{{old('last_name')}}">
-                            @error('last_name')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        <div class="form-group">
-                            <label>Date Of Birth</label>
-                            <input type="date" name="date_of_birth" class="form-control datepicker" data-date-format="dd/mm/yyyy" value="{{old('date_of_birth')}}">
-                            @error('date_of_birth')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                            
-                            <div class="form-group">
-                                <label>Local Government</label>
-                                <select name="lga" class="form-control">
-                                    <!-- options are comming from ajax request from the state selected -->
-                                </select>
-                                @error('student_session')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                            
-                        <div class="form-group">
-                            <label>Choose Picture</label>
-                            <input type="file" name="picture" value="{{old('picture')}}" class="form-control" id="picture">
-                            @error('picture')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                        
-                    </div>
                     <div class="col-md-12">
                         <button class="btn btn-success btn-block">
                             Register
