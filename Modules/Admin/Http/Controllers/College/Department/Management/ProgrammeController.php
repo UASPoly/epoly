@@ -69,7 +69,7 @@ class ProgrammeController extends AdminBaseController
         return back();
     }
 
-    public function edit($programmeId)
+    public function edit($departmentId,$programmeId)
     {
         return view('admin::college.department.management.programme.edit',['programme'=>Programme::find($programmeId)]);
     }

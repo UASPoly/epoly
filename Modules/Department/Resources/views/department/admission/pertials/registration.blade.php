@@ -105,7 +105,7 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <input type="date" name="date_of_birth" class="form-control datepicker" data-date-format="dd/mm/yyyy" value="{{old('date_of_birth')}}" placeholder="date of birth">
                             @error('date_of_birth')
@@ -134,10 +134,10 @@
                             @enderror
                         </div>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-4">
                         <div class="form-group">
                             <select name="lga" class="form-control">
-                                <option value="">LGA</option>
+                                <option value="">Select LGA</option>
                                 <!-- options are comming from ajax request from the state selected -->
                             </select>
                             @error('student_session')
