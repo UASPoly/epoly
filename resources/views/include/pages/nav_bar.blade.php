@@ -14,7 +14,7 @@
                             <!-- menus -->
                             @if(!auth()->check())
                                 <li>
-                                    <a href="{{route('welcome')}}" class="active h3"><i class="fa fa-home"></i>Home</a>
+                                    <a href="{{route('welcome')}}" class="active"><i class="fa fa-home"></i>Home</a>
                                 </li>
                             @else
                                 <li>

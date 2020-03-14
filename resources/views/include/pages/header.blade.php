@@ -29,13 +29,16 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('rs-plugin/css/settings.css')}}" media="screen">
     <link rel="stylesheet" href="{{ asset('css/animate.css')}}">
     <!--styles -->
-    @auth
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
+    
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css">
-    @endauth
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('css/main.css')}}">
     <!-- Scripts -->
-    <script type="text/javascript" src="{{ asset('js/vue.js') }}"></script>
+    
 
     @yield('header')
 </head>

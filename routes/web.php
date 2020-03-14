@@ -39,6 +39,6 @@ Route::post('/calender/acticate/register', function(Request $request){
 })->name('admin.session.activate.register');
 
 Route::get('/testing',function(){
-	successAlert('Registered', 'the student was registered success');
-	return view('welcome',['programmes'=>Programme::all()]);
+	
+	return view('test');
 });
