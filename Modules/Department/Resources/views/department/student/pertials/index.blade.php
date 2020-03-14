@@ -50,7 +50,9 @@
                     @enderror
                 </div>
 
-                <button class="btn-block button-fullwidth cws-button bt-color-3 shadow">Search</button>
+                <button name="search" class="btn btn-success shadow">Search</button>
+                <button name="export" class="btn btn-success shadow">Export</button>
+                
             </form>
         </div>
     </div>

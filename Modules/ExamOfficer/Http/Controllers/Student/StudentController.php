@@ -4,12 +4,13 @@ namespace Modules\ExamOfficer\Http\Controllers\Student;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Modules\Admin\Entities\Session;
 use Modules\Staff\Entities\State;
+use Modules\Admin\Entities\Session;
 use Modules\Student\Entities\Student;
-use Modules\Department\Entities\Admission;
-use Modules\Department\Http\Requests\Admission\UpdateAdmissionFormRequest;
+use Modules\Department\Entities\Admission;\
+use Modules\Department\Export\ExportStudents;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
+use Modules\Department\Http\Requests\Admission\UpdateAdmissionFormRequest;
 
 class StudentController extends ExamOfficerBaseController
 {
@@ -44,6 +45,7 @@ class StudentController extends ExamOfficerBaseController
 
     public function searchStudent(Request $request)
     {
+
         $students = null;
         if($request->admission_no){
             $students = [$this->getThisStudent($request->admission_no)];
@@ -66,10 +68,15 @@ class StudentController extends ExamOfficerBaseController
                 }
             }
         }
-        
-        session(['students'=>$students]);
-        return redirect()->route('exam.officer.student.student.available',[
+
+        if($request->export){
+            new ExportStudents($students,$state,$session);
+        }else{
+            session(['students'=>$students]);
+            return redirect()->route('exam.officer.student.student.available',[
             'state'=>strtolower(str_replace(' ','-',$state->name ?? 'state')),'session'=>strtolower(str_replace('/','-',$session->name ?? currentSession()->name))])->withSuccess(count($students).' Student found for this search');
+        }
+
     }
     
     public function getThisStudent($admission_no)

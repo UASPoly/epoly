@@ -16,7 +16,6 @@ class DepartmentDatabaseSeeder extends Seeder
     {
         Model::unguard();
         $this->call(SemesterTableSeeder::class);
-        $this->call(LevelTableSeeder::class);
         $this->call(ProgrammeTableSeeder::class);
         $this->call(ScheduleTableSeeder::class);
         $this->call(DepartmentTableSeeder::class);
