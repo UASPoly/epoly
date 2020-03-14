@@ -73,4 +73,9 @@ class ProgrammeController extends AdminBaseController
     {
         return view('admin::college.department.management.programme.edit',['programme'=>Programme::find($programmeId)]);
     }
+
+    public function create($departmentId)
+    {
+        return view('admin::college.department.management.programme.create',['department'=>Department::find($departmentId)]);
+    }
 }

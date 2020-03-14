@@ -125,7 +125,9 @@
     <script src="{{ asset('js/jquery.fancybox.pack.js')}}"></script>
     <script src="{{ asset('js/jquery.fancybox-media.js')}}"></script>
     <script src="{{ asset('js/retina.min.js')}}"></script>
+    @auth
     <script src="{{ asset('js/app.js') }}"></script>
+    @endauth
     
     @yield('scripts')
 </body>

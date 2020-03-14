@@ -6,8 +6,8 @@
 		<div class="parallaxed">
 			<div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
 				<img src="img/parallax.png" alt="">
-
 			</div>
+			
 			<div class="them-mask bg-color-1"></div>
 			<div class="grid-row">
 				<div class="grid-col-row clear-fix">

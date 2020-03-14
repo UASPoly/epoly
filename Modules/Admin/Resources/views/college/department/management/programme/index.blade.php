@@ -15,7 +15,10 @@
         	<div class="card-body table-responsive">
         		<div class="row">
 		    		<div class="col-md-12">
-		    			<button data-toggle="modal" data-target="#newProgramme" class="btn-block button-fullwidth cws-button bt-color-3 shadow">Create New Programme</button><br>
+		    			<a href="{{route('admin.college.department.management.programme.create',[$department->id])}}">
+						<button class="btn-block button-fullwidth cws-button bt-color-3 shadow">
+						Create New Programme
+						</button></a><br>
 		    		</div>
 		    	</div>
         		<table class="table shadow">
@@ -83,5 +86,4 @@
         	</div>
         </div>
     </div>
-    @include('admin::college.department.management.programme.programme')
 @endsection
