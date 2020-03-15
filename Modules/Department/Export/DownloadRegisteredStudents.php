@@ -1,9 +1,10 @@
 <?php
 
-namespace Modules\Department\Exports;
+namespace Modules\Department\Export;
 
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
 class DownloadRegisteredStudents implements FromView
 {

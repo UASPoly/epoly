@@ -49,9 +49,9 @@
                         </span>
                     @enderror
                 </div>
-
-                <button name="search" class="btn btn-success shadow">Search</button>
-                <button name="export" class="btn btn-success shadow">Export</button>
+            
+                <button name="search" value="search" class="btn btn-success btn-block shadow">Search</button><br>
+                <button name="export" value="export" class="btn btn-success btn-block shadow">Export</button>
                 
             </form>
         </div>

@@ -43,6 +43,7 @@ class StudentController extends HodBaseController
 
     public function searchStudent(Request $request)
     {
+        
         $students = null;
         if($request->admission_no){
             $students = [$this->getThisStudent($request->admission_no)];
@@ -65,10 +66,13 @@ class StudentController extends HodBaseController
                 }
             }
         }
-        
-        session(['students'=>$students]);
-        return redirect()->route('department.student.student.available',[
+        if(isset($request->export)){
+            new ExportStudents($students,$state,$session);
+        }else{
+            session(['students'=>$students]);
+            return redirect()->route('department.student.student.available',[
             'state'=>strtolower(str_replace(' ','-',$state->name ?? 'state')),'session'=>strtolower(str_replace('/','-',$session->name ?? currentSession()->name))])->withToastInfo(count($students).' Students fount from the search');
+        }
     }
     public function getThisStudent($admission_no)
     {

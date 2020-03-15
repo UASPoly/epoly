@@ -7,7 +7,7 @@ use Illuminate\Http\Response;
 use Modules\Staff\Entities\State;
 use Modules\Admin\Entities\Session;
 use Modules\Student\Entities\Student;
-use Modules\Department\Entities\Admission;\
+use Modules\Department\Entities\Admission;
 use Modules\Department\Export\ExportStudents;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 use Modules\Department\Http\Requests\Admission\UpdateAdmissionFormRequest;
@@ -45,7 +45,7 @@ class StudentController extends ExamOfficerBaseController
 
     public function searchStudent(Request $request)
     {
-
+        
         $students = null;
         if($request->admission_no){
             $students = [$this->getThisStudent($request->admission_no)];
@@ -56,21 +56,23 @@ class StudentController extends ExamOfficerBaseController
         }else{
             $request->validate(['session'=>'required','state'=>'required']);
             $state = State::find($request->state);
+            
             $session = Session::find($request->session);
             if($state){
                 $students = $state->students($session);
             }else{
                 $students = [];
-                foreach(State::all() as $state){
-                    if($state->catchment == 0){
-                        $students = array_merge($students,$state->students($session));
+                foreach(State::all() as $studentState){
+                    if($studentState->catchment == 0){
+                        $students = array_merge($students,$studentState->students($session));
                     }
                 }
             }
         }
 
-        if($request->export){
-            new ExportStudents($students,$state,$session);
+        if(isset($request->export)){
+            $download = new ExportStudents($students,$state,$session);
+            return $download->downloadFile();
         }else{
             session(['students'=>$students]);
             return redirect()->route('exam.officer.student.student.available',[

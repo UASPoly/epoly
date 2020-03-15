@@ -14,12 +14,13 @@ class ExportStudents
 
 	function __construct(array $data, $state, $session)
 	{
+        
 		$this->data = $data;
         $this->session = $session;
         if($state){
-            $this->state = $state->name
+            $this->state = $state->name;
         }else{
-            $this->state = 'Other_States';
+            $this->state = 'Other';
         }
 	}
     
@@ -32,7 +33,7 @@ class ExportStudents
 	{
         return strtolower(str_replace(' ','_',department()->name)
         .'_'.str_replace('/','_',$this->session->name).
-        '_'.$this->state.'registered_students.csv');
+        '_'.$this->state.'_state_registered_students.csv');
 	}
 
 	public function downloadFile()
