@@ -7,9 +7,10 @@ $count = 1;
 <input type="checkbox" name="">
 <div class="col-md-1"></div>
 <div class="col-md-10">
+
 	@foreach(student()->sessionRegistrations as $session_registration)
 	<div class="card">
-		<div class="card-header button-fullwidth cws-button bt-color-3">{{$session_registration->session->name}} {{$session_registration->level->name}} Registered Courses</div>
+		<div class="card-header button-fullwidth cws-button bt-color-3">{{$session_registration->session->name}} {{$session_registration->programmeLevel->name}} Registered Courses</div>
 		<div class="card-body">
 			<table class="table">
 				<head>
@@ -35,7 +36,7 @@ $count = 1;
 									{{$course_registration->course->unit}}
 								</td>
 								<td>
-									{{$course_registration->semesterRegistration->sessionRegistration->level->name}}
+									{{$course_registration->semesterRegistration->sessionRegistration->programmeLevel->name}}
 								</td>
 								<td>
 									{{$course_registration->course->semester->name}}

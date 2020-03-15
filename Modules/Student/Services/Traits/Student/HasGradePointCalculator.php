@@ -19,7 +19,7 @@ trait HasGradePointCalculator
     	return $units;
     }
     /*
-      this method return the number of units student registered
+      this method return the number of units student registered courses which result was uploaded
       at the current semester
 	*/
     public function registeredUnits()
@@ -32,6 +32,20 @@ trait HasGradePointCalculator
     	}
     	return $units;
     }
+
+    /*
+      this method return the number of units student registered courses
+      at the current semester
+	*/
+    public function availableRegisteredUnits()
+    {  
+    	$units = 0;
+    	foreach ($this->courseRegistrations->where('cancelation_status',0) as $courseRegistration) {
+            $units = $courseRegistration->course->unit + $units;
+    	}
+    	return $units;
+    }
+
     /*
       this method return the number of previous semesters units student passed
       before the current semester

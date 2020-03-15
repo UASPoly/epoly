@@ -6,7 +6,7 @@
 <div class="col-md-10">
 	@foreach(student()->sessionRegistrations as $session_registration)
 	<div class="card">
-		<div class="card-header button-fullwidth cws-button bt-color-3">{{$session_registration->level->name}} Courses Result</div>
+		<div class="card-header button-fullwidth cws-button bt-color-3">{{$session_registration->programmeLevel->name}} Courses Result</div>
 		<div class="card-body">
 			@if($session_registration->hasApprovedResult())
 			<table class="table">
