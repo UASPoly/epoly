@@ -1,5 +1,8 @@
 
 
+@include('slide')
+<br>
+<br>
 @include('course')
 @include('procedure')<br><br>
 <!-- paralax section -->
@@ -15,21 +18,21 @@
 						<div class="counter-block">
 							<i class="flaticon-book1"></i>
 							<div class="counter" data-count="356">0</div>
-							<div class="counter-name">Courses</div>
+							<div class="counter-name">Departments</div>
 						</div>
 					</div>
 					<div class="grid-col grid-col-3 alt">
 						<div class="counter-block">
 							<i class="flaticon-multiple"></i>
 							<div class="counter" data-count="4781">0</div>
-							<div class="counter-name">Students</div>
+							<div class="counter-name">Programmes</div>
 						</div>							
 					</div>
 					<div class="grid-col grid-col-3 alt">
 						<div class="counter-block">
 							<i class="flaticon-pencil"></i>
 							<div class="counter" data-count="41">0</div>
-							<div class="counter-name">Lections</div>
+							<div class="counter-name">Lecturers</div>
 						</div>
 					</div>
 					<div class="grid-col grid-col-3 alt">
