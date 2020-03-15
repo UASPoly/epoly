@@ -6,7 +6,7 @@ namespace Modules\Department\Export;
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Admin\Entities\Session;
 
-class ExportStudents
+class ExportStateStudents
 {
     protected $data;
     protected $session;

@@ -24,7 +24,8 @@
 		                </span>
 		            @enderror
 		        </div>
-		        <button class=" btn-block button-fullwidth cws-button bt-color-3 shadow">Search Admissions</button>
+		        <button name="search" value="search" class="btn btn-success shadow">Search</button>
+		        <button name="export" value="export" class="btn btn-success shadow">Export</button>
 		    </form>
 		</div>
 	</div>

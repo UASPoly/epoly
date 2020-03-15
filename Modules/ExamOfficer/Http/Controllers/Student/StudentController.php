@@ -8,7 +8,7 @@ use Modules\Staff\Entities\State;
 use Modules\Admin\Entities\Session;
 use Modules\Student\Entities\Student;
 use Modules\Department\Entities\Admission;
-use Modules\Department\Export\ExportStudents;
+use Modules\Department\Export\ExportStateStudents;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 use Modules\Department\Http\Requests\Admission\UpdateAdmissionFormRequest;
 
@@ -71,7 +71,7 @@ class StudentController extends ExamOfficerBaseController
         }
 
         if(isset($request->export)){
-            $download = new ExportStudents($students,$state,$session);
+            $download = new ExportStateStudents($students,$state,$session);
             return $download->downloadFile();
         }else{
             session(['students'=>$students]);

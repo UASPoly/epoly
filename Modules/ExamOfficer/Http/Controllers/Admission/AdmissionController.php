@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Hash;
 use Modules\Admin\Entities\Session;
 use Modules\Department\Entities\Admission;
+use Modules\Department\Export\ExportDepartmentStudents;
 use Modules\Department\Http\Requests\Admission\AdmissionFormRequest;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 
@@ -18,11 +19,17 @@ class AdmissionController extends ExamOfficerBaseController
      */
     public function search()
     {
-        return view('examofficer::admission.search',['route'=>'exam.officer.student.admission.search.admission','sessions'=>Session::all()]);
+        return view('examofficer::admission.search',[
+            'route'=>'exam.officer.student.admission.search.admission','sessions'=>Session::all()]);
     }
     public function searchAdmissions(Request $request)
     {
         $request->validate(['session'=>'required']);
+        if(isset($request->export)){
+            $download = new ExportDepartmentStudents(Session::find($request->session));
+            return $download->downloadFile();
+        }
+
         return redirect()->route('exam.officer.student.admission.session.available',[$request->session]);
     }
     public function index($sessionId)
