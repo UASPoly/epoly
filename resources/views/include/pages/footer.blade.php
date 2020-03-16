@@ -24,14 +24,14 @@
     <br>
     <br>
     <br>
+    @guest
     <footer class="footer">
-
         <div class="grid-row">
             <div class="grid-col-row clear-fix">
                 <section class="grid-col grid-col-4 footer-about">
                     <h2 class="corner-radius">About Us</h2>
                     <div>
-                        <h3>Sed aliquet dui auctor blandit ipsum tincidunt</h3>
+                        <h3>UMARU ALI SHINKAFI POLYTECHNIC SOKOTO</h3>
                         <p>Quis rhoncus lorem dolor eu sem. Aenean enim risus, convallis id ultrices eget.</p>
                     </div>
                     <address>
@@ -53,30 +53,24 @@
                     </div>
                 </section>
                 <section class="grid-col grid-col-4 footer-latest">
-                    <h2 class="corner-radius">Latest courses</h2>
+                    <h2 class="corner-radius" style="color: black;">Latest programmes</h2>
+                    @foreach($programmes as $programme)
                     <article>
                         <img src="http://placehold.it/83x83" data-at2x="http://placehold.it/83x83" alt>
-                        <h3>Sed aliquet dui at auctor blandit</h3>
+                        <h3>{{$programme->name}}</h3>
                         <div class="course-date">
-                            <div>10<sup>00</sup></div>
-                            <div>23.02.15</div>
+                            <div>Schedules</div>
+                            @foreach($programme->programmeSchedules as $programmeSchedule)
+                                <div>
+                                    {{$programmeSchedule->schedule->name}}
+                                </div>
+                            @endforeach
                         </div>
-                        <p>Sed pharetra lorem ut dolor dignissim,
-                            sit amet pretium tortor mattis.</p>
                     </article>
-                    <article>
-                        <img src="http://placehold.it/83x83" data-at2x="http://placehold.it/83x83" alt>
-                        <h3>Sed aliquet dui at auctor blandit</h3>
-                        <div class="course-date">
-                            <div>10<sup>00</sup></div>
-                            <div>23.02.15</div>
-                        </div>
-                        <p>Sed pharetra lorem ut dolor dignissim,
-                            sit amet pretium tortor mattis.</p>
-                    </article>
+                    @endforeach
                 </section>
                 <section class="grid-col grid-col-4 footer-contact-form">
-                    <h2 class="corner-radius">apply for instructor</h2>
+                    <h2 class="corner-radius">Say some thing about us</h2>
                     <div class="email_server_responce"></div>
                     <form action="php/contacts-process.php" class="contact-form" method="post" novalidate="novalidate">
                         <p><span class="your-name"><input type="text" name="name" value="" size="40" placeholder="Name" aria-invalid="false" required></span>
@@ -88,12 +82,13 @@
                 </section>
             </div>
         </div>
-        <!-- <div class="footer-bottom">
+        <div class="footer-bottom">
             <div class="grid-row clear-fix">
-                <div class="">sosPoly<span></span> {{date('Y')}} . All Rights Reserved</div>
+                <div class="">UASPoly<span></span> 2019 - {{date('Y')}} . All Rights Reserved</div>
             </div>
-        </div> -->
+        </div>
     </footer>
+    @endguest
     <!-- / footer -->
     <script src="{{ asset('js/jquery.min.js') }}"></script>
     <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>

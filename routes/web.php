@@ -2,7 +2,9 @@
 
 use Illuminate\Http\Request;
 use Modules\Admin\Entities\Session;
+use Modules\College\Entities\College;
 use Modules\Student\Entities\Programme;
+use Modules\Department\Entities\Department;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -20,7 +22,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 */
 
 Route::get('/',function(){
-	return view('welcome',['programmes'=>Programme::all()]);
+	return view('welcome',['colleges'=>College::all(),'departments'=>Department::all(),'programmes'=>Programme::all()]);
 })->name('welcome');
 
 Auth::routes();

@@ -1,10 +1,12 @@
 
 
-@include('slide')
-<br>
-<br>
-@include('course')
-@include('procedure')<br><br>
+@include('include.pages.slide')
+
+@include('include.pages.colleges')		
+@include('include.pages.departments')		
+@include('include.pages.programmes')	
+@include('include.pages.procedure')
+<br><br>
 <!-- paralax section -->
 		<div class="parallaxed">
 			<div class="parallax-image" data-parallax-left="0.5" data-parallax-top="0.3" data-parallax-scroll-speed="0.5">
@@ -16,29 +18,29 @@
 				<div class="grid-col-row clear-fix">
 					<div class="grid-col grid-col-3 alt">
 						<div class="counter-block">
-							<i class="flaticon-book1"></i>
-							<div class="counter" data-count="356">0</div>
+							<i class="flaticon-hotel"></i>
+							<div class="counter" data-count="{{count($departments)}}">0</div>
 							<div class="counter-name">Departments</div>
 						</div>
 					</div>
 					<div class="grid-col grid-col-3 alt">
 						<div class="counter-block">
-							<i class="flaticon-multiple"></i>
-							<div class="counter" data-count="4781">0</div>
+							<i class="flaticon-book1"></i>
+							<div class="counter" data-count="{{count($programmes)}}">0</div>
 							<div class="counter-name">Programmes</div>
 						</div>							
 					</div>
 					<div class="grid-col grid-col-3 alt">
 						<div class="counter-block">
-							<i class="flaticon-pencil"></i>
-							<div class="counter" data-count="41">0</div>
-							<div class="counter-name">Lecturers</div>
+							<i class="flaticon-college"></i>
+							<div class="counter" data-count="{{count($colleges)}}">0</div>
+							<div class="counter-name">Colleges</div>
 						</div>
 					</div>
 					<div class="grid-col grid-col-3 alt">
 						<div class="counter-block last">
 							<i class="flaticon-calendar"></i>
-							<div class="counter" data-count="120">0</div>
+							<div class="counter" data-count="0">0</div>
 							<div class="counter-name">Events</div>
 						</div>
 					</div>
@@ -46,5 +48,6 @@
 			</div>
 		</div>
 		<!-- / paralax section -->
-		<br><br>
-@include('contact')
+		<br>
+	
+@include('include.pages.contact')
