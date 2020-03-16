@@ -40,7 +40,7 @@
 					<div class="grid-col grid-col-3 alt">
 						<div class="counter-block last">
 							<i class="flaticon-calendar"></i>
-							<div class="counter" data-count="0">0</div>
+							<div class="counter" data-count="3">0</div>
 							<div class="counter-name">Events</div>
 						</div>
 					</div>

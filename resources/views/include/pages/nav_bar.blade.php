@@ -21,37 +21,7 @@
                                     <a href="{{route(home_route())}}" class="active"><i class="fa fa-dashboard"></i> Dashboard</a>
                                 </li>
                             @endif
-
-                            @if(!auth()->check())
-                            <li>
-                                <a href="#">Collages</a>
-                                <!-- sub menu -->
-                                <ul>
-                                    <li><a href="courses-grid.html">Science And Technology</a></li>
-                                    
-                                </ul>
-                                <!-- / sub menu -->
-                            </li>
-
-                            <li class="megamenu">
-                                <a href="">Departments</a>
-                                <!-- sub mega menu -->
-                                <ul class="clear-fix">
-                                    <li><div class="header-megamenu">College</div>
-                                        <ul>
-                                            <li><a href="page-about-us.html">Department</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><div class="header-megamenu">Colleges</div>
-                                        <ul>
-                                            <li><a href="page-about-us.html">Department</a></li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                                <!-- / sub mega menu -->
-                            </li>
                             
-                            @endif
                             <li>
                                 <a href="#"><i class="fa fa-calendar"></i> Calendar</a>
                                 <!-- sub menu -->

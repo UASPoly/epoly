@@ -22,8 +22,8 @@
 					        <div class="course-name clear-fix">
 					        <h3>Head of departments</h3>
 					        </div>
-					        <div class="course-date bg-color-1 clear-fix">
-					            <div class="h3"><i class="fa fa-chart"></i>Number Of Head of department {{count($department->headOfDepartments)}}</div>
+					        <div class="course-date bg-color-2 clear-fix">
+					            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Head of department {{count($department->headOfDepartments)}}</div>
 					        </div>
 					    </div>
 					    </a>
@@ -37,8 +37,8 @@
 					        <div class="course-name clear-fix">
 					        <h3>Exam Officers</h3>
 					        </div>
-					        <div class="course-date bg-color-1 clear-fix">
-					            <div class="h3"><i class="fa fa-chart"></i>Number Of Exam Officers {{count($department->examOfficers)}}</div>
+					        <div class="course-date bg-color-2 clear-fix">
+					            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Exam Officers {{count($department->examOfficers)}}</div>
 					        </div>
 					    </div>
 					    </a>
@@ -52,8 +52,8 @@
 					        <div class="course-name clear-fix">
 					        <h3>Lecturers</h3>
 					        </div>
-					        <div class="course-date bg-color-1 clear-fix">
-					            <div class="h3"><i class="fa fa-chart"></i>Number Of Lecturers {{count($department->staffs)}}</div>
+					        <div class="course-date bg-color-2 clear-fix">
+					            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Lecturers {{count($department->staffs)}}</div>
 					        </div>
 					    </div>
 					    </a>
@@ -68,8 +68,8 @@
 					        <div class="course-name clear-fix">
 					        <h3>Staffs</h3>
 					        </div>
-					        <div class="course-date bg-color-1 clear-fix">
-					            <div class="h3"><i class="fa fa-chart"></i>Number Of Staffs {{count($department->staffs)}}</div>
+					        <div class="course-date bg-color-2 clear-fix">
+					            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Staffs {{count($department->staffs)}}</div>
 					        </div>
 					    </div>
 					    <!-- / course item -->
@@ -83,8 +83,8 @@
 						        <div class="course-name clear-fix">
 						        <h3>Appointment</h3>
 						        </div>
-						        <div class="course-date bg-color-1 clear-fix">
-						            <div class="h3"><i class="fa fa-chart"></i>Number Of Staffs {{count($department->staffs)}}</div>
+						        <div class="course-date bg-color-2 clear-fix">
+						            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Staffs {{count($department->staffs)}}</div>
 						        </div>
 						    </div>
 						</a>
@@ -99,8 +99,8 @@
 						        <div class="course-name clear-fix">
 						        <h3>Programmes</h3>
 						        </div>
-						        <div class="course-date bg-color-1 clear-fix">
-						            <div class="h3"><i class="fa fa-chart"></i>Number Of Programmes {{count($department->programmes)}}</div>
+						        <div class="course-date bg-color-2 clear-fix">
+						            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Programmes {{count($department->programmes)}}</div>
 						        </div>
 						    </div>
 					    </a>
@@ -117,8 +117,8 @@
 					        <div class="course-name clear-fix">
 					        <h3>Courses</h3>
 					        </div>
-					        <div class="course-date bg-color-1 clear-fix">
-					            <div class="h3"><i class="fa fa-chart"></i>Number Of Courses {{count($department->courses)}}</div>
+					        <div class="course-date bg-color-2 clear-fix">
+					            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Courses {{count($department->courses)}}</div>
 					        </div>
 					    </div>
 					    </a>

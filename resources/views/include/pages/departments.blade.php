@@ -9,7 +9,7 @@
                     <div class="course-name clear-fix">
                         <h3><a href="#">{{strtoupper($department->name)}}</a></h3>
                     </div>
-                    <div class="course-date clear-fix">
+                    <div class="course-date clear-fix"  style="background-color: white">
                         <p style="color: black;">Established At {{$department->established_date}}</p>
                         <p style="color: black;">{{$department->description}}</p>
                     </div>

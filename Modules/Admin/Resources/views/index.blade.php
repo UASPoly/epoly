@@ -21,7 +21,7 @@ admin dashboard
                         <div class="course-name clear-fix">
                         <h3><a href="{{route('admin.college.index')}}">Colleges Management</a></h3>
                             </div>
-                        <div class="course-date bg-color-1 clear-fix">
+                        <div class="course-date bg-color-0 clear-fix">
                             
                             <div class="description"><h1><i class="fa fa-home"></i>
                                 <span>
@@ -39,7 +39,7 @@ admin dashboard
                         <div class="course-name clear-fix">
                         <h3><a href="{{route('admin.college.calendar.management.index')}}">{{currentSession()->name}} Calender Management</a></h3>
                             </div>
-                        <div class="course-date bg-color-1 clear-fix">
+                        <div class="course-date bg-color-0 clear-fix">
                             
                             <div class="description"><h1><i class="fa fa-calendar"></i>
                                 <span>
@@ -59,7 +59,7 @@ admin dashboard
                             <a href="{{route('admin.college.admission.index')}}">{{currentSession()->name}} Admission Report</a>
                         </h3>
                             </div>
-                        <div class="course-date bg-color-1 clear-fix">
+                        <div class="course-date bg-color-0 clear-fix">
                             
                             <div class="description">
                                 <h1><i class="fa fa-bar-chart-o">

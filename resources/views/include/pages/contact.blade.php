@@ -23,7 +23,12 @@
                                 <i class="flaticon-calendar"></i>
                             </div>
                             <div class="info-block">
-                                <p>Donec sollicitudin lacus in felis luctus blandit. Ut hendrerit mattis. Aliquam lorem ante, dapibus in.</p>
+                                <p>The most popular events in school are Matriculation and Convocation which comes up yearly. 
+                                    Matriculation is one of the popular events in school for freshers because that's 
+                                    when they get to wear matriculation gowns and snap long living memory pictures and 
+                                    the get to celebrate their been in school. Likewise, Convocation is one of a popular event 
+                                    in school where final year students 
+                                    final get their certificates and there is an award for the best graduating student.</p>
                             </div>
                         </div>
                     </div>

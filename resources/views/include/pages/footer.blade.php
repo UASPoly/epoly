@@ -1,29 +1,5 @@
 <!-- footer -->
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    
     @guest
     <footer class="footer">
         <div class="grid-row">
@@ -32,7 +8,12 @@
                     <h2 class="corner-radius">About Us</h2>
                     <div>
                         <h3>UMARU ALI SHINKAFI POLYTECHNIC SOKOTO</h3>
-                        <p>Quis rhoncus lorem dolor eu sem. Aenean enim risus, convallis id ultrices eget.</p>
+                        <p>The Umaru Ali shinkafi polytechnic is a State-Goverment owned tertiary institution<br>
+                            located at Sokoto State, Nigeria. It currently has eight faculties which are: <br> 
+                            School of Adminstrative and Business Studies, School of Art and Humanities,<br>
+                            School of Science and Technology, School of Engineering, School of Enviromental Studies,School of Basic and Prelimainary Studies,
+                            <br>School of Agriculture and School of Center for Strategic and Development Studies.
+                        </p>
                     </div>
                     <address>
                         <p></p>
@@ -56,7 +37,7 @@
                     <h2 class="corner-radius" style="color: black;">Latest programmes</h2>
                     @foreach($programmes as $programme)
                     <article>
-                        <img src="http://placehold.it/83x83" data-at2x="http://placehold.it/83x83" alt>
+                        
                         <h3>{{$programme->name}}</h3>
                         <div class="course-date">
                             <div>Schedules</div>
@@ -65,6 +46,14 @@
                                     {{$programmeSchedule->schedule->name}}
                                 </div>
                             @endforeach
+                        </div>
+                        <div class="course-date">
+                            <div>Department</div>
+                            <div>{{$programme->department->name}}</div>
+                        </div>
+                        <div class="course-date">
+                            <div>College</div>
+                            <div>{{$programme->department->college->name}}</div>
                         </div>
                     </article>
                     @endforeach

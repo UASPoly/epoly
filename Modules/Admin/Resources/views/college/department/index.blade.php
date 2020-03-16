@@ -26,13 +26,13 @@
 			            <div class="course-name clear-fix shadow">
 			            <h3><a href="#">{{$department->name}}</a></h3>
 			                </div>
-			            <div class="">
+			            <div class="bg-color-2">
 			                <div class="time"><i class="fa fa-clock-o"></i>Established At {{$department->established_date}}</div>
 			                <div class="divider"></div>
 			                <div class="description">{{$department->description}}</div>
 			                <button class="btn btn-success"><a href="{{route('admin.college.department.edit',[$department->id])}}"  style="color: white">Edit</a></button>
 			                <button class="btn btn-success"><a href="{{route('admin.college.department.delete',[$department->id])}}" onclick="return confirm('Are you sure you want delete this department')" style="color: white">Delete</a></button>
-			                <a href="{{route('admin.college.department.management.index',[$department->id])}}"><button class="btn btn-success">Management</button></a>
+			                <a href="{{route('admin.college.department.management.index',[$department->id])}}"><button class="btn btn-success">Management</button></a><br>
 			            </div>
 			        </div>
 			        <!-- / course item -->
