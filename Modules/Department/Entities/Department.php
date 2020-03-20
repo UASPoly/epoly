@@ -54,7 +54,12 @@ class Department extends BaseModel
     {
     	return $this->hasMany('Modules\Staff\Entities\Staff');
     }
-    
+
+    public function sessionRegistrations()
+    {
+    	return $this->hasMany('Modules\Student\Entities\SessionRegistration');
+    }
+
     public function headOfDepartments($value='')
     {
         return $this->hasMany(HeadOfDepartment::class);

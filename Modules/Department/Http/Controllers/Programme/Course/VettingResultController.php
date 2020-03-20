@@ -58,12 +58,10 @@ class VettingResultController extends HodBaseController
     public function view()
     {
         if(session('course_registrations')){
-        
             $vetting = new GenerateVettableResult(session('course_registrations'));
-
             return view('department::department.programme.course.result.vetting.print',['registrations'=>$vetting->results]);
         }
+
         return redirect()->route('department.result.course.vetting.index');
-        
     }
 }

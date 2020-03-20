@@ -1,6 +1,11 @@
 <div class="col-md-3"></div>
 <div class="col-md-6"><br>
- 	<div class="card">
+ 	<div class="card shadow">
+	    <div class="card-head shadow">
+		<h4 class="center">
+		Search/Expert Students Semester Result
+		</h4>
+	    </div>
  		<div class="card-body">
  			<form action="{{route($route ?? 'department.result.course.vetting.search')}}" method="post">
  				@csrf
@@ -20,12 +25,13 @@
  				</select><br>
  				<select class="form-control" name="semester">
  					<option value="">Semester</option>
- 					<option value="1">First Semester</option>
- 					<option value="2">Second Semester</option>
+ 					<option value="1">First</option>
+ 					<option value="2">Second</option>
  				</select><br>
  				<label>Student/Page</label>
  				<input type="number" name="paginate" min="1" class="form-control"><br>
- 				<button class="button-fullwidth cws-button bt-color-3 btn-block">Search Result</button>
+ 				<button name="search" value="search" class="btn btn-success bt-color-3">Search Result</button>
+ 				<button name="export" value="export" class="btn btn-success bt-color-3">Export Result</button>
  			</form>
  		</div>
  	</div>

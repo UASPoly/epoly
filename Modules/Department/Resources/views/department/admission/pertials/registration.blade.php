@@ -10,7 +10,7 @@
                     <div class="col-md-4">
                         <input type="hidden" name="programmeId" value="{{request()->route('programmeId')}}">
                         <div class="col-md-12 mb-2">
-                            <img id="picture_preview_container" src="{{storage_url('user.png')}}"
+                            <img id="picture_preview_container" src="{{asset('img/user.png')}}"
                                 alt="" width="140" height="150" class="rounded">
                         </div>
                     </div>

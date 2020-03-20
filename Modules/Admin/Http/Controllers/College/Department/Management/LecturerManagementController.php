@@ -138,15 +138,17 @@ class LecturerManagementController extends AdminBaseController
      */
     public function delete($departmentId, $lecturerId)
     {
-        $lecturer = Lecturer::find(1);
-        if($lecturer->lecturerCourse){
-            session()->flash('error',['Sorry you can not delete this lecturer because, this lecturer has course allocation']);
+        $lecturer = Lecturer::find($lecturerId);
+        if(optional($lecturer)->lecturerCourse){
+            return back()->withWarning('Sorry you can not delete this lecturer because, this lecturer has course allocation');
         }else{
-            //$lecturer->staff->profile->delete();
+            $profile = $lecturer->staff->profile;
             $lecturer->staff->delete();
             $lecturer->delete();
-            session()->flash('message','The lecturer deleted successfully');
+            if($profile){
+                $profile->delete();
+            }
         }
-        return back();
+        return back()->withSuccess('The lecturer deleted successfully');
     }
 }

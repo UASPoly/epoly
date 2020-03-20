@@ -22,8 +22,14 @@
 		        	<div class="col-md-4">
 		        		<div class="form-group">
 			            	<div class="col-md-12 mb-2">
-	                            <img id="picture_preview_container" src="{{storage_url($lecturer->staff->profile->picture ?? 'user.png')}}"
+							    @if($lecturer->staff->profile->picture)
+								<img id="picture_preview_container" class="rounded" src="{{storage_url($lecturer->staff->profile->picture ?? 'user.png')}}"
 	                                alt="" width="150" height="140">
+								@else
+                                <img id="picture_preview_container" class="rounded" src="{{asset('img/user.png')}}"
+	                                alt="" width="150" height="140">
+								@endif
+	                            
 	                        </div>
 	                    </div>
 				        <div class="form-group">

@@ -21,7 +21,7 @@
 		            <div class="col-md-4">
 		            	<div class="form-group">
 			            	<div class="col-md-12 mb-2">
-	                            <img id="picture_preview_container" src="{{storage_url('user.png')}}"
+	                            <img id="picture_preview_container" src="{{asset('img/user.png')}}"
 	                                alt="" width="150" height="140">
 	                        </div>
 	                    </div>

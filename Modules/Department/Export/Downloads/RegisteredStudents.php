@@ -1,12 +1,12 @@
 <?php
 
-namespace Modules\Department\Export;
+namespace Modules\Department\Export\Downloads;
 
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 use Maatwebsite\Excel\Concerns\WithColumnFormatting;
 
-class DownloadRegisteredStudents implements FromView
+class RegisteredStudents implements FromView
 {
 
 	protected $data;

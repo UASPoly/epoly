@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Admin\Entities\Session;
 use Modules\Department\Entities\Level;
+use Modules\Department\Export\Result\ExportABFormatResult;
 use Modules\Department\Services\Vetting\GenerateVettableResult;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 
@@ -34,6 +35,11 @@ class VettingResultController extends ExamOfficerBaseController
             'semester'=>'required',
             'paginate'=>'required'
         ]);
+
+        if(isset($request->export)){
+            $download = new ExportABFormatResult($request->all());
+            return $download->downloadFile();
+        }
 
         session(['course_registrations'=>$request->all()]);
         return redirect()->route('exam.officer.result.vetting.view',[$request->semester]);

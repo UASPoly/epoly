@@ -6,7 +6,7 @@
             <div class="grid-row center-text">
                 <div class="font-style-1 margin-none">Get In Touch With Us</div>
                 <div class="divider-mini"></div>
-                <p class="parallax-text">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.</p>
+                <p class="parallax-text">Our subscriber will be kept update with current situation of the school.</p>
                 <form class="subscribe">
                     <input type="text" name="email" value="" size="40" placeholder="Enter your email" aria-required="true"><input type="submit" value="Subscribe">
                 </form>
@@ -28,7 +28,8 @@
                                     when they get to wear matriculation gowns and snap long living memory pictures and 
                                     the get to celebrate their been in school. Likewise, Convocation is one of a popular event 
                                     in school where final year students 
-                                    final get their certificates and there is an award for the best graduating student.</p>
+                                    final get their certificates and there is an award for the best graduating student.
+                                </p>
                             </div>
                         </div>
                     </div>

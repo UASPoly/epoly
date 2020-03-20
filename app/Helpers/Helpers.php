@@ -7,22 +7,22 @@ if (!function_exists('user_image')) {
     function user_image()
     {
         if(auth()->guard('admin')->check()){
-            $image = 'user.png';
+            $image = 'img/user.png';
         }elseif (auth()->guard('staff')->check()) {
             $image = optional(staff()->profile)->picture;
         }elseif (auth()->guard('lecturer')->check()) {
             $image = optional(lecturer()->staff->profile)->picture;
         }elseif (auth()->guard('head_of_department')->check()) {
-            $image = optional(headOfDepartment()->staff->profile)->picture;
+            $image = headOfDepartment()->lecturer->staff->profile->picture;
         }elseif (auth()->guard('directer')->check()) {
             $image = optional(directer()->staff->profile)->picture;
         }elseif(auth()->guard('exam_officer')->check()){
-            $image = optional(optional(examOfficer()->staff)->profile)->picture;
-        }else{
-            $image = optional(student()->studentAccount)->picture;
+            $image = examOfficer()->lecturer->staff->profile->picture;
+        }elseif(auth()->guard('student')->check()){
+            $image = student()->studentAccount->picture;
         }
-        if(!$image){
-            $image = 'user.png';
+        if(!isset($image)){
+            $image = 'img/user.png';
         }
         return $image;
     }

@@ -17,9 +17,10 @@
 					<div class="tp-caption sl-content align-right" data-x="['right','center','center','center']" data-hoffset="20" data-y="center" data-voffset="0"  data-width="['720px','600px','500px','300px']" data-transform_in="opacity:0;s:1000;e:Power2.easeInOut;" 
 	                    data-transform_out="opacity:0;s:300;s:1000;" data-start="400">
 						<div class="sl-title">Brief History</div>
-						<p>The Umaru Ali Shinkafi Polytechnic sokoto state was established by the<br> 
-						    sokoto state Government vised law No.2 of 2002. 
-							<br>The Polytechnic took off in July 2002 and is operational in two campuses.</p>
+						<p>The Umaru Ali Shinkafi Polytechnic sokoto state was <br>
+						    established by the sokoto state Government vised law No.2 of 2002. 
+							<br>The Polytechnic took off in July 2002 and is operational in two campuses.
+						</p>
 						<a href="" class="cws-button border-radius">Join us <i class="fa fa-angle-double-right"></i></a>
 					</div>
    				</li>
@@ -42,12 +43,13 @@
 					<img src="rs-plugin/assets/loaders.gif" data-bgposition="center right"  data-lazyload="http://placehold.it/2000x1000" alt>
 					<div class="tp-caption sl-content align-left" data-x="['left','center','center','center']" data-hoffset="20" data-y="center" data-voffset="40" data-width="['720px','600px','500px','300px']" data-transform_in="opacity:0;s:1000;e:Power2.easeInOut;" 
 	                    data-transform_out="opacity:0;s:300;s:1000;" data-start="400">
-						<div class="sl-title">Best Time to Visit The Umaru Ali shinkafi polytechnic</div>
+						<div class="sl-title">Best time to visit the Umaru Ali shinkafi polytechnic</div>
 						<p>The Umaru Ali shinkafi polytechnic is best visited 
 							<br>during when it's in session as it's when the school is lively and alive.</p>
 						<a href="" class="cws-button border-radius">Join us <i class="fa fa-angle-double-right"></i></a>
 					</div>
-   				</li>
+				</li>
+				   
 			</ul>
 		</div>
 	</section>

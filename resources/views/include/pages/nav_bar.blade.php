@@ -21,7 +21,7 @@
                                     <a href="{{route(home_route())}}" class="active"><i class="fa fa-dashboard"></i> Dashboard</a>
                                 </li>
                             @endif
-                            
+
                             <li>
                                 <a href="#"><i class="fa fa-calendar"></i> Calendar</a>
                                 <!-- sub menu -->
@@ -51,7 +51,12 @@
                             </li>
                             @else
                             <li>
-                                <a href="#"><img src="{{storage_url(user_image())}}"  height="45" width="45" class="img-circle user-img rounded-circle"></a>
+                            
+                                @if(user_image() == 'img/user.png')
+                                    <a href="#"><img src="{{asset(user_image())}}"  height="45" width="45" class="img-circle user-img rounded-circle"></a>                                     
+                                @else
+                                    <a href="#"><img src="{{storage_url(user_image())}}"  height="45" width="45" class="img-circle user-img rounded-circle"></a>
+                                @endif
                                 <ul>
                                     <li>
                                         <a href="#">

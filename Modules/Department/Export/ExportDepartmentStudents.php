@@ -5,6 +5,7 @@ namespace Modules\Department\Export;
 */
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Admin\Entities\Session;
+use Modules\Department\Export\Downloads\RegisteredStudents;
 
 class ExportDepartmentStudents
 {
@@ -34,6 +35,6 @@ class ExportDepartmentStudents
 
 	public function downloadFile()
 	{
-		return Excel::download(new DownloadRegisteredStudents($this->getFileData()), $this->getFileName(),'Csv',['Content-Type' => 'text/csv']);
+		return Excel::download(new RegisteredStudents($this->getFileData()), $this->getFileName(),'Csv',['Content-Type' => 'text/csv']);
 	}
 }

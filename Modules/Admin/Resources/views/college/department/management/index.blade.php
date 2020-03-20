@@ -84,7 +84,7 @@
 						        <h3>Appointment</h3>
 						        </div>
 						        <div class="course-date bg-color-2 clear-fix">
-						            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Staffs {{count($department->staffs)}}</div>
+						            <div class="h5" style="color: black"><i class="fa fa-chart"></i>Number Of Staffs {{count($department->examOfficers)+count($department->headOfDepartments)}}</div>
 						        </div>
 						    </div>
 						</a>

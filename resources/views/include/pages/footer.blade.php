@@ -1,5 +1,19 @@
 <!-- footer -->
-    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     @guest
     <footer class="footer">
         <div class="grid-row">
