@@ -31,7 +31,7 @@ class GenerateTestStudentCommand extends Command
     public function __construct()
     {
         parent::__construct();
-        //$this->department = Department::find(1);
+        $this->department = Department::find(1);
     }
 
     /**
@@ -41,7 +41,7 @@ class GenerateTestStudentCommand extends Command
      */
     public function handle()
     {
-        $bar = $this->output->createProgressBar(100);
+        $bar = $this->output->createProgressBar(1000);
 
         $bar->setBarWidth(100);
 
@@ -60,7 +60,7 @@ class GenerateTestStudentCommand extends Command
 
     public function generateEveningNdStudent($bar)
     {
-        for ($j=1; $j <= 25 ; $j++) { 
+        for ($j=1; $j <= 250 ; $j++) { 
             //generate evening student
             $number = $this->department->generateNewAdmission(['session'=>0,'type'=>1,'serial_no'=>$j]);
             $bar->advance();
@@ -70,7 +70,7 @@ class GenerateTestStudentCommand extends Command
     public function generateMorningNdStudent($bar)
     {
         $serial = [];
-        for ($i=1; $i <= 25 ; $i++) { 
+        for ($i=1; $i <= 250 ; $i++) { 
             //generate morning student
             $number = $this->department->generateNewAdmission(['session'=>9,'type'=>1,'serial_no'=>$i]);
             $bar->advance();
@@ -79,7 +79,7 @@ class GenerateTestStudentCommand extends Command
 
     public function generateEveningHndStudent($bar)
     {
-        for ($j=1; $j <= 25 ; $j++) { 
+        for ($j=1; $j <= 250 ; $j++) { 
             //generate evening student
             $number = $this->department->generateNewAdmission(['session'=>0,'type'=>3,'serial_no'=>$j]);
             $bar->advance();
@@ -88,7 +88,7 @@ class GenerateTestStudentCommand extends Command
 
     public function generateMorningHndStudent($bar)
     {
-        for ($i=1; $i <= 25 ; $i++) { 
+        for ($i=1; $i <= 250 ; $i++) { 
             //generate morning student
             $this->department->generateNewAdmission(['session'=>9,'type'=>3,'serial_no'=>$i]);
             $bar->advance();
