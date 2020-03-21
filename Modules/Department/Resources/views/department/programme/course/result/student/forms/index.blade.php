@@ -29,7 +29,8 @@
                         <option value="2">Second Semester</option>
 	     			</select>
                     <br>
-	     			<button class="button-fullwidth cws-button bt-color-3 btn-block">Check Result</button>
+	     			<button name="check" value="check" class="btn btn-success bt-color-3">Check Result</button>
+	     			<button name="export" value="export" class="btn btn-success bt-color-3">Export Result</button>
      			</form>
      		</div>
      	</div>

@@ -10,19 +10,13 @@ trait HasGradePointCalculator
 	*/
 	public function currentUnits()
     {  
-    	$units = 0;
-    	foreach ($this->courseRegistrations->where('cancelation_status',0) as $courseRegistration) {
-    		if($courseRegistration->result->lecturerCourseResultUpload && $courseRegistration->result->points > 0){
-                $units = $courseRegistration->course->unit + $units;
-    		}
-    	}
-    	return $units;
+    	return $this->registeredUnits();
     }
     /*
       this method return the number of units student registered courses which result was uploaded
       at the current semester
 	*/
-    public function registeredUnits()
+    public function registeredAndResultUploadedUnits()
     {  
     	$units = 0;
     	foreach ($this->courseRegistrations->where('cancelation_status',0) as $courseRegistration) {
@@ -37,7 +31,7 @@ trait HasGradePointCalculator
       this method return the number of units student registered courses
       at the current semester
 	*/
-    public function availableRegisteredUnits()
+    public function registeredUnits()
     {  
     	$units = 0;
     	foreach ($this->courseRegistrations->where('cancelation_status',0) as $courseRegistration) {
@@ -106,6 +100,11 @@ trait HasGradePointCalculator
     public function cummulativeUnits()
     {
     	return $this->previousUnits() + $this->currentUnits();
+    }
+
+    public function cummulativeUploadedResultUnits()
+    {
+    	return $this->previousUnits() + $this->registeredAndResultUploadedUnits();
     }
     /*
       this method return the number of registered units 

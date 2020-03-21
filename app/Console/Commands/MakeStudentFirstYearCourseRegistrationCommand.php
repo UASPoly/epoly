@@ -39,7 +39,7 @@ class MakeStudentFirstYearCourseRegistrationCommand extends Command
      */
     public function handle()
     {
-        $bar = $this->output->createProgressBar(100);
+        $bar = $this->output->createProgressBar(count(Student::cursor()));
 
         $bar->setBarWidth(100);
 
@@ -47,7 +47,7 @@ class MakeStudentFirstYearCourseRegistrationCommand extends Command
         foreach(Student::cursor() as $student){
             $level = $student->level();
             $session_registration = $student->sessionRegistrations()->firstOrCreate([
-            'level_id'=>$level->id,
+            'programme_level_id'=>$level->id,
             'department_id'=>$student->admission->department_id,
             'session_id'=> Session::find(1)->id
             ]);

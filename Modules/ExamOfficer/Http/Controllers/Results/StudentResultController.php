@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Modules\Student\Entities\Result;
 use Modules\Department\Entities\Admission;
+use Modules\Department\Export\StudentSemesterResultExport;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 use Modules\Department\Services\Results\Student\GenerateStudentResult;
 
@@ -43,11 +44,16 @@ class StudentResultController extends ExamOfficerBaseController
     public function searchResult(Request $request)
     {
         $result = new GenerateStudentResult($request->all());
+        if(isset($request->export) && empty($result->errors)){
+            $download = new StudentSemesterResultExport($request->all());
+            return $download->downloadFile();
+        }
+
         if(empty($result->errors)){
             session(['registration'=>$result->registration]);
             return redirect()->route('exam.officer.result.student.view',[$request->semester]);
         }
-        return back();
+        return back()->with('warning', $result->errors);
         
     }
 

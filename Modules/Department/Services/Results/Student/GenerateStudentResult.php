@@ -23,18 +23,18 @@ class GenerateStudentResult
 
 	public function validateThisRequest()
 	{
-		$errors = [];
+		$errors = null;
 		$this->admission = $this->getThisAdmission();
 		if($this->admission){
 			$this->registration = $this->getRegistration();
 		}
 		
 		if(!$this->admission){
-			$errors[] = 'Sorry this admission number does not exist in '.$this->department->name. 'department';
+			$errors = 'Sorry this admission number does not exist in '.$this->department->name.' department';
 		}
 
-		if(!$this->getRegistration()){
-			$errors[] = 'Sorry we dont found any course registration of '.$this->data['admission_no'].' at '.Session::find($this->data['session'])->id;
+		if($this->errors != null && !$this->getRegistration()){
+			$errors = 'Sorry we dont found any course registration of '.$this->data['admission_no'].' at '.Session::find($this->data['session'])->name;
 		}
 		
 		return $errors;
@@ -44,7 +44,7 @@ class GenerateStudentResult
 	public function verifyTheSearch()
 	{
         if(!empty($this->errors)){
-            session()->flash('error',$this->errors);
+           // session()->flash('error',$this->errors);
         }else{
         	foreach ($this->getRegistration() as $registration) {
         		$this->registration = $registration;
@@ -71,6 +71,7 @@ class GenerateStudentResult
 
     public function getRegistration()
     {
+		
     	if($this->admission)
             return $this->admission ->student->sessionRegistrations->where('session_id',$this->data['session']); 
     }

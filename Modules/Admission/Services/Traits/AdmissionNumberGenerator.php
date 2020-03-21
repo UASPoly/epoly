@@ -35,9 +35,14 @@ trait AdmissionNumberGenerator
 
     public function getAdmissionFromTheReserved($student)
     {
-    	$admission = null;
+		$admission = null;
+		if(auth()->check()){
+			$department_id = department()->id;
+		}else{
+			$department_id = 1;
+		}
     	foreach (ReservedDepartmentSessionAdmission::where([
-            'department_id'=> department()->id,
+            'department_id'=> $department_id,
             'session_id'=> currentSession()->id,
             'programme_id'=> $student['programme'],
             'schedule_id'=> $student['schedule']

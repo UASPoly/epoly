@@ -22,6 +22,7 @@ class AdmissionController extends ExamOfficerBaseController
         return view('examofficer::admission.search',[
             'route'=>'exam.officer.student.admission.search.admission','sessions'=>Session::all()]);
     }
+
     public function searchAdmissions(Request $request)
     {
         $request->validate(['session'=>'required']);
@@ -32,6 +33,7 @@ class AdmissionController extends ExamOfficerBaseController
 
         return redirect()->route('exam.officer.student.admission.session.available',[$request->session]);
     }
+
     public function index($sessionId)
     {
         return view('examofficer::admission.index',['session'=>Session::find($sessionId),'route'=>[

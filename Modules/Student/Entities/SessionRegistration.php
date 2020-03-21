@@ -116,7 +116,7 @@ class  SessionRegistration extends BaseModel
     {
         $units = 0;
         foreach ($this->semesterRegistrations->where('cancelation_status',0) as $semesterRegistration) {
-            $units = $units + $semesterRegistration->availableRegisteredUnits();
+            $units = $units + $semesterRegistration->registeredUnits();
         }
         return $units;
     }

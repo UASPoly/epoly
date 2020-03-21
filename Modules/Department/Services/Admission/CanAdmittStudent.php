@@ -71,9 +71,10 @@ trait CanAdmittStudent
             'address'=>$data['address'],
             'date_of_birth'=>$data['date_of_birth'],
         ]);
-
-        $image = $this->storeFile($data['picture'],str_replace('/','-',department()->name).'/Admission/Profile');
-        $account->update(['picture'=>$image]);
+        if(isset($data['picture'])){
+            $image = $this->storeFile($data['picture'],str_replace('/','-',department()->name).'/Admission/Profile');
+            $account->update(['picture'=>$image]);
+        }
 	}
 
     public function updateThisAdmissionCounter($admission_no)
