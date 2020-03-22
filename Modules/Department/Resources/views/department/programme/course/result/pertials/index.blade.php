@@ -16,7 +16,8 @@
      				@csrf
 	     			@include('lecturer::result.pertials.course')<br>
                     @include('lecturer::result.pertials.session')<br>
-	     			<button class="button-fullwidth cws-button bt-color-3 btn-block">View Result</button>
+	     			<button name="view" value="view" class="bt-color-3 btn btn-success">View Result</button>
+	     			<button name="export" value="export" class="btn btn-success bt-color-3">Export Result</button>
      			</form>
      		</div>
      	</div>

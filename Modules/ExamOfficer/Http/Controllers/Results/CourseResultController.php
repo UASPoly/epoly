@@ -5,6 +5,8 @@ namespace Modules\ExamOfficer\Http\Controllers\Results;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
+use Modules\Department\Export\Result\CourseResultExport;
+
 use  Modules\Department\Services\Results\Course\GenerateCourseResult;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 use Modules\Lecturer\Entities\LecturerCourseResultUpload;
@@ -22,13 +24,19 @@ class CourseResultController extends ExamOfficerBaseController
             'session'=>'required',
             'course'=>'required'
         ]);
+
         $result = new GenerateCourseResult($request->all());
-        if(empty($result->errors)){
-            session()->flash('message','The result of '.$result->course->code.' at '.$result->session->name);
-            return redirect()->route('exam.officer.result.course.review',[$result->result->id]);
+        if($request->export && $result->errors == null){
+            $export = new CourseResultExport($result->result);
+            return $export->downloadFile();
         }
-        session()->flash('error',$result->errors);
-        return back();
+
+        if(empty($result->errors)){
+            session();
+            return redirect()->route('exam.officer.result.course.review',[$result->result->id])->withSuccess('The result of '.$result->course->code.' at '.$result->session->name);
+        }
+
+        return back()->with('warning',$result->errors);
     }
 
 
