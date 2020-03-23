@@ -27,7 +27,7 @@ class AdmissionController extends ExamOfficerBaseController
     {
         $request->validate(['session'=>'required']);
         if(isset($request->export)){
-            $download = new ExportDepartmentStudents(Session::find($request->session));
+            $download = new ExportDepartmentStudents($request->all());
             return $download->downloadFile();
         }
 

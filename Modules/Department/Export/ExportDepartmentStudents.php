@@ -5,25 +5,55 @@ namespace Modules\Department\Export;
 */
 use Maatwebsite\Excel\Facades\Excel;
 use Modules\Admin\Entities\Session;
+use Modules\Student\Entities\Schedule;
+use Modules\Student\Entities\Programme;
 use Modules\Department\Export\Downloads\RegisteredStudents;
 
 class ExportDepartmentStudents
 {
-    protected $data;
-    protected $session;
-    protected $state;
+    protected $data = null;
+    protected $session = null;
+    protected $programme = null;
+    protected $schedule = null;
 
-	function __construct($session)
+	function __construct($data)
 	{
-        $this->session = $session;
+        $this->data = $data;
+        $this->session = Session::find($data['session']);
+        if(isset($data['programme'])){
+            $this->programme = Programme::find($data['programme']);
+        }
+
+        if(isset($data['schedule'])){
+            $this->schedule = Schedule::find($data['schedule']);
+        }
 	}
     
 	public function getFileData()
 	{
         $students = [];
-        foreach(department()->admissions->where('session_id',$this->session->id) as $admission){
-            $students[] = $admission->student;
+        if(!$this->programme){
+            foreach(department()->programmes as $programme){
+                foreach($programme->admissions->where('session_id',$this->session->id) as $admission){
+                    $students[] = $admission->student;
+                }
+            }
+        }else{
+            if(!$this->schedule){
+                foreach($this->programme->admissions
+                ->where('session_id',$this->session->id) as $admission){
+                    $students[] = $admission->student;
+                }
+            }else{
+                foreach($this->programme->admissions
+                ->where('session_id',$this->session->id) as $admission){
+                    if($admission->student->schedule->id == $this->schedule->id){
+                        $students[] = $admission->student;
+                    }
+                }
+            }
         }
+        
         return $students;
     }
     
