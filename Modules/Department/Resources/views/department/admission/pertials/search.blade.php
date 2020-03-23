@@ -18,12 +18,41 @@
 		                    @endif
 		            	@endforeach
 		            </select>
-		            @error('programme')
+		            @error('session')
 		                <span class="invalid-feedback" role="alert">
 		                    <strong>{{ $message }}</strong>
 		                </span>
 		            @enderror
 		        </div>
+				<div class="form-group">
+                	<label>Programme</label>
+                    <select name="programme" class="form-control">
+                    	<option value=""></option>
+                    	@foreach(department()->programmes as $programme)
+                            @if(old('programme') == $programme->id)
+                                <option value="{{$programme->id}}" selected>{{$programme->title}}</option>
+                            @else
+                                <option value="{{$programme->id}}" >{{$programme->title}}</option>
+                            @endif
+                    	@endforeach
+                    </select>
+                    @error('programme')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label>Schedule</label>
+                    <select name="schedule" class="form-control">
+                        
+                    </select>
+                    @error('session')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
 		        <button name="search" value="search" class="btn btn-success shadow">Search</button>
 		        <button name="export" value="export" class="btn btn-success shadow">Export</button>
 		    </form>
