@@ -13,7 +13,7 @@ if (!function_exists('user_image')) {
         }elseif (auth()->guard('lecturer')->check()) {
             $image = optional(lecturer()->staff->profile)->picture;
         }elseif (auth()->guard('head_of_department')->check()) {
-            $image = headOfDepartment()->lecturer->staff->profile->picture;
+            $image = headOfDepartment()->staff->profile->picture;
         }elseif (auth()->guard('directer')->check()) {
             $image = optional(directer()->staff->profile)->picture;
         }elseif(auth()->guard('exam_officer')->check()){
