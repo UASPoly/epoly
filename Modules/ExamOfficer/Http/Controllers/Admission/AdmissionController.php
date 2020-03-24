@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Hash;
 use Modules\Admin\Entities\Session;
 use Modules\Department\Entities\Admission;
 use Modules\Department\Export\ExportDepartmentStudents;
+use Modules\Department\Services\Admission\SearchAvailableStudents;
 use Modules\Department\Http\Requests\Admission\AdmissionFormRequest;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
 
@@ -30,17 +31,22 @@ class AdmissionController extends ExamOfficerBaseController
             $download = new ExportDepartmentStudents($request->all());
             return $download->downloadFile();
         }
-
+        
+        session(['search'=>$request->all()]);
         return redirect()->route('exam.officer.student.admission.session.available',[$request->session]);
     }
 
     public function index($sessionId)
     {
-        return view('examofficer::admission.index',['session'=>Session::find($sessionId),'route'=>[
-            'delete'=>'exam.officer.student.admission.delete',
-            'view'=>'exam.officer.student.view.biodata',
-            'revoke'=>'exam.officer.student.admission.revoke',
-        ]]);
+        if(session('search')){
+            $search = new SearchAvailableStudents(session('search'));
+            return view('examofficer::admission.index',['session'=>Session::find($sessionId),'students'=>$search->students,'route'=>[
+                'delete'=>'exam.officer.student.admission.delete',
+                'view'=>'exam.officer.student.view.biodata',
+                'revoke'=>'exam.officer.student.admission.revoke',
+            ]]);
+        }
+        return back()->withWarning('Please specify the search parameter');
     }
     
     /**

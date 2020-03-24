@@ -2,7 +2,7 @@
 	<br>
 	<div class="card shadow">
 		<div class="card-body">
-			@if(count(department()->admissions->where('session_id',$session->id))>0)
+			@if(count($students)>0)
 			    <table class="table shadow" id="admission-table">
 			     	<thead>
 			     		<tr>
@@ -17,28 +17,30 @@
 			     		</tr>
 			     	</thead>
 			     	<tbody>
-			     		@foreach($admissions ?? department()->admissions->where('session_id',$session->id) as $admission)
+			     		@foreach($students as $student)
 			     		<tr>
 			     			<td>{{$loop->index+1}}</td>
 			     			<td>
-			     				{{$admission->student->first_name}} 
-			     				{{$admission->student->middle_name}}    
-			     				{{$admission->student->last_name}}
+			     				{{$student->first_name}} 
+			     				{{$student->middle_name}}    
+			     				{{$student->last_name}}
 			     			</td>
-			     			<td>{{$admission->admission_no}}</td>
-			     			<td>{{$admission->student->schedule->name}}</td>
-			     			<td>{{$admission->programme->title}}</td>
-			     			<td>{{$admission->student->phone}}</td>
-			     			<td>{{$admission->student->is_active == 1 ? 'Active' : 'Revoked'}}</td>
+			     			<td>{{$student->admission->admission_no}}</td>
+			     			<td>{{$student->schedule->name}}</td>
+			     			<td>{{$student->admission->programme->title}}</td>
+			     			<td>{{$student->phone}}</td>
+			     			<td>{{$student->is_active == 1 ? 'Active' : 'Revoked'}}</td>
 			     			<td>
-			     				<button class="btn btn-danger shadow" onclick="return confirm('Are you sure you want to delete this student from the list of students in this department')"><a href="{{route($route['delete'] ?? 'department.admission.delete',['admission_id'=>$admission->id])}}" style="color: white">Delete</a> </i>
+			     				<button class="btn btn-danger shadow" onclick="return confirm('Are you sure you want to delete this student from the list of students in this department')">
+								    <a href="{{route($route['delete'] ?? 'department.admission.delete',['admission_id'=>$student->admission->id])}}" style="color: white">Delete</a> </i>
 			     				</button>
 
 			     				<button class="btn btn-info shadow">
-			     					<a href="{{route($route['view'] ?? 'department.admission.edit',[$admission->student->id])}}" style="color: white">View</a></i>
+			     					<a href="{{route($route['view'] ?? 'department.admission.edit',[$student->id])}}" style="color: white">View</a></i>
 			     				</button>
 
-			     				<button class="btn btn-warning shadow" ><a href="{{route($route['revoke'] ?? 'department.admission.revoke',['admission_id'=>$admission->id])}}" style="color: white" onclick="return confirm('Are you sure you want to revoke this student from having access to his account')" class="text text-primary">{{$admission->student->is_active == 1 ? 'Revoke' : 'Activate'}}</a></i>
+			     				<button class="btn btn-warning shadow" >
+								    <a href="{{route($route['revoke'] ?? 'department.admission.revoke',['admission_id'=>$student->admission->id])}}" style="color: white" onclick="return confirm('Are you sure you want to revoke this student from having access to his account')" class="text text-primary">{{$student->is_active == 1 ? 'Revoke' : 'Activate'}}</a></i>
 			     				</button>
 			     			</td>
 			     		</tr>
@@ -48,7 +50,7 @@
 			@else
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<div class="alert alert-danger">No admission record found for {{department()}} as {{currentSession()->name}}</div>
+				<div class="alert alert-danger">No admission record found in {{department()}} department for {{$session->name}} session</div>
 			</div>
 			@endif
 		</div>

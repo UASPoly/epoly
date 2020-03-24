@@ -4,7 +4,7 @@
     department register student
 @endsection
 @section('breadcrumbs')
-{{Breadcrumbs::render('exam.officer.student.admission.search.session',$session)}}
+{{Breadcrumbs::render('exam.officer.student.admission.search.session',$session ?? '')}}
 @endsection
 @section('page-content')
     @include('department::department.admission.pertials.index')
