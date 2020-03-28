@@ -8,12 +8,13 @@ use Modules\Department\Entities\Level;
 use Modules\Department\Entities\Course;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Modules\Student\Services\Traits\HasLevelAndSemester;
+use Modules\Student\Services\Traits\FreshCourseRegistration;
 use Modules\Student\Services\Traits\Student\HasGraduationStatus;
 use Modules\Student\Services\Traits\Student\HasGraduationStatusAt;
 use Modules\Student\Services\Traits\Student\Result\HasResult;
 class Student extends Authenticatable
 {
-	use Notifiable, HasLevelAndSemester, HasGraduationStatus, HasGraduationStatusAt, HasResult;
+use Notifiable, HasLevelAndSemester, HasGraduationStatus, HasGraduationStatusAt, HasResult, FreshCourseRegistration;
 
 	protected $fillable = [
         'first_name',

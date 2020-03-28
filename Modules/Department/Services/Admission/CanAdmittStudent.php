@@ -58,7 +58,7 @@ trait CanAdmittStudent
             'programme_id'=>  $this->programmeId($data['admission_no']),
             'password'=> Hash::make($admission->admission_no),
         ]);
-
+        $student->makeFreshCourseRegistration();
         $this->registerStudentAccount($student,$data);
 	}
 

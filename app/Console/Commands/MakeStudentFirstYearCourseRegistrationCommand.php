@@ -57,6 +57,7 @@ class MakeStudentFirstYearCourseRegistrationCommand extends Command
                 $course_registration = $semester_registration->courseRegistrations()->firstOrCreate([
                     'course_id'=>$course->id,
                     'session_id'=> Session::find(1)->id,
+                    'department_id'=>$student->admission->department_id,
                     'admission_id'=>$student->admission->id
                 ]);
                 $course_registration->result()->firstOrCreate([]);

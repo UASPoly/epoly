@@ -22,6 +22,7 @@ trait CanUpdateAdmission
     		$this->programme_id = $data['programme'];
     	    $this->save();
             $this->updateTheAdmissionCounter();
+            $this->student->makeFreshCourseRegistration();
     	}
     	$this->updateStudendInformation($data);
     	$this->updateStudentAccount($data);

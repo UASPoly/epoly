@@ -45,7 +45,11 @@ class DownloadScoreSheet
 
     public function availableRegisteredStudent()
     {
-        $this->courseRegistrations = CourseRegistration::where(['department_id'=>$this->data['department'],'course_id'=>$this->data['course'],'session_id'=>$this->data['session'],'drop_status'=>0])->get();
+        $this->courseRegistrations = CourseRegistration::where([
+            'department_id'=>$this->data['department'],
+            'course_id'=>$this->data['course'],
+            'session_id'=>$this->data['session'],
+            'drop_status'=>0])->get();
     }
 
 	public function getFileData()
