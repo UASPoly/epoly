@@ -42,7 +42,7 @@
                 </div>
             @endforeach
             @if(count(examOfficer()->department->unverifiedResults()) == 0)
-                <div class="alert alert-danger shadow">There is no result uploaded for {{currentSemester()->name}} in {{currentSession()->name}}</div>
+                <div class="alert alert-danger shadow">There is no result uploaded for {{currentSemester()->name ?? ' '}} in {{currentSession()->name}}</div>
             @endif
         </div>
     </div>

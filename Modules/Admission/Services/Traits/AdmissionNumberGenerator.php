@@ -30,7 +30,11 @@ trait AdmissionNumberGenerator
 
 	public function yearExt($student)
 	{
-		return substr(currentSession()->name,2,2);
+		$ext = substr(currentSession()->name,2,2);
+		if(Programme::find($student['programme'])->programmeType->id == 3){
+			$ext = $ext-1;
+		}
+		return $ext;
 	}
 
     public function getAdmissionFromTheReserved($student)
