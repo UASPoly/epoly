@@ -22,7 +22,7 @@ head of department dashboard
     <br>
     <div class="card shadow">
         <div class="card-header shadow">
-            <b class="text text-danger" >{{currentSession()->name}} {{currentSemester()->name}} Un Approved Results</b> 
+            <b class="text text-danger" >{{currentSession()->name}} {{currentSemester()->name ?? ' '}} Un Approved Results</b> 
         </div>
         <div class="card-body">
             @foreach(headOfDepartment()->department->unverifiedResults() as $result)
