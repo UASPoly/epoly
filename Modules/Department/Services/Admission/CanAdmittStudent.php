@@ -85,7 +85,8 @@ trait CanAdmittStudent
             'schedule_id' => $this->scheduleId($admission_no),
             'programme_id' => $this->programmeId($admission_no)
         ])->get() as $admission) {
-            $admission->update(['count'=>$admission->count += 1]);
+            $newCount = $admission->count + 1;
+            $admission->update(['count'=>$newCount]);
         }
     }
 

@@ -29,7 +29,7 @@ class ProgrammeController extends AdminBaseController
         ]);
         Department::find($request->departmentId)->addProgramme($request->all());
         
-        return back();
+        return back()->with('success','Programme has been registered');
     }
 
     public function update(Request $request)
