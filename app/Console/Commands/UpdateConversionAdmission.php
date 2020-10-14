@@ -50,21 +50,26 @@ class UpdateConversionAdmission extends Command
             $oldAdmissionNo = $admission->admission_no;
 
             $begin = substr($oldAdmissionNo, 0,2);
-            $other = substr($oldAdmissionNo, 2,4);
+            $other = substr($oldAdmissionNo, 2,3);
+            $code = substr($oldAdmissionNo, 4,1);
             $end = substr($oldAdmissionNo, 6,3);
             if($begin < 19){
                 $begin = 19;
             }
+            if($code < 2){
+                $code = 2;
+            }
             $newBegin = $begin-1;
+            $newCode = $code-1;
 
-            $newAdmissionNo = $newBegin.$other.$count;
+            $newAdmissionNo = $newBegin.$other.$newCode.$count;
             $admission->update(['admission_no'=>$newAdmissionNo]);
             $count ++;
             $bar->advance();
         }
 
-        foreach ($programme->departmentSessionAdmissions->where('session_id',currentSession()->id) as $sessionAdmission) {
-            $sessionAdmission->update(['count'=>202]);
+        foreach (Programme::find(1)->departmentSessionAdmissions->where('schedule_id',1) as $sessionAdmission) {
+            $sessionAdmission->update(['count'=>203]);
         }
         
         $bar->finish();
