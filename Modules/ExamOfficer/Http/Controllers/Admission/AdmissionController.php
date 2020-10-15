@@ -63,7 +63,6 @@ class AdmissionController extends ExamOfficerBaseController
         $request->validate([
             'schedule'=>'required',
             'programme'=>'required',
-            'serial_no'=>'required',
         ]);
         
         $admissionNo = department()->generateAdmissionNo($request->all());

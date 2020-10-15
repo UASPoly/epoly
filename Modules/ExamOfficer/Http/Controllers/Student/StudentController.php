@@ -7,6 +7,7 @@ use Illuminate\Http\Response;
 use Modules\Staff\Entities\State;
 use Modules\Admin\Entities\Session;
 use Modules\Student\Entities\Student;
+use Modules\Student\Entities\Programme;
 use Modules\Department\Entities\Admission;
 use Modules\Department\Export\ExportStateStudents;
 use Modules\Core\Http\Controllers\Department\ExamOfficerBaseController;
@@ -54,17 +55,24 @@ class StudentController extends ExamOfficerBaseController
                 return back();
             }
         }else{
-            $request->validate(['session'=>'required','state'=>'required']);
+            $request->validate([
+                'session'=>'required',
+                'state'=>'required',
+                'programme'=>'required',
+                ]);
             $state = State::find($request->state);
             
             $session = Session::find($request->session);
+
+            $programme = Programme::find($request->programme);
+            
             if($state){
-                $students = $state->students($session);
+                $students = $state->students($session,$programme);
             }else{
                 $students = [];
                 foreach(State::all() as $studentState){
                     if($studentState->catchment == 0){
-                        $students = array_merge($students,$studentState->students($session));
+                        $students = array_merge($students,$studentState->students($session,$programme));
                     }
                 }
             }

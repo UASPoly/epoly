@@ -10,8 +10,7 @@
 		     			<th>Picture</th>
 		     			<th>Name</th>
 		     			<th>Admission No</th>
-		     			<th>Programme</th>
-		     			<th>State</th>
+		     			<th>Phone</th>
 		     			<th>Local Government</th>
 		     		</tr>
 		     	</thead>
@@ -31,10 +30,7 @@
 		     				{{$student->admission->admission_no}}
 		     			</td>
 		     			<td>
-		     				{{$student->admission->programme->title}}
-		     			</td>
-		     			<td>
-		     				{{$student->studentAccount->lga->state->name}}
+		     				{{$student->phone}}
 		     			</td>
 		     			<td>
 		     				{{$student->studentAccount->lga->name}}

@@ -12,12 +12,12 @@ class State extends BaseModel
     	return $this->hasMany(Lga::class);
     }
 
-    public function students(Session $session)
+    public function students(Session $session,$programme)
     {
     	$students = [];
     	foreach ($this->lgas as $lga) {
     		foreach ($lga->studentAccounts as $studentAccount) {
-    			if($studentAccount->student->admission->session_id == $session->id){
+    			if($studentAccount->student->admission->programme->id == $programme->id && $studentAccount->student->admission->session_id == $session->id){
     			    $students[] = $studentAccount->student;
     			}
     		}

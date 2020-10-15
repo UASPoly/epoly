@@ -41,6 +41,21 @@
                 </div>
 
                 <div class="form-group">
+                    <label>Programme</label>
+                    <select name="programme" class="form-control">
+                        <option value="">Select Programme</option>
+                        @foreach(department()->programmes as $programme)
+                            <option value="{{$programme->id}}">{{$programme->title}}</option>
+                        @endforeach
+                    </select>
+                    @error('state')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                    @enderror
+                </div>
+
+                <div class="form-group">
                     <label>Admission Number</label>
                     <input type="text" name="admission_no" class="form-control" placeholder="Enter admission number">
                     @error('admission_no')
