@@ -10,7 +10,7 @@
                 <div class="form-group">
                 	<label>Programme</label>
                     <select name="programme" class="form-control">
-                    	<option value=""></option>
+                    	<option value="">Choose Programme</option>
                     	@foreach(department()->programmes as $programme)
                             @if(old('programme') == $programme->id)
                                 <option value="{{$programme->id}}" selected>{{$programme->title}}</option>
@@ -26,15 +26,28 @@
                     @enderror
                 </div>
                 <div class="form-group">
-                    <label>Schedule</label>
-                    <select name="schedule" class="form-control">
-                        
-                    </select>
-                    @error('session')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <div class="row">
+                        <div class="col-md-9">
+                            <label>Schedule</label>
+                            <select name="schedule" class="form-control">
+                                <option value="">Choose Schedule</option>
+                            </select>
+                            @error('schedule')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-md-3">
+                            <label>Serail No</label>
+                            <input type="number" name="serial_no" id="" class="form-control" placeholder="Serial No">
+                            @error('session')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                    </div>
                 </div>
                 <button class=" btn-block button-fullwidth cws-button bt-color-3">Generate Admission Number</button>
             </form>
