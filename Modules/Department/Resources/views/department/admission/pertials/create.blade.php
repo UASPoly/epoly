@@ -40,6 +40,7 @@
                         </div>
                         <div class="col-md-3">
                             <label>Serail No</label>
+                            
                             <input type="number" name="serial_no" id="" class="form-control" placeholder="Serial No">
                             @error('session')
                                 <span class="invalid-feedback" role="alert">
