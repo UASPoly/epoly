@@ -96,4 +96,15 @@ class Programme extends BaseModel
         return $courses;
     }
 
+    public function hasCurrentSessionAdmissionNumbers(Schedule $schedule)
+    {
+        $numbers = [];
+        foreach ($this->admissions->where('session_id',currentSession()->id) as $admission) {
+            if($admission->student->schedule->id == $schedule->id){
+                $numbers[] = $admission->admission_no;
+            }
+        }
+        return $numbers;
+    }
+
 }

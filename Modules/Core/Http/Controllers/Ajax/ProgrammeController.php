@@ -59,4 +59,9 @@ class ProgrammeController extends Controller
         }
         return $flag;
     }
+
+    public function getProgrammeAdmissionCounter($programmeId,$scheduleId)
+    {
+        return response()->json((['counter'=>200]));
+    }
 }

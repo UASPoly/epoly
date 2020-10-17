@@ -31,6 +31,7 @@ Route::prefix('core')
 		   ->group(function() {
 	        Route::get('/{programmeId}/get-programme-schedules', 'ProgrammeController@getProgrammeSchedules');
 	        Route::get('/{programmeId}/get-programme-courses', 'ProgrammeController@getProgrammeCourses');
+	        Route::get('/{programmeId}/schedule/{schedulId}/get-counter', 'ProgrammeController@getProgrammeAdmissionCounter');
 
 		});
 

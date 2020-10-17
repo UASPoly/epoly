@@ -12,17 +12,28 @@ trait AdmissionNumberGenerator
 	
 	public function generateAdmissionNo(array $student)
 	{
-        
+		$this->programme = Programme::find($student['programme']);
+		
+		$this->schedule = Schedule::find($student['schedule']);
+		
 		$reservedAdmission = $this->getAdmissionFromTheReserved($student);
 		  
-		if($reservedAdmission){
+		if($reservedAdmission) {
 			$admissionNo = $reservedAdmission->admission_no;
+		} elseif (count($this->programme->hasCurrentSessionAdmissionNumbers($this->schedule)) > 0){
+			
+			$numbers = $this->programme->hasCurrentSessionAdmissionNumbers($this->schedule);
+			// sort the numbers
+			sort($numbers);
+			// get the pick admission number and add one to it as new admission no
+			$admissionNo = last($numbers)+1;
+
 		}else{
 			$admissionNo =  $this->yearExt($student).
 					$this->college->code.
 					$this->code.
-					Schedule::find($student['schedule'])->code.
-					Programme::find($student['programme'])->code.
+					$this->schedule->code.
+					$this->programme->code.
 					$this->getAdmissionSerialNo($student);
 		}
 		return $admissionNo;
@@ -60,7 +71,7 @@ trait AdmissionNumberGenerator
     
 	public function getAdmissionSerialNo($student)
 	{
-		$serialNo = $this->getAdmissionCounter($student);
+		$serialNo = 1;
 		if(isset($student['serial_no'])){
 			$serialNo = $student['serial_no'];
 		}

@@ -14,4 +14,5 @@
 
 @section('scripts')
     @include('department::department.admission.pertials.programmeAjax')
+    @include('department::department.admission.pertials.serialNoAjax')
 @endsection
