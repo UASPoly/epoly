@@ -25,31 +25,17 @@
                         </span>
                     @enderror
                 </div>
-                <div class="form-group">
-                    <div class="row">
-                        <div class="col-md-9">
+                <div class="form-group">      
                             <label>Schedule</label>
                             <select name="schedule" class="form-control">
                                 <option value="">Choose Schedule</option>
                             </select>
                             @error('schedule')
-                                <span class="invalid-feedback" role="alert">
+                                <span class="invalid-feedback" role=t">
                                     <strong>{{ $message }}</strong>
                                 </span>
-                            @enderror
-                        </div>
-                        <div class="col-md-3">
-                            <label>Serail No</label>
-                            
-                            <input type="number" name="serial_no" id="" class="form-control" placeholder="Serial No">
-                            @error('session')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
-                        </div>
-                    </div>
-                </div>
+                            @enderror                           @enderror
+                 </div>
                 <button class=" btn-block button-fullwidth cws-button bt-color-3">Generate Admission Number</button>
             </form>
         </div>
